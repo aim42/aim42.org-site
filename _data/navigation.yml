@@ -1,0 +1,14 @@
+# main links
+main:
+  - title: "Overview"
+    url: /overview
+  - title: "Apply"
+    url: /apply
+  - title: "Read"
+    url: /read
+  - title: "FAQ"
+    url: /questions
+  - title: "Reference"
+    url: http://aim42.github.io
+  - title: "Contact"
+    url: /contact
