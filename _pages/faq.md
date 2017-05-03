@@ -30,8 +30,14 @@ arrive from the community.
 
 aim42 is a team effort - we are actively looking for [contributions](/contribute).
 
-## Are there open issues?
+## Where's the code?
+Our method-guide is written in AsciiDoc (a plain-text format, ideal for team-collaboration). A (gradle-based) build-process generates a static html site (aim42.github.io) from it.
 
-Yes, many:
+All the code is located in our [Github repository](https://github.com/aim42/aim42).
 
-![](https://img.shields.io/github/issues/badges/shields.svg)
+## Does it work in reality?
+Yes, it does (seriously)!
+
+Although the term aim42 has been coined only in 2013, many of the patterns and practices have been in productive use since several years.
+
+We successfully applied mixtures of those practices at several medium to large systems in different industries.

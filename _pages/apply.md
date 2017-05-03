@@ -7,7 +7,7 @@ permalink: /apply
 Here you find an extract of the method - the most essential patterns and practices.
 
 You can apply aim42 to all kinds of situations - it's simple to integrate
-with day-to-day development work.
+into day-to-day development work.
 
 {% for apply in site.apply %}
 
