@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Contribute"
 layout: splash
 header:
   overlay_image: /images/cooperate-splash.jpg

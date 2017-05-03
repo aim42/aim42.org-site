@@ -1,29 +1,37 @@
 ---
-title: "Leiden..."
-layout: single
-permalink: /leiden
+title: "FAQ"
+layout: splash
+header:
+  overlay_image: /images/aim42-splash.jpg
+permalink: /faq
 ---
 
-![]({{ site.url }}/images/splash/leiden-splash.png){: width="30%"}
+{% include toc %}
 
-Wie ein ehemals erfolgreiches, flexibles und gut strukturiertes System
-innerhalb weniger Jahre zu einem unwartbaren Monster mutieren kann?
+# Frequently Asked Questions
 
-Wie eine motivierte Gruppe produktiver Softwareentwickler zu einem Schatten
-ihrer selbst degradiert?
-
-Wie die Stabilität von VENOM immer mehr abnimmt, obwohl doch die _Kinderkrankheiten_
-allmählich beseitigt sein müssten...
-
-Viele Faktoren führten SAMM Inc. und VENOM in dieses _Tal der Tränen_.
+Here you find answers to some of the frequently asked questions.
 
 
-## Mehr Infos
+## What is aim42?
+aim42 is a collection of practices, patterns and methods to support software improvement: In reality, many software systems suffer from a variety of problems, which often cannot be solved due to cost or complexity issues.
 
-{% for leiden in site.leiden %}
+aim42 provides a way out of maintenance desasters - it systematically helps to reduce maintenance cost, technical debt and risks. aim42 helps teams and organizations to optimize their software to their specific needs.
 
-## [{{ leiden.title }}]({{ leiden.url }})
+aim42 is free (like open-source).
 
-{{ leiden.excerpt }}
 
-{% endfor %}
+## Who are the people behind it?
+aim42 has been founded by Gernot Starke in 2013, joined by Stefan Tilkov in 2014.
+Several others joined - see the current list of [contributors](https://github.com/aim42/aim42/graphs/contributors).
+
+[innoQ](https://innoq.com) is sponsoring some of the aim42 effort, many contributions
+arrive from the community.
+
+aim42 is a team effort - we are actively looking for [contributions](/contribute).
+
+## Are there open issues?
+
+Yes, many:
+
+![](https://img.shields.io/github/issues/badges/shields.svg)

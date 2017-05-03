@@ -1,15 +1,15 @@
 ---
 title: Overview
 layout: splash
-permalink: /overview
 header:
   overlay_image: /images/aim42-splash.jpg
 
 excerpt: "**Software improvement<br>done right**"
+permalink: /overview
 
 
 feature_phases:
-  - image_path: /assets/images/.jpg
+  - image_path: /assets/images/phases.jpg
     alt: "aim42 phases"
     title: "Iterative improvement"
     excerpt: 'Improve in phases. '

@@ -184,12 +184,6 @@ collections:
   apply:
        output: true
        permalink: /:collection-posts/:title.html
-  faq:
-       output: true
-       permalink: /:collection-posts/:title.html
   read:
-       output: true
-       permalink: /:collection-posts/:title.html
-  hintergrund:
        output: true
        permalink: /:collection-posts/:title.html

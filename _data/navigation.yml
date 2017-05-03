@@ -7,7 +7,7 @@ main:
   - title: "Read"
     url: /read
   - title: "FAQ"
-    url: /questions
+    url: /faq
   - title: "Contribute"
     url: /contribute
   - title: "Contact"
