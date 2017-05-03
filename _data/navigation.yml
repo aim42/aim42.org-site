@@ -8,7 +8,7 @@ main:
     url: /read
   - title: "FAQ"
     url: /questions
-  - title: "Reference"
-    url: http://aim42.github.io
+  - title: "Contribute"
+    url: /contribute
   - title: "Contact"
     url: /contact
