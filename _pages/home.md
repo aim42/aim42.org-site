@@ -1,17 +1,35 @@
 ---
-title: "aim42 - architecture improvement method"
+title: "systematic software improvement"
 layout: splash
 permalink: /
 header:
-  #overlay_color: "#d7ecf8"
-  overlay_filter: 0.2
-  overlay_image: /images/aim42-splash.jpg
-  #cta_label: "Overview"
-  #cta_url: "/overview"
-  caption: "Photo credit: [**Thomas Bayer**](https://www.predic8.de/)"
-  excerpt: "Systematic architecture improvement: Software evolution done right."
+  overlay_image: /images/aim42-splash.png
 
-feature_row:
+
+
+intro:
+  - title: Evolution and Modernization
+    excerpt: "
+* Optimize your software
+
+* Reduce maintenance cost
+
+* Handle technical debt"
+
+  - image_path: /assets/aim42-process-2017.png
+  - title: Proven and Practical
+    excerpt: "
+* Based upon experience
+
+* Backed by research
+
+* Free and open-source
+
+* Process-agnostic"
+
+
+
+features:
   - title: "Analyze"
     excerpt: "Analyze the current state, identify problems, issues and risks."
     url: "/analyze"
@@ -32,18 +50,18 @@ feature_row:
 
 ---
 
-## Systematic software evolution and improvement
+{% include feature_row id="intro"  %}
 
-  * Optimize your software and reduce maintenance cost
-  * Control risks, issues and technical debt
-  * Organizes patterns and practices in three iterative phases
-  * Easy to integrate in daily development work, process-agnostic
-  * Free and open-source
-  * Grounded in practice , proven approaches, backed by serious research
 
-See our [reference guide]() for arbitrary details.
 
-{% include feature_row %}
+
+{% include feature_row id="features" %}
+
+
+
+
+See our [reference guide](http://aim42.github.io) for arbitrary details.
+
 
 
 ### Remarks

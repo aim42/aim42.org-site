@@ -1,7 +1,7 @@
 ---
 title: "Analyze"
 layout: single
-excerpt: "find problems, risks, deficiencies and technical debt within your system and your development process."
+excerpt: "Find problems, risks, deficiencies and technical debt within your system and your development process."
 
 ---
 

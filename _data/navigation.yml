@@ -4,8 +4,8 @@ main:
     url: /overview
   - title: "Apply"
     url: /apply
-  - title: "Read"
-    url: /read
+  - title: "Publications"
+    url: /publications
   - title: "FAQ"
     url: /faq
   - title: "Contribute"
