@@ -1,5 +1,5 @@
 ---
-title: "Gestatten..."
+title: "Contact"
 layout: single
 permalink: /contact
 header:
@@ -8,28 +8,40 @@ header:
 
 ---
 
-## ...mein Name ist Gernot Starke.
+##  I'm Gernot Starke.
 
-Als [innoQ-Fellow](https://innoq.com) und langjähriger praktizierender Software- und Architekturverbesserer helfe ich Unternehmen unterschiedlicher Branchen dabei,  Softwaresysteme zu verbessern oder zu modernisieren. Dabei optimiere ich
-Architekturen, _time-to-market_, Wartungs- oder Betriebskosten, oder auch
-Entwicklungsprozesse. Gerne helfe ich dabei, neue IT-Systeme effektiv und effizient
-zu entwerfen, implementieren und in Produktivbetrieb zu bringen.
+As [innoQ-Fellow](https://innoq.com) and practical software- and architecture practitioner
+I support organizations of various domains in improving their software.
 
-Ich habe an der RWTH-Aachen Informatik studiert, über Software-Engineering promoviert und besitzt eine Entwicklerseele. Seit Anfang der 90'er Jahre arbeite ich in der IT-Branche,
-und habe viele der auf dieser Website dargestellten Situationen _live_ erleben dürfen/müssen.
+Apart from optimizing _time-to-market_, I focus on reducing maintenance- and operational costs,
+facilitating team collaboration and development efficiency.
 
-Aus meiner Feder stammen diverse Bücher zum Thema Softwarearchitektur, Patterns und Entwicklungsprozessen. Ich bin Mitgründer und Betreiber von [arc42](http://arc42.de), dem freien Portal für Softwarearchitektur und -dokumentation,
-ausserdem von [aim42](http://aim42.org), der „Architecture Improvement Method“ (aim42.org).
+I help to effectively and efficiently architect and develop new IT systems
+and bring them into production.
 
-Als Gründungsmitglied des iSAQB führe ich seit Jahren Schulungen zu diversen
-Themen rund um Softwarearchitektur durch. Mehr als 1000 Entwicklerinnen und Entwicklern habe ich erfolgreich zur CPSA Zertifizierung geführt. Im [iSAQB](http://iSAQB.org) leite ich die Arbeitsgruppe  “Foundation and Examination”.
+After graduating in computer science at Aachen University of Technology and a few years
+or practical experience, I wrote my PhD thesis on software engineering (at J.Kepler
+  University in Linz, Austria, with Prof. Chroust). People call me _practical and pragmatic methodologist_ - with geek genes...
 
-Mit meiner Traumfrau _Cheffe Uli_ und unseren großartigen Kindern lebe
-ich im schönen Köln.
+I've published a number of technical books, mostly on software architecture,
+patterns, development processes and software documentation.
 
-### Sie erreichen mich ...
+In 2005 I (co-)founded and still actively maintain [arc42](http://arc42.de),
+the free portal for software architecture and documentation, together with its
+international companion [arc42.org](http://arc42.org).
 
-über verschiedene Kanäle:
+More recentl I founded [aim42](http://aim42.org), the „Architecture Improvement Method“
+(aim42.org).
+
+I' founding member of [iSAQB](https://isaqb.org), currently in the position of working
+group lead for the CPSA-Foundation Level. I successfully trained literally thousands
+of developers in softare architecture topics.
+
+Together with my wife Uli and our awesome kids we live in beautiful Cologne.
+
+### Please contact me ...
+
+on various channels:
 
 * <a href="xmxaxixlxtxo:gxsx@gxexrxnxoxtxsxtxaxrxkxex.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email</a>
 
