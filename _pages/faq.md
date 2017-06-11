@@ -2,7 +2,7 @@
 title: "FAQ"
 layout: splash
 header:
-  overlay_image: /images/aim42-splash.jpg
+  overlay_image: /images/aim42-splash.png
 permalink: /faq
 ---
 

@@ -2,8 +2,8 @@
 main:
   - title: "Overview"
     url: /overview
-  - title: "Apply"
-    url: /apply
+##  - title: "Apply"
+##    url: /apply
   - title: "Publications"
     url: /publications
   - title: "FAQ"
