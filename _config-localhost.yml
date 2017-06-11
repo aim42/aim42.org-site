@@ -14,7 +14,7 @@ description              : "Architecture Improvement Method - Systematic moderni
 url                      : "http://localhost" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "aim42/aim42.org-site" # GitHub username/repo-name
-teaser                   : /images/splash/h3gijctw__w-davide-cantelli.jpg
+teaser                   : /images/aim42-splash.png
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -32,7 +32,7 @@ alexa_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : gernotstarke
+  username               : arc_improve42
   # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -58,7 +58,7 @@ author:
   github           : gernotstarke
   google_plus      :
   stack_overflow   :
-  twitter          : aim42_improve
+  twitter          : gernotstarke
   xing             : Gernot_Starke
 
 # Reading Files
