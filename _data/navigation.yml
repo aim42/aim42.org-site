@@ -2,8 +2,8 @@
 main:
   - title: "Overview"
     url: /overview
-##  - title: "Apply"
-##    url: /apply
+  - title: "Docs"
+    url: /docs
   - title: "Publications"
     url: /publications
   - title: "FAQ"
@@ -12,3 +12,17 @@ main:
     url: /contribute
   - title: "Contact"
     url: /contact
+
+docs:
+  - title: Getting Started
+    children:
+      - title: "(short) Overview"
+        url: /overview/
+      - title: "Introduction"
+        url: /introduction/
+      - title: "Whitepaper"
+        url: /    
+  - title: "Success Stories"
+    url: /success-stories
+  - title: "Reference manual"
+    url: http://aim42.github.io

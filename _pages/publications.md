@@ -4,6 +4,16 @@ layout: splash
 header:
   overlay_image: /images/aim42-splash.png
 permalink: /publications
+
+
+tweets:
+  - title: "aim42"
+    excerpt: '<a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/arc_improve42">Tweets by @arc_improve42</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>'
+  - title: ""
+    excerpt: ''
+  - title: "Gernot Starke"
+    excerpt: '<a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/gernotstarke">Tweets by @gernotstarke</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>'
+
 ---
 
 {% include toc %}
@@ -11,10 +21,17 @@ permalink: /publications
 ## Papers and Articles
 
 ### [Knigge: Fortschritt oder Verschlimmbesserung](https://jaxenter.de/gegen-die-dunkle-macht-software-verbessern-aber-richtig-24164)
-von Peter Hruschka und Gernot Starke.
+von Peter Hruschka und Gernot Starke, JavaMagazin Januar 2017
 
 Ändern und erweitern unter Zeitdruck – das ist traurige Normalität für viele Softwerker. Ständig zwingen uns widrige Umstände oder dunkle Mächte dazu, mit zu wenigen Informationen oder zu wenig Zeit neue Features oder auch notwendige Änderungen suboptimal umzusetzen. Wir möchten gerne besser arbeiten, aber nur selten geben uns die dunklen Mächte die Chance dazu.
 [JAXenter, Januar 2017](https://jaxenter.de/knigge-softwarearchitekten-fortschritt-verschlimmbesserung-51954)
+
+### [Software systematisch verbessern](/assets/downloads/dnp0916_S032_036.pdf)
+von Gernot Starke, dotnetpro, September 2016
+
+Mit etablierten, iterativ angewandten Praktiken zeigt aim42 Wege aus der Legacy-Hölle.
+
+[dotNetPro, September 2016](/assets/downloads/dnp0916_S032_036.pdf)
 
 ### Gegen die dunkle Macht: Software verbessern – aber richtig!
 von Gernot Starke, Peter Hruschka, Dr. Carola Lilienthal.
@@ -67,3 +84,7 @@ Die Evolution, Weiterentwicklung oder Verbesserung von Softwaresystemen systemat
 Der iSAQB hat einen neuen Lehrplan zu diesem Thema veröffentlicht. Dessen Name, IMPROVE, ist Programm: Sie können ab sofort lernen, wie Verbesserung, Evolution oder Weiterentwicklung systematisch funktioniert, mit balancierten betriebswirtschaftlichen, fachlichen und technischen Zielen.
 
 [Oktober 2015, it-and-more](http://it-and-more.blogspot.de/2015/03/it-systeme-systematisch-verbessern.html), von Gernot Starke.
+
+## Tweets
+
+{% include feature_row id="tweets" %}

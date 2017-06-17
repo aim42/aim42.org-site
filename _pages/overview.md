@@ -1,10 +1,13 @@
 ---
-title: Overview
-layout: splash
+title: (1 Minute) Overview
+layout: single
 header:
-  overlay_image: /images/aim42-splash-slim.png
+  overlay_image: /images/aim42-splash.png
   excerpt: "**Software improvement,<br>done right**"
 permalink: /overview
+sidebar:
+        nav: "docs"
+
 
 
 feature_phases:
@@ -58,6 +61,3 @@ aim42 is developed by an active community in open-source style, backed by extens
 {% include feature_row id="feature_improve" type="right" %}
 
 {% include feature_row id="feature_crosscutting" type="center" %}
-
-
-![](/images/aim42-overview.png)
