@@ -1,38 +1,32 @@
 ---
 title: Documentation
 layout: single
+permalink: /documentation
 header:
   overlay_image: /images/aim42-splash-slim.png
-  excerpt: "**Software improvement,<br>done right**"
-permalink: /docs/
 sidebar:
-        nav: "docs"
+  nav: "docs"
 
-
-features:
-  - title: "Analyze"
-    excerpt: "Analyze the current state, identify problems, issues and risks."
-    url: "/analyze"
-    btn_label: "read more..."
-    btn_class: "btn--info"
-
-  - title: "Evaluate"
-    excerpt: "Estimate the cost of issues and improvement approaches"
-    url: "/evaluate"
-    btn_label: "read more..."
-    btn_class: "btn--info"
-
-  - title: "Improve"
-    excerpt: "Practices and patterns."
-    url: "/improve"
-    btn_label: "read more..."
-    btn_class: "btn--info"
 
 ---
 
+# Elevator Pitch
+(1-Minute overview)
+
+aim42 is a systematic approach to software improvement. It can help you
+save money and reduce all kinds of technical debt.
+
+Read our [**1-Minute Overview**](/overview).
+
 # Detailed Overview
+Introduction to the major phases and several good practices.
 
-![](/images/aim42-overview.png)
+Read our [**Detailed Introduction**](/docs/detailed-intro)
 
 
-{% include feature_row id="features" %}
+# How to get started?
+
+Read our short [**Getting started**](/getting-started) guide, which briefly
+explains some underlying principles plus the major phases of software improvement.
+
+# Background information

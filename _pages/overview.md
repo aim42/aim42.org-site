@@ -1,12 +1,12 @@
 ---
 title: (1 Minute) Overview
 layout: single
+permalink: /overview
 header:
   overlay_image: /images/aim42-splash.png
   excerpt: "**Software improvement,<br>done right**"
-permalink: /overview
 sidebar:
-        nav: "docs"
+  nav: "docs"
 
 
 

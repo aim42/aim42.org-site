@@ -1,7 +1,7 @@
 ---
 title: "Analyze..."
 layout: single
-permalink: /analyze
+permalink: /usage/analyze
 ---
 
 ![](/images/analyze-phase.png)

@@ -65,6 +65,8 @@ author:
 include:
   - .htaccess
   - _pages
+  - _docs
+  - _apply
 exclude:
   - vendor
   - .asset-cache

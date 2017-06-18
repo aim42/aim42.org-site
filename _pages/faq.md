@@ -20,6 +20,18 @@ aim42 provides a way out of maintenance desasters - it systematically helps to r
 
 aim42 is free (like open-source).
 
+## Why is refactoring not enough?
+Refactoring is a brilliant and important technique to improve source code -
+but refactoring wil remain _local optimization_. Rarely does refactoring
+address _fundamental_ issues with existing systems:
+
+* improper design decisions (like the use of inappropriate technologies)
+* broken overall design (e.g. low cohesion, resulting in tight coupling, between larger system components
+* ill-designed interfaces
+* all kinds of process issues: requirements-elicitation, architecture, test or operations
+processes might be overly time-consuming or inefficient.
+
+aim42 proposes _global_ improvement.  
 
 ## Who are the people behind it?
 aim42 has been founded by Gernot Starke in 2013, joined by Stefan Tilkov in 2014.
