@@ -6,15 +6,15 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-locale                   : "de"
-title                    : "VENOM"
+locale                   : "en"
+title                    : "aim42"
 title_separator          : "-"
-name                     : "Dr. Gernot Starke"
-description              : "Leben, Leiden und Rettung eines (gar nicht so) hypothetischen IT-Systems."
-url                      : "http://venom-story.org" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : "architecture improvement method"
+description              : "Architecture Improvement Method - Systematic modernization and evolution of IT systems."
+url                      : "http://aim42.org" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "gernotstarke/venom-story" # GitHub username/repo-name
-teaser                   : /images/splash/h3gijctw__w-davide-cantelli.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+repository               : "aim42/aim42.org-site" # GitHub username/repo-name
+teaser                   :  /images/aim42-splash.png
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -32,12 +32,12 @@ alexa_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : gernotstarke
+  username               : arc_improve42
   # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : Person # Person or Organization (defaults to Person)
-  name                   : Dr. Gernot Starke # If the user or organization name differs from the site's name
+  type                   : Organization # Person or Organization (defaults to Person)
+  name                   : aim42 # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
 
 # Analytics
@@ -51,12 +51,12 @@ analytics:
 author:
   name             : "Dr. Gernot Starke"
   avatar           : /assets/images/Gernot-avatar-2016.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "innoQ Fellow, Mitgründer von arc42, Gründer von aim42"
+  bio              : "innoQ Fellow, founder of aim42"
   location         : "Köln"
   email            : gs@gernotstarke.de
   uri              : http://gernotstarke.de
   github           : gernotstarke
-  google_plus      : 105917203908419102125
+  google_plus      :
   stack_overflow   :
   twitter          : gernotstarke
   xing             : Gernot_Starke
@@ -65,6 +65,8 @@ author:
 include:
   - .htaccess
   - _pages
+  - _docs
+  - _apply
 exclude:
   - vendor
   - .asset-cache
@@ -181,16 +183,3 @@ compress_html:
     envs: development
 
 # Collections:
-collections:
-  leben:
-     output: true
-     permalink: /:collection-posts/:title.html
-  leiden:
-       output: true
-       permalink: /:collection-posts/:title.html
-  rettung:
-       output: true
-       permalink: /:collection-posts/:title.html
-  hintergrund:
-       output: true
-       permalink: /:collection-posts/:title.html
