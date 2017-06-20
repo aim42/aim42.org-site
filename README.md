@@ -1,3 +1,5 @@
+![](/images/aim42-splash.png)
+
 # aim42 Public Website
 
 This repo contains the code for the aim42.org public website.
