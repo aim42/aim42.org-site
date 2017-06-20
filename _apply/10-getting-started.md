@@ -2,7 +2,7 @@
 title: Documentation
 layout: single
 header:
-  overlay_image: /images/aim42-splash-slim.png
+  overlay_image: /images/aim42-splash.png
   excerpt: "**Software improvement,<br>done right**"
 permalink: /getting-started/
 sidebar:

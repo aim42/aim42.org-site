@@ -3,7 +3,7 @@ title: Detailed Introduction
 layout: single
 permalink: /docs/detailed-intro
 header:
-  overlay_image: /images/aim42-splash-slim.png
+  overlay_image: /images/aim42-splash.png
 sidebar:
   nav: "docs"
 
