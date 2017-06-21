@@ -20,6 +20,14 @@ tweets:
 
 ## Papers and Articles
 
+### [aim42 Whitepaper (Version 2.0)](/assets/downloads/AIM42-Whitepaper-v2.0.pdf)
+Gernot Starke, June 2017
+
+Overhauled and in refreshed look - our whitepaper describes the aim42 approach to systematic improvement.
+You find several fundamental principles, paired with an overview of the phases and required artifacts.
+
+
+
 ### [Knigge: Fortschritt oder Verschlimmbesserung](https://jaxenter.de/gegen-die-dunkle-macht-software-verbessern-aber-richtig-24164)
 von Peter Hruschka und Gernot Starke, JavaMagazin Januar 2017
 

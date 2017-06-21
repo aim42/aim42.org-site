@@ -27,7 +27,7 @@ docs:
       - title: "Reference manual"
         url: http://aim42.github.io
       - title: "Whitepaper"
-        url: /
+        url: /assets/downloads/AIM42-Whitepaper-v2.0.pdf
   - title: "Using aim42"
     children:
       - title: "Getting started"
