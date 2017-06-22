@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-locale                   : "de"
+locale                   : "en"
 title                    : "aim42"
 title_separator          : "-"
 name                     : "Dr. Gernot Starke"
@@ -182,10 +182,10 @@ compress_html:
     envs: development
 
 # Collections:
-collections:
-  apply:
-       output: true
-       permalink: /:collection-posts/:title.html
-  read:
-       output: true
-       permalink: /:collection-posts/:title.html
+#collections:
+#  apply:
+#       output: true
+#       permalink: /:collection-posts/:title.html
+#  read:
+#       output: true
+#       permalink: /:collection-posts/:title.html

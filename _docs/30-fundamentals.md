@@ -11,3 +11,8 @@ sidebar:
 ---
 
 # Fundamentals
+
+* Separate issues from improvements
+* Improve only _relevant_ issues
+* Improve iteratively
+* Fast feedback

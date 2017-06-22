@@ -89,8 +89,7 @@ exclude:
   - Rakefile
   - README
   - tmp
-  - /docs # ignore Minimal Mistakes /docs
-  - /test # ignore Minimal Mistakes /test
+  - /zz-resources
 keep_files:
   - .git
 encoding: "utf-8"
@@ -125,8 +124,8 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
+# paginate: 5 # amount of posts to show
+# paginate_path: /page:num/
 timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
@@ -183,3 +182,10 @@ compress_html:
     envs: development
 
 # Collections:
+
+# Collections:
+#collections:
+#  apply:
+#       output: true
+#       permalink: /:collection-posts/:title.html
+#
