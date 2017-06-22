@@ -20,7 +20,7 @@ feature_phases:
 feature_analyze:
       - image_path: /images/analyze-phase.png
         alt: "Analyze"
-        title: "Analyze the system: Identify issues and improvements"
+        title: "Analyze: Identify issues and improvements"
         excerpt: 'In the analyze-phase you obtain detailed understanding of the system and systematically identify issues, risks within the system and its environment. Additionally, you develop ideas for improvements.'
 
 feature_evaluate:
@@ -41,12 +41,14 @@ feature_improve:
 feature_crosscutting:
    - image_path: /images/crosscutting-phase.png
      alt: "Crosscutting"
-     title: ""
-     excerpt: ''
+     title: "Crosscutting: Manage and plan"
+     excerpt: 'Manage relationships between issues and improvements, maintain issue list and improvement backlog.'
 
 ---
 
-# Software improvement, done right!
+# Elevator Pitch
+
+## Software improvement, done right!
 
 aim42 is the systematic and pragmatic approach to improve software systems and architectures.  
 
@@ -60,4 +62,4 @@ aim42 is developed by an active community in open-source style, backed by extens
 
 {% include feature_row id="feature_improve" type="right" %}
 
-{% include feature_row id="feature_crosscutting" type="center" %}
+{% include feature_row id="feature_crosscutting" type="left" %}
