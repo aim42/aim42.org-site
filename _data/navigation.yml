@@ -29,6 +29,7 @@ docs:
       - title: "Whitepaper"
         url: /assets/downloads/AIM42-Whitepaper-v2.0.pdf
   - title: "Using aim42"
+    url: /using
     children:
       - title: "Getting started"
         url: /apply/getting-started/
@@ -43,4 +44,4 @@ docs:
 #      - title: "Crosscutting"
 #        url: /apply/crosscutting
   - title: "Examples"
-    url: /examples
+    url: /

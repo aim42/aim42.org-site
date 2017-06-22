@@ -4,7 +4,7 @@ layout: single
 header:
   overlay_image: /images/aim42-splash.png
   excerpt: "**Software improvement,<br>done right**"
-permalink: /getting-started/
+permalink: /apply/getting-started/
 sidebar:
         nav: "docs"
 
