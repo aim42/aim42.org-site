@@ -16,7 +16,7 @@ main:
 docs:
   - title: Documentation
     children:
-      - title: "Brief Overview"
+      - title: "Overview"
         url: /overview
       - title: "Detailed Intro"
         url: /docs/detailed-intro
