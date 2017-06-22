@@ -16,3 +16,6 @@ sidebar:
 * Improve only _relevant_ issues
 * Improve iteratively
 * Fast feedback
+* Explicit assumptions
+
+<!-- TODO: add domain model -->

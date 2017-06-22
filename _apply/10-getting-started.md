@@ -21,9 +21,19 @@ plus crosscutting activities, as depicted in the following diagram:
 Gather a few key stakeholders and conduct an initial brainstorming
 on _essential_ problems and risks within the system and corresponding processes.
 
+<!-- mention timeboxing -->
+
+<!-- describe issue list -->
+
+<!-- describe improvement backlog -->
+
+<!-- describe reasoning behind separation of issues and improvements -->
+
 ### 2. _Breadth-first_ search for issues
 Depending on the issues you found in the brainstorming,
 conduct detailed interviews with various stakeholders.
+
+
 
 ### 3. Evaluate issues
 
