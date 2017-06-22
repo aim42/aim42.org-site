@@ -19,11 +19,11 @@ docs:
       - title: "Brief Overview"
         url: /overview
       - title: "Detailed Intro"
-        url: /docs/detailed-intro/
+        url: /docs/detailed-intro
       - title: "Fundamentals"
-        url: /docs/fundamentals/
+        url: /docs/fundamentals
       - title: "Background"
-        url: /docs/background/
+        url: /docs/background
       - title: "Reference manual"
         url: http://aim42.github.io
       - title: "Whitepaper"
