@@ -12,64 +12,80 @@ sidebar:
 
 # Getting Started
 
-As you might know from the [overview](/overview), aim42 consists of three phases
-plus crosscutting activities, as depicted in the following diagram:
+As you might already know from the [overview](/overview), aim42 consists of three phases plus crosscutting activities, as depicted in the following diagram:
 
 ![](/images/aim42-overview.png)
 
+On this page we want to show you how you can get started with aim42 in just a few steps. 
+
+### 0. Wording
+
+As you are interested in the **architecture improvement method**, we assume you experienced certain unpleasantness with your current system. The first step is to put this _unpleasantness_ into more concrete words that we can use as a starting point. We like to call them **problems and risks** or, more generally,  **issues**.
+
 ### 1. Initial brainstorming
-Gather a few key stakeholders and conduct an initial brainstorming
-on _essential_ problems and risks within the system and corresponding processes.
 
-<!-- mention timeboxing -->
+**Conduct an initial brainstorming session with a few key stakeholders**. The target is to come up with _essential_ problems and risks within the system and  corresponding processes.
 
-<!-- describe issue list -->
-
-<!-- describe improvement backlog -->
-
-<!-- describe reasoning behind separation of issues and improvements -->
+To stay focussed on the most important issues, we suggest to timebox this brainstorming session to no more than 15 minutes. 
 
 ### 2. _Breadth-first_ search for issues
+
 Depending on the issues you found in the brainstorming,
 conduct detailed interviews with various stakeholders.
 
+### 3. Focus on top issues
+
+Over time the Issue List might become quite long. Only focus on the 15 or 20 highest ranked issues to not overwhelm yourself and others. 
+
+To make sure you have an up-to-date ranking, re-evaluate issue cost and probability on a regular basis. As aim42 is an iterative approach, you should come by this task about once a month*.
+
+* the interval depends on the influence factors of your risks and how fast your system is evolving. If you have a higher cycle time, risk re-evaluation should be done more often.  
+
+<!- TODO write section about risk re-evaluation->
+
+### 4. Evaluate issues
+
+Assess each issue concerning their one-time and recurring costs. Hereby you will often have to rely on estimations and assumptions. Pin down these evaluations. Costs are a great basis for prioritisation.
+
+### 5. Conduct _root cause analysis_
+
+Some issues are only symptoms of underlying causes. The „Root-Cause-Analysis“ aids you in systematically finding them.
+
+### 6. Search for improvement options   
+
+Consult technically knowledgeable involved people to search for measures which can potentially solve these issues.
+ 
+### 7. Separate Issues from Improvements
+
+One of the fundamental recommendations in aim42 is to clearly **separate issues (problems and risks) from improvements**. The reasons behind this are
+
+1. different improvements could solve the same issue
+2. one improvement could solve multiple issues
+3. issue cost and improvement cost are separate values
+
+As you can see in our point of view, issues and improvements have a many-to-many i.e. **m:n relationship**.
+
+### 8. Manage Issues and Improvements
+ 
+So far most of us will already be used to create tickets, put them on a backlog and estimate their effort. In aim42 terminology these are the Improvements which are managed in the **Improvement Backlog**.
+
+As we said before, our issues are of a different kind and should be separated from the improvements. We manage issues in an **Issue List**.
+
+### 9. Evaluate improvement costs
+
+Of course Improvements do not only have benefits but also costs. You should systematically evaluate or estimate these costs so they can be taken into account for topics like cost-benefit or return on investment calculations.
 
 
-### 3. Evaluate issues
+### 10. Consider side effects or consequences
 
-Jedes Problem bewerten Sie hinsichtlich seiner einmaligen und/oder
-   wiederholten Kosten. Hierbei werden Sie oft auf Schätzungen sowie Annahmen
-   angewiesen sein – halten Sie diese Bewertungen fest. Auf Basis der Kosten
-   können Sie hervorragend Prioritäten festlegen.
+An improvement can also have side-effects. Make them explicit by creating according issues (problems and risks) in the Issue Backlog.
 
-### 4. Conduct _root cause analysis_
-Manche Probleme sind nur Symptome von tieferliegenden Ursachen – die „Root-
-   Cause-Analysis“ hilft, denen systematisch auf die Spur zu kommen.
+### 11. Compare issue-costs with improvement-costs
 
-### 5. Search for improvement options   
-4. Suchen Sie mit technisch kundigen Beteiligten nach Maßnahmen, die diese
-   konkreten Probleme oder deren Ursachen lösen oder beheben. Zwischen
-   Maßnahmen und Problemen respektive Ursachen besteht eine m:n Beziehung –
-   eine einzige Maßnahme kann mehrere Probleme adressieren, ein Problem kann
-   zur Lösung mehrere Maßnahmen benötigen.
+The line-up of the cost-of-improvements and the cost-of-issues and being able to compare them, is a valuable decision aid for business people responsible for budget or product management. Having this line-up available also supports software architects in making their arguments about inner quality, coupling, cohesion or implementation details more comprehensible and accessible to decision makers without strong technical background.
 
-### 6. Evaluate improvement costs
-Auch Maßnahmen haben Kosten – die Sie systematisch ermitteln oder schätzen
-   müssen.
 
-### 7. Consider side effects or consequences
-Maßnahmen können Nebenwirkungen besitzen – oder negative Seiteneffekte.  Legen Sie diese offen.
+### 12. aim42 works iteratively
 
-### 8. Compare issue-costs with improvement-costs
-Die Gegenüberstellung von Kosten-von-Maßnahmen sowie den Kosten-des-Problems
-   ergibt wertvolle Entscheidungshilfe für Budget- oder fachlich
-   Verantwortliche.  Damit müssen Softwarearchitekten endlich nicht mehr über
-   die schwer vermittelbaren inneren Qualitäten, Kopplung, Kohäsion oder
-   Implementierungsdetails argumentieren, sondern können in Business-Sprache
-   argumentieren.
+Evaluation of issues and improvements can change over time. It's the same way as priorities of requirements and goals may change in modern development processes. Periodic (iterative) re-evaluation and prioritization of issue list and improvement backlog assure their up-to-dateness.
 
-8. aim42 arbeitet hochgradig iterativ: Bewertungen von Problemen und Maßnahmen
-   können sich über die Zeit ändern, wie sich in modernen Entwicklungsprozessen
-   auch die Prioritäten von beispielsweise Anforderungen oder Zielen über die
-   Zeit ändern können. Regelmäßige (iterative) Überprüfung der problem list und
-   des improvement backlog stellen deren Aktualität sicher.
