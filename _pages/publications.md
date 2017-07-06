@@ -67,14 +67,14 @@ downloadable from the aim42 website.
 ## Presentations
 
 ### (GERMAN) Bis an den Abgrund - und zurück: Aufstieg, Krise und Rettung einer (gar nicht so) hypothetischen Software
-_Gernot Starke, Java Forum Stuttgart 2017 - 06.07.2017
+_Gernot Starke, Java Forum Stuttgart 2017 - 06.07.2017_
 
-Further info, abstract and slides [online](https://www.innoq.com/de/talks/2017/07/bis-an-den-abgrund/)
+Further info and abstract [online](https://www.innoq.com/de/talks/2017/07/bis-an-den-abgrund/)
 
 ### (GERMAN) Der ganz normale Schrecken – interaktive Geschichte eines großen IT-Systems
-_ Gernot Starke, JAX 2017 - 11.05.2017_
+_Gernot Starke, JAX 2017 - 11.05.2017_
 
-Further info and abstract [online](https://www.innoq.com/de/talks/2017/05/der-ganz-normale-schrecken-jax-2017/
+Further info and abstract [online](https://www.innoq.com/de/talks/2017/05/der-ganz-normale-schrecken-jax-2017/)
 
 ### (GERMAN) Architekturmodernisierung mit SCS und Microservices
 _Alexander Heusingfeld, Michael Vitz - OOP 2017 - 01.02.2017_
