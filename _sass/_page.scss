@@ -111,8 +111,7 @@
   position: relative;
   margin-bottom: 2em;
   @include clearfix;
-  animation: intro 0.3s both;
-  animation-delay: 0.25s;
+  background-color: #43b6f6;
 
   &--overlay {
     position: relative;
