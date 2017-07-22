@@ -49,8 +49,17 @@ intro:
 ## Free
 
 aim42 is an open-source initiative, completely free to use. It's
-actively maintained on [github](https://github.com/aim42/aim42)
+actively maintained on [Github](https://github.com/aim42/aim42).
 
+[![](http://img.shields.io/travis/aim42/aim42/master.svg)](https://travis-ci.org/aim42/aim42)
+[![](https://img.shields.io/github/issues/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
+[![](https://badge.waffle.io/aim42/aim42.png?label=bug&title=bugs)](https://github.com/aim42/aim42/issues)
+[![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
+[![](https://img.shields.io/github/stars/aim42/aim42.svg)](https://github.com/aim42/aim42/stargazers)
+[![](https://img.shields.io/github/contributors/aim42/aim42.svg)](https://github.com/aim42/aim42/graphs/contributors)
+[![](https://img.shields.io/twitter/follow/arc_improve42.svg?style=social&label=Followers)](https://twitter.com/arc_improve42)
+
+Of course, we welcome [Pull Requests](https://github.com/aim42/aim42/pulls)!
 
 ## Extensive
 
@@ -61,16 +70,3 @@ practices and patterns in arbitrary details.
 ## Proven
 aim42 is based upon practical experience of numerous committers
 from dozens of different systems in various industries.
-
-#### Current Status
-
-<a href="https://travis-ci.org/aim42/aim42">
-<img src="http://img.shields.io/travis/aim42/aim42/master.svg"></a>
-<a href="https://github.com/aim42/aim42/issues">
-<img src="https://badge.waffle.io/aim42/aim42.png?label=bug&title=bugs"></a>
-<a href="https://github.com/aim42/aim42">
-<img src="https://img.shields.io/github/issues/aim42/aim42.svg"></a>
-<a href="https://github.com/aim42/aim42">
-<img src="https://img.shields.io/github/issues-closed-raw/aim42/aim42.svg"></a>
-<a href="https://twitter.com/arc_improve42">
-<img src="https://img.shields.io/twitter/follow/arc_improve42.svg?style=social&label=Followers"></a>
