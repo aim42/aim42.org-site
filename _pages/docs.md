@@ -26,7 +26,7 @@ Read our [**Detailed Introduction**](/docs/detailed-intro)
 
 # How to get started?
 
-Read our short [**Getting started**](/getting-started) guide, which briefly
+Read our short [**Getting started**](/apply/getting-started) guide, which briefly
 explains some underlying principles plus the major phases of software improvement.
 
 # Background information

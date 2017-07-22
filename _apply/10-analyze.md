@@ -2,8 +2,11 @@
 title: "Analyze"
 layout: single
 excerpt: "Find problems, risks, deficiencies and technical debt within your system and your development process."
+permalink: /analyze
 
 ---
+![](/images/analyze-phase.png)
+
 
 * Stakeholder interviews to find pain-points of all kinds
 * Context Analysis, including external interfaces
@@ -13,3 +16,12 @@ excerpt: "Find problems, risks, deficiencies and technical debt within your syst
 * Data Analysis
 * Process Analysis - identifying issues in all processes related to the system, including requirements, architecture, implementation, test, release, operation and administration.
 * Software Archaeology - understand software by reading code and its version history
+
+
+{% for page in site.analyze %}
+
+### [{{ page.title }}]({{ page.url }})
+
+{{ page.excerpt }}
+
+{% endfor %}
