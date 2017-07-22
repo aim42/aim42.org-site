@@ -2,6 +2,8 @@
 title: "Analyze"
 layout: single
 excerpt: "Find problems, risks, deficiencies and technical debt within your system and your development process."
+sidebar:
+    nav: "docs"
 permalink: /analyze
 
 ---

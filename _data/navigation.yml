@@ -31,10 +31,10 @@ docs:
     children:
       - title: "Getting started"
         url: /apply/getting-started
-      - title: "User Guide"
-        url: /apply/userguide
-#      - title: "Analyze"
-#        url: /apply/analyze
+#      - title: "User Guide"
+#        url: /apply/userguide
+      - title: "Analyze"
+        url: /analyze
 #      - title: "Evaluate"
 #        url: /apply/evaluate
 #      - title: "Improve"

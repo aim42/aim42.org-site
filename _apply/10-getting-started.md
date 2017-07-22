@@ -4,7 +4,7 @@ layout: single
 header:
   overlay_image: /images/aim42-splash.png
   excerpt: "**Software improvement,<br>done right**"
-permalink: /apply/getting-started/
+permalink: /apply/getting-started
 sidebar:
         nav: "docs"
 
@@ -16,7 +16,7 @@ As you might already know from the [overview](/overview), aim42 consists of thre
 
 ![](/images/aim42-overview.png)
 
-On this page we want to show you how you can get started with aim42 in just a few steps. 
+On this page we want to show you how you can get started with aim42 in just a few steps.
 
 ### 0. Wording
 
@@ -26,7 +26,7 @@ As you are interested in the **architecture improvement method**, we assume you 
 
 **Conduct an initial brainstorming session with a few key stakeholders**. The target is to come up with _essential_ problems and risks within the system and  corresponding processes.
 
-To stay focussed on the most important issues, we suggest to timebox this brainstorming session to no more than 15 minutes. 
+To stay focussed on the most important issues, we suggest to timebox this brainstorming session to no more than 15 minutes.
 
 ### 2. _Breadth-first_ search for issues
 
@@ -35,7 +35,7 @@ conduct detailed interviews with various stakeholders.
 
 ### 3. Focus on top issues
 
-Over time the Issue List might become quite long. Only focus on the 15 or 20 highest ranked issues to not overwhelm yourself and others. 
+Over time the Issue List might become quite long. Only focus on the 15 or 20 highest ranked issues to not overwhelm yourself and others.
 
 To make sure you have an up-to-date ranking, re-evaluate issue cost and probability on a regular basis. As aim42 is an iterative approach, you should come by this task about once a month*.
 
@@ -54,7 +54,7 @@ Some issues are only symptoms of underlying causes. The â€žRoot-Cause-Analysisâ€
 ### 6. Search for improvement options   
 
 Consult technically knowledgeable involved people to search for measures which can potentially solve these issues.
- 
+
 ### 7. Separate Issues from Improvements
 
 One of the fundamental recommendations in aim42 is to clearly **separate issues (problems and risks) from improvements**. The reasons behind this are
@@ -66,7 +66,7 @@ One of the fundamental recommendations in aim42 is to clearly **separate issues 
 As you can see in our point of view, issues and improvements have a many-to-many i.e. **m:n relationship**.
 
 ### 8. Manage Issues and Improvements
- 
+
 So far most of us will already be used to create tickets, put them on a backlog and estimate their effort. In aim42 terminology these are the Improvements which are managed in the **Improvement Backlog**.
 
 As we said before, our issues are of a different kind and should be separated from the improvements. We manage issues in an **Issue List**.
@@ -88,4 +88,3 @@ The line-up of the cost-of-improvements and the cost-of-issues and being able to
 ### 12. aim42 works iteratively
 
 Evaluation of issues and improvements can change over time. It's the same way as priorities of requirements and goals may change in modern development processes. Periodic (iterative) re-evaluation and prioritization of issue list and improvement backlog assure their up-to-dateness.
-
