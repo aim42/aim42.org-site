@@ -98,11 +98,11 @@ Wir basteln oft, statt (systematisch) zu bauen. Das liegt manchmal weniger an un
 von Gernot Starke.
 
 ### Mit aim42 die Potenziale bestehender Applikationen erschliessen
-von Reto Gurtner, September 2016.
+von Reto Gurtner (bambit), September 2016.
 
 Unternehmen, die über keine eigene Applikationslandschaft verfügen gehören definitiv zur Ausnahme. Die Zeit der grünen Wiesen ist also auch in der IT vorbei. Die heute vorliegenden Applikationslandschaften sind meistens vor mehreren Jahren entstanden und in verschiedenen Iterationszyklen konstant weiterentwickelt worden.
 
-[Software-Architekt.ch](https://www.software-architekt.ch/blog/aim42-potenziale-bestehender-applikationen-erschliessen)
+[bambit.ch](https://bambit.ch/blog/aim42-potenziale-bestehender-applikationen-erschliessen)
 
 ### IT-Systeme systematisch verbessern
 Software neu erstellen - das lernen wir alle in Ausbildung und Studium.
