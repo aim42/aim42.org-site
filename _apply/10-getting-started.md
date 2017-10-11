@@ -41,7 +41,7 @@ To make sure you have an up-to-date ranking, re-evaluate issue cost and probabil
 
 * the interval depends on the influence factors of your risks and how fast your system is evolving. If you have a higher cycle time, risk re-evaluation should be done more often.  
 
-<!- TODO write section about risk re-evaluation->
+<!-- TODO write section about risk re-evaluation -->
 
 ### 4. Evaluate issues
 
