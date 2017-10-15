@@ -1,0 +1,13 @@
+# docker-compose definition for generating a release-version
+# (that has to be ftp'd or rcp'd to the production webserver)
+#
+version: '2'
+
+services:
+  jekyll:
+    build: .
+    image: aim42:site
+    command: jekyll build --destination zz-site --no-watch
+    volumes:
+      - .:/srv/jekyll
+      - $PWD/_config.yml:/srv/jekyll/_config.yml
