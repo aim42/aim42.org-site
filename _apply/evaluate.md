@@ -1,5 +1,5 @@
 ---
-title: "Evaluate..."
+title: "Evaluate"
 layout: single
 permalink: /evaluate
 ---

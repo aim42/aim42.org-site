@@ -1,5 +1,5 @@
 ---
-title: "Improve..."
+title: "Improve"
 layout: single
 permalink: /improve
 ---
