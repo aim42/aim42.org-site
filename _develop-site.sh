@@ -41,6 +41,7 @@ case "$choice" in
 
   d|D|dev|develop) echo "develop, incremental build"
                    docker-compose --file _docker-compose-dev.yml up
+                   docker-compose --file _docker-compose-dev.yml down
                    ;;
 
   p|P|production)       echo "create production site"
