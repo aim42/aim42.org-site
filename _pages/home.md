@@ -104,7 +104,7 @@ and [issues](https://github.com/aim42/aim42/issues)!
 
 ## Extensive
 
-Our extensive [reference guide](http://aim42.github.io) explains about 90 useful
+Our extensive [reference manual](http://aim42.github.io) explains about 90 useful
 practices and patterns in arbitrary details.
 
 

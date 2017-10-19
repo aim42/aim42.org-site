@@ -43,7 +43,7 @@ arrive from the community.
 aim42 is a team effort - we are actively looking for [contributions](/contribute).
 
 ## Where's the code?
-Our method-guide is written in AsciiDoc (a plain-text format, ideal for team-collaboration). A (gradle-based) build-process generates a static html site (aim42.github.io) from it.
+Our reference manual is written in AsciiDoc (a plain-text format, ideal for team-collaboration). A (gradle-based) build-process generates a static html site (aim42.github.io) from it.
 
 All the code is located in our [Github repository](https://github.com/aim42/aim42).
 
