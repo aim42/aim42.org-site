@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Get Started
 layout: single
 permalink: /documentation
 header:
@@ -11,12 +11,10 @@ sidebar:
 ---
 
 # Elevator Pitch
-(1-Minute overview)
 
 aim42 is a systematic approach to software improvement. It can help you
 save money and reduce all kinds of technical debt.
 
-Read our [**1-Minute Overview**](/overview).
 
 # Detailed Overview
 Introduction to the major phases and several good practices.

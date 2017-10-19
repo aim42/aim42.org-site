@@ -1,9 +1,9 @@
 # main links
 main:
-  - title: "Overview"
-    url: /overview
-  - title: "Docs"
+  - title: "Get Started"
     url: /documentation
+  - title: "Reference Manual"
+    url: http://aim42.github.io
   - title: "Publications"
     url: /publications
   - title: "FAQ"
@@ -14,7 +14,7 @@ main:
     url: /contact
 
 docs:
-  - title: Documentation
+  - title: Get Started
     children:
       - title: "Detailed Intro"
         url: /docs/detailed-intro
