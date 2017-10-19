@@ -1,5 +1,6 @@
 ---
-title: "systematic software improvement"
+title: "Architecture Improvement Method"
+excerpt: "systematic software evolution"
 layout: splash
 permalink: /
 header:
