@@ -10,7 +10,7 @@ header:
 
 ##  I'm Gernot Starke.
 
-As [innoQ-Fellow](https://innoq.com) and practical software- and architecture practitioner
+As [innoQ-Fellow](https://innoq.com) and software- and architecture practitioner
 I support organizations of various domains in improving their software.
 
 Apart from optimizing _time-to-market_, I focus on reducing maintenance- and operational costs,
