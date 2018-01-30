@@ -30,12 +30,12 @@ In 2005 I (co-)founded and still actively maintain [arc42](http://arc42.de),
 the free portal for software architecture and documentation, together with its
 international companion [arc42.org](http://arc42.org).
 
-More recentl I founded [aim42](http://aim42.org), the „Architecture Improvement Method“
+In 2014 I founded [aim42](http://aim42.org), the „Architecture Improvement Method“
 (aim42.org).
 
-I' founding member of [iSAQB](https://isaqb.org), currently in the position of working
+I'm founding member of [iSAQB](https://isaqb.org), currently in the position of working
 group lead for the CPSA-Foundation Level. I successfully trained literally thousands
-of developers in softare architecture topics.
+of developers in software architecture topics.
 
 Together with my wife Uli and our awesome kids we live in beautiful Cologne.
 
@@ -45,4 +45,8 @@ on various channels:
 
 * <a href="xmxaxixlxtxo:gxsx@gxexrxnxoxtxsxtxaxrxkxex.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email</a>
 
-* Twitter: [<i class="fa fa-fw fa-twitter"></i>@gernotstarke](https://twitter.com/gernotstarke)
+* [<i class="fa fa-fw fa-twitter"></i>Twitter @gernotstarke](https://twitter.com/gernotstarke)
+
+* [<i class="fa fa-fw fa-xing"></i>Xing](https://www.xing.com/profile/Gernot_Starke)
+
+* [<i class="fa fa-fw fa-github"></i>Github](https://github.com/aim42)
