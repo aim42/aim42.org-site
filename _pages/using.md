@@ -1,32 +1,34 @@
 ---
-title: Documentation
+title: Using aim42
 layout: single
+permalink: /using
 header:
   overlay_image: /images/aim42-splash.png
-  excerpt: "**Software improvement,<br>done right**"
-permalink: /apply/getting-started
 sidebar:
-        nav: "docs"
+  nav: "getstarted"
+
 
 ---
 
-# Getting Started
+{% include toc %}
 
-As you might already know from the [overview](/overview), aim42 consists of three phases plus crosscutting activities, as depicted in the following diagram:
 
-![](/images/aim42-overview.png)
+We want to show you how you can get started with aim42 in just a few steps:
 
-On this page we want to show you how you can get started with aim42 in just a few steps.
 
-### 0. Wording
+### 0. Prerequisites
 
-As you are interested in the **architecture improvement method**, we assume you experienced certain unpleasantness with your current system. The first step is to put this _unpleasantness_ into more concrete words that we can use as a starting point. We like to call them **problems and risks** or, more generally,  **issues**.
+As you are interested in the **architecture improvement method**, we assume you experienced certain **unpleasantness** with your current system.
+The first step is to put this _unpleasantness_ into more concrete words that we can use as a starting point.
+We call them **problems and risks** or, more generally,  **issues**.
+
+Please skim over the [principles](/principles) to ensure you understand our terminology.
 
 ### 1. Initial brainstorming
 
 **Conduct an initial brainstorming session with a few key stakeholders**. The target is to come up with _essential_ problems and risks within the system and  corresponding processes.
 
-To stay focussed on the most important issues, we suggest to timebox this brainstorming session to no more than 15 minutes.
+To stay focussed on the most important issues, we suggest to limit this brainstorming session to at most 15 minutes.
 
 ### 2. _Breadth-first_ search for issues
 
