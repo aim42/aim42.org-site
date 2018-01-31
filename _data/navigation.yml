@@ -1,25 +1,31 @@
 # main links
 main:
   - title: "Get Started"
-    url: /documentation
-  - title: "Reference Manual"
+    url: /getstarted
+#
+  - title: "Learn"
+    url: /learn
+#
+  - title: "Method Reference"
     url: http://aim42.github.io
-  - title: "Publications"
-    url: /publications
-  - title: "FAQ"
-    url: /faq
-  - title: "Contribute"
-    url: /contribute
-  - title: "Contact"
-    url: /contact
+#
+  - title: "Examples"
+    url: /examples
 
-docs:
+#
+  - title: "About"
+    url: /about
+
+# add search here!
+
+
+getstarted:
   - title: Get Started
     children:
-      - title: "Detailed Intro"
+      - title: "What is aim42?"
         url: /docs/detailed-intro
-      - title: "Fundamentals"
-        url: /docs/fundamentals
+      - title: "Principles"
+        url: /docs/principles
       - title: "Background"
         url: /docs/background
       - title: "Reference manual"
@@ -33,13 +39,9 @@ docs:
         url: /apply/getting-started
 #      - title: "User Guide"
 #        url: /apply/userguide
-      - title: "Analyze"
-        url: /analyze
-#      - title: "Evaluate"
+      - title: "Evaluate"
 #        url: /apply/evaluate
 #      - title: "Improve"
 #        url: /apply/improve
 #      - title: "Crosscutting"
 #        url: /apply/crosscutting
-  - title: "Examples"
-    url: /
