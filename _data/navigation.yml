@@ -2,46 +2,71 @@
 main:
   - title: "Get Started"
     url: /getstarted
-#
+    description: "bla"
   - title: "Learn"
     url: /learn
-#
   - title: "Method Reference"
-    url: http://aim42.github.io
-#
+    url: "http://aim42.github.io"
   - title: "Examples"
     url: /examples
-
-#
   - title: "About"
     url: /about
 
 # add search here!
 
 
+about:
+  -title: About aim42
+  url: /about
+  children:
+    - title: "History"
+      url: /history
+    - title: "Contributors"
+      url: "https://github.com/orgs/aim42/people"
+    - title: "License"
+      url: "/license"
+
+
+
 getstarted:
   - title: Get Started
+    url: /getstarted
     children:
-      - title: "What is aim42?"
-        url: /docs/detailed-intro
       - title: "Principles"
-        url: /docs/principles
-      - title: "Background"
-        url: /docs/background
-      - title: "Reference manual"
-        url: http://aim42.github.io
+        url: /principles
+      - title: "Using aim42"
+        url: /using
       - title: "Whitepaper"
         url: /assets/downloads/AIM42-Whitepaper-v2.0.pdf
-  - title: "Using aim42"
-    url: /using
+      - title: "Method Reference"
+        url: http://aim42.github.io
+
+
+learn:
+  - title: "Learn more"
+    url: /learn
     children:
-      - title: "Getting started"
-        url: /apply/getting-started
-#      - title: "User Guide"
-#        url: /apply/userguide
-      - title: "Evaluate"
-#        url: /apply/evaluate
-#      - title: "Improve"
-#        url: /apply/improve
-#      - title: "Crosscutting"
-#        url: /apply/crosscutting
+      - title: "Publications"
+        url: /publications
+      - title: "Training"
+        url: /training
+      - title: "FAQ"
+        url: /faq
+
+
+about:
+    - title: "About aim42"
+      url: /about
+      children:
+        - title: Contributors
+          url: https://github.com/orgs/aim42/people
+        - title: License
+          url: /license
+
+examples:
+    - title: Examples
+      url: /examples
+      children:
+    - title: VENOM Story
+      url: http://venom-story.org
+      description: VENOM is an example of a large-scale eCommerce system, that is _rescued_ by aim42 practices.

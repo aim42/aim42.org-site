@@ -7,26 +7,30 @@ header:
   overlay_image: /images/aim42-splash.png
 
 
-
 3_col_intro:
-  - title: Evolution and Modernization
+  - title: Systematic & Effective
+    excerpt: "
+* Works under time and budget constraints
+
+* Technology neutral
+
+* Free and open-source"
+
+  - title: Proven & Practical
+    excerpt: "
+* Based upon experience
+
+* Backed by research
+
+* Process agnostic"
+
+  - title: Evolution & Modernization
     excerpt: "
 * Optimize your software
 
 * Reduce maintenance cost
 
 * Handle technical debt"
-
-  - image_path: /assets/aim42-process-2017.png
-  - title: Proven and Practical
-    excerpt: "
-* Based upon experience
-
-* Backed by research
-
-* Free and open-source
-
-* Process-agnostic"
 
 
 
@@ -65,8 +69,8 @@ feature_crosscutting:
      excerpt: 'Manage relationships between issues and improvements, maintain issue list and improvement backlog.'
 
 
-
 ---
+
 ## aim42 is the systematic approach to improve software systems and architectures
 
 aim42 has proven to succeed, even under time and budget constraints
@@ -90,17 +94,6 @@ in various industries, independent of technologies.
 
 aim42 is an open-source initiative, completely free to use. It's
 actively maintained on [Github](https://github.com/aim42/aim42).
-
-[![](http://img.shields.io/travis/aim42/aim42/master.svg)](https://travis-ci.org/aim42/aim42)
-[![](https://img.shields.io/github/issues/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
-[![](https://badge.waffle.io/aim42/aim42.png?label=bug&title=bugs)](https://github.com/aim42/aim42/issues)
-[![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
-[![](https://img.shields.io/github/stars/aim42/aim42.svg)](https://github.com/aim42/aim42/stargazers)
-[![](https://img.shields.io/github/contributors/aim42/aim42.svg)](https://github.com/aim42/aim42/graphs/contributors)
-[![](https://img.shields.io/twitter/follow/arc_improve42.svg?style=social&label=Followers)](https://twitter.com/arc_improve42)
-
-Of course, we welcome contributions, both [pull requests](https://github.com/aim42/aim42/pulls)
-and [issues](https://github.com/aim42/aim42/issues)!
 
 ## Extensive
 

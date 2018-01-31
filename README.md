@@ -13,6 +13,10 @@ fire up a terminal and start the `_develop-site.sh` script.
 System requirements (for development):
 * [Docker](https://www.docker.com/)
 
+## Site Structure
+
+![](zz-resources/site-navigation.png)
+
 
 ## Credits
 
