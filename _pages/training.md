@@ -2,7 +2,7 @@
 title: "Training"
 layout: single
 header:
-  overlay_image: /images/ph-gs-training.jpg
+  overlay_image: /images/splash/ph-gs-training-1200px.jpg
 permalink: /training
 sidebar:
   nav: "learn"
