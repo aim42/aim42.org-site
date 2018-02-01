@@ -2,7 +2,7 @@
 title: "Contribute"
 layout: splash
 header:
-  overlay_image: /images/cooperate-splash.jpg
+  overlay_image: /images/splash/cooperate-splash-1200px.jpg
   caption: "Photo: [**Danielle MacInnes**](https://unsplash.com/photos/PhD_YRuJXCM)"
 
 permalink: /contribute
