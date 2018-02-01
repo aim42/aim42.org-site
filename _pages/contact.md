@@ -3,7 +3,7 @@ title: "Contact"
 layout: single
 permalink: /contact
 header:
-  overlay_image: /images/unsplash-contact-pavan-trikutam.jpg
+  overlay_image: /images/splash/contact-pavan-trikutam.jpg
   caption: "Photo: [**Pavan Trikutam**](https://unsplash.com/collections/389099/contact?photo=71CjSSB83Wo)"
 
 ---

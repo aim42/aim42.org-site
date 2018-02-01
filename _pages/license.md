@@ -2,7 +2,7 @@
 title: "License"
 layout: splash
 header:
-  overlay_image: /images/rawpixel-com-351765.jpg
+  overlay_image: /images/splash/license-splash-1200px.jpg
   caption: "Photo: [**Rawpixel**](https://unsplash.com/photos/5x8kipLwVug)"
 
 permalink: /license
