@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<script src="{{ '/assets/js/main.min.js' | absolute_url }}"></script>
-<script src="{{ '/assets/js/mod_outer_links.js' | absolute_url }}"></script>
-=======
 {% if site.footer_scripts %}
   {% for script in site.footer_scripts %}
     {% if script contains "://" %}
@@ -28,7 +24,6 @@
   <script src="{{ '/assets/js/lunr/lunr-store.js' | absolute_url }}"></script>
   <script src="{{ '/assets/js/lunr/lunr-' | append: lang | append: '.js' | absolute_url }}"></script>
 {% endif %}
->>>>>>> ecf22d2d38320eeeb4299e82ae216671f86c4852
 
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}

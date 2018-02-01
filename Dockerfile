@@ -1,4 +1,4 @@
-ROM jekyll/jekyll:3.6
+FROM jekyll/jekyll:3.6
 
 COPY Gemfile .
 COPY Gemfile.lock .
