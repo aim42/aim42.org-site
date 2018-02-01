@@ -35,7 +35,7 @@ header:
 
 
 feature_phases:
-  - image_path: /assets/aim42-process-2017.png
+  - image_path: /images/aim42-process-2017.png
     alt: "aim42 phases"
     title: "Iterative improvement in phases"
     excerpt: 'aim42 works iteratively in three phases (analyze, evaluate, improve) supported by crosscutting activities. For each phase, aim42 proposes a number of proven and established practices and patterns. aim42 is **free and open-source**, completely **vendor-agnostic** and does not require any specific tool. '
