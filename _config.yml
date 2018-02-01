@@ -5,8 +5,10 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
 # Site Settings
-locale                   : "en"
+locale                   : "en-US"
 title                    : "aim42"
 title_separator          : "-"
 name                     : "architecture improvement method"
@@ -47,7 +49,7 @@ analytics:
 # Site Author
 author:
   name             : "Dr. Gernot Starke"
-  avatar           : /assets/images/Gernot-avatar-2016.jpg # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "innoQ Fellow, founder of aim42"
   location         : "Köln"
   email            : gs@gernotstarke.de
@@ -126,8 +128,8 @@ permalink: /:categories/:title/
 timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
-# Plugins
-gems:
+# Plugins (previously gems:)
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -180,9 +182,16 @@ compress_html:
 
 # Collections:
 
-# Collections:
-#collections:
-#  apply:
-#       output: true
-#       permalink: /:collection-posts/:title.html
-#
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: # true
+      share: true
+      related: true
