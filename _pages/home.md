@@ -73,9 +73,6 @@ feature_crosscutting:
 
 ## aim42 is the systematic approach to improve software systems and architectures
 
-aim42 has proven to succeed, even under time and budget constraints
-in various industries, independent of technologies.
-
 
 {% include feature_row id="3_col_intro"  %}
 
@@ -103,4 +100,5 @@ practices and patterns in arbitrary details.
 
 ## Proven
 aim42 is based upon practical experience of numerous committers
-from dozens of different systems in various industries.
+from dozens of different systems in various industries. We provide some
+[**examples**](/examples).
