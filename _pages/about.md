@@ -14,13 +14,13 @@ sidebar:
 aim42 is the systematic approach to improve software systems and architectures.
 
 ## History
-aim42  has been founded in 2013 by Gernot Starke, joined by Stefan Tilkov in 2014.
-We initially presented our ideas and approach on the OOP conference 2014.
+aim42 was founded in 2013 by Gernot Starke, joined by Stefan Tilkov in 2014.
+We initially presented [our ideas and approach on the OOP conference 2014](http://www.oop-konferenz.de/konferenzen/oop2014/konferenz/konferenzprogramm/conference-detail/warum-und-wie-von-software-evolution.html).
 
-Our goals was a transparent and practical approach to systematic software improvement,
+Our goal is a transparent and practical approach to systematic software improvement,
 relying on proven practices and patterns.
 
-We estimated that a typical developer spends around 75% of her/his professional
+We estimate that a typical developer spends around 75% of her/his professional
 life maintaining, evolving, fixing or enhancing existing (_legacy_) systems.
 
 
@@ -60,7 +60,7 @@ I help to effectively and efficiently architect and develop new IT systems
 and bring them into production.
 
 After graduating in computer science at Aachen University of Technology and a few years
-or practical experience, I wrote my PhD thesis on software engineering (at J.Kepler
+of practical experience, I wrote my PhD thesis on software engineering (at J.Kepler
   University in Linz, Austria, with Prof. Chroust). People call me _practical and pragmatic methodologist_ - with geek genes...
 
 I've published a number of technical books, mostly on software architecture,
