@@ -1,25 +1,25 @@
 <div class="page__footer-follow">
   <ul class="social-icons">
-    <li><a href="{{ '/contact' | absolute_url }}"><i class="fa fa-fw fa-child" aria-hidden="true"></i> Contact</a></li>
-    <li><a href="{{ '/contribute' | absolute_url }}"><i class="fa fa-fw fa-thumbs-o-up" aria-hidden="true"></i> Contribute</a></li>
+    <li><a href="{{ '/contact' | absolute_url }}"><i class="fas fa-fw fa-child" aria-hidden="true"></i> Contact</a></li>
+    <li><a href="{{ '/contribute' | absolute_url }}"><i class="fas fa-thumbs-up" aria-hidden="true"></i> Contribute</a></li>
 
     {% if site.twitter.username %}
-      <li><a href="https://twitter.com/{{ site.twitter.username }}"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+      <li><a href="https://twitter.com/{{ site.twitter.username }}"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a></li>
     {% endif %}
     {% if site.author.github %}
-    <li><a href="https://github.com/{{ site.author.github }}"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    <li><a href="https://github.com/{{ site.author.github }}"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     {% endif %}
 
-    <li><a href="https://www.xing.com/profile/Gernot_Starke"><i class="fa fa-fw fa-xing" aria-hidden="true"></i> Xing</a></li>
-    <li><a href="{{ '/license' | absolute_url }}"><i class="fa fa-fw fa-gavel" aria-hidden="true"></i> License</a></li>
-    <li><a href="{{ '/imprint' | absolute_url }}"><i class="fa fa-fw fa-user-secret" aria-hidden="true"></i> Imprint & Privacy</a></li>
-
-
+    <li><a href="https://www.xing.com/profile/Gernot_Starke"><i class="fab fa-fw fa-xing" aria-hidden="true"></i> Xing</a></li>
+    <li><a href="{{ '/license' | absolute_url }}"><i class="fas fa-fw fa-gavel" aria-hidden="true"></i> License</a></li>
+    <li><a href="{{ '/imprint' | absolute_url }}"><i class="fas fa-user-secret" aria-hidden="true"></i> Imprint & Privacy</a></li>
 
 </ul>
 </div>
 
-<div class="page__footer-copyright">Created by <a href="http://gernotstarke.de">{{ site.name | default: site.title }}</a>,
-  supported by <a href="https://innoQ.com"><b>innoQ</b></a> and aim42 <a href="https://github.com/orgs/aim42/people">contributors</a>,
+<div class="page__footer-copyright">Created by <a href="http://gernotstarke.de">Gernot Starke</a>,
+  supported by <a href="https://innoq.com" class="supporter-in-footer">
+    <img src="/images/innoq-logo-bluered.svg"  alt="INNOQ GmbH"></a></a>
+  and aim42 <a href="https://github.com/orgs/aim42/people">contributors</a>,
  using <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
 </div>

@@ -26,6 +26,10 @@ comments:
 atom_feed:
   path                   : http://it-and-more.blogspot.com
 
+# Search related
+search                   : false # true, false (default)
+search_full_content      : false # true, false (default)
+
 # SEO Related
 google_site_verification :
 bing_site_verification   :
