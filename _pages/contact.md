@@ -12,12 +12,12 @@ header:
 
 ... on various channels:
 
-* <a href="xmxaxixlxtxo:gxsx@gxexrxnxoxtxsxtxaxrxkxex.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email</a>
+* <a href="xmxaxixlxtxo:gxsx@gxexrxnxoxtxsxtxaxrxkxex.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-envelope"></i> Email</a>
 
-* [<i class="fa fa-fw fa-twitter"></i>Twitter @gernotstarke](https://twitter.com/gernotstarke)
+* [<i class="fab fa-twitter"></i> Twitter @gernotstarke](https://twitter.com/gernotstarke)
 
-* [<i class="fa fa-fw fa-twitter"></i>Twitter @arc_improve42](https://twitter.com/arc_improve42)
+* [<i class="fab fa-twitter"></i> Twitter @arc_improve42](https://twitter.com/arc_improve42)
 
-* [<i class="fa fa-fw fa-github"></i>Github](https://github.com/aim42)
+* [<i class="fab fa-github"></i> Github](https://github.com/aim42)
 
-* [<i class="fa fa-fw fa-xing"></i>Xing](https://www.xing.com/profile/Gernot_Starke)
+* [<i class="fab fa-xing"></i> Xing](https://www.xing.com/profile/Gernot_Starke)
