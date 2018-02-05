@@ -35,8 +35,21 @@ _Relevance_ is relative to stakeholders - one issue seems huge for developers, b
 
 aim42 proposes the [EVALUATE](http://aim42.github.io/#Evaluate) phase to methodically prioritize issues and improvements.
 
-#### Improve iteratively
+#### Improve iteratively, with early and fast feedback
+Improving systems always implies change, often on both technical and organizational levels. Such operations
+are inherently difficult, and only a few of their consequences might be anticipated.
 
-#### Early and fast feedback
+Therefore you should _bake_ iteration and feedback into your improvement approach, regardless of the detailed or concrete approach.
 
 #### Explicit assumptions
+Other people often see the world (especially the system and related processes) from a different angle, and might have different mental models
+or opinions on these aspects.
+
+Therefore, always make your assumptions about _things_ explicit:
+
+* what exactly makes up this issue (problem, risk...)?
+* what exactly do you mean by that improvement option?
+* what are your assumptions regarding the cost of this issue?
+* what factors influence the cost of this issue?
+
+aim42 has some more info on [explict assumptions](http://aim42.github.io/#Explicit-Assumption)
