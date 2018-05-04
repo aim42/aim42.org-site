@@ -68,7 +68,7 @@ patterns, development processes and software documentation.
 
 In 2005 I (co-)founded and still actively maintain [arc42](http://arc42.de),
 the free portal for software architecture and documentation, together with its
-international companion [arc42.org](http://arc42.org).
+international companion [arc42.org](https://arc42.org).
 
 In 2014 I founded [aim42](http://aim42.org), the „Architecture Improvement Method“
 (aim42.org).
