@@ -1,20 +1,18 @@
 <div class="page__footer-follow">
   <ul class="social-icons">
-    <li><a href="{{ '/contact' | absolute_url }}"><i class="fas fa-fw fa-child" aria-hidden="true"></i> Contact</a></li>
-    <li><a href="{{ '/contribute' | absolute_url }}"><i class="fas fa-thumbs-up" aria-hidden="true"></i> Contribute</a></li>
 
     {% if site.twitter.username %}
-      <li><a href="https://twitter.com/{{ site.twitter.username }}"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+      <li><a href="https://twitter.com/{{ site.twitter.username }}"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
     {% endif %}
+
     {% if site.author.github %}
-    <li><a href="https://github.com/{{ site.author.github }}"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      <li><a href="https://github.com/{{ site.author.github }}"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     {% endif %}
 
-    <li><a href="https://www.xing.com/profile/Gernot_Starke"><i class="fab fa-fw fa-xing" aria-hidden="true"></i> Xing</a></li>
-    <li><a href="{{ '/license' | absolute_url }}"><i class="fas fa-fw fa-gavel" aria-hidden="true"></i> License</a></li>
-    <li><a href="{{ '/imprint' | absolute_url }}"><i class="fas fa-user-secret" aria-hidden="true"></i> Imprint & Privacy</a></li>
+    <li><a href="https://www.xing.com/xbp/pages/arc42"><i class="fab fa-fw fa-xing" aria-hidden="true"></i> Xing</a></li>
 
-</ul>
+    <li><a href="{{ '/imprint' | absolute_url }}"><i class="fas fa-fw fa-gavel" style="color:Tomato" aria-hidden="true"></i> Impressum & Datenschutz</a></li>
+  </ul>
 </div>
 
 <div class="page__footer-copyright">Created by <a href="http://gernotstarke.de">Gernot Starke</a>
