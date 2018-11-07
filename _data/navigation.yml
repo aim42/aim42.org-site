@@ -15,18 +15,6 @@ main:
 # add search here!
 
 
-about:
-  -title: About aim42
-  url: /about
-  children:
-    - title: "Contributors"
-      url: "https://github.com/orgs/aim42/people"
-    - title: "License"
-      url: "/license"
-    - title: "Contact"
-      url: /contact
-
-
 
 getstarted:
   - title: Get Started
@@ -55,13 +43,16 @@ learn:
 
 
 about:
-    - title: "About aim42"
-      url: /about
-      children:
-        - title: Contributors
-          url: https://github.com/orgs/aim42/people
-        - title: License
-          url: /license
+  -title: About aim42
+  url: /about
+  children:
+    - title: "Contributors"
+      url: "https://github.com/orgs/aim42/people"
+    - title: "License"
+      url: "/license"
+    - title: "Contact"
+      url: /contact
+
 
 examples:
     - title: Examples
