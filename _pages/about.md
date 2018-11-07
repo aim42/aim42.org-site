@@ -29,7 +29,7 @@ life maintaining, evolving, fixing or enhancing existing (_legacy_) systems.
 ## Current Status
 
 ### aim42 Method Reference
-[![](http://img.shields.io/travis/aim42/aim42/master.svg)](https://travis-ci.org/aim42/aim42)
+[![](https://img.shields.io/travis/aim42/aim42/master.svg)](https://travis-ci.org/aim42/aim42)
 [![](https://img.shields.io/github/issues/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
 [![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
 [![](https://img.shields.io/github/stars/aim42/aim42.svg)](https://github.com/aim42/aim42/stargazers)

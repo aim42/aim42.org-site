@@ -94,7 +94,7 @@ Further info, abstract and slides [online](https://www.innoq.com/en/talks/2016/1
 
 Wir basteln oft, statt (systematisch) zu bauen. Das liegt manchmal weniger an uns Techies (Entwicklern, Architekten etc), sondern an negativen Wechselwirkungen vieler Parameter, die häufig miserabel gemanaged werden - und auf Dauer dann zu unwartbaren, unflexiblen und unverhältnismäßig teuren IT-Landschaften führen.
 
-[Oktober 2016, it-and-more](http://it-and-more.blogspot.de/2016/10/bauen-versus-basteln.html),
+[Oktober 2016, it-and-more](https://it-and-more.blogspot.de/2016/10/bauen-versus-basteln.html),
 von Gernot Starke.
 
 ** Mit aim42 die Potenziale bestehender Applikationen erschliessen**<br>
@@ -111,7 +111,7 @@ Die Evolution, Weiterentwicklung oder Verbesserung von Softwaresystemen systemat
 
 Der iSAQB hat einen neuen Lehrplan zu diesem Thema veröffentlicht. Dessen Name, IMPROVE, ist Programm: Sie können ab sofort lernen, wie Verbesserung, Evolution oder Weiterentwicklung systematisch funktioniert, mit balancierten betriebswirtschaftlichen, fachlichen und technischen Zielen.
 
-[Oktober 2015, it-and-more](http://it-and-more.blogspot.de/2015/03/it-systeme-systematisch-verbessern.html), von Gernot Starke.
+[Oktober 2015, it-and-more](https://it-and-more.blogspot.de/2015/03/it-systeme-systematisch-verbessern.html), von Gernot Starke.
 
 ## Tweets
 
