@@ -5,7 +5,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-remote_theme: "mmistakes/minimal-mistakes"
+theme: minimal-mistakes-jekyll
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
@@ -133,16 +133,20 @@ permalink: /:categories/:title/
 timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
-# Plugins (previously gems:)
 plugins:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
   - jemoji
   - jekyll-include-cache
 
 # mimic GitHub Pages with --safe
 whitelist:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
   - jemoji
   - jekyll-include-cache
-
 
 # Archives
 #  Type
