@@ -55,9 +55,9 @@ about:
 
 
 examples:
+  children:
     - title: Examples
       url: /examples
-      children:
     - title: VENOM Story
       url: http://venom-story.org
       description: VENOM is an example of a large-scale eCommerce system, that is _rescued_ by aim42 practices.
