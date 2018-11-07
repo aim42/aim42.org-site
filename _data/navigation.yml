@@ -19,12 +19,12 @@ about:
   -title: About aim42
   url: /about
   children:
-    - title: "History"
-      url: /history
     - title: "Contributors"
       url: "https://github.com/orgs/aim42/people"
     - title: "License"
       url: "/license"
+    - title: "Contact"
+      url: /contact
 
 
 
