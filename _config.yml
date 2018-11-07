@@ -25,7 +25,7 @@ comments:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
 
 atom_feed:
-  path                   : http://it-and-more.blogspot.com
+  path                   : https://it-and-more.blogspot.com
 
 # Search related
 search                   : false # true, false (default)
