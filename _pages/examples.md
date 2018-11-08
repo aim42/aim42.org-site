@@ -7,7 +7,6 @@ permalink: /examples
 sidebar:
   nav: "examples"
 
-
 ---
 
 The aim42 practices have been successfully applied by several of our contributors throughout the IT industry

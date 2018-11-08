@@ -17,7 +17,7 @@ main:
 
 
 getstarted:
-  - title: Get Started
+  - title: "Get Started"
     url: /getstarted
     children:
       - title: "Principles"
@@ -43,21 +43,20 @@ learn:
 
 
 about:
-  -title: About aim42
-  url: /about
-  children:
+  - title: "About aim42"
+    url: /about
+    children:
+    - title: "Contact"
+      url: /contact
     - title: "Contributors"
       url: "https://github.com/orgs/aim42/people"
     - title: "License"
       url: "/license"
-    - title: "Contact"
-      url: /contact
 
 
 examples:
-  children:
-    - title: Examples
-      url: /examples
-    - title: VENOM Story
-      url: http://venom-story.org
-      description: VENOM is an example of a large-scale eCommerce system, that is _rescued_ by aim42 practices.
+  - title: "Examples"
+    url: /examples
+  - title: VENOM Story
+    url: http://venom-story.org
+    description: VENOM is an example of a large-scale eCommerce system, that is _rescued_ by aim42 practices.

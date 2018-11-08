@@ -1,11 +1,14 @@
 ---
 title: "License"
-layout: splash
+layout: single
 header:
   overlay_image: /images/splash/license-splash-1200px.jpg
   caption: "Photo: [**Rawpixel**](https://unsplash.com/photos/5x8kipLwVug)"
 
 permalink: /license
+sidebar:
+  nav: "about"
+
 ---
 
 Our intention is to make aim42 freely available for everyone, in any private or commercial setup.
