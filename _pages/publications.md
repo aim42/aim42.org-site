@@ -4,6 +4,7 @@ layout: single
 header:
   overlay_image: /images/aim42-splash.png
 permalink: /publications
+
 sidebar:
   nav: "learn"
 

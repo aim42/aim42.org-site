@@ -4,12 +4,11 @@ layout: single
 header:
   overlay_image: /images/aim42-splash.png
 permalink: /faq
+
 sidebar:
   nav: "learn"
 
 ---
-
-{% include toc %}
 
 # Frequently Asked Questions
 

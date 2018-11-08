@@ -8,7 +8,6 @@ header:
 permalink: /license
 sidebar:
   nav: "about"
-
 ---
 
 Our intention is to make aim42 freely available for everyone, in any private or commercial setup.
