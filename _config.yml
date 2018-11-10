@@ -15,7 +15,7 @@ title_separator          : "-"
 name                     : "architecture improvement method"
 description              : "Architecture Improvement Method - Systematic modernization and evolution of IT systems."
 url                      : "https://aim42.org" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : / # the subpath of your site, e.g. "/blog"
+baseurl                  :  # the subpath of your site, e.g. "/blog"
 repository               : "aim42/aim42.org-site" # GitHub username/repo-name
 teaser                   :  /images/aim42-splash.png
 breadcrumbs              : false # true, false (default)
