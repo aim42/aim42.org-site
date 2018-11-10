@@ -10,6 +10,8 @@ sidebar:
 
 ---
 
+{% include toc %}
+
 # Frequently Asked Questions
 
 Here you find answers to some of the frequently asked questions.
@@ -20,7 +22,7 @@ aim42 is a collection of practices, patterns and methods to support software imp
 
 aim42 provides a way out of maintenance disasters - it systematically helps to reduce maintenance cost, technical debt and risks. aim42 helps teams and organizations to optimize their software to their specific needs.
 
-aim42 is free (like open-source).
+aim42 is free (like open-source) - see our [license page](/license).
 
 ## Why is refactoring not enough?
 Refactoring is a brilliant and important technique to improve source code -

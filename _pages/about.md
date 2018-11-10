@@ -66,7 +66,7 @@ of practical experience, I wrote my PhD thesis on software engineering (at J.Kep
 I've published a number of technical books, mostly on software architecture,
 patterns, development processes and software documentation.
 
-In 2005 I (co-)founded and still actively maintain [arc42](http://arc42.de),
+In 2005 I (co-)founded and still actively maintain [arc42](https://arc42.de),
 the free portal for software architecture and documentation, together with its
 international companion [arc42.org](https://arc42.org).
 
@@ -78,3 +78,11 @@ group lead for the CPSA-Foundation Level. I successfully trained literally thous
 of developers in software architecture topics.
 
 Together with my wife Uli and our awesome kids we live in beautiful Cologne.
+
+
+#### This site
+
+* is created with the Jekyll site generator,
+* built on [Netlify](https://www.netlify.com/),
+* was last built on {{ site.time | date: '%c' }},
+* contains {{ site.pages | size }} pages
