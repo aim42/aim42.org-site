@@ -12,7 +12,7 @@ permalink: /contribute
 Our collection of practices and patterns is hosted at [Github](https://github.com/aim42/aim42), the well-known Open-Source community platform.
 
 You find our repository here:
-[https://github.com/aim42/aim42]([https://github.com/aim42/aim42)
+[https://github.com/aim42/aim42](https://github.com/aim42/aim42)
 
 
 ### Some ways to contribute:
