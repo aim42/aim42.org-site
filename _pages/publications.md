@@ -31,7 +31,7 @@ You find several fundamental principles, paired with an overview of the phases a
 
 
 
-**[Knigge: Fortschritt oder Verschlimmbesserung](https://jaxenter.de/gegen-die-dunkle-macht-software-verbessern-aber-richtig-24164)**<br>
+**[Knigge: Fortschritt oder Verschlimmbesserung](https://jaxenter.de/knigge-softwarearchitekten-fortschritt-verschlimmbesserung-51954)**<br>
 von Peter Hruschka und Gernot Starke, JavaMagazin Januar 2017
 
 Ändern und erweitern unter Zeitdruck – das ist traurige Normalität für viele Softwerker. Ständig zwingen uns widrige Umstände oder dunkle Mächte dazu, mit zu wenigen Informationen oder zu wenig Zeit neue Features oder auch notwendige Änderungen suboptimal umzusetzen. Wir möchten gerne besser arbeiten, aber nur selten geben uns die dunklen Mächte die Chance dazu.
