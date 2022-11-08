@@ -15,7 +15,7 @@ sidebar:
 aim42 is a systematic approach to software improvement. It can help you
 save money and reduce all kinds of technical debt.
 
-Our extensive [Method Reference](http://aim42.github.io) collects over 90 established practices
+Our extensive [Method Reference](https://aim42.github.io) collects over 90 established practices
 to improving existing systems.
 
 aim42 is completely free to use.

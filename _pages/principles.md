@@ -23,7 +23,7 @@ Let's clarify some fundamental terms:
 |Cost (of improvement) | The cost (in monetary units) of the improvement, remedy, tactic or strategy.|
 |Risk | _Potential_ problem. Improvements can change associated risks for the better or the worse, even create new risks.
 
-The [method reference](http://aim42.github.io/#_common_terminology) covers these terms in more detail, and provides a more elaborate [domain model](http://aim42.github.io/#Domain-Model).
+The [method reference](https://aim42.github.io/#_common_terminology) covers these terms in more detail, and provides a more elaborate [domain model](https://aim42.github.io/#Domain-Model).
 
 ## Fundamental Principles
 
@@ -52,4 +52,4 @@ Therefore, always make your assumptions about _things_ explicit:
 * what are your assumptions regarding the cost of this issue?
 * what factors influence the cost of this issue?
 
-aim42 has some more info on [explict assumptions](http://aim42.github.io/#Explicit-Assumption)
+aim42 has some more info on [explict assumptions](https://aim42.github.io/#Explicit-Assumption)

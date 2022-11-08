@@ -49,7 +49,7 @@ aim42 is a team effort - we are actively looking for [contributions](/contribute
 
 ## Where's the code?
 Our reference manual is written in AsciiDoc (a plain-text format, ideal for team-collaboration). A ([Gradle](https://gradle.org)
-based) build-process generates a static html site ([aim42.github.io](/http://aim42.github.io)) from it.
+based) build-process generates a static html site ([aim42.github.io](/https://aim42.github.io)) from it.
 
 All the code is located in our [Github repository](https://github.com/aim42/aim42).
 

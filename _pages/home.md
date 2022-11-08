@@ -94,11 +94,10 @@ actively maintained on [Github](https://github.com/aim42/aim42).
 
 ## Extensive
 
-Our extensive [method reference](http://aim42.github.io) explains about 90 useful
+Our extensive [method reference](https://aim42.github.io) explains about 90 useful
 practices and patterns in arbitrary details.
 
 
 ## Proven
 aim42 is based upon practical experience of numerous committers
-from dozens of different systems in various industries. We provide some
-[**examples**](/examples).
+from dozens of different systems in various industries. 

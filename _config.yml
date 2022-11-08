@@ -20,9 +20,7 @@ repository               : "aim42/aim42.org-site" # GitHub username/repo-name
 teaser                   :  /images/aim42-splash.png
 breadcrumbs              : false # true, false (default)
 comments:
-  provider               : false # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
-  disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+  provider               : false 
 
 atom_feed:
   path                   : https://it-and-more.blogspot.com
@@ -123,15 +121,14 @@ kramdown:
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed 
 
 
 # Outputting
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+timezone: 
 
 plugins:
   - jekyll-sitemap
