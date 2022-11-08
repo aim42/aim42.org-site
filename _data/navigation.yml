@@ -2,13 +2,11 @@
 main:
   - title: "Get Started"
     url: /getstarted
-    description: "bla"
+    description: "Getting started"
   - title: "Learn"
     url: /learn
   - title: "Method Reference"
-    url: "http://aim42.github.io"
-  - title: "Examples"
-    url: /examples
+    url: "https://aim42.github.io"
   - title: "About"
     url: /about
 
@@ -27,7 +25,7 @@ getstarted:
       - title: "Whitepaper"
         url: /assets/downloads/AIM42-Whitepaper-v2.0.pdf
       - title: "Method Reference"
-        url: http://aim42.github.io
+        url: https://aim42.github.io
 
 
 learn:
@@ -54,9 +52,3 @@ about:
         url: "/license"
 
 
-examples:
-  - title: "Examples"
-    url: /examples
-  - title: VENOM Story
-    url: http://venom-story.org
-    description: VENOM is an example of a large-scale eCommerce system, that is _rescued_ by aim42 practices.
