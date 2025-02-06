@@ -17,7 +17,7 @@ Please [contact](/contact) us if you're interested in English training.
 3-tägiger Kurs vom „dynamischen Duo“ Peter Hruschka und Gernot Starke (in Hamburg: Gernot Starke mit Dr. Carola Lilienthal).
 Basis für die iSAQB-Zertifizierung zum "Certified Professional for Software Architecture" (CPSA Advanced Level)
 
-Veranstalten von [arc42](https://www.arc42.de/improve.html) zusammen mit [INNOQ](https://www.innoq.com/de/trainings/improve/)
+Veranstaltet von [arc42](https://arc42.de/info-improve) zusammen mit [INNOQ](https://www.innoq.com/)
 
 Für die Teilnahme an diesem IMPROVE Workshop erhalten Sie 20 Credit-Points methodisch und 10 Credit-Points technisch.
 
