@@ -1,21 +1,23 @@
-<div class="page__footer-follow">
+<div class="page__footer-follow footer-center">
   <ul class="social-icons">
 
-    {% if site.twitter.username %}
-      <li><a href="https://twitter.com/{{ site.twitter.username }}"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-    {% endif %}
+    <a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg"></a><br>
+
+    <li><a href="https://linkedin.com/in/gernotstarke">
+      <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
 
     {% if site.author.github %}
-      <li><a href="https://github.com/aim42"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    <li><a href="https://github.com/aim42"><i class="fab fa-fw fa-github" aria-hidden="true"></i>GitHub</a></li>
     {% endif %}
 
-    <li><a href="{{ '/imprint' | absolute_url }}"><i class="fas fa-fw fa-gavel" style="color:Tomato" aria-hidden="true"></i> Imprint & Privacy</a></li>
+    <li><a href="{{ '/imprint' | absolute_url }}"><i class="fas fa-fw fa-gavel" style="color:Tomato" aria-hidden="true"></i>Imprint & Privacy </a></li>
+
   </ul>
 </div>
 
-<div class="page__footer-copyright">Created by <a href="https://gernotstarke.de">Gernot Starke</a>
-  and aim42 <a href="https://github.com/orgs/aim42/people">contributors</a>,
-  using <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
-  Supported by <a href="https://innoq.com" class="supporter-in-footer">
-    <img src="/images/innoq-logo-bluered.svg" width=40px alt="INNOQ GmbH"></a>
+<div class="page__footer-copyright footer-center copyright-size">
+  &copy; {{ site.time | date: '%Y' }} Gernot Starke.<br>
+  Created by <a href="https://gernotstarke.de">Gernot Starke</a>
+  and aim42 <a href="https://github.com/orgs/aim42/people">contributors</a>.
+  Supported by <a href="https://perstarke-webdev.de/">Per Starke Web Development</a>.
 </div>

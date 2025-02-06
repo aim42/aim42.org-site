@@ -1,0 +1,52 @@
+.supported-by-innoq {
+    margin-bottom: 8px;
+    width: 110px;
+}
+
+.supported-by-innoq:hover {
+    opacity: 0.8;
+}
+
+
+@media (max-width: 900px) {
+    .supported-by-innoq {
+        width: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .supported-by-innoq {
+        width: 90px;
+    }
+}
+
+
+.footer-center {
+    text-align: center;
+    font-size: 80%;
+}
+
+.copyright-size {
+    font-size: 60% !important;
+}
+
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile {
+        display: block;
+    }
+}
+
+
+
+
+
+
+html,
+body {
+    height: 100%;
+}
