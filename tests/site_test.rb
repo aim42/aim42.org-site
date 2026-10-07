@@ -1,6 +1,7 @@
 # Checks on the generated site. Run after `bundle exec jekyll build`.
 require "minitest/autorun"
 require "nokogiri"
+require "yaml"
 
 SITE_DIR = File.expand_path("../_site", __dir__)
 
@@ -78,5 +79,40 @@ class SiteTest < Minitest::Test
     doc = page("/patterns/assertions/")
     assert_equal "improve", doc.at_css("header.section-hero")["data-section"]
     refute site_file("/architecture-and-code/assertions/"), "categories must not change the pattern URL"
+  end
+
+  PILOT_PATTERNS = %w[stakeholder-interview stakeholder-analysis atam strangler-approach assertions improvement-backlog].freeze
+
+  # Phase overview pages (/patterns/evaluate/ etc.) arrive in Task 6; until
+  # then links to them cannot resolve. Task 6 removes this constant and the
+  # skip that uses it.
+  PHASE_PAGE_URLS = YAML.load_file(File.expand_path("../_data/phases.yml", __dir__)).values.map { |p| p["url"] }.freeze
+
+  def test_all_pilot_patterns_are_generated
+    PILOT_PATTERNS.each { |slug| page("/patterns/#{slug}/") }
+  end
+
+  def test_pattern_images_exist
+    PILOT_PATTERNS.each do |slug|
+      page("/patterns/#{slug}/").css(".post-content img").each do |img|
+        src = img["src"]
+        assert File.file?(File.join(SITE_DIR, src)), "#{slug}: image #{src} missing from _site/"
+      end
+    end
+  end
+
+  def test_pattern_links_to_glossary_and_patterns_resolve
+    PILOT_PATTERNS.each do |slug|
+      page("/patterns/#{slug}/").css(".post-content a[href^='/']").each do |a|
+        href = a["href"]
+        next unless href.start_with?("/glossary", "/patterns/")
+        next if PHASE_PAGE_URLS.include?(href) # Task 6 removes this skip
+        assert site_file(href), "#{slug}: dead internal link #{href}"
+        if href.include?("#")
+          anchor = href.split("#").last
+          assert page(href.split("#").first).at_css("##{anchor}"), "#{slug}: anchor ##{anchor} missing in #{href}"
+        end
+      end
+    end
   end
 end

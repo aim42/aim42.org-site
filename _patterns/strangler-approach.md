@@ -1,0 +1,149 @@
+---
+title: Strangler Approach
+phase: improve
+categories: [approaches]
+intent: Divide a legacy system into different functional domains and replace those step by step.
+# phase 2 restores: big-bang-approach
+status: complete
+---
+
+## Description
+
+Rewriting an old system with a *big-bang approach* is a risky endeavor. It is
+harder than you might think at the beginning.
+
+An alternative way is to gradually create a new system around the edges of the
+old, letting it grow slowly over several years until the old system is
+strangled. The most important reason to consider a strangler application over
+a cut-over rewrite is reduced risk (it might cost more to do a strangler, but
+that's the price of risk reduction) [1].
+
+Paul Hammant depicts the strangler approach as follows [2]:
+
+![Strangler Applications (Paul Hammant)](/images/patterns/strangulation.jpg)
+
+He discusses two ways of achieving the goal of moving from the (red) old system
+to the (blue) new system:
+
+1. with adding new features,
+2. without adding new features.
+
+Deciding to go for the first strategy means that you can still keep your
+business happy because you are still able to deliver new features. However,
+this approach will take longer than the second one.
+
+## Experiences
+
+* Paul Hammant reports the following positive
+  [case studies](http://paulhammant.com/2013/07/14/legacy-application-strangulation-case-studies/):
+  * Airline booking system: the C++ application, which was stable but hard to
+    grow (and to find developers for), has been incrementally replaced by a
+    Spring stack based application. A load balancer routed the requests to
+    either the C++ or the Spring application. They introduced a session store
+    used by both systems (the C++ application needed to be adjusted for this).
+  * Trading company's PowerBuilder based rich client: you cannot integrate a
+    new rich client into an old one, so the team decided to run two client
+    applications in parallel for the energy traders, adding more and more
+    functionality to the new (Swing-based) client. The users weren't forced to
+    use one or the other, but the team made the new application so compelling
+    that they wanted to. Google is (as I heard from a Googler) doing similar
+    approaches to their internal systems, which are replaced by new systems all
+    the time, and you need to decide when to switch.
+  * National supermarket's internal planning system based on Swing and a major
+    database is moving into a Rails and Java microservices based web
+    application. Since the two technologies are also very different, there is
+    no smooth way of integrating the old and the new system; they have to
+    exist in parallel (it is an internal system).
+  * Used consumer goods magazine's web portal: a move from Oracle Endeca to
+    Java/JavaScript. First, they changed the Oracle frontend so that it looks
+    like the new system. Then they integrated a little piece of new
+    functionality from the new stack into the website. The first strangler
+    release took 6 months, then they delivered regularly.
+* Nat Pryce reports failed projects and challenges using the strangler pattern [3]:
+  * "I've seen critical systems that have suffered both of these fates, and
+    ended up with about four or five 'strategic architectural directions' and
+    'future state architectures'. One large multi-site project ended up with
+    eight different new persistence mechanisms in its new architecture."
+  * "Another ended up with two different database schemas, one for the old way
+    of doing things and another for the new way, neither schema was ever
+    removed from the system and there were also multiple class hierarchies
+    that mapped to one or even both of these schemas."
+
+## Risks
+
+* You need to overcome the lack of will to actually finish the strangling
+  (usually political will from non-technical stakeholders manifested as lack
+  of budget). If you don't completely kill off the old system, you'll end up
+  in a worse mess because your system now has two ways of doing everything
+  with an awkward interface between the two. Later, another wave of developers
+  will probably decide to strangle what's there, writing yet another strangler
+  application, and again a lack of will might leave the system in an even
+  worse state, with three ways of doing things [1].
+* You need to have consensus across the development team(s) on the future
+  state of the architecture and how to get there. If everyone runs in another
+  direction, then you end up with a new system which is also hard to maintain.
+* If you're introducing technologies that are new to the team or to
+  support/maintenance staff (e.g. adding reliable async messaging to what is
+  currently a synchronous three-tier client/server architecture) then you have
+  to ensure that there are experienced technical leads on the project who know
+  how to build systems with that technology and support those systems. And
+  those tech leads have to stick with the project for some time after the old
+  app has been fully strangled. Otherwise, the architecture will degrade as
+  inexperienced developers modify it in ways they know but not in ways that
+  fit with the new architecture [1].
+* Strangling creates a layer of goo and there is a risk that this layer
+  becomes a mess, too.
+
+## Applicability
+
+* A big-bang replacement is too risky and/or your business wants you to
+  constantly deliver new features and does not accept a 1–3 year break for the
+  big rewrite.
+* The "cost of delay" of not moving to the new platform as early as possible
+  is higher than the cost of running two systems in parallel.
+
+## Proposed practices
+
+Paul Hammant recommends the following practices [2]:
+
+* You really should phase the strangulation. Keep your larger application in a
+  continually deployable state while working on it. The first go-live after a
+  month or so of work, then every two weeks after that at least, or you'll
+  fail — probably via project cancellation by a checkbook-holding sponsor.
+* Do enhancements or new "business value" work concurrently with
+  strangulation, while getting all to agree that both are happening. As you
+  work on the strangulation, a decent percentage of work should be
+  enhancements too. This allows value to be associated with each release from
+  the point of view of the people paying for it. ROI and all that isn't just
+  abandonment of costly end-of-life IT choices, it is about tangible changes
+  for the better. From top to bottom, everyone needs to agree that both are
+  happening.
+* The addition of integration and functional test suites as a safety net is
+  key. This is particularly true when the old technology did not have unit
+  test coverage. The functional tests will be able to step between old and new
+  (and back), to prevent surprises.
+* Understand that non-functional requirements (NFRs) that don't directly
+  cheapen the re-implementation may jeopardize the initiative — jeopardize in
+  the "courting cancellation" territory again. Various authority figures may
+  have pet technologies to include or things to exclude. The test is whether
+  the dev team cranking stuff out agrees or not.
+* Agile methodologies optimize everything for maximized developer throughput
+  and phased deliveries to production. You will not manage this with
+  waterfall, unless you want glacially long intervals between production
+  pushes. The [Pols/Stevenson white paper](http://cdn.pols.co.uk/papers/agile-approach-to-legacy-systems.pdf)
+  drills much further into the agile aspects.
+* Lastly, you should always be aware that there could be functionality and
+  context hidden within the old application that people have forgotten about,
+  and that a team of business analysts assigned to reverse engineering
+  behaviors might also miss. This is a risk for any "rewrite" though.
+
+## Related
+
+* Replaceable Component Architecture
+
+## References
+
+* [1] Martin Fowler [about the Strangler Application](https://www.martinfowler.com/bliki/StranglerApplication.html)
+* [2] Paul Hammant's [blog post](http://paulhammant.com/2013/07/14/legacy-application-strangulation-case-studies/) with practices and case studies
+* [3] [Discussion on StackOverflow](https://stackoverflow.com/questions/1118804/application-strangler-pattern-experiences-thoughts) with Nat Pryce and Ira Baxter
+* Michael Feathers speaks on [Hanselminutes](https://www.hanselman.com/blog/HanselminutesPodcast165WorkingEffectivelyWithLegacyCodeWithMichaelFeathers.aspx) about the Strangler Application
