@@ -145,4 +145,13 @@ class ValidatorTest < Minitest::Test
     File.write(File.join(@root, "_patterns", "sub", "a.md"), "---\ntitle: Other\nphase: analyze\nintent: x\nstatus: complete\n---\n")
     assert_includes errors, "duplicate slug 'a' in a.md, sub/a.md"
   end
+
+  # The README's front-matter example must be copy-pasteable.
+  def test_readme_front_matter_example_is_valid_yaml
+    readme = File.read(File.expand_path("../README.md", __dir__))
+    example = readme[/^    ---\n(.*?)^    ---\n/m, 1]
+    assert example, "front-matter example not found in README.md"
+    fm = YAML.safe_load(example.gsub(/^    /, ""))
+    Aim42::Validator::REQUIRED.each { |key| assert_kind_of String, fm[key], "README example: '#{key}'" }
+  end
 end

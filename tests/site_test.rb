@@ -86,6 +86,13 @@ class SiteTest < Minitest::Test
     assert doc.at_css("link[href='/assets/css/aim42.css']"), "aim42 stylesheet not linked"
   end
 
+  # aria-expanded carries the open/closed state; the label must not contradict it.
+  def test_menu_toggle_label_is_state_neutral
+    toggle = page("/glossary/").at_css("button.site-menu-toggle")
+    assert_equal "false", toggle["aria-expanded"]
+    assert_equal "Navigation menu", toggle["aria-label"]
+  end
+
   def test_pattern_page_renders_title_intent_and_phase
     doc = page("/patterns/stakeholder-interview/")
     assert_equal "Stakeholder Interview", doc.at_css("h1.section-hero__title")&.text&.strip

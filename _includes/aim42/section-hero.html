@@ -1,44 +1,44 @@
 {% comment %}
-  section-hero — unified hero card for every page that announces a section
-  or a single item.
+  section-hero — unified hero card for every aim42 page that announces a
+  section or a single item.
 
   One component drives:
-    - Index / landing pages (/qualities/, /requirements/, /approaches/,
-      /standards/, /tag-*/, /dimensions/, /articles/, /how-to/)
-    - Single-item detail pages (qualities/<x>, approaches/<x>, standards/<x>,
-      requirements/<x> via its bespoke layout, single article)
+    - Index and section pages (/patterns/, the phase pages
+      /patterns/<phase>/, /glossary/) via the aim42-page layout
+    - Single pattern pages (/patterns/<slug>/) via the pattern layout
 
   Section identity comes from the data-section attribute, which sets a
-  CSS custom property --cat. The colour matches the home-directory rails,
-  so the homepage acts as a legend for the destination section.
+  CSS custom property --cat. Phase pages and patterns use their phase's
+  colour, so a pattern shares the colour of the phase it belongs to.
 
   Required:
     section  Color key. One of:
-               qualities | requirements | approaches | standards | tag | article | how-to
-    title    H1 text (plain).
+               analyze | evaluate | improve | crosscutting | patterns | reference
+             (defaults to reference)
+    title    H1 text (plain; escaped here).
 
   Optional:
-    eyebrow_label  Small uppercase label above the title ("Quality", "Requirement", …).
-                   Used on detail pages to signal the meta-class.
-    eyebrow_href   Link target for the eyebrow (typically the index page).
+    eyebrow_label  Small uppercase label above the title ("Phase", the phase name, …).
+    eyebrow_href   Link target for the eyebrow (typically the index or phase page).
     lede           Single paragraph of plain text shown below the title.
-    chips_html     Pre-rendered HTML for the taxonomy chip row (tags, categories).
+    chips_html     Pre-rendered HTML for the chip row (categories, stub badge).
     meta           Inline metadata line (e.g. counts). HTML allowed.
 
-  Example (index page):
-    {% raw %}{% include section-hero.liquid
-        section="standards"
-        title="Standards"
-        lede="Authoritative references that ground qualities and requirements."
-        meta="<b>184</b> standards across <b>13</b> categories." %}{% endraw %}
+  Example (phase page):
+    {% raw %}{% include aim42/section-hero.html
+        section="analyze"
+        title="Analyze"
+        eyebrow_label="Phase"
+        eyebrow_href="/patterns/"
+        lede="Find issues, risks and technical debt in the system and its organization." %}{% endraw %}
 
-  Example (detail page):
-    {% raw %}{% capture chips %}<a class="tag" href="/tag-usable">#usable</a>{% endcapture %}
-    {% include section-hero.liquid
-        section="qualities"
+  Example (pattern page):
+    {% raw %}{% capture chips %}<span class="tag tag--stub">stub</span>{% endcapture %}
+    {% include aim42/section-hero.html
+        section=page.phase
         title=page.title
-        eyebrow_label="Quality"
-        eyebrow_href="/qualities/"
+        eyebrow_label=phase.title
+        eyebrow_href=phase.url
         chips_html=chips %}{% endraw %}
 {% endcomment %}
 <header class="section-hero" data-section="{{ include.section | default: 'reference' }}">
