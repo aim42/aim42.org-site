@@ -88,6 +88,7 @@ module Aim42
           end
         end
         if fm.key?("categories")
+          errors << "#{name}: 'categories' are only allowed on improve patterns" if fm["phase"] != "improve"
           if fm["categories"].is_a?(Array)
             (fm["categories"] - categories).each do |c|
               errors << "#{name}: unknown category '#{c}' (allowed: #{categories.join(", ")})"

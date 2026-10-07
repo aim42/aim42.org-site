@@ -149,6 +149,8 @@ Butterfly-Methodology
 Evolution
 : This approach has been extensively practiced by a Swiss Bank and published as a [book](http://www.amazon.de/Managed-Evolution-Strategy-Information-Systems/dp/3642016324). Underlying idea is to refactor those parts of the system(s) which are actually to be changed, especially to move all interfaces to new service standard and replace all legacy technologies and other couplings (via DB etc). Over time services should emerge that can be moved to a new platform altogether (from Mainframe to Java).
 
+→ [Improvement approaches](#category-approaches)
+
 ## Improvement Practices (Details)   {#improve-practices}
 
 Practices, in contrast to approaches, are the short-term or tactical improvements.
@@ -169,6 +171,8 @@ For an overview of other improvement practices, see [Improvement Practices (Over
 
 One way to improve the processes is to resort to [Mob Programming](https://mobprogramming.org) for onsite teams or [Remote Mob Programming](https://www.remotemobprogramming.org) for distributed teams.
 
+→ [Patterns in this category](#category-processes)
+
 ## Improve Architecture and Code Structure   {#improve-architecture}
 
 > **Note:** This category contains a fairly large number of practices.
@@ -178,6 +182,8 @@ One way to improve the processes is to resort to [Mob Programming](https://mobpr
 
 For an overview of other improvement practices, see [Improvement Practices (Overview)](/patterns/improve/#improve-practices-overview).
 
+→ [Patterns in this category](#category-architecture-and-code)
+
 ## Practices to Improve Technical Infrastructure   {#improve-technical-infrastructure}
 
 ![Practices to improve technical infrastructure](/images/patterns/improve-practice-technical-infrastructure.png)
@@ -185,12 +191,16 @@ For an overview of other improvement practices, see [Improvement Practices (Over
 
 For an overview of other improvement practices, see [Improvement Practices (Overview)](/patterns/improve/#improve-practices-overview).
 
+→ [Patterns in this category](#category-technical-infrastructure)
+
 ## Practices to Improve Analyzability and Evaluability   {#improve-analyzability}
 
 ![Practices to improve analyzability](/images/patterns/improve-practice-analyzability.png)
 {: #fig-improve-analyzability}
 
 For an overview of other improvement practices, see [Improvement Practices (Overview)](/patterns/improve/#improve-practices-overview).
+
+→ [Patterns in this category](#category-analyzability)
 
 [^1]: Cowan: The magical number 4 in short-term memory: a reconsideration of mental storage capacity.
 

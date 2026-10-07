@@ -9,7 +9,7 @@ status: complete
 
 ## Description
 
-It is expensive to collect information (problems, opinions etc.) from stakeholders (customers, support staff, developers, backoffice etc.) via surveys, interviews or meetings (e.g. ). There are possibilities to offer low-threshold services for involved people to give feedback. Possibilities e.g. are:
+It is expensive to collect information (problems, opinions etc.) from stakeholders (customers, support staff, developers, backoffice etc.) via surveys, interviews or meetings (e.g. [ATAM](/patterns/atam/)). There are possibilities to offer low-threshold services for involved people to give feedback. Possibilities e.g. are:
 {: #atam}
 
 <ol type="a">

@@ -169,6 +169,12 @@ class ValidatorTest < Minitest::Test
     assert_includes errors, "a.md: unknown category 'nonsense' (allowed: approaches, architecture-and-code)"
   end
 
+  def test_categories_only_on_improve
+    File.write(File.join(@root, "_data", "categories.yml"), CATEGORIES)
+    pattern("a", "title: A\nphase: analyze\ncategories: [approaches]\nintent: I.\nstatus: complete\n")
+    assert_includes errors, "a.md: 'categories' are only allowed on improve patterns"
+  end
+
   def test_categories_without_categories_file
     pattern("a", "title: A\nphase: improve\ncategories: [approaches]\nintent: I.\nstatus: complete\n")
     assert_includes errors, "a.md: unknown category 'approaches' (allowed: )"

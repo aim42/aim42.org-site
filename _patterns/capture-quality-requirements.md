@@ -33,7 +33,7 @@ Although this definition is concise, it needs some explanation to become underst
   * another manager wanting to reduce operation costs
   * some government agency requiring financial data to be tamper-proof
 
-Example 1. Example scenario "Mandatory changes to Business Processes"\*
+Example 1. Example scenario "Mandatory changes to Business Processes"
 
 | Context | The individual processing step AB within use case XY is declared invalid by the regulatory authority and removed from the system. The data processed by the system is not affected. |
 | Business Goal(s) | The needed changes to the use case XY can be carried out at low cost and without negative effects. |
