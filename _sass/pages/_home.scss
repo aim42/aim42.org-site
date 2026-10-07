@@ -29,14 +29,14 @@
   margin: 0 0 1rem;
 }
 
-.home-hero__lede {
+.site-content .home-hero__lede {
   color: var(--brand-muted-strong);
   font-size: $text-lg;
   margin: 0 0 1.5rem;
   max-width: 34em;
 }
 
-.home-hero__actions {
+.site-content .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -80,9 +80,24 @@
   margin-bottom: 3rem;
 }
 
+// The generic `.site-content ul/ol/p` rules in _content.scss (75ch width,
+// indent, 1.5em margins) are meant for prose; the home page's lists are
+// layout, so they reset those.
+.site-content .home-phase-list,
+.site-content .home-examples,
+.site-content .home-steps {
+  max-width: none;
+  padding-left: 0;
+}
+
+.site-content .home-open__grid > p {
+  max-width: none;
+}
+
 // Cards reuse .phase-list / .phase-card from pages/_patterns.scss.
-.home-phase-list {
+.site-content .home-phase-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
 
   @media (max-width: $home-edge-width) {
     grid-template-columns: minmax(0, 1fr);
@@ -113,7 +128,7 @@
   color: var(--cat-text);
 }
 
-.home-examples {
+.site-content .home-examples {
   list-style: none;
   margin: 0.4rem 0;
   padding: 0;
@@ -133,7 +148,7 @@
   min-height: 44px;
 }
 
-.home-steps {
+.site-content .home-steps {
   counter-reset: step;
   display: grid;
   gap: 1rem;
@@ -188,7 +203,7 @@
 // Cycle graphic (_includes/aim42/cycle.html). Phase names use 22 user units;
 // at the 320px phone width (viewBox 470 wide) that renders at 15px.
 .home-cycle {
-  flex: 0 1 380px;
+  flex: 0 1 440px;
 
   @media (max-width: $home-stack-width) {
     align-self: center;
@@ -269,7 +284,7 @@
 .home-cycle__note {
   fill: var(--brand-muted-strong);
   font-family: $font-family;
-  font-size: 12px;
+  font-size: 13px;
 
   @media (max-width: $home-edge-width) {
     display: none;
