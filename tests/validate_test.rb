@@ -90,4 +90,59 @@ class ValidatorTest < Minitest::Test
     pattern("a", "title: [unclosed\n")
     assert errors.any? { |e| e.start_with?("a.md: invalid YAML front matter") }, errors.inspect
   end
+
+  def test_title_and_intent_must_be_strings
+    pattern("a", "title: 2026\nphase: analyze\nintent: [one, two]\nstatus: complete\n")
+    assert_includes errors, "a.md: 'title' must be a string"
+    assert_includes errors, "a.md: 'intent' must be a string"
+  end
+
+  def test_intent_must_be_a_single_paragraph
+    pattern("a", "title: A\nphase: analyze\nintent: |\n  First paragraph.\n\n  Second paragraph.\nstatus: complete\n")
+    assert_includes errors, "a.md: 'intent' must be a single paragraph"
+  end
+
+  def test_front_matter_must_be_a_mapping
+    pattern("a", "- title\n- phase\n")
+    pattern("b", "just a string\n")
+    assert_includes errors, "a.md: front matter must be a mapping"
+    assert_includes errors, "b.md: front matter must be a mapping"
+  end
+
+  def test_unquoted_dates_are_allowed
+    pattern("a", VALID + "updated: 2026-10-07\n")
+    assert_empty errors
+  end
+
+  def test_yaml_aliases_are_reported_not_raised
+    pattern("a", "title: &t A\nphase: analyze\nintent: *t\nstatus: complete\n")
+    assert errors.any? { |e| e.start_with?("a.md: invalid YAML front matter") }, errors.inspect
+  end
+
+  def test_crlf_line_endings_validate
+    File.write(File.join(@root, "_patterns", "a.md"), "---\n#{VALID}---\n\nBody.\n".gsub("\n", "\r\n"))
+    assert_empty errors
+  end
+
+  def test_markdown_extensions_and_subdirectories_are_validated
+    FileUtils.mkdir_p(File.join(@root, "_patterns", "improve"))
+    File.write(File.join(@root, "_patterns", "b.markdown"), "---\ntitle: B\nphase: nope\nintent: x\nstatus: complete\n---\n")
+    File.write(File.join(@root, "_patterns", "improve", "c.md"), "---\ntitle: C\nphase: analyze\nstatus: complete\n---\n")
+    assert_includes errors, "b.markdown: unknown phase 'nope' (allowed: analyze, improve)"
+    assert_includes errors, "improve/c.md: missing required key 'intent'"
+  end
+
+  def test_related_may_name_a_pattern_in_a_subdirectory
+    FileUtils.mkdir_p(File.join(@root, "_patterns", "analyze-more"))
+    File.write(File.join(@root, "_patterns", "analyze-more", "b.md"), "---\ntitle: B\nphase: analyze\nintent: x\nstatus: complete\n---\n")
+    pattern("a", VALID + "related: [b]\n")
+    assert_empty errors
+  end
+
+  def test_duplicate_slugs_across_extensions_and_directories
+    FileUtils.mkdir_p(File.join(@root, "_patterns", "sub"))
+    pattern("a", VALID)
+    File.write(File.join(@root, "_patterns", "sub", "a.md"), "---\ntitle: Other\nphase: analyze\nintent: x\nstatus: complete\n---\n")
+    assert_includes errors, "duplicate slug 'a' in a.md, sub/a.md"
+  end
 end
