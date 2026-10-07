@@ -14,10 +14,12 @@ class SiteTest < Minitest::Test
   VALIDATOR = Aim42::Validator.new(ROOT)
   PATTERNS = VALIDATOR.files.map { |f| VALIDATOR.front_matter(f).merge("slug" => VALIDATOR.slug(f)) }.freeze
   PHASES = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).keys.freeze
+  PHASE_DATA = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).freeze
+  HOME = VALIDATOR.front_matter(File.join(ROOT, "_pages", "home.md")).freeze
   CATEGORIES = YAML.safe_load(File.read(File.join(ROOT, "_data", "categories.yml"))).freeze
   # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
   REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
-  PAGES = (["/patterns/"] + REFERENCE + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).uniq.freeze
+  PAGES = (["/", "/patterns/"] + REFERENCE + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).uniq.freeze
 
   # Titles in Liquid's sort_natural order (case-insensitive).
   def sorted_titles(patterns)
@@ -33,6 +35,10 @@ class SiteTest < Minitest::Test
 
   def by_title(title)
     PATTERNS.find { |p| p["title"] == title } || flunk("unknown pattern title #{title.inspect}")
+  end
+
+  def pattern_title(slug)
+    PATTERNS.find { |p| p["slug"] == slug }&.fetch("title") || flunk("unknown pattern slug #{slug.inspect}")
   end
 
   def stub?(title)
@@ -65,9 +71,51 @@ class SiteTest < Minitest::Test
     Nokogiri::HTML(File.read(file))
   end
 
-  def test_home_page_still_builds_with_minimal_mistakes
+  def test_home_page_uses_the_aim42_layout
     doc = page("/")
-    assert doc.at_css(".page__hero--overlay, .page__hero"), "home page lost its Minimal Mistakes hero"
+    assert_nil doc.at_css(".page__hero, .page__hero--overlay, .feature__wrapper, .masthead"), "Minimal Mistakes markup on /"
+    assert doc.at_css("header.site-header"), "aim42 header missing on /"
+    assert_equal [HOME["headline"]], doc.css("h1").map { |h| h.text.strip }
+    assert_equal ["How it works", "Get started", "Free and open"], doc.css("main h2").map { |h| h.text.strip }
+    assert_equal "Architecture Improvement Method | aim42", doc.at_css("title").text.strip
+    assert_equal plain(HOME["lede"]), doc.at_css("meta[name='description']")["content"]
+    assert_equal plain(HOME["lede"]), doc.at_css(".home-hero__lede").text.strip
+  end
+
+  def test_home_buttons_lead_to_phases_and_patterns
+    doc = page("/")
+    buttons = doc.css(".home-hero__actions a")
+    assert_equal ["#how-it-works", "/patterns/"], buttons.map { |a| a["href"] }
+    assert_equal ["How it works", "Browse #{PATTERNS.size} patterns"], buttons.map { |a| a.text.strip }
+    assert doc.at_css("h2#how-it-works"), "How it works heading missing"
+  end
+
+  def test_home_phase_cards_show_blurb_count_and_examples
+    cards = page("/").css(".home-phase-list .phase-card")
+    assert_equal PHASES, cards.map { |c| c["data-phase"] }
+    cards.each do |card|
+      key = card["data-phase"]
+      phase = PHASE_DATA[key]
+      count = PATTERNS.count { |p| p["phase"] == key }
+      assert_equal phase["title"], card.at_css("h3 a").text.strip
+      assert_equal phase["url"], card.at_css("h3 a")["href"]
+      assert_equal phase["blurb"], card.at_css(".home-phase__blurb").text.strip
+      examples = card.css(".home-examples a")
+      assert_equal HOME["examples"][key].map { |s| "/patterns/#{s}/" }, examples.map { |a| a["href"] }
+      assert_equal HOME["examples"][key].map { |s| pattern_title(s) }, examples.map { |a| a.text.strip }
+      assert_equal "All #{count} #{phase["title"].downcase} patterns", card.at_css(".home-phase__all a").text.strip
+    end
+  end
+
+  def test_home_get_started_and_contribution_links
+    doc = page("/")
+    steps = doc.css(".home-steps__item")
+    assert_equal HOME["get_started"].map { |s| s["text"] }, steps.map { |li| li.at_css(".home-steps__text").text.strip }
+    HOME["get_started"].zip(steps).each do |step, li|
+      assert_equal step["patterns"].map { |s| "/patterns/#{s}/" }, li.css(".home-steps__links a").map { |a| a["href"] }
+    end
+    assert doc.at_css(".home-start a[href='/getstarted']"), "link to the getting-started guide missing"
+    assert doc.at_css(".home-open a[href='/reference/how-to-add-a-pattern/']"), "Add a pattern link missing"
   end
 
   def test_existing_pages_still_build

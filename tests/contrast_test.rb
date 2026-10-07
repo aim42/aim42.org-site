@@ -32,6 +32,14 @@ class ContrastTest < Minitest::Test
     end
   end
 
+  # The home page shows phase names and links on the white page background too.
+  def test_phase_text_colors_are_readable_on_white
+    %w[analyze evaluate improve crosscutting].each do |phase|
+      ratio = contrast(token("phase-#{phase}-text"), "#ffffff")
+      assert ratio >= 4.5, "phase-#{phase}-text on white: #{ratio.round(2)}:1 is below 4.5:1"
+    end
+  end
+
   def test_body_text_is_readable_on_paper
     assert_contrast("brand-ink", "brand-paper", 7.0)
     assert_contrast("brand-muted-strong", "brand-paper", 4.5)

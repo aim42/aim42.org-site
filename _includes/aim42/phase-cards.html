@@ -1,0 +1,24 @@
+{% comment %}
+  phase-cards — the four phase cards on the home page (spec 3a §2).
+  Title, URL and description from _data/phases.yml; three examples per
+  phase from the home page's `examples:`; the count from site.patterns.
+{% endcomment %}
+<ul class="phase-list home-phase-list">
+  {% for entry in site.data.phases %}
+    {% assign key = entry[0] %}
+    {% assign phase = entry[1] %}
+    {% assign count = site.patterns | where: "phase", key | size %}
+  <li class="phase-card" data-phase="{{ key }}">
+    <h3><a href="{{ phase.url | relative_url }}">{{ phase.title }}</a></h3>
+    <p class="home-phase__blurb">{{ phase.blurb }}</p>
+    <ul class="home-examples">
+      {% for slug in page.examples[key] %}
+        {% capture url %}/patterns/{{ slug }}/{% endcapture %}
+        {% assign pattern = site.patterns | where: "url", url | first %}
+      <li><a href="{{ pattern.url | relative_url }}">{{ pattern.title | escape }}</a></li>
+      {% endfor %}
+    </ul>
+    <p class="home-phase__all"><a href="{{ phase.url | relative_url }}">All {{ count }} {{ phase.title | downcase }} patterns</a></p>
+  </li>
+  {% endfor %}
+</ul>

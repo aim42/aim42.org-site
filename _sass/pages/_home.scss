@@ -1,0 +1,186 @@
+// Home page (_layouts/home.html).
+// Spec: docs/superpowers/specs/2026-10-07-phase3a-homepage-design.md
+
+.home {
+  padding: 2rem 0 3rem;
+}
+
+.home-hero {
+  align-items: center;
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: $home-stack-width) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+.home-hero__text {
+  flex: 1 1 0;
+}
+
+// Anchored to .site-content to beat the global `.site-content h1` rule in
+// _content.scss (see the note in components/_section-hero.scss).
+.site-content .home-hero__title {
+  color: var(--brand-ink);
+  font-size: clamp(2rem, 4.2vw, #{$text-4xl});
+  margin: 0 0 1rem;
+}
+
+.home-hero__lede {
+  color: var(--brand-muted-strong);
+  font-size: $text-lg;
+  margin: 0 0 1.5rem;
+  max-width: 34em;
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.site-content .home-button {
+  align-items: center;
+  background: var(--brand-primary);
+  border: 2px solid var(--brand-primary);
+  border-radius: $radius-xs;
+  color: var(--brand-cream);
+  display: inline-flex;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--brand-primary-deep);
+    border-color: var(--brand-primary-deep);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--brand-primary);
+    outline-offset: 3px;
+  }
+}
+
+.site-content .home-button--ghost {
+  background: transparent;
+  color: var(--brand-primary);
+
+  &:hover {
+    background: var(--brand-primary-faint);
+    color: var(--brand-primary-deep);
+  }
+}
+
+.home-section {
+  margin-bottom: 3rem;
+}
+
+// Cards reuse .phase-list / .phase-card from pages/_patterns.scss.
+.home-phase-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @media (max-width: $home-edge-width) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .phase-card {
+    &[data-phase="analyze"] {
+      --cat-text: var(--phase-analyze-text);
+    }
+    &[data-phase="evaluate"] {
+      --cat-text: var(--phase-evaluate-text);
+    }
+    &[data-phase="improve"] {
+      --cat-text: var(--phase-improve-text);
+    }
+    &[data-phase="crosscutting"] {
+      --cat-text: var(--phase-crosscutting-text);
+    }
+  }
+
+  h3 {
+    font-size: $text-xl;
+    margin: 0 0 0.3rem;
+  }
+}
+
+.site-content .home-phase-list a {
+  color: var(--cat-text);
+}
+
+.home-examples {
+  list-style: none;
+  margin: 0.4rem 0;
+  padding: 0;
+}
+
+.home-phase__all {
+  font-weight: 600;
+}
+
+// 44px touch targets for every text link in the cards and steps.
+.home-phase-list h3 a,
+.home-examples a,
+.home-phase__all a,
+.home-steps__links a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+.home-steps {
+  counter-reset: step;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+
+  @media (max-width: $home-stack-width) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-steps__item {
+  background: var(--brand-paper);
+  border-radius: $radius-md;
+  counter-increment: step;
+  padding: 0.8rem 1rem;
+
+  &::before {
+    color: var(--brand-primary);
+    content: counter(step);
+    display: block;
+    font-family: $heading-font-family;
+    font-size: $text-2xl;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.home-open__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @media (max-width: $home-stack-width) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  > p {
+    background: var(--brand-paper);
+    border-radius: $radius-md;
+    margin: 0;
+    padding: 0.8rem 1rem;
+  }
+}
