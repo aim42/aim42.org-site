@@ -38,7 +38,7 @@ validate:
 	$(RUN) ruby tools/validate.rb
 
 unit:
-	$(RUN) bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb tests/meta_text_test.rb tests/migrate_converter_test.rb tests/migrate_source_test.rb
+	$(RUN) bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb tests/meta_text_test.rb tests/migrate_converter_test.rb tests/migrate_source_test.rb tests/migrate_run_test.rb
 
 migrate:
 	$(RUN) bundle exec ruby tools/migrate/run.rb
