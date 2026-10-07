@@ -64,6 +64,7 @@ module Aim42
           body = ""
         else
           intent = entry["intent"] || result.intent || index_intent(entry, notes) || lede_intent(body, notes)
+          body = drop_repeated_intent(body, intent, notes)
         end
         if intent.to_s.empty?
           notes << "no intent found: write one"
@@ -84,8 +85,10 @@ module Aim42
       def index_intent(entry, notes)
         text = @source.index_entry(entry["anchor"])
         return nil unless text
+        result = @converter.convert(text, self_url: "/patterns/#{entry["slug"]}/")
+        notes.concat(result.notes)
         notes << "intent taken from pattern-index.adoc"
-        one_line(@converter.convert(text, self_url: "/patterns/#{entry["slug"]}/").body)
+        one_line(result.body)
       end
 
       # Last resort: the first paragraph before the first heading.
@@ -129,8 +132,17 @@ module Aim42
         text.gsub(/\s*\n\s*/, " ").strip
       end
 
+      # The intent lives in front matter (spec §4): a body that opens with the
+      # same text loses that paragraph.
+      def drop_repeated_intent(body, intent, notes)
+        first, rest = body.split(/\n{2,}/, 2)
+        return body unless intent && first && one_line(first) == one_line(intent)
+        notes << "first paragraph repeated the intent; removed from the body"
+        rest.to_s
+      end
+
       def front_matter(hash)
-        lines = hash.map { |key, value| "#{key}: #{value.is_a?(Array) ? "[#{value.join(", ")}]" : scalar(value)}" }
+        lines = hash.map { |key, value| "#{key}: #{value.is_a?(Array) ? "[#{value.map { |v| scalar(v) }.join(", ")}]" : scalar(value)}" }
         "---\n#{lines.join("\n")}\n---\n"
       end
 

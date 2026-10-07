@@ -9,6 +9,11 @@ class MigrateRunTest < Minitest::Test
   MANIFEST = YAML.safe_load(File.read(File.join(ROOT, "tools", "migrate", "manifest.yml")))
   PILOT = MANIFEST["patterns"].select { |p| p["pilot"] }.map { |p| p["slug"] }
 
+  # Deliberate pilot-only headings: the pilot's improvement-backlog adds "Description";
+  # its strangler-approach titles the related notes "Related". The converter's
+  # "Notes on related patterns" (spec §4) is allowed everywhere.
+  PILOT_ONLY_HEADINGS = { "improvement-backlog" => ["description"], "strangler-approach" => ["related"] }.freeze
+
   # One full conversion into a scratch root, shared by the tests below.
   def self.converted
     @converted ||= begin
@@ -31,7 +36,7 @@ class MigrateRunTest < Minitest::Test
   end
 
   def headings(text)
-    text.scan(/^#+ (.+?)(?:\s+\{#[^}]*\})?$/).flatten.map(&:downcase)
+    text.sub(/\A---\n.*?\n---\n/m, "").scan(/^(#+) (.+?)(?:\s+\{#[^}]*\})?$/).map { |level, name| [level.size, name.downcase] }
   end
 
   def test_every_manifest_pattern_gets_a_file
@@ -94,9 +99,27 @@ class MigrateRunTest < Minitest::Test
         keys = %w[title phase categories status]
         assert_equal pilot_fm.slice(*keys), mine_fm.slice(*keys), "#{slug}: front matter"
         assert_equal pilot.scan(/!\[[^\]]*\]\(([^)]+)\)/), mine.scan(/!\[[^\]]*\]\(([^)]+)\)/), "#{slug}: images"
-        extra = headings(mine) - headings(pilot) - ["notes on related patterns"]
-        assert_empty extra, "#{slug}: headings the pilot does not have"
+        mine_headings = headings(mine).reject { |_, name| name == "notes on related patterns" }
+        pilot_headings = headings(pilot).reject { |_, name| PILOT_ONLY_HEADINGS.fetch(slug, []).include?(name) }
+        assert_equal pilot_headings, mine_headings, "#{slug}: section structure (level, name, order)"
+        assert_empty Array(pilot_fm["related"]) - Array(mine_fm["related"]), "#{slug}: related the converter misses"
       end
+    end
+  end
+
+  def test_a_body_that_only_repeats_the_intent_makes_a_stub
+    text = File.read(File.join(out, "_patterns", "widen-your-options.md"))
+    assert_includes text, "\nstatus: stub\n"
+    assert text.end_with?("---\n"), "stub body must be empty"
+  end
+
+  def test_converted_bodies_do_not_repeat_the_intent
+    Dir[File.join(out, "_patterns", "*.md")].each do |file|
+      next if PILOT.include?(File.basename(file, ".md"))
+      text = File.read(file)
+      intent = YAML.safe_load(text[/\A---\n.*?\n---\n/m])["intent"]
+      first = text.sub(/\A---\n.*?\n---\n/m, "").strip.split(/\n{2,}/).first.to_s.gsub(/\s*\n\s*/, " ")
+      refute_equal intent, first, File.basename(file)
     end
   end
 end
