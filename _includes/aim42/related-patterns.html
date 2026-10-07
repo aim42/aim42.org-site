@@ -20,8 +20,8 @@
         {% assign other_slug = other.url | split: "/" | last %}
         {% if other_slug == slug %}
           <li>
-            <a href="{{ other.url | relative_url }}">{{ other.title }}</a>{% if other.status == "stub" %} <span class="tag tag--stub">stub</span>{% endif %}
-            <p class="pattern-list__intent">{{ other.intent }}</p>
+            <a href="{{ other.url | relative_url }}">{{ other.title | escape }}</a>{% if other.status == "stub" %} <span class="tag tag--stub">stub</span>{% endif %}
+            <p class="pattern-list__intent">{{ other.intent | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
           </li>
         {% endif %}
       {% endfor %}

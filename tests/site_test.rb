@@ -2,6 +2,8 @@
 require "minitest/autorun"
 require "nokogiri"
 require "yaml"
+require "kramdown"
+require "kramdown-parser-gfm"
 require_relative "../tools/validate"
 
 ROOT = File.expand_path("..", __dir__)
@@ -19,6 +21,17 @@ class SiteTest < Minitest::Test
     patterns.map { |p| p["title"] }.sort { |a, b| a.casecmp(b) }
   end
 
+  # The intent as plain text: inline Markdown rendered like the site's
+  # kramdown settings (_config.yml), tags stripped, newlines removed.
+  def plain(markdown)
+    html = Kramdown::Document.new(markdown, input: "GFM", hard_wrap: false, smart_quotes: %w[lsquo rsquo ldquo rdquo]).to_html
+    Nokogiri::HTML.fragment(html).text.delete("\r\n").strip
+  end
+
+  def by_title(title)
+    PATTERNS.find { |p| p["title"] == title } || flunk("unknown pattern title #{title.inspect}")
+  end
+
   def stub?(title)
     PATTERNS.any? { |p| p["title"] == title && p["status"] == "stub" }
   end
@@ -29,6 +42,7 @@ class SiteTest < Minitest::Test
     items.each do |li|
       title = li.at_css(".pattern-list__title a").text.strip
       assert_equal stub?(title), !li.at_css(".tag--stub").nil?, "#{url}: stub badge wrong for #{title}"
+      assert_equal plain(by_title(title)["intent"]), li.at_css(".pattern-list__intent").text.strip, "#{url}: intent of #{title}"
     end
   end
   # Resolves a site URL ("/about", "/patterns/atam/") to its generated file.
@@ -164,5 +178,32 @@ class SiteTest < Minitest::Test
       end
     end
     assert page("/patterns/analyze/").at_css(".post-content h2"), "phase prose (Goals / How it works) missing"
+  end
+
+  def test_meta_description_is_the_plain_text_intent
+    PATTERNS.each do |p|
+      metas = page("/patterns/#{p["slug"]}/").css("meta[name='description']")
+      assert_equal 1, metas.size, "#{p["slug"]}: expected one meta description"
+      expected = plain(p["intent"])
+      content = metas.first["content"]
+      if expected.length > 160
+        assert content.end_with?("...") && expected.start_with?(content.chomp("...")), "#{p["slug"]}: truncated meta description #{content.inspect}"
+      else
+        assert_equal expected, content, "#{p["slug"]}: meta description"
+      end
+    end
+  end
+
+  def test_pattern_titles_and_intents_render_as_text
+    PATTERNS.each do |p|
+      doc = page("/patterns/#{p["slug"]}/")
+      assert_equal "#{p["title"]} | aim42", doc.at_css("title").text, "#{p["slug"]}: <title>"
+      assert_equal p["title"], doc.at_css("h1.section-hero__title").text.strip, "#{p["slug"]}: h1"
+      assert_equal plain(p["intent"]), doc.at_css(".pattern-meta p").text.strip, "#{p["slug"]}: intent"
+      doc.css(".pattern-related li").each do |li|
+        other = by_title(li.at_css("a").text.strip)
+        assert_equal plain(other["intent"]), li.at_css(".pattern-list__intent").text.strip, "#{p["slug"]}: related intent"
+      end
+    end
   end
 end

@@ -49,7 +49,7 @@
   <p class="section-hero__eyebrow">{{ include.eyebrow_label }}</p>
     {% endif %}
   {% endif %}
-  <h1 class="section-hero__title">{{ include.title }}</h1>
+  <h1 class="section-hero__title">{{ include.title | escape }}</h1>
   {% if include.lede and include.lede != "" %}<p class="section-hero__lede">{{ include.lede }}</p>{% endif %}
   {% if include.chips_html and include.chips_html != "" %}<div class="section-hero__chips">{{ include.chips_html }}</div>{% endif %}
   {% if include.meta and include.meta != "" %}<p class="section-hero__meta">{{ include.meta }}</p>{% endif %}

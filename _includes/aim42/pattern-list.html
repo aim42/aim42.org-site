@@ -7,11 +7,11 @@
   {% for pattern in items %}
     <li class="pattern-list__item">
       <p class="pattern-list__title">
-        <a href="{{ pattern.url | relative_url }}">{{ pattern.title }}</a>
+        <a href="{{ pattern.url | relative_url }}">{{ pattern.title | escape }}</a>
         {% if pattern.status == "stub" %}<span class="tag tag--stub">stub</span>{% endif %}
         {% unless include.phase %}<span class="tag">{{ site.data.phases[pattern.phase].title }}</span>{% endunless %}
       </p>
-      <p class="pattern-list__intent">{{ pattern.intent }}</p>
+      <p class="pattern-list__intent">{{ pattern.intent | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
     </li>
   {% endfor %}
 </ul>

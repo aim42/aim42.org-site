@@ -18,7 +18,7 @@ layout: aim42-base
 
     <div class="pattern-meta">
       <h2 class="pattern-meta__title">Intent</h2>
-      <p>{{ page.intent }}</p>
+      <p>{{ page.intent | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
     </div>
 
     <section class="post-content">

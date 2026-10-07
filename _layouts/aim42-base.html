@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+  {% comment %} intent and lede are inline Markdown; truncate the plain text, then escape for the attribute. {% endcomment %}
   {% assign description = page.intent | default: page.lede | default: site.description %}
-  <meta name="description" content="{{ description | strip_html | strip_newlines | truncate: 160 }}">
+  <meta name="description" content="{{ description | markdownify | strip_html | strip_newlines | strip | truncate: 160 | escape_once }}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
