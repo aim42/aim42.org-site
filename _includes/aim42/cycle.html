@@ -1,0 +1,41 @@
+{% comment %}
+  cycle — the aim42 cycle in the home page hero (spec 3a §5). Inline SVG so
+  the arcs link to the phase pages and take the phase colours from CSS.
+  Phase titles and URLs from _data/phases.yml; the short lines from the
+  home page's `cycle:` front matter. SVG elements use explicit closing tags
+  so HTML parsers (and the site tests) read the same tree as browsers.
+{% endcomment %}
+{% assign phases = site.data.phases %}
+<nav class="home-cycle" aria-label="aim42 phases">
+  <svg class="home-cycle__svg" viewBox="-80 -20 470 330" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="cycle-head-analyze" class="home-cycle__head home-cycle__head--analyze" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="2" markerHeight="2" orient="auto"><path d="M0,0 L10,5 L0,10 z"></path></marker>
+      <marker id="cycle-head-evaluate" class="home-cycle__head home-cycle__head--evaluate" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="2" markerHeight="2" orient="auto"><path d="M0,0 L10,5 L0,10 z"></path></marker>
+      <marker id="cycle-head-improve" class="home-cycle__head home-cycle__head--improve" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="2" markerHeight="2" orient="auto"><path d="M0,0 L10,5 L0,10 z"></path></marker>
+    </defs>
+
+    <a class="home-cycle__link" data-phase="analyze" href="{{ phases.analyze.url | relative_url }}" aria-label="{{ phases.analyze.title }}: {{ page.cycle.analyze | escape }}">
+      <path class="home-cycle__arc" d="M59.1 97.5 A105 105 0 0 1 228.0 79.8" marker-end="url(#cycle-head-analyze)" aria-hidden="true"></path>
+      <text class="home-cycle__name" x="40" y="22" text-anchor="end" aria-hidden="true">{{ phases.analyze.title }}</text>
+      <text class="home-cycle__note" x="40" y="40" text-anchor="end" aria-hidden="true">{{ page.cycle.analyze | escape }}</text>
+    </a>
+
+    <a class="home-cycle__link" data-phase="evaluate" href="{{ phases.evaluate.url | relative_url }}" aria-label="{{ phases.evaluate.title }}: {{ page.cycle.evaluate | escape }}">
+      <path class="home-cycle__arc" d="M240.9 97.5 A105 105 0 0 1 171.8 252.7" marker-end="url(#cycle-head-evaluate)" aria-hidden="true"></path>
+      <text class="home-cycle__name" x="282" y="205" aria-hidden="true">{{ phases.evaluate.title }}</text>
+      <text class="home-cycle__note" x="282" y="223" aria-hidden="true">{{ page.cycle.evaluate | escape }}</text>
+    </a>
+
+    <a class="home-cycle__link" data-phase="improve" href="{{ phases.improve.url | relative_url }}" aria-label="{{ phases.improve.title }}: {{ page.cycle.improve | escape }}">
+      <path class="home-cycle__arc" d="M150 255 A105 105 0 0 1 50.1 117.6" marker-end="url(#cycle-head-improve)" aria-hidden="true"></path>
+      <text class="home-cycle__name" x="40" y="262" text-anchor="end" aria-hidden="true">{{ phases.improve.title }}</text>
+      <text class="home-cycle__note" x="40" y="280" text-anchor="end" aria-hidden="true">{{ page.cycle.improve | escape }}</text>
+    </a>
+
+    <a class="home-cycle__link" data-phase="crosscutting" href="{{ phases.crosscutting.url | relative_url }}" aria-label="{{ phases.crosscutting.title }}: {{ page.cycle.crosscutting | escape }}">
+      <circle class="home-cycle__hub" cx="150" cy="150" r="76" aria-hidden="true"></circle>
+      <text class="home-cycle__name" x="150" y="152" text-anchor="middle" aria-hidden="true">{{ phases.crosscutting.title }}</text>
+      <text class="home-cycle__note" x="150" y="172" text-anchor="middle" aria-hidden="true">{{ page.cycle.crosscutting | escape }}</text>
+    </a>
+  </svg>
+</nav>

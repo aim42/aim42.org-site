@@ -90,6 +90,18 @@ class SiteTest < Minitest::Test
     assert doc.at_css("h2#how-it-works"), "How it works heading missing"
   end
 
+  def test_home_cycle_links_to_the_four_phases
+    nav = page("/").at_css(".home-hero nav.home-cycle[aria-label='aim42 phases']")
+    assert nav, "cycle navigation missing from the hero"
+    links = nav.css("a")
+    assert_equal PHASES.map { |k| PHASE_DATA[k]["url"] }, links.map { |a| a["href"] }
+    assert_equal PHASES.map { |k| "#{PHASE_DATA[k]["title"]}: #{HOME["cycle"][k]}" }, links.map { |a| a["aria-label"] }
+    assert_equal PHASES.map { |k| PHASE_DATA[k]["title"] }, links.map { |a| a.at_css(".home-cycle__name").text.strip }
+    links.each do |a|
+      assert a.css("path, circle, text").all? { |e| e["aria-hidden"] == "true" }, "#{a["href"]}: shapes and labels must be aria-hidden"
+    end
+  end
+
   def test_home_phase_cards_show_blurb_count_and_examples
     cards = page("/").css(".home-phase-list .phase-card")
     assert_equal PHASES, cards.map { |c| c["data-phase"] }

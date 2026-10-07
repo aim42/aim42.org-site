@@ -184,3 +184,94 @@
     padding: 0.8rem 1rem;
   }
 }
+
+// Cycle graphic (_includes/aim42/cycle.html). Phase names use 22 user units;
+// at the 320px phone width (viewBox 470 wide) that renders at 15px.
+.home-cycle {
+  flex: 0 1 380px;
+
+  @media (max-width: $home-stack-width) {
+    align-self: center;
+    flex-basis: auto;
+    max-width: 320px;
+    width: 100%;
+  }
+}
+
+.home-cycle__svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.home-cycle__link {
+  &[data-phase="analyze"] {
+    --cat: var(--phase-analyze);
+    --cat-text: var(--phase-analyze-text);
+  }
+  &[data-phase="evaluate"] {
+    --cat: var(--phase-evaluate);
+    --cat-text: var(--phase-evaluate-text);
+  }
+  &[data-phase="improve"] {
+    --cat: var(--phase-improve);
+    --cat-text: var(--phase-improve-text);
+  }
+  &[data-phase="crosscutting"] {
+    --cat: var(--phase-crosscutting);
+    --cat-text: var(--phase-crosscutting-text);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--brand-primary);
+    outline-offset: 2px;
+  }
+
+  &:hover .home-cycle__arc,
+  &:focus-visible .home-cycle__arc {
+    stroke-width: 32;
+  }
+
+  &:hover .home-cycle__hub,
+  &:focus-visible .home-cycle__hub {
+    fill: var(--brand-primary-faint);
+  }
+}
+
+.home-cycle__arc {
+  fill: none;
+  stroke: var(--cat);
+  stroke-width: 26;
+}
+
+.home-cycle__head--analyze path {
+  fill: var(--phase-analyze);
+}
+.home-cycle__head--evaluate path {
+  fill: var(--phase-evaluate);
+}
+.home-cycle__head--improve path {
+  fill: var(--phase-improve);
+}
+
+.home-cycle__hub {
+  fill: var(--brand-paper);
+  stroke: var(--cat);
+  stroke-width: 2;
+}
+
+.home-cycle__name {
+  fill: var(--cat-text);
+  font-family: $heading-font-family;
+  font-size: 22px;
+}
+
+.home-cycle__note {
+  fill: var(--brand-muted-strong);
+  font-family: $font-family;
+  font-size: 12px;
+
+  @media (max-width: $home-edge-width) {
+    display: none;
+  }
+}
