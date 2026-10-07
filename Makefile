@@ -2,7 +2,7 @@
 SITE_PORT ?= 4242
 RUN = docker compose run --rm --no-deps jekyll
 
-.PHONY: help build lock dev down clean site-test
+.PHONY: help build lock dev down clean site-test validate unit check
 
 help:
 	@printf "make build      build the Jekyll image (rerun after Gemfile.lock changes)\n"
@@ -32,3 +32,11 @@ clean:
 
 site-test:
 	$(RUN) sh -c "bundle exec jekyll build --quiet && bundle exec ruby tests/site_test.rb"
+
+validate:
+	$(RUN) ruby tools/validate.rb
+
+unit:
+	$(RUN) bundle exec ruby tests/validate_test.rb
+
+check: validate unit site-test
