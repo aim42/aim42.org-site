@@ -1,7 +1,6 @@
 # Checks on the generated site. Run after `bundle exec jekyll build`.
 require "minitest/autorun"
 require "nokogiri"
-require "yaml"
 
 SITE_DIR = File.expand_path("../_site", __dir__)
 
@@ -83,11 +82,6 @@ class SiteTest < Minitest::Test
 
   PILOT_PATTERNS = %w[stakeholder-interview stakeholder-analysis atam strangler-approach assertions improvement-backlog].freeze
 
-  # Phase overview pages (/patterns/evaluate/ etc.) arrive in Task 6; until
-  # then links to them cannot resolve. Task 6 removes this constant and the
-  # skip that uses it.
-  PHASE_PAGE_URLS = YAML.load_file(File.expand_path("../_data/phases.yml", __dir__)).values.map { |p| p["url"] }.freeze
-
   def test_all_pilot_patterns_are_generated
     PILOT_PATTERNS.each { |slug| page("/patterns/#{slug}/") }
   end
@@ -106,12 +100,47 @@ class SiteTest < Minitest::Test
       page("/patterns/#{slug}/").css(".post-content a[href^='/']").each do |a|
         href = a["href"]
         next unless href.start_with?("/glossary", "/patterns/")
-        next if PHASE_PAGE_URLS.include?(href) # Task 6 removes this skip
         assert site_file(href), "#{slug}: dead internal link #{href}"
         if href.include?("#")
           anchor = href.split("#").last
           assert page(href.split("#").first).at_css("##{anchor}"), "#{slug}: anchor ##{anchor} missing in #{href}"
         end
+      end
+    end
+  end
+
+  def test_index_lists_every_pattern_with_phase_cards
+    doc = page("/patterns/")
+    titles = doc.css(".pattern-list__title a").map { |a| a.text.strip }
+    assert_equal ["ATAM", "Assertions", "Improvement Backlog", "Stakeholder Analysis", "Stakeholder Interview", "Strangler Approach"], titles
+    assert_equal 4, doc.css(".phase-card").size
+    assert doc.at_css(".phase-card[data-phase='analyze'] a[href='/patterns/analyze/']")
+    stub_item = doc.css(".pattern-list__item").find { |li| li.text.include?("Assertions") }
+    assert stub_item.at_css(".tag--stub"), "stub badge missing on the index"
+  end
+
+  def test_phase_page_lists_only_its_patterns
+    doc = page("/patterns/analyze/")
+    assert_equal "analyze", doc.at_css("header.section-hero")["data-section"]
+    titles = doc.css(".pattern-list__title a").map { |a| a.text.strip }
+    assert_equal ["ATAM", "Stakeholder Analysis", "Stakeholder Interview"], titles
+    assert doc.at_css(".post-content h2"), "phase prose (Goals / How it works) missing"
+  end
+
+  def test_every_phase_page_exists
+    %w[analyze evaluate improve crosscutting].each do |phase|
+      doc = page("/patterns/#{phase}/")
+      assert_equal phase, doc.at_css("header.section-hero")["data-section"]
+    end
+  end
+
+  def test_internal_links_on_new_pages_resolve
+    urls = ["/patterns/", "/glossary/"] + %w[analyze evaluate improve crosscutting].map { |p| "/patterns/#{p}/" } + PILOT_PATTERNS.map { |s| "/patterns/#{s}/" }
+    urls.each do |url|
+      page(url).css("a[href^='/']").each do |a|
+        href = a["href"]
+        next if href.start_with?("/images/") || href.start_with?("/assets/")
+        assert site_file(href), "#{url}: dead internal link #{href}"
       end
     end
   end
