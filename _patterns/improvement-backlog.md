@@ -22,7 +22,7 @@ strategies.
 
 Collect all known issues and problems within a system or its associated
 processes. Make the issues comparable by evaluating each one, usually using
-economical units like money or time. Align carefully with the *issue list*.
+economical units like money or time. Align carefully with the [issue list](/patterns/issue-list/).
 
 ## Content
 
@@ -32,5 +32,5 @@ economical units like money or time. Align carefully with the *issue list*.
 
 ## Representation and tools
 
-Try to use a documentation approach similar to the *issue list*. It should be
+Try to use a documentation approach similar to the [issue list](/patterns/issue-list/). It should be
 as easy as possible to link issues to improvements and vice versa.

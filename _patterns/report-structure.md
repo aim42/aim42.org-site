@@ -1,12 +1,12 @@
 ---
 title: Report Structure
 phase: crosscutting
-intent: A generic structure for written audit or review reports, usually following an [\[Analyze\]](/patterns/analyze/) phase. See [Slide or Write](/patterns/slide-or-write/).
+intent: A generic structure for written audit or review reports, usually following an [Analyze](/patterns/analyze/) phase.
 related: [slide-or-write, traceability]
 status: complete
 ---
 
-When you examine (audit, review) systems, as proposed in [\[Analyze\]](/patterns/analyze/), you often need to prepare a report for the management in charge.
+When you examine (audit, review) systems, as proposed in [Analyze](/patterns/analyze/), you often need to prepare a report for the management in charge.
 
 This practice proposes a generic report structure you might use in preparing such documents.
 
@@ -27,5 +27,5 @@ This practice proposes a generic report structure you might use in preparing suc
 
 ## Notes on related patterns
 
-* [Slide or Write](/patterns/slide-or-write/) to decide, wether you really need to prepare a written report.
+* [Slide or Write](/patterns/slide-or-write/) to decide, whether you really need to prepare a written report.
 * [Traceability](/patterns/traceability/), to ensure you have proper sources for all important issues.

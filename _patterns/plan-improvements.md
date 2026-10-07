@@ -5,4 +5,4 @@ intent: Conduct long- and short-term planning of improvement activities. Balance
 status: complete
 ---
 
-Consists of long-term decisions (concerning [\[improve-approaches-overview\]](/patterns/improve/#improve-approaches-overview)) and short-term planning.
+Consists of long-term decisions (concerning [Improvement Approaches (Overview)](/patterns/improve/#improve-approaches-overview)) and short-term planning.

@@ -23,4 +23,4 @@ As always: documentation is only valuable if it can be found easily, which makes
 
 For every entry in this issue list we need to [Estimate Issue Cost](/patterns/estimate-issue-cost/), an estimation of the cost of this issued in any business-related unit.
 
-In case you already have identified or developed [opportunities for improvement](/patterns/collect-opportunities-for-improvement/) adressing this issue, links to the corresponding improvements (remedies, tactics, strategies, changes) in the [Improvement Backlog](/patterns/improvement-backlog/) are neccesssary.
+In case you already have identified or developed [opportunities for improvement](/patterns/collect-opportunities-for-improvement/) addressing this issue, links to the corresponding improvements (remedies, tactics, strategies, changes) in the [Improvement Backlog](/patterns/improvement-backlog/) are necessary.

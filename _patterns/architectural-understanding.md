@@ -1,7 +1,7 @@
 ---
 title: Architectural Understanding
 phase: crosscutting
-intent: Document relevant structures, concepts, decisions, interfaces etc. of the [system](/glossary/#system) to *locate* issues, risks and opportunities for improvement. See [\[arc42\]](/reference/bibliography/#arc42) and [View-Based Understanding](/patterns/view-based-understanding/).
+intent: Document relevant structures, concepts, decisions, interfaces etc. of the [system](/glossary/#system) to *locate* issues, risks and opportunities for improvement.
 related: [view-based-understanding]
 status: complete
 ---
@@ -24,7 +24,7 @@ Collect and organize architectural information about the [system](/glossary/#sys
 
 Architectural understanding can be gained in small increments, so there is no need to reserve long times just for documentation.
 
-Understanding should come from various sources - see all the [\[Analyze\]](/patterns/analyze/) practices.
+Understanding should come from various sources - see all the [Analyze](/patterns/analyze/) practices.
 
 ## Notes on related patterns
 

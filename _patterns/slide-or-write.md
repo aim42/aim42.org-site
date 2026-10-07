@@ -1,10 +1,12 @@
 ---
 title: Slide or Write
 phase: crosscutting
-intent: In every review you will face the question of how to deliver and present the results to the customer. Will you write a long and formal report document or is a set of presentation slides adequate and sufficient?
+intent: Consider format and structure of the review report early.
 related: [report-structure, traceability]
 status: complete
 ---
+
+In every review you will face the question of how to deliver and present the results to the customer. Will you write a long and formal report document or is a set of presentation slides adequate and sufficient?
 
 * Consider format and structure of the review report early.
 * Ensure that you share a common vision with your customer about the preparation of results .
