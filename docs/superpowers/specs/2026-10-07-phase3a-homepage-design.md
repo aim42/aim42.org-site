@@ -30,8 +30,8 @@ Top to bottom:
    Buttons "How it works" (`#how-it-works`) and "Browse N patterns" (`/patterns/`,
    N counted at build time).
 2. **How it works** (`id="how-it-works"`): four phase cards in the phase colours
-   (variant X). Each card: phase name linking to the phase page, the phase page's
-   `lede`, three example patterns as links, and "All N <phase> patterns".
+   (variant X). Each card: phase name linking to the phase page, the phase
+   description, three example patterns as links, and "All N <phase> patterns".
 3. **Get started:** three numbered steps, each with links to patterns, and a link to
    `/getstarted`.
 4. **Free and open:** two boxes. Free, open source, no vendor or tool lock-in,
@@ -74,8 +74,9 @@ The body holds the two Free and open paragraphs.
 
 Derived at build time, never stored on the home page:
 
-- phase title, URL and description: from the phase page (`/patterns/<phase>/`, its
-  `title` and `lede`);
+- phase title, URL and description: from `_data/phases.yml` (`title`, `url`,
+  `blurb`), which the `/patterns/` index already uses; the blurbs are the same texts
+  as the phase pages' `lede`;
 - pattern counts: `site.patterns` filtered by `phase`;
 - example titles: from the pattern's `title`.
 
