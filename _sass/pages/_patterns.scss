@@ -1,0 +1,115 @@
+// Pattern pages, pattern lists and phase cards.
+
+.pattern-meta {
+  margin: 0 0 1.2rem;
+}
+
+.pattern-meta__title {
+  color: var(--brand-muted-strong);
+  font-size: $text-sm;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+}
+
+.pattern-meta p {
+  font-size: $text-lg;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.stub-notice {
+  background: var(--brand-primary-faint);
+  border: 1px solid var(--brand-primary-soft);
+  border-left: 6px solid var(--phase-crosscutting);
+  border-radius: $radius-sm;
+  margin: 0 0 1.2rem;
+  padding: 0.75rem 1rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.tag--stub {
+  background: var(--phase-crosscutting);
+  color: var(--brand-ink);
+}
+
+.pattern-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.pattern-list__item {
+  border-bottom: 1px solid var(--approach-impact-border-color);
+  padding: 0.7rem 0;
+}
+
+.pattern-list__title {
+  font-weight: 600;
+  margin: 0;
+}
+
+.pattern-list__intent {
+  color: var(--muted-text-1);
+  margin: 0.2rem 0 0;
+}
+
+.pattern-related {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border-bottom: 1px solid var(--approach-impact-border-color);
+    padding: 0.5rem 0;
+  }
+}
+
+.pattern-edit {
+  color: var(--brand-muted);
+  font-size: $text-sm;
+  margin-top: 2rem;
+}
+
+.phase-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.phase-card {
+  --cat: var(--brand-primary);
+  background: var(--brand-paper);
+  border-left: 10px solid var(--cat);
+  border-radius: $radius-md;
+  padding: 0.8rem 1rem;
+
+  &[data-phase="analyze"] {
+    --cat: var(--phase-analyze);
+  }
+  &[data-phase="evaluate"] {
+    --cat: var(--phase-evaluate);
+  }
+  &[data-phase="improve"] {
+    --cat: var(--phase-improve);
+  }
+  &[data-phase="crosscutting"] {
+    --cat: var(--phase-crosscutting);
+  }
+
+  h2 {
+    font-size: $text-xl;
+    margin: 0 0 0.3rem;
+  }
+
+  p {
+    color: var(--muted-text-1);
+    margin: 0;
+  }
+}

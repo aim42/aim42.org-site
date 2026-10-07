@@ -1,0 +1,491 @@
+.site-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $heading-font-family;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 1.5em 0 0.5em;
+    color: $site-title-color;
+
+    // Anchor jumps -- in-page TOCs, the heading permalinks below, shared
+    // links -- otherwise land the heading flush against the viewport top,
+    // where the sticky site header covers it. navigation.js keeps
+    // --site-header-height in sync with the measured header; the fallback
+    // matches its desktop size. scroll-margin (on the target) rather than
+    // scroll-padding (on the root), so that focusing the header's own
+    // search field does not scroll the page.
+    &[id] {
+      scroll-margin-top: calc(var(--site-header-height, 4rem) + 1rem);
+    }
+
+    a {
+      color: inherit;
+    }
+    .header-link {
+      display: inline-block;
+      margin-left: 0.2em;
+      color: $link-color;
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+    }
+    // Keyboard users have to see what they focused, and the copy
+    // confirmation has to stay visible after the pointer moves on.
+    &:hover .header-link,
+    .header-link:focus-visible,
+    .header-link.is-copied {
+      opacity: 1;
+    }
+    .header-link.is-copied {
+      color: var(--approaches-text-color);
+    }
+  }
+
+  h1 {
+    font-size: clamp(2rem, calc(4.5vw + 1rem), #{$text-4xl});
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  h2 {
+    font-size: $text-3xl; // 2.37rem
+    color: $link-color;
+    border-bottom: 1px solid rgba($link-color, 0.12);
+    padding-bottom: 0.25rem;
+  }
+
+  // Intent / Mechanism / Applicability blocks. Each is a label + one paragraph.
+  // The paragraph is its div's last child, so `p:last-child { margin-bottom: 0 }`
+  // zeroes the gap below it; combined with the label's zero top margin (below)
+  // the next label would otherwise hug the preceding paragraph. Separate the
+  // blocks here and keep the label tight to its own paragraph.
+  .approach-meta {
+    margin-top: 1.75em;
+
+    p {
+      margin-top: 0;
+    }
+  }
+
+  // Approach-meta labels are semantically H2 (sibling sections of the page)
+  // but visually small inline metadata. Override the section-heading
+  // treatment for this specific role.
+  .approach-meta__title {
+    border-bottom: none;
+    color: $brand-muted;
+    font-family: $font-family;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.35em;
+    padding-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: $text-2xl; // 1.78rem
+  }
+
+  h4 {
+    font-size: $text-xl; // 1.45rem
+  }
+
+  h5 {
+    font-size: $text-lg; // 1.2rem
+  }
+
+  h6 {
+    font-size: $text-sm; // 0.875rem
+    font-weight: 400;
+    font-family: $font-family; // drop the serif for tiny caps-style labels
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba($site-title-color, 0.7);
+  }
+
+  blockquote {
+    background-color: var(--brand-violet-faint);
+    border: 1px solid var(--brand-violet-18);
+    border-radius: $radius-xs;
+    color: $blockquote-color;
+    padding: 0.5em 1em;
+    p:first-child {
+      margin-top: 0;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    td,
+    th {
+      padding: 0.5em 1em;
+      border: 1px solid $border-color;
+      text-align: left;
+    }
+  }
+
+  p,
+  ol,
+  ul,
+  dl,
+  table,
+  blockquote,
+  kbd,
+  pre,
+  samp {
+    margin: 1.5em 0;
+    max-width: 75ch;
+  }
+
+  // WCAG 1.4.1: links in text blocks must be distinguishable without relying on color alone
+  p a,
+  li a,
+  blockquote a,
+  td a,
+  th a {
+    text-decoration: underline;
+  }
+
+  ul,
+  ol {
+    padding-left: 1em;
+    ul,
+    ol {
+      margin: 0;
+    }
+  }
+
+  ul,
+  ol {
+    &.inline {
+      @extend .clearfix;
+      list-style: none;
+      padding-left: 0;
+      li {
+        float: left;
+        margin-right: 1em;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 2em;
+  }
+
+  p,
+  ol,
+  ul,
+  dl {
+    line-height: 1.6;
+  }
+
+  ol,
+  ul {
+    list-style-position: outside;
+  }
+
+  code {
+    font-family: $code-font-family;
+    font-size: $code-font-size;
+    margin: 0 2px;
+    padding: 0 5px;
+    border: 1px solid var(--code-border);
+    background-color: rgba(#ddd, 0.1);
+    border-radius: 3px;
+  }
+
+  pre {
+    border: 1px solid var(--code-border-strong);
+    background-color: rgba(#ddd, 0.1);
+    overflow: auto;
+    padding: 10px 15px;
+    line-height: 1em;
+    border-radius: 3px;
+    code {
+      margin: 0;
+      padding: 0;
+      word-wrap: normal;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+  }
+
+  .article-wrapper {
+    @extend .clearfix;
+    // Was `$margin auto` (50px top + bottom) which produced an awkward gap
+    // between the sticky header and the section-hero on every page. Working
+    // reference, not a marketing page — content starts close to the header.
+    margin: 1rem auto 2rem;
+    max-width: 980px;
+  }
+
+  article {
+    width: 100%;
+    float: left;
+    header {
+      margin-bottom: $margin;
+      .panel {
+        padding: 1em 1.5em;
+        background-color: var(--brand-violet-faint);
+        border: 1px solid var(--brand-violet-18);
+        h1 {
+          margin: 0;
+          &,
+          a {
+            color: $brand-violet-deep;
+          }
+        }
+        ul.meta,
+        ul.tags {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          li {
+            display: inline-block;
+            color: rgba($text-color, 0.5);
+            font-size: 0.95em;
+            margin-right: 0.5em;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+        ul.meta {
+          float: right;
+        }
+        .header-taxonomy-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.6rem 1rem;
+          margin-top: 0.35rem;
+
+          ul.tags {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+        }
+        .header-category-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          margin-left: auto;
+          padding: 0.38rem 0.74rem;
+          border-radius: $radius-pill;
+          border: 1px solid var(--brand-violet-18);
+          background: var(--brand-cream-74);
+          color: inherit;
+          font-size: 0.95em;
+          line-height: 1;
+          text-decoration: none;
+          transition:
+            background-color 0.18s ease,
+            border-color 0.18s ease,
+            transform 0.18s ease;
+
+          .header-category-link-label {
+            opacity: 0.72;
+            font-weight: 600;
+          }
+
+          .header-category-link-value {
+            font-weight: 700;
+          }
+
+          &:hover,
+          &:focus-visible {
+            background: var(--brand-cream);
+            border-color: var(--brand-violet-24);
+            text-decoration: none;
+            transform: translateY(-1px);
+          }
+        }
+        &.approaches-header {
+          .header-category-link {
+            color: var(--approaches-text-color);
+            border-color: rgba(27, 94, 32, 0.24);
+          }
+        }
+        &.requirements-header {
+          .header-category-link {
+            color: var(--req-text-color);
+            border-color: rgba(0, 89, 135, 0.24);
+          }
+        }
+        &.quality-header {
+          .header-category-link {
+            color: var(--brand-violet-deep);
+            border-color: var(--brand-violet-24);
+          }
+        }
+        &.standard-header {
+          .header-category-link {
+            color: var(--standard-text-color);
+            border-color: rgba(175, 132, 31, 0.28);
+          }
+        }
+        &.dimension-header {
+          .header-category-link {
+            color: var(--dimension-text-color);
+            border-color: rgba(200, 230, 245, 0.35);
+          }
+        }
+        ul.icons {
+          margin: 0;
+          padding: 0;
+          li {
+            margin-right: 0;
+          }
+        }
+
+        &.standard-header {
+          background-color: var(--standard-background-color);
+          h1 {
+            &,
+            a {
+              color: var(--standard-text-color);
+            }
+          }
+        }
+        &.dimension-header {
+          background-color: var(--dimension-background-color);
+          h1 {
+            &,
+            a {
+              color: var(--dimension-text-color);
+            }
+          }
+        }
+        &.aliases-header {
+          background-color: var(--brand-blue-soft);
+          border-color: rgba(0, 184, 245, 0.18);
+          h1 {
+            &,
+            a {
+              color: var(--brand-blue-text);
+            }
+          }
+        }
+      }
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    footer {
+      margin-top: $margin;
+    }
+    .footnotes {
+      font-size: 0.9em;
+    }
+  }
+
+  .comments {
+    margin-bottom: $margin;
+  }
+
+  .pagination {
+    margin: $margin 0;
+    padding: 0 10%;
+    text-align: center;
+    .btn:first-child {
+      margin-right: 1em;
+    }
+  }
+
+  // Compact listing used by /articles/. article-header.html renders each
+  // entry with heading_level="h2" so the document outline stays sound, so
+  // these rules must not be h1-only -- they were, which left every entry
+  // with the full display-heading size and its 1.5em margins inside a
+  // bordered panel, i.e. a column of tall, near-empty boxes.
+  #search-results {
+    .article-wrapper {
+      margin: 0;
+    }
+    article header {
+      margin-bottom: 0;
+      .panel {
+        padding: 0.8rem 0.2rem;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+
+        h1,
+        h2 {
+          margin: 0;
+          font-size: 1.2rem;
+          line-height: 1.35;
+          letter-spacing: 0;
+
+          a {
+            display: inline-block;
+            text-decoration: none;
+
+            &:hover,
+            &:focus-visible {
+              text-decoration: underline;
+              text-underline-offset: 0.15em;
+            }
+          }
+
+          a.tag {
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+  }
+
+  // Frame for the dimension-buttons include used in articles
+  .dimension-grid-frame {
+    border: 2px solid #a9d7f3;
+    border-radius: $radius-lg;
+    padding: 1rem 1.4rem 0.4rem;
+    background: #eef8ff;
+    margin: 1.2rem 0;
+  }
+
+  // Synonym "Also known as" section styling
+  .also-known-as {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--brand-violet-faint);
+    border: 1px solid var(--brand-violet-18);
+    border-radius: $radius-xs;
+    font-size: 0.95rem;
+
+    strong {
+      color: $text-color;
+      font-weight: 600;
+    }
+
+    .synonym-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      margin: 0.1rem 0.25rem;
+      background-color: var(--brand-cream);
+      border: 1px solid var(--brand-violet-18);
+      color: var(--synonym-text-color);
+      border-radius: 3px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+}

@@ -52,3 +52,25 @@ about:
         url: "/license"
 
 
+
+# Header of the aim42 (Q42-style) layouts — _includes/aim42/site-header.html.
+# Navigation of the whole site is redesigned in phase 3; this is the pilot's.
+primary:
+  - label: Patterns
+    url: /patterns/
+  - label: Analyze
+    url: /patterns/analyze/
+  - label: Evaluate
+    url: /patterns/evaluate/
+  - label: Improve
+    url: /patterns/improve/
+  - label: Cross-cutting
+    url: /patterns/crosscutting/
+
+secondary:
+  - label: Glossary
+    url: /glossary/
+  - label: Get started
+    url: /getstarted
+  - label: About
+    url: /about

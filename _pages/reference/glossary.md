@@ -1,0 +1,64 @@
+---
+title: Glossary
+layout: aim42-page
+section: reference
+permalink: /glossary/
+lede: Terms used throughout the aim42 patterns and practices.
+---
+
+### aim42 {#aim42}
+
+Architecture Improvement Method.
+
+### ATAM {#atam}
+
+Architecture Tradeoff Analysis Method, described in detail by Clements et al.
+(*Evaluating Software Architectures*, 2001) and online by the SEI; briefly
+described as the aim42 pattern [ATAM](/patterns/atam/).
+
+### Failure {#failure}
+
+Loss of functionality under defined (*stated*) conditions.
+
+### Issue {#issue}
+
+A problem, risk, symptom or piece of technical debt found in the system or its
+associated processes. Issues are collected during *analyze*, valued during
+*evaluate* and addressed by remedies during *improve*.
+
+### Remedy {#remedy}
+
+A measure (practice, approach, change) that solves or mitigates one or more
+issues.
+
+### SEI {#sei}
+
+Software Engineering Institute at Carnegie Mellon University. A federally
+funded research and development institute, sponsored by the US Department of
+Defense.
+
+### System {#system}
+
+The system to be improved — often a single software system, but it might be a
+complex combination of hardware, software and organizational aspects.
+*Systems* in our sense consist of:
+
+* software, usually with corresponding data structures and data
+* required infrastructure software, like operating system, database,
+  UI frameworks, middleware etc.
+* required hardware infrastructure, like processors, storage, network, routers etc.
+* associated development processes, like requirements engineering,
+  architecture, implementation, version and configuration management,
+  build and deployment
+* associated administration and operation processes or procedures
+* associated organizational processes, like budgeting, HR, controlling,
+  management etc.
+* associated external systems, like data or event providers or consumers
+
+and maybe even more.
+
+### Value {#value}
+
+(of an improvement or remedy) Approximately −1 times the cost of the associated
+issue(s). If an improvement solves only part of an issue, value estimation
+becomes much harder.

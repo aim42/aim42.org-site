@@ -1,0 +1,188 @@
+// section-hero — one hero language across every page that announces a
+// section or a single item.
+//
+// Paper card with a 10px coloured rail on the left and an 8% wash of the
+// section colour into paper. The rail colour comes from --cat, set per
+// section via data-section. Colour tokens match the home-directory rails
+// (see _homenew.scss) so the homepage acts as a legend for the
+// destination section's identity colour.
+//
+// The rail is a full-height ::before pinned to the left edge; `overflow:
+// hidden` on the card clips it to the corner curve, so it fits the radius
+// exactly at any size — the same technique as the clipped accent rects in
+// the domain-language SVG (_includes/svg/q42-domain-language-v2026.svg).
+// Giving the rail its own border-radius instead cannot work: CSS scales
+// adjacent corner radii down to the rail's width, so the curve lands
+// shallower than the card's.
+//
+// The same component shape applies on index pages and on single-item
+// detail pages — detail pages get an eyebrow label ("Quality",
+// "Requirement", …) and a chips row beneath the title.
+
+.section-hero {
+  --cat: var(--brand-violet);
+  // Fallback for browsers without color-mix; modern browsers see the tinted wash.
+  background: var(--brand-paper);
+  background: color-mix(in oklab, var(--brand-paper) 92%, var(--cat) 8%);
+  border: 1px solid var(--brand-violet-18);
+  border-radius: $radius-md;
+  margin: 0 0 1.2rem;
+  overflow: hidden;
+  padding: 0.75rem 1.4rem 0.7rem 2rem;
+  position: relative;
+
+  &::before {
+    background: var(--cat);
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 10px;
+  }
+
+  // Phase heroes carry the phase colour on the rail and a 14% wash.
+  &[data-section="analyze"],
+  &[data-section="evaluate"],
+  &[data-section="improve"] {
+    background: var(--brand-paper);
+    background: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
+  }
+  &[data-section="analyze"] {
+    --cat: var(--phase-analyze);
+  }
+  &[data-section="evaluate"] {
+    --cat: var(--phase-evaluate);
+  }
+  &[data-section="improve"] {
+    --cat: var(--phase-improve);
+  }
+  &[data-section="crosscutting"] {
+    --cat: var(--phase-crosscutting);
+  }
+  // Index and reference pages (glossary, introduction) use the site colour.
+  &[data-section="patterns"],
+  &[data-section="reference"] {
+    --cat: var(--brand-primary);
+  }
+}
+
+// Specificity note: inner element selectors are scoped under
+// `.site-content .section-hero` so they compile to
+// `.site-content .section-hero .section-hero__title` etc. (specificity
+// 0,3,0). This is required to beat the global `.site-content h1` rule in
+// _content.scss (0,1,1) which would otherwise force the larger display
+// size and font-weight: 700 onto the hero h1. The single-class chain
+// `.section-hero .section-hero__title` (0,2,0) wasn't reliably winning
+// in every browser/cascade order, so we anchor to `.site-content`.
+.site-content .section-hero {
+  .section-hero__eyebrow {
+    color: var(--brand-muted-strong); // plain muted fails AA on the wash
+
+    font-family: $font-family;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .section-hero__eyebrow-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 120ms ease-out;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--brand-violet);
+    }
+  }
+
+  .section-hero__title {
+    color: var(--brand-ink);
+    font-family: $heading-font-family;
+    // The page H1 must outrank any h2/h3 in category-card titles below it.
+    // Previous compression cut this to 1.55rem and inverted the hierarchy.
+    font-size: clamp(1.6rem, 2.4vw, 1.95rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin: 0 0 0.3rem;
+  }
+
+  .section-hero__lede {
+    color: var(--brand-muted-strong); // plain muted fails AA on the wash
+
+    font-size: $text-base;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 78ch;
+  }
+
+  .section-hero__chips {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.45rem;
+    margin: 0.55rem 0 0;
+
+    // Override the global .tag styling so chips read uniformly across all
+    // section variants. Section identity is carried by the rail + tint,
+    // not by chip colour — keeps the chip row a calm navigation aid.
+    a,
+    .tag,
+    a.tag,
+    .category {
+      background: rgba(var(--brand-violet-rgb), 0.06);
+      border: 1px solid rgba(var(--brand-violet-rgb), 0.18);
+      border-radius: $radius-pill;
+      color: var(--brand-ink);
+      display: inline-block;
+      font-family: $font-family;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.3;
+      padding: 0.12rem 0.55rem;
+      text-decoration: none;
+      transition:
+        background 120ms ease-out,
+        border-color 120ms ease-out;
+
+      &:hover,
+      &:focus-visible {
+        background: rgba(var(--brand-violet-rgb), 0.12);
+        border-color: rgba(var(--brand-violet-rgb), 0.32);
+      }
+    }
+  }
+
+  .section-hero__meta {
+    color: var(--brand-muted);
+    font-size: 0.85rem;
+    margin: 0.4rem 0 0;
+
+    b {
+      color: var(--brand-ink);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--brand-violet);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+  }
+}
+
+@media (max-width: $nav-narrow-width) {
+  .section-hero {
+    border-radius: $radius-sm;
+    padding: 0.65rem 1rem 0.6rem 1.7rem;
+
+    &::before {
+      width: 8px;
+    }
+  }
+}

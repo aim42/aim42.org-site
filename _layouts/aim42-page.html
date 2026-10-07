@@ -1,0 +1,17 @@
+---
+layout: aim42-base
+---
+<div class="article-wrapper">
+  <article>
+    {% include aim42/section-hero.html
+      section=page.section
+      title=page.title
+      eyebrow_label=page.eyebrow_label
+      eyebrow_href=page.eyebrow_href
+      lede=page.lede
+      meta=page.meta %}
+    <section class="post-content">
+      {{ content }}
+    </section>
+  </article>
+</div>

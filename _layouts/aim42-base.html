@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  {% assign description = page.intent | default: page.lede | default: site.description %}
+  <meta name="description" content="{{ description | strip_html | strip_newlines | truncate: 160 }}">
+  <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  <meta name="theme-color" content="#2b3a4a">
+  <link rel="preload" href="{{ '/assets/fonts/atkinson/AtkinsonHyperlegibleNext-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/libre-caslon/LibreCaslonText-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link href="{{ '/assets/css/aim42.css' | relative_url }}" rel="stylesheet">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+{% include aim42/site-header.html %}
+<div class="site-container">
+  <main id="main-content" class="site-content" tabindex="-1">
+    {{ content }}
+  </main>
+</div>
+{% include aim42/footer.html %}
+<script defer src="{{ '/assets/js/aim42.js' | relative_url }}"></script>
+</body>
+</html>

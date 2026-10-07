@@ -37,6 +37,6 @@ validate:
 	$(RUN) ruby tools/validate.rb
 
 unit:
-	$(RUN) bundle exec ruby tests/validate_test.rb
+	$(RUN) bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb
 
 check: validate unit site-test
