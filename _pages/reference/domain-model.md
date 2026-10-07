@@ -6,7 +6,7 @@ permalink: /reference/domain-model/
 
 Within the systematic improvement we consider and manipulate several typical kinds of information, **entities**.
 
-For a more pragmatic description, please see the [\[Common Terminology\]](/reference/introduction/#common-terminology) section
+For a more pragmatic description, please see the [Common Terminology](/reference/introduction/#common-terminology) section
 
 ![aim42 domain terminology - detailed](/images/patterns/aim42-domain-model.png)
 {: #figure-domain-model}
@@ -15,7 +15,7 @@ For a more pragmatic description, please see the [\[Common Terminology\]](/refer
 
 <tbody>
 <tr>
-<td><strong>Cause</strong></td>
+<td colspan="2"><strong>Cause</strong></td>
 <td>Root cause of an Issue, in contrast to a symptom.</td>
 </tr>
 <tr>
@@ -29,11 +29,11 @@ For a more pragmatic description, please see the [\[Common Terminology\]](/refer
 <td>one or many Issues.</td>
 </tr>
 <tr>
-<td><strong>Configuration</strong></td>
+<td colspan="2"><strong>Configuration</strong></td>
 <td></td>
 </tr>
 <tr>
-<td><strong>Constraints</strong></td>
+<td colspan="2"><strong>Constraints</strong></td>
 <td>Technical or organizational constraints, restraining management, design, implementation or operation of the System.</td>
 </tr>
 <tr>
@@ -42,21 +42,21 @@ For a more pragmatic description, please see the [\[Common Terminology\]](/refer
 <td>the System, associated Processes or Organization.</td>
 </tr>
 <tr>
-<td><strong>Documentation</strong></td>
+<td colspan="2"><strong>Documentation</strong></td>
 <td>Any (hopefully written) information about
 the systems, its goals, requirements, architecture, implementation, operation or management.</td>
 </tr>
 <tr>
-<td><strong>Goals</strong></td>
+<td colspan="2"><strong>Goals</strong></td>
 <td>What does the Organization or Stakeholder expect from
 the System, why does the System exist anyway.</td>
 </tr>
 <tr>
-<td><strong>Hardware</strong></td>
+<td colspan="2"><strong>Hardware</strong></td>
 <td>Structure and kind of hardware required to develop, test and operate the System.</td>
 </tr>
 <tr>
-<td><strong>Improvement</strong></td>
+<td colspan="2"><strong>Improvement</strong></td>
 <td>Any remedy, opportunity, tactic or strategy to improve the System by resolving one or several Issues.</td>
 </tr>
 <tr>
@@ -77,7 +77,7 @@ the System, why does the System exist anyway.</td>
 <td>(partially or complete) one or several Issues</td>
 </tr>
 <tr>
-<td><strong>Issue</strong></td>
+<td colspan="2"><strong>Issue</strong></td>
 <td>Any problem, error, fault, risk, suboptimal situation or their causes within the
 System, Processes or Organization related to it (e.g. management, operational, development, administrative or organizational activities).</td>
 </tr>
@@ -92,7 +92,7 @@ System, Processes or Organization related to it (e.g. management, operational, d
 <td>one or several Improvements.</td>
 </tr>
 <tr>
-<td><strong>Organization</strong></td>
+<td colspan="2"><strong>Organization</strong></td>
 <td>The organization or entity responsible or owning the System.</td>
 </tr>
 <tr>
@@ -101,7 +101,7 @@ System, Processes or Organization related to it (e.g. management, operational, d
 <td>Issues.</td>
 </tr>
 <tr>
-<td><strong>Process</strong></td>
+<td colspan="2"><strong>Process</strong></td>
 <td>Processes, conventions or activities for developing, maintaining, operating or managing the System.</td>
 </tr>
 <tr>
@@ -110,13 +110,13 @@ System, Processes or Organization related to it (e.g. management, operational, d
 <td>Issues.</td>
 </tr>
 <tr>
-<td><strong>Risk</strong></td>
+<td colspan="2"><strong>Risk</strong></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>EarlyWarning</td>
-<td>Indicator that the Risk is occuring and turning into a problem.</td>
+<td>Indicator that the Risk is occurring and turning into a problem.</td>
 </tr>
 <tr>
 <td></td>
@@ -124,7 +124,7 @@ System, Processes or Organization related to it (e.g. management, operational, d
 <td>(inherits from) Issue, but not occurred yet.</td>
 </tr>
 <tr>
-<td><strong>Software</strong></td>
+<td colspan="2"><strong>Software</strong></td>
 <td>All source code and configuration that make up the System under improvement. Hopefully stored in version-control.</td>
 </tr>
 <tr>
@@ -133,7 +133,7 @@ System, Processes or Organization related to it (e.g. management, operational, d
 <td>Issue, but not occurred yet.</td>
 </tr>
 <tr>
-<td><strong>Stakeholder</strong></td>
+<td colspan="2"><strong>Stakeholder</strong></td>
 <td>People or roles interested or participating in the System or any of its associated Processes.</td>
 </tr>
 <tr>
@@ -148,7 +148,7 @@ System, Processes or Organization related to it (e.g. management, operational, d
   know about existing problems and opportunities for improvements.</td>
 </tr>
 <tr>
-<td><strong>System</strong></td>
+<td colspan="2"><strong>System</strong></td>
 <td>The system under improvement, consisting of Software, Hardware and Documentation.</td>
 </tr>
 <tr>

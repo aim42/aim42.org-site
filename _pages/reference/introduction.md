@@ -6,7 +6,7 @@ permalink: /reference/introduction/
 
 ## Overview
 
-aim42 organizes software improvement in three major phases ([\[Analyze\]](/patterns/analyze/), [\[Evaluate\]](/patterns/evaluate/) and [\[Improve\]](/patterns/improve/)), build around some [crosscutting](/patterns/crosscutting/) activities.
+aim42 organizes software improvement in three major phases ([Analyze](/patterns/analyze/), [Evaluate](/patterns/evaluate/) and [Improve](/patterns/improve/)), build around some [crosscutting](/patterns/crosscutting/) activities.
 
 ![Three Phases of aim42](/images/patterns/aim42-phases.png)
 
@@ -44,7 +44,7 @@ How expensive is this change?</td>
 </tr>
 <tr>
 <td>Interview stakeholders</td>
-<td>Estimate in intervalls</td>
+<td>Estimate in intervals</td>
 <td>Improve (technical) concepts</td>
 </tr>
 <tr>
@@ -58,27 +58,27 @@ How expensive is this change?</td>
 <td></td>
 </tr>
 <tr>
-<td>
+<td colspan="3">
 <strong>Crosscutting</strong><br />
 Manage issues, improvement and their relationships</td>
 </tr>
 <tr>
-<td>Manage issues (risks, problems, symptoms, root-causes)</td>
+<td colspan="3">Manage issues (risks, problems, symptoms, root-causes)</td>
 </tr>
 <tr>
-<td>Manage improvements</td>
+<td colspan="3">Manage improvements</td>
 </tr>
 <tr>
-<td>Manage the (m:n) relationships between issues and improvements</td>
+<td colspan="3">Manage the (m:n) relationships between issues and improvements</td>
 </tr>
 <tr>
-<td>Plan improvements, interleaved with to day-to-day activities</td>
+<td colspan="3">Plan improvements, interleaved with to day-to-day activities</td>
 </tr>
 <tr>
-<td>Verify improvements (check if improvements resolved appropriate issues)</td>
+<td colspan="3">Verify improvements (check if improvements resolved appropriate issues)</td>
 </tr>
 <tr>
-<td></td>
+<td colspan="3"></td>
 </tr>
 </tbody>
 </table>
@@ -152,9 +152,9 @@ aim42 works in a phased iterative manner:
 ![Three Phases of aim42](/images/patterns/aim42-phases.png)
 {: #figure-aim-phases}
 
-1.  [\[Analyze\]](/patterns/analyze/): collect *issues*: problems, risks, deficiencies and technical debt within your system and your development process. Focus on problems in this phase, not on potential solution approaches. In addition, develop (and document) an understanding of internal structures, concepts and architectural approaches.
-2.  [\[Evaluate\]](/patterns/evaluate/): determine the "value" of issues and their solutions (*improvements*)
-3.  [\[Improve\]](/patterns/improve/): systematically improve code and structures, reduce technical debt, remove waste and optimize.
+1.  [Analyze](/patterns/analyze/): collect *issues*: problems, risks, deficiencies and technical debt within your system and your development process. Focus on problems in this phase, not on potential solution approaches. In addition, develop (and document) an understanding of internal structures, concepts and architectural approaches.
+2.  [Evaluate](/patterns/evaluate/): determine the "value" of issues and their solutions (*improvements*)
+3.  [Improve](/patterns/improve/): systematically improve code and structures, reduce technical debt, remove waste and optimize.
 
 These three phases are performed iteratively - as explained [below](/reference/introduction/#iterative-approach). Several [cross-cutting practices and patterns](/patterns/crosscutting/) should be applied in all phases, for example documenting results, [Collect Opportunities for Improvement](/patterns/collect-opportunities-for-improvement/) or long- and short-term planning activities.
 
@@ -172,7 +172,7 @@ aim42 relies on a common terminology, a small set of fundamental concepts.
 | **Cost (of improvement)** | The cost (in monetary units) of the improvement, remedy, tactic or strategy. |
 | **Risk** | *Potential* problem. Improvements can change associated risks for the better or the worse, even create new risks. |
 
-See also the more detailed [\[Domain Model\]](/reference/domain-model/) (not required for the casual reader)
+See also the more detailed [Domain Model](/reference/domain-model/) (not required for the casual reader)
 
 ### Iterative Approach   {#iterative-approach}
 
@@ -186,7 +186,7 @@ Within each phase, you collect both issues and opportunities for improvement, as
 Issues and improvements need to be
 
 * related to each other: No idea of improvement without an existing issue - as we do not want to optimize "because we can".
-* evaluated in some business-compatible unit (e. g. Euro, $) as described above. See [\[Evaluate\]](/patterns/evaluate/).
+* evaluated in some business-compatible unit (e. g. Euro, $) as described above. See [Evaluate](/patterns/evaluate/).
 
 ## Patterns and Practices Provide No Guarantee
 

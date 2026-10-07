@@ -23,7 +23,7 @@ lede: aim42 collects proven practices and patterns to analyze, evaluate and impr
 {% endfor %}
 </ul>
 
-<p class="section-hero__meta"><b>{{ total }}</b> patterns and practices, of which <b>{{ stubs }}</b> are stubs waiting for contributors. This is the pilot of the migrated method reference; the complete reference follows.</p>
+<p class="section-hero__meta"><b>{{ total }}</b> patterns and practices, of which <b>{{ stubs }}</b> are stubs waiting for contributors. New here? Read the <a href="/reference/introduction/">introduction</a> first.</p>
 
 ## All patterns, A–Z
 

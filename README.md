@@ -16,6 +16,8 @@ Requirements: [Docker](https://www.docker.com/). No local Ruby needed.
 
 ## Adding or editing a pattern
 
+This section is also published at <https://aim42.org/reference/how-to-add-a-pattern/>.
+
 Patterns live in `_patterns/<slug>.md`, one file each; the filename is the URL:
 `_patterns/stakeholder-interview.md` → `/patterns/stakeholder-interview/`.
 

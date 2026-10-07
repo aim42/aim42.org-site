@@ -70,6 +70,12 @@ primary:
 secondary:
   - label: Glossary
     url: /glossary/
+  - label: Introduction
+    url: /reference/introduction/
+  - label: Bibliography
+    url: /reference/bibliography/
+  - label: Add a pattern
+    url: /reference/how-to-add-a-pattern/
   - label: Get started
     url: /getstarted
   - label: About

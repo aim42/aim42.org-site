@@ -8,7 +8,7 @@ For a current and complete overview, please see the [contributor page](https://g
 
 * Gernot Starke (innoQ Fellow, project founder): setup, patterns, practices, maintenance.
 * Alex Heusingfeld (innoQ): hero-of-the-build, Travis-CI integration, numerous discussions. Started the idea of a distinct *user guide*…
-* Peter Hruschka (Atlantic Systems Guild): reviews + comments, especially to the intricacies of the [\[Domain-Model\]](/reference/domain-model/).
+* Peter Hruschka (Atlantic Systems Guild): reviews + comments, especially to the intricacies of the [Domain Model](/reference/domain-model/).
 * Christine Koppelt (innoQ): improvement-patterns
 * Michael Mahlberg (Consulting Guild): patterns and practices.
 * Burkhard Neppert (innoQ): review, method
