@@ -8,7 +8,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    asciidoctor (2.0.26)
     colorator (1.1.0)
     concurrent-ruby (1.1.10)
     em-websocket (0.5.3)
@@ -115,7 +114,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  asciidoctor (~> 2.0)
   jekyll-include-cache
   jemoji
   liquid (>= 4.0.4)

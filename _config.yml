@@ -98,7 +98,6 @@ exclude:
   - tools
   - tests
   - docs
-  - _import
 keep_files:
   - .git
 encoding: "utf-8"

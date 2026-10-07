@@ -2,7 +2,7 @@
 SITE_PORT ?= 4242
 RUN = docker compose run --rm --no-deps jekyll
 
-.PHONY: help build lock dev down clean site-test validate unit check migrate
+.PHONY: help build lock dev down clean site-test validate unit check
 
 help:
 	@printf "make build      build the Jekyll image (rerun after Gemfile.lock changes)\n"
@@ -11,7 +11,6 @@ help:
 	@printf "make down       stop the dev container\n"
 	@printf "make clean      remove containers, cache volumes and _site\n"
 	@printf "make site-test  build the site and run tests/site_test.rb\n"
-	@printf "make migrate    convert the imported AsciiDoc (tools/migrate/run.rb)\n"
 
 build:
 	docker compose build jekyll
@@ -38,9 +37,6 @@ validate:
 	$(RUN) ruby tools/validate.rb
 
 unit:
-	$(RUN) bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb tests/meta_text_test.rb tests/migrate_converter_test.rb tests/migrate_source_test.rb tests/migrate_run_test.rb tests/migrate_section_ids_test.rb
-
-migrate:
-	$(RUN) bundle exec ruby tools/migrate/run.rb
+	$(RUN) bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb tests/meta_text_test.rb
 
 check: validate unit site-test
