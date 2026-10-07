@@ -112,7 +112,7 @@ class SiteTest < Minitest::Test
   def test_index_lists_every_pattern_with_phase_cards
     doc = page("/patterns/")
     titles = doc.css(".pattern-list__title a").map { |a| a.text.strip }
-    assert_equal ["ATAM", "Assertions", "Improvement Backlog", "Stakeholder Analysis", "Stakeholder Interview", "Strangler Approach"], titles
+    assert_equal ["Assertions", "ATAM", "Improvement Backlog", "Stakeholder Analysis", "Stakeholder Interview", "Strangler Approach"], titles
     assert_equal 4, doc.css(".phase-card").size
     assert doc.at_css(".phase-card[data-phase='analyze'] a[href='/patterns/analyze/']")
     stub_item = doc.css(".pattern-list__item").find { |li| li.text.include?("Assertions") }

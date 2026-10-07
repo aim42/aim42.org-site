@@ -1,4 +1,4 @@
-{% assign items = site.patterns | sort: "title" %}
+{% assign items = site.patterns | sort_natural: "title" %}
 {% if include.phase %}
   {% assign items = items | where: "phase", include.phase %}
 {% endif %}
