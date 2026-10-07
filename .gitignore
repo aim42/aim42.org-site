@@ -5,3 +5,4 @@ _pages/.DS_Store
 .DS_Store
 .idea
 .jekyll-cache
+tools/migrate/out/

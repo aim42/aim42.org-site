@@ -17,3 +17,8 @@ group :test do
   gem "minitest"
   gem "nokogiri"
 end
+
+# One-off AsciiDoc conversion (tools/migrate/); removed after phase 2.
+group :migration do
+  gem "asciidoctor", "~> 2.0"
+end
