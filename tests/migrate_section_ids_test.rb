@@ -65,9 +65,21 @@ class MigrateSectionIdsTest < Minitest::Test
     assert self.class.result.notes.any? { |n| n.include?("_intent") }
   end
 
+  # "===== References" is the last line (no newline) of these two pattern files;
+  # Asciidoctor then reports the next included file as its source.
+  def test_a_heading_on_the_last_line_of_a_file_stays_with_its_pattern
+    assert_equal "/patterns/interface-segregation-principle/", map["_references_22"]
+    assert_equal "/patterns/manage-complex-client-dependencies-with-facade/", map["_references_24"]
+  end
+
+  # Spec §6: the chapter was rewritten for the Markdown workflow (ruling R37).
+  def test_the_how_to_chapter_maps_to_the_rewritten_page
+    assert_equal "/reference/how-to-add-a-pattern/", map["_how_to_add_a_new_pattern_or_practice"]
+  end
+
   def test_sections_of_dropped_chapters_are_left_out
     %w[_about_aim42 _about_this_documentation _organizational_stuff _license
-       _how_to_add_a_new_pattern_or_practice _pattern_index].each do |id|
+       _pattern_index].each do |id|
       refute map.key?(id), "#{id} should be left out"
       assert self.class.result.left_out.any? { |left, _| left == id }, "#{id} not reported"
     end

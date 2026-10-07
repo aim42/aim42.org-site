@@ -14,6 +14,13 @@ extra_anchors:
   quality-scenario-diagram: /patterns/capture-quality-requirements/
   issues-and-improvements: /patterns/crosscutting/#issues-and-improvements
 
+# Hand-made pages that replace a whole chapter of the old book. Only the book's
+# generated section ids (#_glossary …) are mapped to them (section_ids.rb); unlike
+# `pages`, their files add no anchors (howto's [[the-exact-name]] is an example).
+section_pages:
+  appendices/glossary.adoc: /glossary/
+  appendices/howto-add-new-pattern.adoc: /reference/how-to-add-a-pattern/
+
 pages:
   - title: Analyze
     url: /patterns/analyze/
@@ -47,10 +54,6 @@ pages:
     url: /reference/bibliography/
     source: appendices/bibliography.adoc
     target: _pages/reference/bibliography.md
-  # Built from _data/glossary.yml, not converted; listed for its anchors and section ids.
-  - title: Glossary
-    url: /glossary/
-    source: appendices/glossary.adoc
   - title: Organizational Scenarios
     url: /reference/organizational-scenarios/
     source: organizational-scenarios.adoc

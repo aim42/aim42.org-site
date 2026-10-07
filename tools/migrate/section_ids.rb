@@ -9,9 +9,13 @@
 #   result.notes    # sections mapped to a page without a fragment, and why
 #   result.left_out # [[id, file], …] sections of chapters the site dropped
 #
-# Target page: the section's own pattern file (whole-file manifest pattern),
-# else the nearest ancestor whose [[Anchor]] the anchor table resolves, else
-# the manifest page whose source is the section's file or includes it.
+# Target page: walking from the section up through its ancestors, the first
+# section that either has an [[Anchor]] the anchor table resolves (its page) or
+# comes from a whole-file manifest pattern (that pattern); the anchor is checked
+# first, but the section itself never has one. Failing both, the manifest page
+# (`pages` or `section_pages`) whose source is the section's file or includes
+# it. A source location counts
+# only if its line holds the heading (see source_file).
 # Fragment: the id kramdown gives the heading with the same title on that page;
 # without such a heading the section maps to the page itself.
 require "asciidoctor"
@@ -46,7 +50,8 @@ module Aim42
           anchors: anchors,
           patterns: manifest["patterns"].reject { |p| p["source"].include?("#") }
                                         .to_h { |p| [p["source"], "/patterns/#{p["slug"]}/"] },
-          pages: manifest["pages"].flat_map { |p| Array(p["source"]).map { |s| [s, p["url"]] } }.to_h,
+          pages: manifest["pages"].flat_map { |p| Array(p["source"]).map { |s| [s, p["url"]] } }.to_h
+                                  .merge(manifest.fetch("section_pages", {})),
           parents: include_parents(asciidoc)
         }
         files = markdown_files(site_root)
@@ -54,7 +59,7 @@ module Aim42
         old_ids(load(asciidoc)).each do |section, id|
           page = target_page(section, context)
           unless page
-            result.left_out << [id, relative(section.source_location.file, asciidoc)]
+            result.left_out << [id, relative(section_file(section).to_s, asciidoc)]
             next
           end
           result.map[id] = url(section, id, page, files[page], result.notes)
@@ -97,17 +102,38 @@ module Aim42
           if (id = node.attributes["id"]) && (entry = context[:anchors].lookup(id))
             return entry.url.split("#", 2).first
           end
-          pattern = context[:patterns][relative(node.source_location.file, context[:root])]
+          file = source_file(node)
+          pattern = file && context[:patterns][relative(file, context[:root])]
           return pattern if pattern
           node = node.parent
         end
-        file = section.source_location.file
+        file = section_file(section)
         while file
           page = context[:pages][relative(file, context[:root])]
           return page if page
           file = context[:parents][file]
         end
         nil
+      end
+
+      # The file of the section, or of its nearest ancestor with a trusted location.
+      def section_file(section)
+        node = section
+        node = node.parent until !node.is_a?(Asciidoctor::Section) || source_file(node)
+        node.is_a?(Asciidoctor::Section) ? source_file(node) : nil
+      end
+
+      # The section's source file, if the line Asciidoctor names holds its heading.
+      # A heading on the last line of a file without a newline ("===== References"
+      # ending interface-segregation-principle.adoc) is reported with the next
+      # included file instead.
+      def source_file(section)
+        location = section.source_location
+        return nil unless location&.file && File.file?(location.file)
+        lines = (@lines ||= {})[location.file] ||= File.readlines(location.file, encoding: "UTF-8")
+        heading = lines[location.lineno - 1].to_s.strip
+        raw = section.instance_variable_get(:@title).to_s.strip
+        heading.match?(/\A=+\s/) && heading.sub(/\A=+\s+/, "") == raw ? location.file : nil
       end
 
       def url(section, id, page, file, notes)
