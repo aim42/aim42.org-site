@@ -53,7 +53,8 @@ Markdown file on GitHub. One repository, one build.
 3. **Re-skin and cut-over.** Existing pages onto the Q42 layouts, a redesigned home page
    (added 2026-10-07 by the project owner), navigation, redirect shim on
    `aim42.github.io`, `aim42/aim42` archived. Split into 3a (look and feel: home page,
-   navigation, other pages; home page spec `2026-10-07-phase3a-homepage-design.md`)
+   navigation, other pages, search; specs `2026-10-07-phase3a-homepage-design.md`,
+   `2026-10-07-phase3a-navigation-pages-design.md`, `2026-10-07-phase3a-search-design.md`)
    and 3b (cut-over: deploy, redirects, archiving).
 
 Each phase gets its own implementation plan.
