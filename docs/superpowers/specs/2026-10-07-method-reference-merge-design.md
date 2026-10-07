@@ -36,7 +36,7 @@ Markdown file on GitHub. One repository, one build.
 
 - The interactive graph (Q42-style D3 view). The content model is designed so it
   can be added later from front matter alone.
-- Hosting: GitHub Pages vs. Netlify. The build must work on both.
+- Hosting target: GitHub Pages vs. Netlify. Either way the build runs in GitHub Actions.
 - Navigation and content structure of the marketing pages (except the home page,
   whose redesign is part of phase 3).
 - The final palette values.
@@ -74,7 +74,9 @@ aim42.org-site/
 ```
 
 - Build: Jekyll only in phases 1–3. No Node step until the graph arrives.
-- Gemfile moves from `minimal-mistakes-jekyll` to Q42's `github-pages` set.
+- The site is built by GitHub Actions (decided 2026-10-07). The Gemfile keeps an explicit
+  gem list instead of the `github-pages` gem set, whose safe mode would disable the site's
+  plugins (`_plugins/`: build-time pattern validation, meta-description filter).
 - Docker dev setup (`make dev`) copied from Q42.
 - History: `git subtree add --prefix=_import <aim42/aim42>` keeps blame; files then
   move to their final places in ordinary commits.
