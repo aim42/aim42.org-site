@@ -92,6 +92,12 @@ exclude:
   - README
   - tmp
   - /zz-resources
+  - Makefile
+  - docker-compose.yml
+  - _docker
+  - tools
+  - tests
+  - docs
 keep_files:
   - .git
 encoding: "utf-8"

@@ -64,10 +64,11 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    liquid (4.0.3)
+    liquid (4.0.4)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.5.3)
     mercenary (0.4.0)
     minimal-mistakes-jekyll (4.24.0)
       jekyll (>= 3.7, < 5.0)
@@ -115,8 +116,12 @@ PLATFORMS
 DEPENDENCIES
   jekyll-include-cache
   jemoji
+  liquid (>= 4.0.4)
+  logger (< 1.6)
   minimal-mistakes-jekyll
+  minitest
+  nokogiri
   webrick
 
 BUNDLED WITH
-   2.3.23
+   2.5.23
