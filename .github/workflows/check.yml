@@ -1,0 +1,31 @@
+name: Check site
+
+on:
+  push:
+    branches: [master, merge-method-reference]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3" # keep in sync with _docker/jekyll/Dockerfile
+          bundler-cache: true
+
+      - name: Validate pattern front matter
+        run: ruby tools/validate.rb
+
+      - name: Unit tests
+        run: bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb
+
+      - name: Build site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Site tests
+        run: bundle exec ruby tests/site_test.rb
