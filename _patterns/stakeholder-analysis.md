@@ -2,7 +2,7 @@
 title: Stakeholder Analysis
 phase: analyze
 intent: Ensure that all concerned parties are addressed.
-# phase 2 restores: stakeholder-specific-communication
+related: [stakeholder-specific-communication]
 status: complete
 ---
 

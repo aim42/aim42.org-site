@@ -2,8 +2,7 @@
 title: Stakeholder Interview
 phase: analyze
 intent: Learn from the people who know or care about the system and everything around it.
-related: [stakeholder-analysis]
-# phase 2 restores: questionnaire, pre-interview-questionnaire, stakeholder-specific-communication
+related: [stakeholder-analysis, questionnaire, pre-interview-questionnaire, stakeholder-specific-communication]
 status: complete
 ---
 
@@ -24,8 +23,8 @@ experts.
 Plan the interview dates at least 5–10 days in advance, choose a quiet
 location, make sure nobody can overhear your interviews.
 
-If possible, send out a stakeholder- or role-specific *pre-interview
-questionnaire* some days in advance.
+If possible, send out a stakeholder- or role-specific [pre-interview
+questionnaire](/patterns/pre-interview-questionnaire/) some days in advance.
 
 Ensure a no-stress and no-fear situation. Never have top managers or
 supervisors present during interviews of their subordinates. Explain your

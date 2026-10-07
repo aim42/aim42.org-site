@@ -29,7 +29,7 @@ While tools like AspectJ provide easy ways to instrument Java code and Ruby’s 
 
 ## Experiences
 
-> **Warning:** even if used cautiously, the instrumentation of the system under design can entail heavy performance penalties (on execution time, space used, bandwith etc.) so always make sure that there is a quick way to switch back to the original non-instrumented version.
+> **Warning:** even if used cautiously, the instrumentation of the system under design can entail heavy performance penalties (on execution time, space used, bandwidth etc.) so always make sure that there is a quick way to switch back to the original non-instrumented version.
 
 ## Applicability
 

@@ -26,7 +26,7 @@ status: complete
 Use qualitative analysis to support in the following situations:
 
 * You need to analyze which specific quality requirements are at risk and which will most likely be met by the system.
-* You have a variety of different stakeholders or groups which can all impose quality requiements - but have not yet agreed on a common set of such requirements.
+* You have a variety of different stakeholders or groups which can all impose quality requirements - but have not yet agreed on a common set of such requirements.
 * A current and understandable collection of specific quality requirements for the system is missing.
 
 ## Also Known As

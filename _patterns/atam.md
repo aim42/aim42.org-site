@@ -2,7 +2,7 @@
 title: ATAM
 phase: analyze
 intent: Apply the ATAM method to evaluate the software architecture regarding its compliance with quality goals.
-# phase 2 restores: qualitative-analysis, capture-quality-requirements
+related: [qualitative-analysis, capture-quality-requirements]
 status: complete
 ---
 

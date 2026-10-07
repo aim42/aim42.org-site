@@ -18,7 +18,7 @@ Therefore: what people mean/want/need is sometimes not what they say. This is du
 
 or other reasons.
 
-NLP (neurolingustic programming) practitioners recommend to *mirror* things you hear to your communication partners in your own words. This might facilitate understanding.
+NLP (neurolinguistic programming) practitioners recommend to *mirror* things you hear to your communication partners in your own words. This might facilitate understanding.
 
 When you have the slightest impression or indicator that your communication partner does not or can not communicate their real intention, you should clarify by giving explicit [Fast Feedback](/patterns/fast-feedback/).
 

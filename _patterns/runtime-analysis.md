@@ -10,7 +10,7 @@ status: complete
 
 * Ask stakeholders about *perceived* runtime behavior - double check by measuring.
 * Measure runtime behavior, e.g. with profilers, logs or traces.
-* Inspect *artifacts* created at runtime (e.g. logfiles, protocolls, system-traces) for information about problems, root-causes or system behavior.
+* Inspect *artifacts* created at runtime (e.g. logfiles, protocols, system-traces) for information about problems, root-causes or system behavior.
 * Perform [Infrastructure Analysis](/patterns/infrastructure-analysis/) to learn about the technical infrastructure.
 
 WARNING

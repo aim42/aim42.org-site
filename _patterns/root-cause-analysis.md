@@ -7,7 +7,7 @@ status: complete
 ---
 
 > To find mistakes is not enough. It is necessary to find the cause behind the mistake and build a system that minimizes future mistakes.
-> — — W. Edwards Deming
+> — W. Edwards Deming
 
 * Identify root causes of symptoms, problems or issues
 * Trace a problem to its origins

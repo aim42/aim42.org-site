@@ -25,9 +25,9 @@ Approach the search for bugs, errors in the following order:
 9.  **Understand the error scenario**: You need to know the business or technical scenario (aka the process or activity flow) of the error: Which steps within the system or its external interfaces precede the error? This step is an example of [View-Based Understanding](/patterns/view-based-understanding/).
     1.  Make this scenario **explicit** - draw or scribble a diagram. See the diagram "Divide and conquer" below as an example. Here the error arises in building block 1. You suppose the processing within the system is spanned by the blue marked data path in which the building blocks 2 to 6 are involved. Cut the path in half and check your assumption at the transition of one half to the other (here between building block 4 and 3). If no error is observable here then the error occurs after the considered transition. Otherwise you have to look for the error before the transition.
         
-![Divide and conquer debugging tactics](/images/patterns/debugging-divide-and-conquer.jpg)
-    
-2.  **Plan your debugging strategy**: Think of the expected outcome of every part of your scenario.
+        ![Divide and conquer debugging tactics](/images/patterns/debugging-divide-and-conquer.jpg)
+
+    2.  **Plan your debugging strategy**: Think of the expected outcome of every part of your scenario.
     3.  If you know you’re traveling to Pisa (Italy), you won’t confuse the Leaning Tower with an error.
 
 10. **Look, don’t imagine**: Sherlock Holmes, the successful detective has formulated the golden rule of debugging: "*It’s a capital mistake to theorize before one has data*". Instrument the system or use step debugging. Look *exactly* what the messages are, read carefully.

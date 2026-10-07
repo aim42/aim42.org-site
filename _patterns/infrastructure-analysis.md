@@ -16,7 +16,7 @@ Inspect and analyse the technical infrastructure, for example the following aspe
 * development and test hardware
 * software infrastructure, like operating system, required database, middleware, frameworks and libraries
 
-It helps to measure runtime behavior agains expected or required values, for example processing time and memory consumption. [Instrument System](/patterns/instrument-system/) can support this type of analysis.
+It helps to measure runtime behavior against expected or required values, for example processing time and memory consumption. [Instrument System](/patterns/instrument-system/) can support this type of analysis.
 
 Specialized stakeholders (like datacenter administrators, operating-system or database experts, hardware designers) can often pinpoint critical aspects of existing infrastructures from their experience.
 
@@ -25,7 +25,3 @@ Apply [View-Based Understanding](/patterns/view-based-understanding/), especiall
 ## Experience
 
 The combination of hardware and software can be arbitrary complex. Even small configuration settings of operating systems (like block or packet sizes) can conflict with hardware capabilities, effectively ruining overall system performance.
-
-## Notes on related patterns
-
-* Infrastructure Analysis
