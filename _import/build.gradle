@@ -1,0 +1,119 @@
+// gradle build script for the aim42 documentation
+//
+// free software - without guarantee, use at your own risk
+// ========================================================
+
+println """compiling with Java ${System.getProperty("java.version")}"""
+println "building project version " + project.project_version
+
+
+buildscript {
+    // these are the BUILDSCRIPT deps - required to execute
+    // build targets and -operations
+    repositories {
+        maven {
+            name 'Bintray Asciidoctor repo'
+            url  'http://dl.bintray.com/content/aalmiray/asciidoctor'
+        }
+        maven {
+           url "https://plugins.gradle.org/m2/"
+        }
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath ('gradle.plugin.org.aim42:htmlSanityCheck:0.9.7')
+        classpath ( group: 'org.asciidoctor',
+                    name: 'asciidoctor-gradle-plugin',
+                    version: '1.5.6')
+    }
+}
+
+
+ext {
+    srcDir  = "$projectDir/src/main"
+    targetDir = "$buildDir/docs"
+    currentDate = new Date().format("MMM d. yyyy")
+}
+
+
+// =========== asciidoctor stuff ===============
+apply plugin: 'org.asciidoctor.convert'
+
+asciidoctor {
+    outputDir = file( targetDir )
+    sourceDir = file("$srcDir/asciidoc")
+    sources  { include "index.adoc" }
+    attributes = [
+            separateOutputDirs: false,
+            imagesdir   : 'images',
+            doctype: 'book',
+            icons: 'font',
+            toc: 'left',
+            sectlink: true,
+            sectanchors: true,
+            numbered: true,
+            'source-highlighter': 'coderay',
+            'coderay-css': 'class',
+            stylesheet: 'aim42.css',
+            stylesdir: "$srcDir/resources/css/",
+            version: project.project_version,
+            'currentDate': "$currentDate"
+    ]
+
+    resources {
+        from("${srcDir}/resources/") {
+          include 'images/**'
+        }
+
+        from("${srcDir}/resources/") {
+          include 'docs/**'
+        }
+    }
+}
+
+
+defaultTasks 'aim42'
+
+
+
+task aim42(
+      dependsOn: 'htmlSanityCheck',
+    description: 'collects all required tasks for creating aim42 documentation'
+)
+
+
+
+task publish(type: GradleBuild) {
+    String travisPr = System.getenv('TRAVIS_PULL_REQUEST')
+    if ("false".equals(travisPr)) {
+        buildFile = 'publish.gradle'
+        tasks = ['gitPublishPush']
+    } else {
+        println 'env var TRAVIS_PULL_REQUEST says we build for PR #' + travisPr + ', won\'t publish docs!'
+    }
+}
+
+
+// ============ validation
+
+apply plugin: 'org.aim42.htmlSanityCheck'
+htmlSanityCheck {
+
+  // ensure asciidoctor->html runs first
+  // and images are copied to build directory
+  dependsOn asciidoctor
+
+  sourceDir = new File( "$targetDir/html5" )
+
+  // files to check, in Set-notation
+  sourceDocuments = [ "index.html"]
+
+  // where to put results of sanityChecks...
+  checkingResultsDir = new File( "$buildDir/report/htmlchecks" )
+
+  // false: restrict checks to local resources
+  // true:  also check external (e.g. http, https...) links.
+  checkExternalLinks = false
+}

@@ -1,0 +1,20 @@
+
+[[improve-practices]]
+=== Improvement Practices (Details)
+
+Practices, in contrast to approaches, are the short-term
+or tactical improvements.
+
+We already explained the categories of these improvement practices
+in <<improve-practices-overview>>. Here we dive into more details,
+structured along these categories:
+
+* Improve Processes,see <<improve-processes>>
+* Improve Architecture and Code Structure, see <<improve-architecture>>
+* Improve Technical Infrastructure, see <<improve-technical-infrastructure>>
+* Improve Analyzability, see <<improve-analyzability>>
+
+include::patterns/category-improve-processes.adoc[]
+include::patterns/category-improve-architecture-and-code.adoc[]
+include::patterns/category-improve-technical-infrastructure.adoc[]
+include::patterns/category-improve-analyzability.adoc[]

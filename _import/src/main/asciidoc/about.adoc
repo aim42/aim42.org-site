@@ -1,0 +1,38 @@
+:numbered!:
+
+== About aim42
+
+[role="lead"]
+aim42 supports software evolution, maintenance, migration and improvement - in a systematic and pragmatic way.
+
+
+
+[NOTE]
+--
+http://aim42.org[aim42] is a collection of practices and patterns to support software evolution, modernization, maintenance, migration and
+improvement of software systems:
+
+
+. helps to optimize your software and reduce maintenance cost,
+. identifies critical issues, technical debt and risks,
+. supports both business and technical stakeholders,
+. grounded in practice and experience, backed by serious research,
+. free and open-source, <<contributions,contributions>> welcome.
+
+aim42 seamlessly integrates with your day-to-day development work.
+--
+
+Authored by the aim42 community, lead by Dr. Gernot Starke <gernot.starke@innoq.com>
+
+image:https://img.shields.io/badge/Version-{version}-green.svg[{version}]
+image:https://img.shields.io/badge/Date-{currentDate}-green.svg[/{currentDate}]
+image:https://img.shields.io/travis/aim42/aim42/master.svg[link="https://travis-ci.org/aim42/aim42",window="_blank", alt="build-status:unknown"]
+image:https://img.shields.io/github/issues/aim42/aim42.svg[link="https://github.com/aim42/aim42/issues",window="_blank", alt="nr-of-issues:unknown"]
+image:https://img.shields.io/github/stars/aim42/aim42.svg[link="https://github.com/aim42/aim42",window="_blank", alt="github-stars"]
+image:https://img.shields.io/github/contributors/aim42/aim42.svg[link="https://github.com/aim42/aim42",window="_blank", alt="github-contributors"]
+image:https://img.shields.io/twitter/follow/gernotstarke.svg?style=social&label=Followers[link="https://twitter.com/gernotstarke",window="_blank", alt="Twitter follower button"]
+
+=== About this documentation
+This document serves as the _method reference_ - it collects practices and patterns.
+Please don't expect a _user manual_ or step-by-step guidebook here - we're currently
+busy working on the latter. 

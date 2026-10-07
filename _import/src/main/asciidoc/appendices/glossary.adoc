@@ -1,0 +1,36 @@
+:numbered!:
+
+[appendix]
+== Glossary
+
+AIM42:: Architecture Improvement Method.
+
+ATAM:: Architecture Tradeoff Analysis Method. Extensively described in
+<<Clements-ATAM, Clemens-2001>> and <<SEI-ATAM, online by the SEI>>,
+briefly described as <<ATAM, aim42 pattern>>.
+
+Failure:: Loss of functionality under defined (_stated_) conditions.
+
+Issue::
+
+Remedy::
+
+SEI:: Software Engineering Institute at the Carnegie Mellon University.
+A federally funded research and development institute,
+sponsored by the US Departement of Defense.
+
+[[System]]
+System:: The system to be improved - often a single software system, but it might be a complex combination of hardware, software and organizational aspects. _Systems_ in our sense consists of:
++
+* software, usually with corresponding data structures and data
+* required infrastructure software, like operating system, database, UI-frameworks, middleware etc.
+* required hardware infrastructure, like processors, storage facilities, network, routers etc.
+* associated development processes, like requirements engineering, architecture, implementation, version- and configuration management, build- and deployment
+* associated administration and operation processes or procedures
+* associated organizational processes, like budgeting, HR, controlling, management etc.
+* associated external systems, like data-/event providers or consumers. 
+
+and maybe even more :-)  
+
+
+Value:: (of an improvement or remedy). Approximately -1 times the cost of the associated issue(s). If an improvement solves only part of an issue, value estimation becomes much harder.

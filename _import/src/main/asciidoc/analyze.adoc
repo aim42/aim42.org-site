@@ -1,0 +1,172 @@
+:linkattrs:
+
+[[Analyze]]
+
+== Analyze
+
+image::01-intro-and-overview/analyze-phase.png["analyze-phase", title="Analyze-Phase"]
+
+=== Goals
+
+. Obtain overview of intent, purpose and quality requirements of the system (<<System>>).
+
+. Develop and document an understanding of internal structures, concepts and architectural approaches.
+
+. Find all problems, issues, symptoms, risks or technical debt within the system (<<System>>), its operation, maintenance or otherwise related processes.
+
+. Understand root causes of the problems found, potential interdependencies between issues.
+
+
+=== How it works
+
+Look systematically for such issues at various places and with support of various people.
+
+TIP: To effectively find issues, you need an appropriate amount of _understanding_ of the system under design (<<System>>), its technical concepts, code structure, inner workings, major external interfaces and its development process.
+
+One serious risk in this phase is a premature restriction to certain artifacts or aspects of the system: If you search with a microscope, you're likely to miss several aspects.
+
+
+// internal comment:
+// the following imageMap + image reference has to be manually maintained
+// from the original OmniGraffle file!
+// please note the usemap-attribute name - which is WRONG in the original graffle export!
+
+
+[[figure-analyze-pattern-overview]]
+++++
+<img border=0 src="images/analyze-patterns-overview.png" usemap="#AnalysisOverview" alt="analyze-patterns overview">
+<map name="AnalysisOverview">
+	<area shape=rect coords="262,281,366,340" href="#Development-Process-Analysis">
+	<area shape=rect coords="457,118,576,178" href="#Collect-Opportunities-For-Improvement">
+	<area shape=rect coords="194,401,291,450" href="#Collect-Issues">
+	<area shape=rect coords="3,301,126,350" href="#Quantitative-Analysis">
+	<area shape=rect coords="263,141,382,190" href="#Stakeholder-Interview">
+	<area shape=rect coords="3,164,122,212" href="#Stakeholder-Analysis">
+	<area shape=rect coords="58,2,151,51" href="#Context-Analysis">
+	<area shape=rect coords="463,272,576,321" href="#Qualitative-Analysis">
+</map>
+++++
+Figure: Overview of Most Important Analysis Practices
+
+
+Always begin with <<Stakeholder-Analysis>>, then conduct <<Stakeholder-Interview>> with important stakeholders.
+
+Improve your <<Architectural-Understanding>> of the <<System>> by
+
+  ** <<Context-Analysis>>
+  ** <<Documentation-Analysis>>, read especially the architecture documentation, focus on <<View-Based-Understanding>>.
+  ** <<Development-Process-Analysis>>
+  ** Perform <<Static-Code-Analysis>> to learn about code structure _in-the-large_. This also helps to identify risky code.
+
+* <<Capture-Quality-Requirements>> from the _authoritative_ stakeholders of the systems.
+* Conduct a <<Qualitative-Analysis>> of the system, its architecture and associated organization,
+based upon the specific quality requirements
+  ** Inspect and analyze all involved organizational processes -
+    (development, project management, operations, requirements analysis)
+* Perform <<Runtime-Analysis>> or <<Quantitative-Analysis>>, e.g. performance and load monitoring, process and thread analysis
+  ** Inspect the data created, modified and queried by the system for structure, size, volume or specialities
+
+Finally, conduct a <<Root-Cause-Analysis>> for the discovered major issues in close collaboration with the appropriate stakeholders.
+
+WARNING: Never start solving problems until you have a thorough understanding of the current stakeholder requirements. Otherwise you'll risk wasting effort in areas which no influential stakeholder cares about.
+
+
+
+
+=== Patterns and Practices for Analysis
+
+++++
+<img border=0 src="images/analyze-patterns-complete.png" usemap="#AnalysisPatterns" alt="Analyze Patterns">
+<map name="AnalysisPatterns">
+	<area shape=rect coords="358,4,440,52" href="#User-Analysis">
+	<area shape=rect coords="93,690,175,729" href="#Instrument-System">
+	<area shape=rect coords="196,590,299,629" href="#Infrastructure-Analysis">
+	<area shape=rect coords="294,319,398,379" href="#Development-Process-Analysis">
+	<area shape=rect coords="610,97,729,156" href="#Collect-Opportunities-For-Improvement">
+	<area shape=rect coords="305,508,402,557" href="#Collect-Issues">
+	<area shape=rect coords="28,803,125,852" href="#Static-Code-Analysis">
+	<area shape=rect coords="358,690,449,739" href="#Software-Archeology">
+	<area shape=rect coords="511,25,615,64" href="#Questionnaire">
+	<area shape=rect coords="15,294,150,343" href="#Quantitative-Analysis">
+	<area shape=rect coords="649,332,756,381" href="#Requirements-Analysis">
+	<area shape=rect coords="330,141,449,190" href="#Stakeholder-Interview">
+	<area shape=rect coords="40,167,159,215" href="#Stakeholder-Analysis">
+	<area shape=rect coords="66,494,150,539" href="#Runtime-Analysis">
+	<area shape=rect coords="543,253,664,301" href="#Documentation-Analysis">
+	<area shape=rect coords="152,423,218,462" href="#Data-Analysis">
+	<area shape=rect coords="455,562,567,611" href="#Issue-Tracker-Analysis">
+	<area shape=rect coords="124,2,218,51" href="#Context-Analysis">
+	<area shape=rect coords="654,526,729,565" href="#ATAM">
+	<area shape=rect coords="484,386,597,435" href="#Qualitative-Analysis">
+</map>
+
+++++
+Figure: Detailed overview of Analysis Practices and Patterns
+
+
+// internal comment:
+// the prior imageMap + image reference has to be manually maintained
+// from the original OmniGraffle file!
+// please note the usemap-attribute name - which is WRONG in the original graffle export!
+
+
+
+
+include::patterns/analyze/atam.adoc[]
+
+include::patterns/analyze/capture-quality-requirements.adoc[]
+
+include::patterns/analyze/context-analysis.adoc[]
+
+include::patterns/analyze/data-analysis.adoc[]
+
+include::patterns/analyze/debugging.adoc[]
+
+include::patterns/analyze/development-process-analysis.adoc[]
+
+include::patterns/analyze/documentation-analysis.adoc[]
+
+include::patterns/analyze/infrastructure-analysis.adoc[]
+
+
+include::patterns/analyze/hierarchical-quality-model.adoc[]
+
+include::patterns/analyze/instrument-system.adoc[]
+
+include::patterns/analyze/issue-tracker-analysis.adoc[]
+
+include::patterns/analyze/organizational-analysis.adoc[]
+
+include::patterns/analyze/social-debt.adoc[]
+
+include::patterns/analyze/qualitative-analysis.adoc[]
+
+include::patterns/analyze/quantitative-analysis.adoc[]
+
+include::patterns/analyze/pre-interview-questionnaire.adoc[]
+
+include::patterns/analyze/pre-mortem.adoc[]
+
+include::patterns/analyze/questionnaire.adoc[]
+
+include::patterns/analyze/requirements-analysis.adoc[]
+
+include::patterns/analyze/root-cause-analysis.adoc[]
+
+include::patterns/analyze/runtime-analysis.adoc[]
+
+include::patterns/analyze/software-archeology.adoc[]
+
+include::patterns/analyze/stakeholder-analysis.adoc[]
+
+include::patterns/analyze/stakeholder-interview.adoc[]
+
+include::patterns/analyze/static-code-analysis.adoc[]
+
+include::patterns/analyze/take-what-they-mean.adoc[]
+
+include::patterns/analyze/user-analysis.adoc[]
+
+include::patterns/analyze/view-based-understanding.adoc[]
+
+include::patterns/analyze/busfactor.adoc[]
