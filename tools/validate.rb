@@ -128,6 +128,10 @@ module Aim42
       %w[headline lede].each do |key|
         errors << "#{HOME}: missing required key '#{key}'" unless text.(fm[key])
       end
+      # The hero renders the lede inline; a blank line would run two paragraphs together.
+      if text.(fm["lede"]) && fm["lede"].strip.match?(/\n[ \t]*\n/)
+        errors << "#{HOME}: 'lede' must be a single paragraph"
+      end
 
       cycle = fm["cycle"].is_a?(Hash) ? fm["cycle"] : {}
       phases.each do |phase|

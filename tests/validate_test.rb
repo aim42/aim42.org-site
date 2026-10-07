@@ -229,6 +229,12 @@ class ValidatorTest < Minitest::Test
     assert_includes errors, "_pages/home.md: missing required key 'lede'"
   end
 
+  def test_home_lede_must_be_one_paragraph
+    home_patterns
+    home(HOME_OK.sub("lede: A method.\n", "lede: |\n  A method.\n\n  Second paragraph.\n"))
+    assert_includes errors, "_pages/home.md: 'lede' must be a single paragraph"
+  end
+
   def test_home_needs_examples_and_cycle_line_for_every_phase
     home_patterns
     home(HOME_OK.sub("  improve: fix step by step\n", "").sub("  improve: [i1, i2, i3]\n", ""))
