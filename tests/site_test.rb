@@ -1,10 +1,36 @@
 # Checks on the generated site. Run after `bundle exec jekyll build`.
 require "minitest/autorun"
 require "nokogiri"
+require "yaml"
+require_relative "../tools/validate"
 
-SITE_DIR = File.expand_path("../_site", __dir__)
+ROOT = File.expand_path("..", __dir__)
+SITE_DIR = File.join(ROOT, "_site")
 
 class SiteTest < Minitest::Test
+  # The expected pattern set comes from the sources, so new patterns are covered.
+  VALIDATOR = Aim42::Validator.new(ROOT)
+  PATTERNS = VALIDATOR.files.map { |f| VALIDATOR.front_matter(f).merge("slug" => VALIDATOR.slug(f)) }.freeze
+  PHASES = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).keys.freeze
+  PAGES = (["/patterns/", "/glossary/"] + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).freeze
+
+  # Titles in Liquid's sort_natural order (case-insensitive).
+  def sorted_titles(patterns)
+    patterns.map { |p| p["title"] }.sort { |a, b| a.casecmp(b) }
+  end
+
+  def stub?(title)
+    PATTERNS.any? { |p| p["title"] == title && p["status"] == "stub" }
+  end
+
+  def assert_pattern_list(doc, patterns, url)
+    items = doc.css(".pattern-list__item")
+    assert_equal sorted_titles(patterns), items.map { |li| li.at_css(".pattern-list__title a").text.strip }, "#{url}: pattern list"
+    items.each do |li|
+      title = li.at_css(".pattern-list__title a").text.strip
+      assert_equal stub?(title), !li.at_css(".tag--stub").nil?, "#{url}: stub badge wrong for #{title}"
+    end
+  end
   # Resolves a site URL ("/about", "/patterns/atam/") to its generated file.
   def site_file(url)
     url = url.sub(%r{\?.*\z}, "").sub(/#.*\z/, "")
@@ -80,68 +106,63 @@ class SiteTest < Minitest::Test
     refute site_file("/architecture-and-code/assertions/"), "categories must not change the pattern URL"
   end
 
-  PILOT_PATTERNS = %w[stakeholder-interview stakeholder-analysis atam strangler-approach assertions improvement-backlog].freeze
-
-  def test_all_pilot_patterns_are_generated
-    PILOT_PATTERNS.each { |slug| page("/patterns/#{slug}/") }
+  def test_pattern_sources_are_found
+    refute_empty PATTERNS
   end
 
-  def test_pattern_images_exist
-    PILOT_PATTERNS.each do |slug|
-      page("/patterns/#{slug}/").css(".post-content img").each do |img|
-        src = img["src"]
-        assert File.file?(File.join(SITE_DIR, src)), "#{slug}: image #{src} missing from _site/"
+  def test_every_pattern_is_generated
+    PATTERNS.each { |p| page("/patterns/#{p["slug"]}/") }
+  end
+
+  def test_images_exist_on_new_pages
+    PAGES.each do |url|
+      page(url).css("img[src^='/']").each do |img|
+        assert File.file?(File.join(SITE_DIR, img["src"])), "#{url}: image #{img["src"]} missing from _site/"
       end
     end
   end
 
-  def test_pattern_links_to_glossary_and_patterns_resolve
-    PILOT_PATTERNS.each do |slug|
-      page("/patterns/#{slug}/").css(".post-content a[href^='/']").each do |a|
+  def test_internal_links_and_anchors_on_new_pages_resolve
+    PAGES.each do |url|
+      doc = page(url)
+      doc.css("a[href^='/'], a[href^='#']").each do |a|
         href = a["href"]
-        next unless href.start_with?("/glossary", "/patterns/")
-        assert site_file(href), "#{slug}: dead internal link #{href}"
-        if href.include?("#")
-          anchor = href.split("#").last
-          assert page(href.split("#").first).at_css("##{anchor}"), "#{slug}: anchor ##{anchor} missing in #{href}"
-        end
+        target, anchor = href.split("#", 2)
+        target_doc = if target.empty?
+                       doc
+                     else
+                       assert site_file(target), "#{url}: dead internal link #{href}"
+                       next unless anchor
+                       page(target)
+                     end
+        next if anchor.nil? || anchor.empty?
+        assert target_doc.css("[id]").any? { |e| e["id"] == anchor }, "#{url}: anchor ##{anchor} missing in #{href}"
       end
     end
   end
 
   def test_index_lists_every_pattern_with_phase_cards
     doc = page("/patterns/")
-    titles = doc.css(".pattern-list__title a").map { |a| a.text.strip }
-    assert_equal ["Assertions", "ATAM", "Improvement Backlog", "Stakeholder Analysis", "Stakeholder Interview", "Strangler Approach"], titles
-    assert_equal 4, doc.css(".phase-card").size
-    assert doc.at_css(".phase-card[data-phase='analyze'] a[href='/patterns/analyze/']")
-    stub_item = doc.css(".pattern-list__item").find { |li| li.text.include?("Assertions") }
-    assert stub_item.at_css(".tag--stub"), "stub badge missing on the index"
+    assert_pattern_list(doc, PATTERNS, "/patterns/")
+    assert_equal PHASES.size, doc.css(".phase-card").size
+    PHASES.each do |phase|
+      card = doc.at_css(".phase-card[data-phase='#{phase}']")
+      assert card.at_css("a[href='/patterns/#{phase}/']"), "#{phase} card link missing"
+      assert_equal PATTERNS.count { |p| p["phase"] == phase }, card.at_css("b").text.to_i, "#{phase} card count"
+    end
   end
 
-  def test_phase_page_lists_only_its_patterns
-    doc = page("/patterns/analyze/")
-    assert_equal "analyze", doc.at_css("header.section-hero")["data-section"]
-    titles = doc.css(".pattern-list__title a").map { |a| a.text.strip }
-    assert_equal ["ATAM", "Stakeholder Analysis", "Stakeholder Interview"], titles
-    assert doc.at_css(".post-content h2"), "phase prose (Goals / How it works) missing"
-  end
-
-  def test_every_phase_page_exists
-    %w[analyze evaluate improve crosscutting].each do |phase|
+  def test_phase_pages_list_only_their_patterns
+    PHASES.each do |phase|
       doc = page("/patterns/#{phase}/")
       assert_equal phase, doc.at_css("header.section-hero")["data-section"]
-    end
-  end
-
-  def test_internal_links_on_new_pages_resolve
-    urls = ["/patterns/", "/glossary/"] + %w[analyze evaluate improve crosscutting].map { |p| "/patterns/#{p}/" } + PILOT_PATTERNS.map { |s| "/patterns/#{s}/" }
-    urls.each do |url|
-      page(url).css("a[href^='/']").each do |a|
-        href = a["href"]
-        next if href.start_with?("/images/") || href.start_with?("/assets/")
-        assert site_file(href), "#{url}: dead internal link #{href}"
+      mine = PATTERNS.select { |p| p["phase"] == phase }
+      if mine.empty?
+        assert_includes doc.at_css(".post-content").text, "No patterns in this phase yet."
+      else
+        assert_pattern_list(doc, mine, "/patterns/#{phase}/")
       end
     end
+    assert page("/patterns/analyze/").at_css(".post-content h2"), "phase prose (Goals / How it works) missing"
   end
 end
