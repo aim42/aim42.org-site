@@ -2,7 +2,7 @@
 title: Improvement Backlog
 phase: crosscutting
 intent: Collect all known issues and problems within a system or its associated processes, and make them comparable by evaluating each one.
-# phase 2 restores: issue-list
+related: [issue-list]
 status: complete
 ---
 

@@ -14,6 +14,10 @@ class MigrateRunTest < Minitest::Test
   # "Notes on related patterns" (spec §4) is allowed everywhere.
   PILOT_ONLY_HEADINGS = { "improvement-backlog" => ["description"], "strangler-approach" => ["related"] }.freeze
 
+  # Hand-curated pilot relations that the source's Related section lacks
+  # (recorded in phase 1 as "phase 2 restores").
+  PILOT_EXTRA_RELATED = { "improvement-backlog" => ["issue-list"] }.freeze
+
   # One full conversion into a scratch root, shared by the tests below.
   def self.converted
     @converted ||= begin
@@ -102,7 +106,7 @@ class MigrateRunTest < Minitest::Test
         mine_headings = headings(mine).reject { |_, name| name == "notes on related patterns" }
         pilot_headings = headings(pilot).reject { |_, name| PILOT_ONLY_HEADINGS.fetch(slug, []).include?(name) }
         assert_equal pilot_headings, mine_headings, "#{slug}: section structure (level, name, order)"
-        assert_empty Array(pilot_fm["related"]) - Array(mine_fm["related"]), "#{slug}: related the converter misses"
+        assert_empty Array(pilot_fm["related"]) - Array(mine_fm["related"]) - PILOT_EXTRA_RELATED.fetch(slug, []), "#{slug}: related the converter misses"
       end
     end
   end
