@@ -133,4 +133,39 @@ class MigrateConverterTest < Minitest::Test
     assert_includes body, "## Approaches   {#improve-approaches-overview}"
     assert_includes body, "* {: #nygard07} \\[Nygard07\\] Michael Nygard: Release It!"
   end
+
+  def test_asciidoctor_warnings_do_not_crash_the_converter
+    result = convert("== [pattern]#P#\n\n==== Deep\n\nText.\n")
+    assert_includes result.body, "Text."
+    refute result.notes.any? { |n| n.include?("out of sequence") }
+  end
+
+  def test_image_maps_become_plain_images_on_their_own_line
+    adoc = "== [pattern]#P#\n\n=== Description\n\n++++\n<map name=\"m\"><area href=\"#x\"></map>\n<img src=\"images/map.png\" usemap=\"#m\" alt=\"Map\">\n++++\n\n=== Next\n\nText.\n"
+    body = convert(adoc).body
+    assert_includes body, "![Map](/images/patterns/map.png)\n\n## Next\n"
+  end
+
+  def test_related_items_without_pattern_links_stay_in_the_body
+    result = convert("== [pattern]#P#\n\n=== Related Patterns\n\n* <<System>>\n* https://example.com[External]\n* <<Stakeholder-Analysis>>\n")
+    assert_equal ["stakeholder-analysis"], result.related
+    assert_includes result.body, "* [system](/glossary/#system)"
+    assert_includes result.body, "* [External](https://example.com)"
+    refute_includes result.body, "stakeholder-analysis"
+  end
+
+  def test_table_cells_with_lists_stay_on_one_row
+    adoc = "== [pattern]#P#\n\n=== Description\n\n[cols=\"1,1a\",options=\"header\"]\n|===\n| Name | Notes\n| x | * one\n* two\n|===\n"
+    assert_includes convert(adoc).body, "| x | • one<br>• two |\n"
+  end
+
+  def test_section_numbers_are_switched_off
+    body = convert(":numbered:\n\n== Improve\n\n=== Goals\n\nText.\n", self_url: "/patterns/improve/").body
+    assert_includes body, "## Goals\n"
+  end
+
+  def test_same_page_links_use_gfm_heading_ids
+    body = convert("== [pattern]#P#\n\n=== Description\n\nSee <<Code_Quality 2nd>>.\n\n=== Code_Quality 2nd\n\nText.\n").body
+    assert_includes body, "(#code_quality-2nd)"
+  end
 end

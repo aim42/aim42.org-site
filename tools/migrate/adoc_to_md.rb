@@ -45,10 +45,13 @@ module Aim42
       HEADINGS = %w[h1 h2 h3 h4 h5 h6].freeze
       RELATED = /\Arelated(\s+(patterns|practices))?\z/i
       ADMONITIONS = %w[note tip important warning caution].freeze
+      PATTERN_URL = %r{\A/patterns/([a-z0-9-]+)/\z}.freeze
       KEEP = { "a" => %w[href], "img" => %w[src alt], "code" => %w[class],
                "p" => %w[id], "li" => %w[id], "dt" => %w[id], "dd" => %w[id] }.freeze
       # Blocks that take over the id of an inline [[anchor]] inside them.
       ID_HOSTS = %w[p li dt dd].freeze
+      BLOCK_ELEMENTS = %w[p ul ol dl table blockquote pre hr h1 h2 h3 h4 h5 h6].freeze
+      CELL_BREAK = "AIMBRX".freeze
 
       # anchors: an Anchors instance (lookup(ref) -> Anchors::Entry or nil).
       def initialize(anchors)
@@ -66,6 +69,7 @@ module Aim42
         normalize_blocks(frag)
         rewrite_links(frag)
         flatten(frag)
+        wrap_inline(frag)
         nodes = frag.children.reject { |n| n.text? && n.text.strip.empty? }
         title = take_title(nodes)
         intent_nodes, related, body_nodes = split_sections(nodes)
@@ -81,9 +85,9 @@ module Aim42
       def render(adoc)
         logger = Asciidoctor::MemoryLogger.new
         Asciidoctor::LoggerManager.logger = logger
-        html = Asciidoctor.convert(adoc, safe: :safe, attributes: { "imagesdir" => "/images/patterns" })
+        html = Asciidoctor.convert(adoc, safe: :safe, attributes: { "imagesdir" => "/images/patterns", "sectnums!" => "", "numbered!" => "" })
         logger.messages.each do |m|
-          text = m[:message].is_a?(String) ? m[:message] : m[:message].text
+          text = m[:message].is_a?(Hash) ? m[:message][:text] : m[:message].to_s
           @notes << "asciidoctor: #{text}" unless text.include?("section title out of sequence")
         end
         html
@@ -176,10 +180,17 @@ module Aim42
           caption.remove
         end
         table.css("th, td").each do |cell|
-          cell.css("div.content").each { |c| c.replace(c.children) }
+          cell.css("div").each { |d| d.replace(d.children) }
+          cell.css("ul, ol").each do |list|
+            items = list.css("> li").map do |li|
+              text = li.css("p").map(&:inner_html).join(" ")
+              "<p>• #{text.empty? ? li.inner_html : text}</p>"
+            end
+            list.replace(items.join)
+          end
           paragraphs = cell.css("p")
           next if paragraphs.empty?
-          cell.inner_html = paragraphs.map(&:inner_html).join("<br>")
+          cell.inner_html = paragraphs.map { |p| p.inner_html.strip }.join(" #{CELL_BREAK} ")
         end
       end
 
@@ -242,6 +253,21 @@ module Aim42
         end
       end
 
+      # Inline nodes at the top level (raw passthrough HTML such as an image map's
+      # <img>) get their own paragraph, so the next block does not join their line.
+      def wrap_inline(frag)
+        frag.children.to_a.slice_when { |a, b| block?(a) != block?(b) }.each do |run|
+          next if block?(run.first) || run.all? { |n| n.text? && n.text.strip.empty? }
+          para = Nokogiri::XML::Node.new("p", frag.document)
+          run.first.add_previous_sibling(para)
+          run.each { |n| para << n }
+        end
+      end
+
+      def block?(node)
+        node.element? && BLOCK_ELEMENTS.include?(node.name)
+      end
+
       # Asciidoctor's generated ids start with "_"; [[Anchor]] ids do not.
       def explicit_id?(id)
         !id.to_s.empty? && !id.start_with?("_")
@@ -249,7 +275,7 @@ module Aim42
 
       # The id kramdown generates for a heading (auto_ids), for links within a page.
       def heading_id(text)
-        text.downcase.gsub(/[^a-z0-9 -]/, "").strip.gsub(/\s+/, "-").sub(/\A[^a-z]+/, "")
+        text.downcase.gsub(/[^\p{Word}\- ]/u, "").tr(" ", "-")
       end
 
       def heading?(node)
@@ -314,7 +340,7 @@ module Aim42
       end
 
       def related_slugs(node)
-        node.css("a[href]").map { |a| a["href"][%r{\A/patterns/([a-z0-9-]+)/\z}, 1] }.compact
+        node.css("a[href]").map { |a| a["href"][PATTERN_URL, 1] }.compact
       end
 
       # List items that say more than the link itself; they stay in the body.
@@ -323,7 +349,10 @@ module Aim42
         items.select do |item|
           copy = item.dup
           copy.css("a").each(&:remove)
-          copy.text.gsub(/[[:punct:]\s]|\b(and|or|see|also|especially|e\.g)\b/i, "").length > 0
+          has_explanation = copy.text.gsub(/[[:punct:]\s]|\b(and|or|see|also|especially|e\.g)\b/i, "").length > 0
+          has_non_pattern_link = item.css("a[href]").any? { |a| !a["href"].match?(PATTERN_URL) }
+          has_no_link = item.css("a").empty?
+          has_explanation || has_non_pattern_link || has_no_link
         end.map { |item| item.name == "li" ? item : Nokogiri::XML::Node.new("li", item.document).tap { |li| li << item } }
       end
 
@@ -343,7 +372,7 @@ module Aim42
       def markdown(html)
         doc = Kramdown::Document.new(html, input: "html", html_to_native: true, line_width: 100_000)
         output, = MarkdownWriter.convert(doc.root, doc.options)
-        output.delete("​").gsub(/  \n +/, "  \n").gsub(/\n{3,}/, "\n\n").strip + "\n"
+        output.delete("​").gsub(/  \n +/, "  \n").gsub(/\n{3,}/, "\n\n").gsub(" #{CELL_BREAK} ", "<br>").strip + "\n"
       end
 
       def one_line(text)
