@@ -6,7 +6,7 @@ main:
   - title: "Learn"
     url: /learn
   - title: "Method Reference"
-    url: "https://aim42.github.io"
+    url: /patterns/
   - title: "About"
     url: /about
 
@@ -25,7 +25,7 @@ getstarted:
       - title: "Whitepaper"
         url: /assets/downloads/AIM42-Whitepaper-v2.0.pdf
       - title: "Method Reference"
-        url: https://aim42.github.io
+        url: /patterns/
 
 
 learn:

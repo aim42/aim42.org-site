@@ -23,7 +23,7 @@ Let's clarify some fundamental terms:
 |Cost (of improvement) | The cost (in monetary units) of the improvement, remedy, tactic or strategy.|
 |Risk | _Potential_ problem. Improvements can change associated risks for the better or the worse, even create new risks.
 
-The [method reference](https://aim42.github.io/#_common_terminology) covers these terms in more detail, and provides a more elaborate [domain model](https://aim42.github.io/#Domain-Model).
+The [method reference](/reference/introduction/#common-terminology) covers these terms in more detail, and provides a more elaborate [domain model](/reference/domain-model/).
 
 ## Fundamental Principles
 
@@ -33,7 +33,7 @@ When hitting any problem, don't immediately start solving it, but methodically a
 #### Improve only _relevant_ issues
 _Relevance_ is relative to stakeholders - one issue seems huge for developers, but is neglectable from managements' perspective.
 
-aim42 proposes the [EVALUATE](http://aim42.github.io/#Evaluate) phase to methodically prioritize issues and improvements.
+aim42 proposes the [EVALUATE](/patterns/evaluate/) phase to methodically prioritize issues and improvements.
 
 #### Improve iteratively, with early and fast feedback
 Improving systems always implies change, often on both technical and organizational levels. Such operations
@@ -52,4 +52,4 @@ Therefore, always make your assumptions about _things_ explicit:
 * what are your assumptions regarding the cost of this issue?
 * what factors influence the cost of this issue?
 
-aim42 has some more info on [explict assumptions](https://aim42.github.io/#Explicit-Assumption)
+aim42 has some more info on [explict assumptions](/patterns/explicit-assumption/)
