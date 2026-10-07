@@ -2,10 +2,12 @@
 title: Measure
 phase: improve
 categories: [architecture-and-code]
-intent: If you don’t measure it, you can’t optimize it. — Coda Hale
+intent: Gather various metrics and visualize them on dashboards in order to make your system behavior more predictable and assumed coincidences explainable.
 related: [runtime-artifact-analysis, instrument-system]
 status: complete
 ---
+
+If you don’t measure it, you can’t optimize it. — Coda Hale
 
 ## Description
 

@@ -2,6 +2,11 @@
 {% if include.phase %}
   {% assign items = items | where: "phase", include.phase %}
 {% endif %}
+{% if include.category == "none" %}
+  {% assign items = items | where_exp: "p", "p.categories.size == 0" %}
+{% elsif include.category %}
+  {% assign items = items | where_exp: "p", "p.categories contains include.category" %}
+{% endif %}
 {% if items.size > 0 %}
 <ul class="pattern-list">
   {% for pattern in items %}
@@ -16,5 +21,5 @@
   {% endfor %}
 </ul>
 {% else %}
-<p>No patterns in this phase yet.</p>
+<p>{{ include.empty | default: "No patterns in this phase yet." }}</p>
 {% endif %}

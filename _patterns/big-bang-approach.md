@@ -66,7 +66,7 @@ A big bang approach is possible, if you cannot or want to incrementally replace 
 
 * The new system should undergo a revolutionary improvement instead an incremental one for both, technology and functionality
 * The system is small enough that it can be rewritten quickly within a few month
-* You analyzed other approaches like [Strangler Approach](/patterns/strangler-approach/) or [Seams](https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1478609966&amp;sr=1-1&amp;keywords=Working+Effectively+with+Legacy+Code) and they could not help you approaching the problem incrementally
+* You analyzed other approaches like [Strangler Approach](/patterns/strangler-approach/) or [Seams](https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?s=books&ie=UTF8&qid=1478609966&sr=1-1&keywords=Working+Effectively+with+Legacy+Code) and they could not help you approaching the problem incrementally
 * You and your stakeholders are aware and understand the risks and consequences of a big bang rewrite and want to go for it anyways (you might have good reasons to do so).
 
 ## Consequences

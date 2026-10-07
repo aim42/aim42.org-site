@@ -3,13 +3,13 @@ title: Strangler Approach
 phase: improve
 categories: [approaches]
 intent: Divide a legacy system into different functional domains and replace those step by step.
-# phase 2 restores: big-bang-approach
+related: [big-bang-approach]
 status: complete
 ---
 
 ## Description
 
-Rewriting an old system with a *big-bang approach* is a risky endeavor. It is
+Rewriting an old system with a [big-bang approach](/patterns/big-bang-approach/) is a risky endeavor. It is
 harder than you might think at the beginning.
 
 An alternative way is to gradually create a new system around the edges of the

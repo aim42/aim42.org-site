@@ -10,7 +10,7 @@ status: complete
 The “Boy Scout Rule” for software development basically states that we
 
 > “Always check a module in cleaner than when you checked it out.”.
-> — — Robert C. Martin
+> — Robert C. Martin
 
 Uncle Bob (Robert C. Martin) proposed this adoption of the rule from the boy scout rulebook which reads “Try and leave this world a little better than you found it.” for the software development world in an article in Kevlin Henney’s “97 Things a Programmer Should Know” [\[Henney\]](/reference/bibliography/#henney).
 
@@ -25,15 +25,17 @@ Uncle Bob (Robert C. Martin) proposed this adoption of the rule from the boy sco
 * Install a mechanism to ensure that the things that where too big to be cleaned up while visiting the file will end up in the [Improvement Backlog](/patterns/improvement-backlog/).
 
 > Example Boy Scout Rule agreement
+>
 > **Tip:** This is a very concrete agreement from a specific project - yours should look rather different.
 > 
-> **Boy Scout Rule agreement for project X from 2014-02-19 onwards:** . Apply defined source code formatting (via IDE) to adhere to coding style  
->  If the formatting introduces errors and those errors can not be fixed within 10 Minutes revert changes and add the file to the "redo formatting list" (e.g. add an TODO REFORMAT comment, if such a comment already exist add an exclamation mark each time you handle the file)
-> 
-> 1.  Move SQL strings to the db-encapsulation layer and replace the former direct database calls by appropriate calls to the correct architecture elements  
->      If this takes longer than 20 minutes revert changes and add file to the list "difficulties with database extraction" (e.g. add an TODO DB-EXTRACT comment, if such a comment already exist add an exclamation mark each time you handle the file)
-> 2.  Remove magic numbers from source code and replace them with constants (e.g. replace if (item.id &gt; 99) with if (item.id &gt; Item.COMPOUND\_ITEMS\_THRESHHOLD).
-> 3.  If time allows replace the former "magic number conditionals" with a function on a business logic level (e.g. replace if (item.id &gt; Item.COMPOUND\_ITEMS\_THRESHHOLD) with if (item.is\_compound())
+> **Boy Scout Rule agreement for project X from 2014-02-19 onwards:**
+>
+> 1.  Apply defined source code formatting (via IDE) to adhere to coding style  
+>     If the formatting introduces errors and those errors can not be fixed within 10 Minutes revert changes and add the file to the "redo formatting list" (e.g. add an TODO REFORMAT comment, if such a comment already exist add an exclamation mark each time you handle the file)
+> 2.  Move SQL strings to the db-encapsulation layer and replace the former direct database calls by appropriate calls to the correct architecture elements  
+>     If this takes longer than 20 minutes revert changes and add file to the list "difficulties with database extraction" (e.g. add an TODO DB-EXTRACT comment, if such a comment already exist add an exclamation mark each time you handle the file)
+> 3.  Remove magic numbers from source code and replace them with constants (e.g. replace if (item.id > 99) with if (item.id > Item.COMPOUND\_ITEMS\_THRESHHOLD).
+> 4.  If time allows replace the former "magic number conditionals" with a function on a business logic level (e.g. replace if (item.id > Item.COMPOUND\_ITEMS\_THRESHHOLD) with if (item.is\_compound())
 
 ## Experiences
 

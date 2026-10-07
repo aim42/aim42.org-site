@@ -14,6 +14,7 @@ class SiteTest < Minitest::Test
   VALIDATOR = Aim42::Validator.new(ROOT)
   PATTERNS = VALIDATOR.files.map { |f| VALIDATOR.front_matter(f).merge("slug" => VALIDATOR.slug(f)) }.freeze
   PHASES = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).keys.freeze
+  CATEGORIES = YAML.safe_load(File.read(File.join(ROOT, "_data", "categories.yml"))).freeze
   # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
   REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
   PAGES = (["/patterns/"] + REFERENCE + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).uniq.freeze
@@ -184,6 +185,7 @@ class SiteTest < Minitest::Test
     PHASES.each do |phase|
       doc = page("/patterns/#{phase}/")
       assert_equal phase, doc.at_css("header.section-hero")["data-section"]
+      next if phase == "improve" # grouped by category, see below
       mine = PATTERNS.select { |p| p["phase"] == phase }
       if mine.empty?
         assert_includes doc.at_css(".post-content").text, "No patterns in this phase yet."
@@ -192,6 +194,29 @@ class SiteTest < Minitest::Test
       end
     end
     assert page("/patterns/analyze/").at_css(".post-content h2"), "phase prose (Goals / How it works) missing"
+  end
+
+  def test_improve_page_groups_patterns_by_category
+    doc = page("/patterns/improve/")
+    improve = PATTERNS.select { |p| p["phase"] == "improve" }
+    CATEGORIES.each_key do |key|
+      group = doc.at_css(".pattern-group[data-category='#{key}']")
+      assert group, "/patterns/improve/: group #{key} missing"
+      mine = improve.select { |p| Array(p["categories"]).include?(key) }
+      if mine.empty?
+        assert_includes group.text, "No patterns in this category yet."
+      else
+        assert_pattern_list(group, mine, "/patterns/improve/ #{key}")
+      end
+    end
+    other = doc.at_css(".pattern-group[data-category='other']")
+    assert other, "/patterns/improve/: group other missing"
+    assert_pattern_list(other, improve.select { |p| Array(p["categories"]).empty? }, "/patterns/improve/ other")
+  end
+
+  def test_category_chips_show_category_titles
+    chips = page("/patterns/assertions/").css(".section-hero__chips .tag").map { |t| t.text.strip }
+    assert_includes chips, CATEGORIES["architecture-and-code"]["title"]
   end
 
   def test_meta_description_is_the_plain_text_intent

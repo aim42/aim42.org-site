@@ -11,8 +11,8 @@ lede: Apply approaches and practices that eliminate issues, reduce technical deb
 ## Goals
 
 1. Execute and coordinate the improvement activities to eliminate problems and
-   issues found during [analysis](/patterns/analyze/). There is a whole bunch
-   of practices devoted to this step, and several approaches you can take to
+   issues found during [analysis](/patterns/analyze/). There is a whole [bunch
+   of practices](/patterns/improve/#improve-practices) devoted to this step, and several [approaches](/patterns/improve/#improve-approaches-overview) you can take to
    run the improvements.
 2. Apply selected opportunities for improvement:
    * change code, structures, concepts or processes to achieve better software,
@@ -24,9 +24,11 @@ lede: Apply approaches and practices that eliminate issues, reduce technical deb
 
 ## Structure of the improvement phase
 
-*Fundamentals* are principles you should consider whatever steps you take on
-your road to improvement. *Approaches* are overall (strategic, long-term)
-decisions on how to tackle improvement. *Practices* are fine-grained practices
+![Overview of Improvement Concepts](/images/patterns/improve-fundamentals-approaches-practices.png)
+
+[*Fundamentals*](/patterns/improve/#improve-fundamentals) are principles you should consider whatever steps you take on
+your road to improvement. [*Approaches*](/patterns/improve/#improve-approaches-overview) are overall (strategic, long-term)
+decisions on how to tackle improvement. [*Practices*](/patterns/improve/#improve-practices) are fine-grained practices
 or patterns, structured in several categories.
 
 ## Fundamentals   {#improve-fundamentals}
@@ -87,7 +89,7 @@ You find further information on the [detailed approaches here](/patterns/improve
 ![Categories of Improvement Practices](/images/patterns/improve-practice-categories.png)
 
 Improve Processes and Organization
-: Sometimes your issues originate in process or organizational root causes, meaning your development, rollout or operations processes are less efficient than they should be. This category adresses such problems. For details see [Practices to Improve Processes](/patterns/improve/#improve-processes).
+: Sometimes your issues originate in process or organizational root causes, meaning your development, rollout or operations processes are less efficient than they should be. This category addresses such problems. For details see [Practices to Improve Processes](/patterns/improve/#improve-processes).
 
 Improve Architecture and Code Structure
 : All aspects of sourcecode may be subject to improvement - style, structure, dependencies, conventions, naming and the like. Furthermore, structure *in the large* (modules, components, interfaces) or crosscutting and technical concepts belong to this area of improvement. For details see [Improve Architecture and Code Structure](/patterns/improve/#improve-architecture).
@@ -117,10 +119,8 @@ One of the central decisions involves your long-term improvement-approach, the o
 ![Improvement Approaches](/images/patterns/improve-approaches-all.png)
 {: #fig-improve-approaches}
 
-TODO: Describe Approaches
-
 Change-By-Split
-: Split up the original system into (not neccessarily distinct) parts. Clean-up those parts individually, and then evolve the parts independently.
+: Split up the original system into (not necessarily distinct) parts. Clean-up those parts individually, and then evolve the parts independently.
 
 Keep-Data-Toss-Code
 : As value sometimes resides in data, keep data intact and replace the functional/service/process part of a system.
@@ -196,4 +196,16 @@ For an overview of other improvement practices, see [Improvement Practices (Over
 
 ## Approaches and practices for improvement
 
-{% include aim42/pattern-list.html phase="improve" %}
+{% for entry in site.data.categories %}
+{% assign category_key = entry[0] %}
+<section class="pattern-group" data-category="{{ entry[0] }}">
+<h3 id="category-{{ entry[0] }}">{{ entry[1].title }}</h3>
+<p>{{ entry[1].blurb }}</p>
+{% include aim42/pattern-list.html phase="improve" category=category_key empty="No patterns in this category yet." %}
+</section>
+{% endfor %}
+
+<section class="pattern-group" data-category="other">
+<h3 id="category-other">Other improvement patterns</h3>
+{% include aim42/pattern-list.html phase="improve" category="none" %}
+</section>

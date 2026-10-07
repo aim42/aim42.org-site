@@ -12,11 +12,13 @@ status: complete
 It is expensive to collect information (problems, opinions etc.) from stakeholders (customers, support staff, developers, backoffice etc.) via surveys, interviews or meetings (e.g. ). There are possibilities to offer low-threshold services for involved people to give feedback. Possibilities e.g. are:
 {: #atam}
 
-1.  Tracking systems in the user interface
-2.  Easy-to-use contact possibilities in the system’s user interface
-3.  Ticketing/issue management software
-4.  Wikis
-5.  System-supported surveys
+<ol type="a">
+  <li>Tracking systems in the user interface</li>
+  <li>Easy-to-use contact possibilities in the system’s user interface</li>
+  <li>Ticketing/issue management software</li>
+  <li>Wikis</li>
+  <li>System-supported surveys</li>
+</ol>
 
 This information might help in finding issues, calculate their costs and prioritize it. Additionally to quantitative analysis, qualitative analysis might give improvement hints.
 

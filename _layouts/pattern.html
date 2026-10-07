@@ -2,7 +2,7 @@
 layout: aim42-base
 ---
 {% assign phase = site.data.phases[page.phase] %}
-{% capture chips %}{% if page.categories %}{% for category in page.categories %}<span class="tag">{{ category }}</span>{% endfor %}{% endif %}{% if page.status == "stub" %}<span class="tag tag--stub">stub</span>{% endif %}{% endcapture %}
+{% capture chips %}{% if page.categories %}{% for category in page.categories %}<span class="tag">{{ site.data.categories[category].title | default: category }}</span>{% endfor %}{% endif %}{% if page.status == "stub" %}<span class="tag tag--stub">stub</span>{% endif %}{% endcapture %}
 <div class="article-wrapper">
   <article>
     {% include aim42/section-hero.html

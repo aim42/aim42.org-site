@@ -19,7 +19,7 @@ Consider a Facade if you must use generic frameworks or systems you cannot modif
 
 ## Applicability
 
-Apply this pattern when clients use a set of components in stereotypcial fashion. Things that can be handled by a facade:
+Apply this pattern when clients use a set of components in stereotypical fashion. Things that can be handled by a facade:
 
 * recurring control flows
 * technical details

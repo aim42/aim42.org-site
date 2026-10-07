@@ -12,7 +12,7 @@ status: complete
 The original definition [\[Evans03, p. 365\]](/reference/bibliography/#evans03):
 
 > "" Create an isolating layer to provide clients with functionality in terms of their own domain model. The layer talks to the other system through its existing interface, requiring little or no modification to the other system. Internally, the layer translates in both directions as necessary between the two models. ""
-> — — Eric Evans  
+> — Eric Evans  
 >  <cite>Domain Driven Design</cite>
 
 ## Experiences

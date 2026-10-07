@@ -16,7 +16,7 @@ class MigrateRunTest < Minitest::Test
 
   # Hand-curated pilot relations that the source's Related section lacks
   # (recorded in phase 1 as "phase 2 restores").
-  PILOT_EXTRA_RELATED = { "improvement-backlog" => ["issue-list"] }.freeze
+  PILOT_EXTRA_RELATED = { "improvement-backlog" => ["issue-list"], "strangler-approach" => ["big-bang-approach"] }.freeze
 
   # One full conversion into a scratch root, shared by the tests below.
   def self.converted

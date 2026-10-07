@@ -15,7 +15,7 @@ The Butterfly methodology focuses on data. There is no need for a gateway like i
 
 ## Risks
 
-If the Butterfly Method will be successful depends on the factor v / u, where u is the speed of the Chrysalizer and v the speed of the DAA to setup new temp stores. If v = 0 this approach is similar to the [Big Bang Approach](/patterns/big-bang-approach/), if v &gt; u the migration will never end.
+If the Butterfly Method will be successful depends on the factor v / u, where u is the speed of the Chrysalizer and v the speed of the DAA to setup new temp stores. If v = 0 this approach is similar to the [Big Bang Approach](/patterns/big-bang-approach/), if v > u the migration will never end.
 
 ## Applicability
 

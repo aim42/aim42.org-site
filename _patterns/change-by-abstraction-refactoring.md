@@ -3,6 +3,7 @@ title: Change-by-Abstraction Refactoring
 phase: improve
 categories: [architecture-and-code]
 intent: Incrementally replace part of the system with a new implementation.
+related: [introduce-boy-scout-rule]
 status: complete
 ---
 
@@ -25,7 +26,7 @@ Intention to change or replace a cohesive piece of code with a lot of incoming (
 
 ## Related patterns/names
 
-This method is also known as "Branch by Abstraction" and a smiliar technique that goes under the names "Parallel Change" or "Expand and Contract" exists, where the abstraction step is skipped and callers are migrated to a new method/object immediately.
+This method is also known as "Branch by Abstraction" and a similar technique that goes under the names "Parallel Change" or "Expand and Contract" exists, where the abstraction step is skipped and callers are migrated to a new method/object immediately.
 
 This approach works best when it is used in combination with [Introduce Boy Scout Rule](/patterns/introduce-boy-scout-rule/).
 
