@@ -1,0 +1,35 @@
+---
+layout: aim42-base
+---
+{% assign phase = site.data.phases[page.phase] %}
+{% capture chips %}{% if page.categories %}{% for category in page.categories %}<span class="tag">{{ category }}</span>{% endfor %}{% endif %}{% if page.status == "stub" %}<span class="tag tag--stub">stub</span>{% endif %}{% endcapture %}
+<div class="article-wrapper">
+  <article>
+    {% include aim42/section-hero.html
+      section=page.phase
+      title=page.title
+      eyebrow_label=phase.title
+      eyebrow_href=phase.url
+      chips_html=chips %}
+
+    {% if page.status == "stub" %}
+      {% include aim42/stub-notice.html page=page %}
+    {% endif %}
+
+    <div class="pattern-meta">
+      <h2 class="pattern-meta__title">Intent</h2>
+      <p>{{ page.intent }}</p>
+    </div>
+
+    <section class="post-content">
+      {{ content }}
+    </section>
+
+    {% include aim42/related-patterns.html page=page %}
+
+    <p class="pattern-edit">
+      Found a mistake or want to add your experience?
+      <a class="pattern-edit__link" href="https://github.com/{{ site.repository }}/edit/master/{{ page.path }}">Edit this pattern on GitHub</a>.
+    </p>
+  </article>
+</div>

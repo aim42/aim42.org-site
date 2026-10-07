@@ -45,4 +45,38 @@ class SiteTest < Minitest::Test
     assert doc.at_css("h3#system"), "glossary anchor #system missing"
     assert doc.at_css("link[href='/assets/css/aim42.css']"), "aim42 stylesheet not linked"
   end
+
+  def test_pattern_page_renders_title_intent_and_phase
+    doc = page("/patterns/stakeholder-interview/")
+    assert_equal "Stakeholder Interview", doc.at_css("h1.section-hero__title")&.text&.strip
+    assert_equal "analyze", doc.at_css("header.section-hero")["data-section"]
+    assert_equal "/patterns/analyze/", doc.at_css(".section-hero__eyebrow a")["href"]
+    assert_includes doc.at_css(".pattern-meta p").text, "Learn from the people"
+    assert doc.at_css(".post-content h2"), "body headings missing"
+    refute doc.at_css(".stub-notice"), "complete pattern must not show the stub notice"
+    edit = doc.at_css("a.pattern-edit__link")
+    assert_equal "https://github.com/aim42/aim42.org-site/edit/master/_patterns/stakeholder-interview.md", edit["href"]
+  end
+
+  def test_related_patterns_render_in_both_directions
+    interview = page("/patterns/stakeholder-interview/")
+    assert interview.at_css(".pattern-related a[href='/patterns/stakeholder-analysis/']"), "forward relation missing"
+    analysis = page("/patterns/stakeholder-analysis/")
+    assert analysis.at_css(".pattern-related a[href='/patterns/stakeholder-interview/']"), "reverse relation missing"
+  end
+
+  def test_stub_pattern_shows_contribution_notice
+    doc = page("/patterns/assertions/")
+    notice = doc.at_css(".stub-notice")
+    assert notice, "stub notice missing"
+    assert_includes notice.text, "stub"
+    assert notice.at_css("a[href*='/edit/master/_patterns/assertions.md']"), "edit link missing from stub notice"
+    assert doc.at_css(".section-hero__chips .tag--stub"), "stub chip missing"
+  end
+
+  def test_pattern_with_categories_renders_at_flat_url
+    doc = page("/patterns/assertions/")
+    assert_equal "improve", doc.at_css("header.section-hero")["data-section"]
+    refute site_file("/architecture-and-code/assertions/"), "categories must not change the pattern URL"
+  end
 end

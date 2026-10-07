@@ -187,6 +187,11 @@ compress_html:
     envs: development
 
 # Collections:
+collections:
+  patterns:
+    output: true
+    permalink: /patterns/:name/
+    sort_by: title
 
 # Defaults
 defaults:
@@ -201,3 +206,8 @@ defaults:
       comments: # true
       share: true
       related: true
+  - scope:
+      path: ""
+      type: patterns
+    values:
+      layout: pattern
