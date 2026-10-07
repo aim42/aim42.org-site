@@ -2,6 +2,7 @@
 title: Domain Model
 layout: aim42-page
 permalink: /reference/domain-model/
+lede: The entities aim42 considers during improvement, such as issues, causes and improvements, with their definitions and relationships.
 ---
 
 Within the systematic improvement we consider and manipulate several typical kinds of information, **entities**.

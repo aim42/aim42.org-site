@@ -2,6 +2,7 @@
 title: Introduction
 layout: aim42-page
 permalink: /reference/introduction/
+lede: What aim42 is, why software needs systematic improvement, and how its three phases work together iteratively.
 ---
 
 ## Overview

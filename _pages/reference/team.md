@@ -2,6 +2,7 @@
 title: The Team
 layout: aim42-page
 permalink: /reference/team/
+lede: The people who contributed to aim42, with their roles and the areas of the method they worked on.
 ---
 
 For a current and complete overview, please see the [contributor page](https://github.com/aim42/aim42/graphs/contributors) on Github.

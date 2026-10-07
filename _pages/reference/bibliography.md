@@ -2,6 +2,7 @@
 title: Bibliography
 layout: aim42-page
 permalink: /reference/bibliography/
+lede: Books, articles and web resources cited by the aim42 patterns and practices.
 ---
 
 * {: #arc42} \[arc42\] arc42: Resources for Software Architects. Practical template, liberal licence. Available in a variety of formats, see [German website](http://arc42.de) or [English website](http://arc42.org).

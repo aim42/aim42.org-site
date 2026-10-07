@@ -2,6 +2,7 @@
 title: Contributing
 layout: aim42-page
 permalink: /reference/contributing/
+lede: How to take part in aim42, which is open source, by picking up open issues, adding patterns, or sending suggestions.
 ---
 
 This content is open source! The source is hosted under the aim42 organization on GitHub.
