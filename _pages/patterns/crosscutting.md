@@ -28,6 +28,9 @@ to be done.
 5. Continuously strive to increase your *architectural understanding*, as this
    facilitates identification of additional issues and improvements.
 
+![Collect issues and improvements](/images/patterns/issues-and-improvements.png)
+{: #issues-and-improvements}
+
 ## Cross-cutting patterns and practices
 
 {% include aim42/pattern-list.html phase="crosscutting" %}

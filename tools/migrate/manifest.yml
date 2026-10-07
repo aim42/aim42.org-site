@@ -12,6 +12,7 @@ glossary:
 extra_anchors:
   Common Terminology: /reference/introduction/#common-terminology
   quality-scenario-diagram: /patterns/capture-quality-requirements/
+  issues-and-improvements: /patterns/crosscutting/#issues-and-improvements
 
 pages:
   - title: Analyze
