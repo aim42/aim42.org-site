@@ -14,7 +14,9 @@ class SiteTest < Minitest::Test
   VALIDATOR = Aim42::Validator.new(ROOT)
   PATTERNS = VALIDATOR.files.map { |f| VALIDATOR.front_matter(f).merge("slug" => VALIDATOR.slug(f)) }.freeze
   PHASES = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).keys.freeze
-  PAGES = (["/patterns/", "/glossary/"] + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).freeze
+  # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
+  REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
+  PAGES = (["/patterns/"] + REFERENCE + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).uniq.freeze
 
   # Titles in Liquid's sort_natural order (case-insensitive).
   def sorted_titles(patterns)
@@ -82,7 +84,8 @@ class SiteTest < Minitest::Test
     assert_equal "Glossary", doc.at_css("h1.section-hero__title")&.text&.strip
     assert doc.at_css("header.site-header nav.site-primary-nav a[href='/patterns/']"), "primary nav missing"
     assert doc.at_css("footer.site-footer"), "aim42 footer missing"
-    assert doc.at_css("h3#system"), "glossary anchor #system missing"
+    assert doc.at_css("dl.glossary dt#system"), "glossary term #system missing"
+    assert_equal YAML.safe_load(File.read(File.join(ROOT, "_data", "glossary.yml"))).size, doc.css("dl.glossary dt").size
     assert doc.at_css("link[href='/assets/css/aim42.css']"), "aim42 stylesheet not linked"
   end
 
@@ -119,6 +122,10 @@ class SiteTest < Minitest::Test
     assert_includes notice.text, "stub"
     assert notice.at_css("a[href*='/edit/master/_patterns/assertions.md']"), "edit link missing from stub notice"
     assert doc.at_css(".section-hero__chips .tag--stub"), "stub chip missing"
+  end
+
+  def test_stub_without_body_renders_no_empty_section
+    refute page("/patterns/assertions/").at_css("section.post-content"), "empty body section on a stub"
   end
 
   def test_pattern_with_categories_renders_at_flat_url

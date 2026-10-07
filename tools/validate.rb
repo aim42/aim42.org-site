@@ -34,6 +34,8 @@ module Aim42
     def run
       errors = []
       phases = YAML.safe_load(File.read(File.join(@root, "_data", "phases.yml"))).keys
+      categories_file = File.join(@root, "_data", "categories.yml")
+      categories = File.file?(categories_file) ? YAML.safe_load(File.read(categories_file)).keys : []
       paths = files
       known = paths.map { |f| slug(f) }
       slugs = Hash.new { |h, k| h[k] = [] }
@@ -85,7 +87,16 @@ module Aim42
             errors << "#{name}: 'related' must be a list of slugs"
           end
         end
-        errors << "#{name}: 'categories' must be a list" if fm.key?("categories") && !fm["categories"].is_a?(Array)
+        if fm.key?("categories")
+          if fm["categories"].is_a?(Array)
+            (fm["categories"] - categories).each do |c|
+              errors << "#{name}: unknown category '#{c}' (allowed: #{categories.join(", ")})"
+            end
+          else
+            errors << "#{name}: 'categories' must be a list"
+          end
+        end
+        errors << "#{name}: 'intent' is still TODO" if fm["intent"].to_s.strip == "TODO"
         titles[fm["title"].to_s.strip.downcase] << name unless fm["title"].to_s.strip.empty?
       end
 

@@ -20,7 +20,7 @@ jobs:
         run: ruby tools/validate.rb
 
       - name: Unit tests
-        run: bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb
+        run: bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb tests/meta_text_test.rb
 
       - name: Build site
         run: bundle exec jekyll build

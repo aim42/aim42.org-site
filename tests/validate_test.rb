@@ -154,4 +154,28 @@ class ValidatorTest < Minitest::Test
     fm = YAML.safe_load(example.gsub(/^    /, ""))
     Aim42::Validator::REQUIRED.each { |key| assert_kind_of String, fm[key], "README example: '#{key}'" }
   end
+
+  CATEGORIES = "approaches:\n  title: Improvement approaches\narchitecture-and-code:\n  title: Architecture and code structure\n"
+
+  def test_known_categories_pass
+    File.write(File.join(@root, "_data", "categories.yml"), CATEGORIES)
+    pattern("a", "title: A\nphase: improve\ncategories: [approaches, architecture-and-code]\nintent: I.\nstatus: complete\n")
+    assert_empty errors
+  end
+
+  def test_unknown_category
+    File.write(File.join(@root, "_data", "categories.yml"), CATEGORIES)
+    pattern("a", "title: A\nphase: improve\ncategories: [approaches, nonsense]\nintent: I.\nstatus: complete\n")
+    assert_includes errors, "a.md: unknown category 'nonsense' (allowed: approaches, architecture-and-code)"
+  end
+
+  def test_categories_without_categories_file
+    pattern("a", "title: A\nphase: improve\ncategories: [approaches]\nintent: I.\nstatus: complete\n")
+    assert_includes errors, "a.md: unknown category 'approaches' (allowed: )"
+  end
+
+  def test_todo_intent_is_rejected
+    pattern("a", "title: A\nphase: improve\nintent: TODO\nstatus: complete\n")
+    assert_includes errors, "a.md: 'intent' is still TODO"
+  end
 end

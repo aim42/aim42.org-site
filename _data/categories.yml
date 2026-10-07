@@ -1,0 +1,18 @@
+# The improve phase groups its patterns by these categories (spec §6).
+# Keys are the allowed values of a pattern's `categories`; order is display order.
+# Titles and blurbs follow improve.adoc ("Improvement Approaches/Practices (Overview)").
+approaches:
+  title: Improvement approaches
+  blurb: Strategies for improving a system in the large — keep the data and toss the code, rewrite, restructure, improve the modularization or the domain focus.
+processes:
+  title: Processes and organization
+  blurb: Sometimes your issues originate in process or organizational root causes, meaning your development, rollout or operations processes are less efficient than they should be.
+architecture-and-code:
+  title: Architecture and code structure
+  blurb: All aspects of source code may be subject to improvement — style, structure, dependencies, conventions, naming — as well as structure in the large (modules, components, interfaces) and crosscutting technical concepts.
+technical-infrastructure:
+  title: Technical infrastructure
+  blurb: Technical infrastructure encompasses both underlying hardware and software.
+analyzability:
+  title: Analyzability and evaluability
+  blurb: Make the system easier to analyze and understand, e.g. by improving logging or tracing, and enable evaluation by collecting metrics during development, deployment or runtime.

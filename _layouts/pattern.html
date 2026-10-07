@@ -21,9 +21,12 @@ layout: aim42-base
       <p>{{ page.intent | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
     </div>
 
+    {% assign body = content | strip %}
+    {% if body != "" %}
     <section class="post-content">
       {{ content }}
     </section>
+    {% endif %}
 
     {% include aim42/related-patterns.html page=page %}
 
