@@ -1,9 +1,11 @@
 ---
 title: Estimate in Interval
 phase: evaluate
-intent: Estimation is a guess, not a **measurement**. Estimates are uncertain, otherwise, they would be observations (or measurements!).
+intent: Estimate in intervals, giving lower and upper bounds.
 status: complete
 ---
+
+Estimation is a guess, not a **measurement**. Estimates are uncertain, otherwise, they would be observations (or measurements!).
 
 ## Description
 
