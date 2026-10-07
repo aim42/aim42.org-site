@@ -16,6 +16,7 @@ strategies.
   [Evaluate](/patterns/evaluate/) phase, like cost, effort or risk.
 
 ![Improvement Backlog](/images/patterns/improvement-backlog.jpg)
+{: #figure-improvement-backlog}
 
 ## Description
 

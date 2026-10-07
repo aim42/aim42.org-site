@@ -21,6 +21,7 @@ that's the price of risk reduction) [1].
 Paul Hammant depicts the strangler approach as follows [2]:
 
 ![Strangler Applications (Paul Hammant)](/images/patterns/strangulation.jpg)
+{: #figure-strangulation}
 
 He discusses two ways of achieving the goal of moving from the (red) old system
 to the (blue) new system:

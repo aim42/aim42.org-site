@@ -1,0 +1,39 @@
+---
+title: Static Code Analysis
+phase: analyze
+intent: "Static Analysis can serve two purposes:"
+related: [software-archeology, structural-analysis]
+status: complete
+---
+
+* Analyse source code to identify building blocks and their dependencies, determine complexity, coupling, cohesion and other structural properties.
+* Detect certain types of bugs, dangerous coding patterns and bad coding style.
+
+## Description
+
+Use source code analysis tools to analyse static properties of the system’s source code, e.g. the following:
+
+Coupling and dependencies
+: Where do the building-blocks (e.g. classes, packages, modules, subsystems) of your system depend upon? What are the intra-system call- and communication relationships?
+
+## Experiences
+
+* Many projects (commercial and open-source) apply automated static code analysis as part of their build processes.
+
+## Applicability
+
+Apply static code analysis when the code base is medium sized or large and the appropriate tools are available.
+
+* Many metrics and tools are tailored to object-oriented programming languages.
+* Dynamically typed languages often have limited tool support.
+
+## Also Known As
+
+* Code quality analysis
+* Software measurement and metrics
+
+## References
+
+* [SonarQube](http://sonarqube.org), LGPL-licenced open-source platform to analyze code.
+* [JDepend](http://clarkware.com/software/JDepend.html), open-source Java dependency checker.
+* [Sonargraph](http://www.hello2morrow.com/products/sonargraph), static code analyzer focused on software structure and architecture.

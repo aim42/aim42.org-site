@@ -34,6 +34,7 @@ or aspects of the system: if you search with a microscope, you're likely to
 miss several aspects.
 
 ![Overview of the most important analysis practices](/images/patterns/analyze-patterns-overview.png)
+{: #figure-analyze-pattern-overview}
 
 Always begin with a [Stakeholder Analysis](/patterns/stakeholder-analysis/),
 then conduct [Stakeholder Interviews](/patterns/stakeholder-interview/) with

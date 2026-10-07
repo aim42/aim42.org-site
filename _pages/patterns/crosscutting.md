@@ -8,6 +8,14 @@ permalink: /patterns/crosscutting/
 lede: Practices that span all phases and keep issues and improvements visible, understood and aligned.
 ---
 
+## Goals
+
+to be done.
+
+## Overview
+
+![Overview of the crosscutting patterns](/images/patterns/crosscutting-patterns-overview.png)
+
 ## How it works
 
 1. Start with collecting issues — mainly in the [Analyze](/patterns/analyze/)
@@ -23,3 +31,5 @@ lede: Practices that span all phases and keep issues and improvements visible, u
 ## Cross-cutting patterns and practices
 
 {% include aim42/pattern-list.html phase="crosscutting" %}
+
+![Overview of the crosscutting practices](/images/patterns/crosscutting-patterns-complete.png)

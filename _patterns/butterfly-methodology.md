@@ -1,0 +1,38 @@
+---
+title: Butterfly Methodology
+phase: improve
+categories: [approaches]
+intent: Data migration method without the need of gateways. Enables zero-downtime migrations by working with temporary data stores.
+related: [chicken-little-strategy]
+status: complete
+---
+
+## Description
+
+The Butterfly methodology focuses on data. There is no need for a gateway like in the Chicken-Little Strategy. At the beginning there is an initial data migration, which can be used to develop the new application without an influence on the legacy system. When the migration process starts, the data of the legacy system gets freezed and set to read-only. From now on data changes will be stored in a temporarily store. A Data Access Allocator (DAA) decides, if a request has to be send to temp store (for already changed data) or to the original database. With the help of a Chrysalizer (a data transformator), where transformation rules are implemented, all the data from the read-only database will be moved to the new system. No data will be lost, because changes are written to the first temp store. When the initial migration is finished, the data of the temp-store will be migrated, changes will be written to a second temp store and the first one is set to read-only. This process will continue until the time period of the migration is so short, that there will be no change in between the two stores anymore. At this moment, the legacy system can be shut down, the last temp store gets migrated and the new system is turned on. This approach helps to migrate a productive system without downtime. Another pro is, that the process can be canceled at any time by rolling back the temp stores. It is also possible to execute tests of the parallel development with actual data. A problem can be the amount of hardware that is needed to keep all the temp stores if you have a massive amount of data. Also it can be very expensive to implement the DAA.
+
+![Butterfly-Methodology](/images/patterns/improve-approaches/butterfly.png)
+
+## Risks
+
+If the Butterfly Method will be successful depends on the factor v / u, where u is the speed of the Chrysalizer and v the speed of the DAA to setup new temp stores. If v = 0 this approach is similar to the [Big Bang Approach](/patterns/big-bang-approach/), if v &gt; u the migration will never end.
+
+## Applicability
+
+Apply this pattern if you need to migrate a mass of data without downtime.
+
+## Consequences
+
+Enables zero downtime migrations by working with temporary data stores. If the amount of data is huge, there is a need for a lot of hardware.
+
+Critical success factors are:
+
+* a very good understanding of the old and new system
+* an initial migration without errors / mistakes
+* a fast Chrysalizer
+* a efficient Data Access Allocator
+
+## References
+
+* [\[BISBAL\]](/reference/bibliography/#bisbal)
+* [\[ERDLE\]](/reference/bibliography/#erdle)

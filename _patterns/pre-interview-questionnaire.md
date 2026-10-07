@@ -1,0 +1,33 @@
+---
+title: Pre-Interview Questionnaire
+phase: analyze
+intent: Prior to interviewing stakeholders, present them with a written questionnaire, so they can reflect in advance.
+related: [stakeholder-interview, questionnaire]
+status: complete
+---
+
+## Description
+
+A specialisation of [questionnaire](/patterns/questionnaire/) - targeted to be used by stakeholders (aka your interview partners). As with the more general [questionnaire](/patterns/questionnaire/) you need to collect appropriate topics, questions and suggestions. Remember to apply [stakeholder-specific communication](/patterns/stakeholder-specific-communication/): It might be useful to create different questionnaires per stakeholder or a group of stakeholders. This can lead to more work for you as interviewer, but will also lead to better interview results.
+
+Mix open and closed questions:
+
+* open questions require stakeholders to formulate answers on their own. For example "How did you…?" or "Please explain…?"
+* closed questions ask stakeholders to select from several predefined choices.
+
+Include a "Comments/Remarks" section at the end of the questionnaire, so stakeholders can comment on topics you did not consider in advance. The Pre Interview Questionnaire shall be handed over to the appropriate stakeholders in advance, a few days before the interview. As these documents will be read and processed by external and potentially critical stakeholders, you need to care for several details:
+
+* Stakeholder specific terminology: Ensure your questions will be understandable by the target audience. See [Stakeholder-Specific Communication](/patterns/stakeholder-specific-communication/).
+* Ensure nice layout and (visual) readability. Your questionnaire shall be fun to work with.
+* Ensure timely delivery to your stakeholders, so they have enough time to think about their answers. Do never force your stakeholders to answer questions under time pressure.
+
+## Examples
+
+Download a sample pre-interview questionnaire - currently only in German:
+
+* [pdf version](/assets/downloads/DE-Vorab-Fragebogen.pdf)
+* [docx version](/assets/downloads/DE-Vorab-Fragebogen.docx)
+
+## Also Known As
+
+* Interview checklist

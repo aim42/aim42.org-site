@@ -220,4 +220,18 @@ class SiteTest < Minitest::Test
       end
     end
   end
+
+  # Every anchor of the old AsciiDoc reference has a working new home (spec §9),
+  # so the phase-3 redirector can send aim42.github.io/#Anchor there.
+  def test_every_old_anchor_resolves
+    anchors = YAML.safe_load(File.read(File.join(ROOT, "_data", "anchors.yml")))
+    docs = {}
+    anchors.each do |old, url|
+      target, fragment = url.split("#", 2)
+      assert site_file(target), "anchor #{old}: #{target} is not generated"
+      next unless fragment
+      doc = (docs[target] ||= page(target))
+      assert doc.css("[id]").any? { |e| e["id"] == fragment }, "anchor #{old}: ##{fragment} missing on #{target}"
+    end
+  end
 end

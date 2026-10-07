@@ -14,6 +14,7 @@ architectural risks, tradeoffs and sensitivity points.
 The ATAM method consists of four phases as shown in the diagram "Approach of ATAM".
 
 ![Approach of ATAM](/images/patterns/approach-of-atam.png)
+{: #figure-atam-approach}
 
 The phases are:
 
