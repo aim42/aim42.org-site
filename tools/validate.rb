@@ -1,4 +1,5 @@
-# Validates the front matter of every file in _patterns/.
+# Validates the front matter of every file in _patterns/, and the pattern
+# references on the home page (_pages/home.md with layout: home).
 #
 #   ruby tools/validate.rb            # checks the current directory
 #   ruby tools/validate.rb path/to/site
@@ -16,6 +17,7 @@ module Aim42
     SLUG = /\A[a-z0-9]+(?:-[a-z0-9]+)*\z/
     # Jekyll publishes these as pages (markdown_ext in _config.yml), also from subdirectories.
     EXTENSIONS = %w[md markdown mkdown mkdn mkd].freeze
+    HOME = File.join("_pages", "home.md").freeze
 
     def initialize(root)
       @root = root
@@ -40,6 +42,7 @@ module Aim42
       known = paths.map { |f| slug(f) }
       slugs = Hash.new { |h, k| h[k] = [] }
       titles = Hash.new { |h, k| h[k] = [] }
+      phase_of = {}
 
       paths.each do |file|
         name = file.delete_prefix(File.join(@root, "_patterns", ""))
@@ -63,6 +66,7 @@ module Aim42
           errors << "#{name}: front matter must be a mapping"
           next
         end
+        phase_of[slug] = fm["phase"]
 
         REQUIRED.each do |key|
           errors << "#{name}: missing required key '#{key}'" if fm[key].to_s.strip.empty?
@@ -103,6 +107,68 @@ module Aim42
 
       slugs.each { |slug, names| errors << "duplicate slug '#{slug}' in #{names.join(", ")}" if names.size > 1 }
       titles.each { |title, names| errors << "duplicate title '#{title}' in #{names.join(", ")}" if names.size > 1 }
+      errors.concat(home_errors(phases, phase_of))
+      errors
+    end
+
+    # The home page names patterns by slug (examples per phase, Get started
+    # steps). A rename or delete must fail the build like a broken `related`.
+    def home_errors(phases, phase_of)
+      file = File.join(@root, HOME)
+      return [] unless File.file?(file)
+      begin
+        fm = front_matter(file)
+      rescue Psych::Exception => e
+        return ["#{HOME}: invalid YAML front matter (#{e.message})"]
+      end
+      return [] unless fm.is_a?(Hash) && fm["layout"] == "home"
+
+      errors = []
+      text = ->(value) { value.is_a?(String) && !value.strip.empty? }
+      %w[headline lede].each do |key|
+        errors << "#{HOME}: missing required key '#{key}'" unless text.(fm[key])
+      end
+
+      cycle = fm["cycle"].is_a?(Hash) ? fm["cycle"] : {}
+      phases.each do |phase|
+        errors << "#{HOME}: cycle line for '#{phase}' is missing" unless text.(cycle[phase])
+      end
+
+      examples = fm["examples"].is_a?(Hash) ? fm["examples"] : {}
+      phases.each do |phase|
+        list = examples[phase]
+        unless list.is_a?(Array) && list.size == 3
+          errors << "#{HOME}: examples for '#{phase}' must be a list of three slugs"
+          next
+        end
+        list.each do |slug|
+          if !phase_of.key?(slug)
+            errors << "#{HOME}: example '#{slug}' does not exist in _patterns/"
+          elsif phase_of[slug] != phase
+            errors << "#{HOME}: example '#{slug}' belongs to '#{phase_of[slug]}', not '#{phase}'"
+          end
+        end
+      end
+      (examples.keys - phases).each { |key| errors << "#{HOME}: examples for unknown phase '#{key}'" }
+
+      steps = fm["get_started"]
+      unless steps.is_a?(Array) && !steps.empty?
+        return errors << "#{HOME}: 'get_started' must be a list of steps"
+      end
+      steps.each.with_index(1) do |step, n|
+        unless step.is_a?(Hash)
+          errors << "#{HOME}: get_started step #{n} must be a mapping"
+          next
+        end
+        errors << "#{HOME}: get_started step #{n} needs a 'text'" unless text.(step["text"])
+        if step["patterns"].is_a?(Array) && !step["patterns"].empty?
+          (step["patterns"] - phase_of.keys).each do |slug|
+            errors << "#{HOME}: get_started step #{n}: '#{slug}' does not exist in _patterns/"
+          end
+        else
+          errors << "#{HOME}: get_started step #{n} needs a list of patterns"
+        end
+      end
       errors
     end
 

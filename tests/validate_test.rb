@@ -184,4 +184,93 @@ class ValidatorTest < Minitest::Test
     pattern("a", "title: A\nphase: improve\nintent: TODO\nstatus: complete\n")
     assert_includes errors, "a.md: 'intent' is still TODO"
   end
+
+  HOME_OK = <<~YAML
+    layout: home
+    headline: Improve software systems, systematically.
+    lede: A method.
+    cycle:
+      analyze: find the issues
+      improve: fix step by step
+    examples:
+      analyze: [a1, a2, a3]
+      improve: [i1, i2, i3]
+    get_started:
+      - text: Collect issues.
+        patterns: [a1]
+  YAML
+
+  def home(front_matter)
+    FileUtils.mkdir_p(File.join(@root, "_pages"))
+    File.write(File.join(@root, "_pages", "home.md"), "---\n#{front_matter}---\n\nBody.\n")
+  end
+
+  def home_patterns
+    %w[a1 a2 a3].each { |s| pattern(s, "title: #{s.upcase}\nphase: analyze\nintent: x\nstatus: complete\n") }
+    %w[i1 i2 i3].each { |s| pattern(s, "title: #{s.upcase}\nphase: improve\nintent: x\nstatus: complete\n") }
+  end
+
+  def test_valid_home_page_has_no_errors
+    home_patterns
+    home(HOME_OK)
+    assert_empty errors
+  end
+
+  def test_home_page_with_another_layout_is_not_checked
+    home_patterns
+    home("layout: splash\n")
+    assert_empty errors
+  end
+
+  def test_home_needs_headline_and_lede
+    home_patterns
+    home(HOME_OK.sub(/^headline:.*\n/, "").sub(/^lede:.*\n/, "lede: \"\"\n"))
+    assert_includes errors, "_pages/home.md: missing required key 'headline'"
+    assert_includes errors, "_pages/home.md: missing required key 'lede'"
+  end
+
+  def test_home_needs_examples_and_cycle_line_for_every_phase
+    home_patterns
+    home(HOME_OK.sub("  improve: fix step by step\n", "").sub("  improve: [i1, i2, i3]\n", ""))
+    assert_includes errors, "_pages/home.md: cycle line for 'improve' is missing"
+    assert_includes errors, "_pages/home.md: examples for 'improve' must be a list of three slugs"
+  end
+
+  def test_home_example_must_be_three
+    home_patterns
+    home(HOME_OK.sub("[a1, a2, a3]", "[a1, a2]"))
+    assert_includes errors, "_pages/home.md: examples for 'analyze' must be a list of three slugs"
+  end
+
+  def test_home_example_must_exist
+    home_patterns
+    home(HOME_OK.sub("[a1, a2, a3]", "[a1, a2, nope]"))
+    assert_includes errors, "_pages/home.md: example 'nope' does not exist in _patterns/"
+  end
+
+  def test_home_example_must_belong_to_its_phase
+    home_patterns
+    home(HOME_OK.sub("[a1, a2, a3]", "[a1, a2, i1]"))
+    assert_includes errors, "_pages/home.md: example 'i1' belongs to 'improve', not 'analyze'"
+  end
+
+  def test_home_examples_for_unknown_phase
+    home_patterns
+    home(HOME_OK.sub("examples:\n", "examples:\n  evaluate: [a1, a2, a3]\n"))
+    assert_includes errors, "_pages/home.md: examples for unknown phase 'evaluate'"
+  end
+
+  def test_home_get_started_is_required
+    home_patterns
+    home(HOME_OK.sub(/^get_started:.*\z/m, ""))
+    assert_includes errors, "_pages/home.md: 'get_started' must be a list of steps"
+  end
+
+  def test_home_get_started_step_needs_text_and_existing_patterns
+    home_patterns
+    home(HOME_OK.sub("  - text: Collect issues.\n    patterns: [a1]\n", "  - text: Collect issues.\n    patterns: [nope]\n  - patterns: [a1]\n  - text: Estimate.\n"))
+    assert_includes errors, "_pages/home.md: get_started step 1: 'nope' does not exist in _patterns/"
+    assert_includes errors, "_pages/home.md: get_started step 2 needs a 'text'"
+    assert_includes errors, "_pages/home.md: get_started step 3 needs a list of patterns"
+  end
 end
