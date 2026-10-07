@@ -83,4 +83,11 @@ class MigrateSourceTest < Minitest::Test
     assert_equal "/reference/domain-model/", table.lookup("Domain Model").url
     assert_empty table.duplicates
   end
+
+  def test_index_entry_strips_a_mid_line_category_label
+    refute_includes source.index_entry("Report-Structure"), "Category"
+    toggle = source.index_entry("Toggle-Feature")
+    refute_includes toggle, "Category"
+    assert toggle.end_with?("feature flags."), toggle
+  end
 end

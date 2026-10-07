@@ -55,7 +55,7 @@ module Aim42
         return nil unless entry
         text = entry.sub(/\A\. \*<<[^>]+>>\*\s*/, "")
                     .sub(/\A\. \[\[[^\]]+\]\]\s*(\+\s*)?\[pattern\]#[^#]+#[^:\n]*::\s*/, "")
-        text = text.sub(/^\s*Category:.*\z/m, "").gsub(/^\+\s*$/, "").strip
+        text = text.sub(/\s*Category:.*\z/m, "").gsub(/^\+\s*$/, "").strip
         text.empty? ? nil : text
       end
 

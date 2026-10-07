@@ -276,7 +276,7 @@ patterns:
     source: patterns/improve/big-bang-approach.adoc
   - anchor: Branch-For-Improvement
     slug: branch-for-improvement
-    title: Branch For Improvement
+    title: Branch for Improvement
     phase: improve
     categories: [architecture-and-code]
     source: pattern-index.adoc#Branch-For-Improvement
@@ -295,6 +295,7 @@ patterns:
     slug: change-by-abstraction-refactoring
     title: Change-by-Abstraction Refactoring
     phase: improve
+    categories: [architecture-and-code]
     source: patterns/improve/change-by-abstraction.adoc
   - anchor: Change-by-Copy
     slug: change-by-copy
@@ -500,7 +501,7 @@ patterns:
     source: pattern-index.adoc#Remove-Nested-Control-Structures
   - anchor: Sample-For-Improvement
     slug: sample-for-improvement
-    title: Sample For Improvement
+    title: Sample for Improvement
     phase: improve
     categories: [architecture-and-code]
     source: pattern-index.adoc#Sample-For-Improvement
