@@ -47,6 +47,10 @@ pages:
     url: /reference/bibliography/
     source: appendices/bibliography.adoc
     target: _pages/reference/bibliography.md
+  # Built from _data/glossary.yml, not converted; listed for its anchors and section ids.
+  - title: Glossary
+    url: /glossary/
+    source: appendices/glossary.adoc
   - title: Organizational Scenarios
     url: /reference/organizational-scenarios/
     source: organizational-scenarios.adoc

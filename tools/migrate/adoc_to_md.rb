@@ -274,8 +274,12 @@ module Aim42
       end
 
       # The id kramdown generates for a heading (auto_ids), for links within a page.
-      def heading_id(text)
+      def self.heading_id(text)
         text.downcase.gsub(/[^\p{Word}\- ]/u, "").tr(" ", "-")
+      end
+
+      def heading_id(text)
+        self.class.heading_id(text)
       end
 
       def heading?(node)

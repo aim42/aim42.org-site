@@ -72,6 +72,20 @@ class MigrateRunTest < Minitest::Test
     refute report.any? { |_, note| note.start_with?("duplicate anchor") }, "anchor conflicts"
   end
 
+  # The committed table's explicit anchors stay as they are; the old book's
+  # auto section ids (#_…) are added in between, in the same key order.
+  def test_anchor_table_adds_the_section_ids_and_keeps_explicit_anchors
+    text = File.read(File.join(out, "_data", "anchors.yml"))
+    committed = File.read(File.join(ROOT, "_data", "anchors.yml"))
+    assert text.start_with?(committed.lines.first(2).join)
+    anchors = YAML.safe_load(text)
+    assert_equal "/patterns/documentation-analysis/#description", anchors["_description_7"]
+    explicit = anchors.reject { |k, _| k.start_with?("_") }
+    assert_equal YAML.safe_load(committed).reject { |k, _| k.start_with?("_") }.to_a, explicit.to_a
+    keys = anchors.keys.map(&:downcase)
+    assert_equal keys.sort, keys
+  end
+
   def test_pilot_files_are_left_alone
     PILOT.each do |slug|
       assert_equal File.read(File.join(ROOT, "_patterns", "#{slug}.md")), File.read(File.join(out, "_patterns", "#{slug}.md"))
