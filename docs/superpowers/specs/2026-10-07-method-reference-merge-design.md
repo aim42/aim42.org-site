@@ -37,7 +37,8 @@ Markdown file on GitHub. One repository, one build.
 - The interactive graph (Q42-style D3 view). The content model is designed so it
   can be added later from front matter alone.
 - Hosting: GitHub Pages vs. Netlify. The build must work on both.
-- Navigation and content structure of the marketing pages.
+- Navigation and content structure of the marketing pages (except the home page,
+  whose redesign is part of phase 3).
 - The final palette values.
 
 ## 2. Phases
@@ -49,8 +50,9 @@ Markdown file on GitHub. One repository, one build.
    the index, the stub box. Tune the palette. Preview deploy; the live site is untouched.
 2. **Bulk content.** Scripted conversion of the remaining patterns, cross-reference
    rewrite, non-pattern chapters as pages, validation in the build.
-3. **Re-skin and cut-over.** Existing pages onto the Q42 layouts, navigation, redirect
-   shim on `aim42.github.io`, `aim42/aim42` archived.
+3. **Re-skin and cut-over.** Existing pages onto the Q42 layouts, a redesigned home page
+   (added 2026-10-07 by the project owner), navigation, redirect shim on
+   `aim42.github.io`, `aim42/aim42` archived.
 
 Each phase gets its own implementation plan.
 
