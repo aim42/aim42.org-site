@@ -31,7 +31,7 @@ change-by-abstraction-refactoring: "/patterns/change-by-abstraction-refactoring/
 Change-by-Copy: "/patterns/change-by-copy/"
 Change-by-Extension: "/patterns/change-by-extension/"
 change-by-split-approach: "/patterns/change-by-split-approach/"
-Change-Via-Split: "/patterns/change-via-split/"
+Change-Via-Split: "/patterns/change-by-copy/"
 Chicken-Little-Strategy: "/patterns/chicken-little-strategy/"
 Clements-ATAM: "/reference/bibliography/#clements-atam"
 Collect-Issues: "/patterns/collect-issues/"

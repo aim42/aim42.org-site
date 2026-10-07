@@ -300,6 +300,7 @@ patterns:
     source: patterns/improve/change-by-abstraction.adoc
   - anchor: Change-by-Copy
     slug: change-by-copy
+    aliases: [Change-Via-Split]
     title: Change by Copy
     phase: improve
     source: pattern-index.adoc#Change-by-Copy
@@ -314,11 +315,6 @@ patterns:
     phase: improve
     categories: [approaches]
     source: patterns/improve/change-by-split-approach.adoc
-  - anchor: Change-Via-Split
-    slug: change-via-split
-    title: Change via Split
-    phase: improve
-    source: pattern-index.adoc#Change-Via-Split
   - anchor: Chicken-Little-Strategy
     slug: chicken-little-strategy
     title: Chicken-Little Approach
