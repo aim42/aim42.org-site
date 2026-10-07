@@ -1,13 +1,15 @@
 ---
 title: Root Cause Analysis
 phase: analyze
-intent: "Explicitly differentiate between symptom and cause:"
+intent: "Explicitly differentiate between symptom and cause: identify root causes of symptoms, problems or issues."
 related: [take-what-they-mean]
 status: complete
 ---
 
 > To find mistakes is not enough. It is necessary to find the cause behind the mistake and build a system that minimizes future mistakes.
 > — W. Edwards Deming
+
+Explicitly differentiate between symptom and cause:
 
 * Identify root causes of symptoms, problems or issues
 * Trace a problem to its origins

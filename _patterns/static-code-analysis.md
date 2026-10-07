@@ -1,10 +1,12 @@
 ---
 title: Static Code Analysis
 phase: analyze
-intent: "Static Analysis can serve two purposes:"
+intent: Analyse source code to identify building blocks and their dependencies, determine complexity, coupling, cohesion and other structural properties.
 related: [software-archeology, structural-analysis]
 status: complete
 ---
+
+Static Analysis can serve two purposes:
 
 * Analyse source code to identify building blocks and their dependencies, determine complexity, coupling, cohesion and other structural properties.
 * Detect certain types of bugs, dangerous coding patterns and bad coding style.

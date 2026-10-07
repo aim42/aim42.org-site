@@ -1,7 +1,8 @@
 ---
 title: User Analysis
 phase: analyze
-intent: Get an overview of user categories or groups, their goals, requirements and expectations. Find out about issues users have with the system. Related to [Stakeholder Analysis](/patterns/stakeholder-analysis/), [Context Analysis](/patterns/context-analysis/) and [Requirements Analysis](/patterns/requirements-analysis/).
+intent: Get an overview of user categories or groups, their goals, requirements and expectations. Find out about issues users have with the system.
+related: [stakeholder-analysis, context-analysis, requirements-analysis]
 status: complete
 ---
 

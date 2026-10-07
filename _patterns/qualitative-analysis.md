@@ -1,9 +1,11 @@
 ---
 title: Qualitative Analysis
 phase: analyze
-intent: "Find out (analyze):"
+intent: Analyze which quality goals of the [system](/glossary/#system) are at risk and which are met by the current implementation.
 status: complete
 ---
+
+Find out (analyze):
 
 * whether quality requirements can be met by the system,
 * which specific quality requirements are risks with respect to the current architecture,
