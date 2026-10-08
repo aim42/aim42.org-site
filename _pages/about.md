@@ -1,15 +1,10 @@
 ---
 title: About
-layout: single
+layout: aim42-section
 permalink: /about
-header:
-  overlay_image: /images/aim42-splash.png
-sidebar:
-  nav: "about"
-
 ---
 
-# aim42
+## aim42
 
 aim42 is the systematic approach to improve software systems and architectures.
 
@@ -28,13 +23,6 @@ life maintaining, evolving, fixing or enhancing existing (_legacy_) systems.
 
 ## Current Status
 
-### aim42 Method Reference
-[![](https://img.shields.io/github/issues/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
-[![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
-[![](https://img.shields.io/github/stars/aim42/aim42.svg)](https://github.com/aim42/aim42/stargazers)
-[![](https://img.shields.io/github/contributors/aim42/aim42.svg)](https://github.com/aim42/aim42/graphs/contributors)
-
-
 ### aim42 Website
 [![](https://img.shields.io/github/issues/aim42/aim42.org-site.svg)](https://github.com/aim42/aim42.org-site/issues)
 [![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.org-site.svg)](https://github.com/aim42/aim42.org-site/issues)
@@ -43,8 +31,8 @@ life maintaining, evolving, fixing or enhancing existing (_legacy_) systems.
 
 ### Found a bug?
 
-Of course, we welcome [contributions](/contribute), both [pull requests](https://github.com/aim42/aim42/pulls)
-and [issues](https://github.com/aim42/aim42/issues)!
+Of course, we welcome [contributions](/contribute), both [pull requests](https://github.com/aim42/aim42.org-site/pulls)
+and [issues](https://github.com/aim42/aim42.org-site/issues)!
 
 
 ## About Gernot

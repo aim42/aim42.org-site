@@ -177,7 +177,9 @@ class SiteTest < Minitest::Test
       "/patterns/atam/" => ["Patterns", "true"],
       "/patterns/" => ["Patterns", "page"],
       "/glossary/" => ["Patterns", "true"],
-      "/reference/team/" => ["About", "true"]
+      "/reference/team/" => ["About", "true"],
+      "/about" => ["About", "page"],
+      "/getstarted" => ["Get started", "page"]
     }.each do |url, expected|
       links = page(url).css("nav.site-primary-nav a")
       assert_equal BAR, links.map { |a| a.text.strip }, "#{url}: bar"
@@ -200,6 +202,30 @@ class SiteTest < Minitest::Test
   def test_header_shows_the_svg_logo
     logo = page("/glossary/").at_css(".site-brand img")
     assert_equal ["/images/logo/AIM42_white.svg", "aim42"], [logo["src"], logo["alt"]]
+  end
+
+  def test_section_pages_show_a_card_per_page
+    %w[getstarted learn about].each do |key|
+      section = NAV["sections"][key]
+      doc = page(section["url"])
+      assert_equal section["title"], doc.at_css("h1.section-hero__title").text.strip, "#{key}: title"
+      assert_equal section["lede"], doc.at_css(".section-hero__lede").text.strip, "#{key}: lede"
+      cards = doc.css(".section-cards .phase-card")
+      assert_equal section["pages"].map { |p| [p["title"], p["url"], p["blurb"]] },
+                   cards.map { |c| [c.at_css("h3 a").text.strip, c.at_css("h3 a")["href"], c.at_css("p").text.strip] }, "#{key}: cards"
+      assert_equal 1, doc.css("h1").size, "#{key}: exactly one h1"
+    end
+  end
+
+  def test_pages_show_their_section_as_eyebrow
+    {
+      "/reference/team/" => ["About", "/about"],
+      "/glossary/" => ["Patterns", "/patterns/"],
+      "/patterns/analyze/" => ["Phase", "/patterns/"]
+    }.each do |url, expected|
+      link = page(url).at_css(".section-hero__eyebrow a")
+      assert_equal expected, [link&.text&.strip, link&.[]("href")], "#{url}: eyebrow"
+    end
   end
 
   def test_pattern_page_renders_title_intent_and_phase

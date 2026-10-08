@@ -1,13 +1,27 @@
 ---
 layout: aim42-base
 ---
+{% comment %}
+  The eyebrow names the page's section (from _data/navigation.yml) and links
+  to the section page. A page may override it with eyebrow_label/eyebrow_href
+  (the phase pages do).
+{% endcomment %}
+{% include aim42/current-section.html %}
+{% assign eyebrow_label = page.eyebrow_label %}
+{% assign eyebrow_href = page.eyebrow_href %}
+{% unless page.eyebrow_label %}
+  {% if current_section != "" and current_is_section_page == false %}
+    {% assign eyebrow_label = site.data.navigation.sections[current_section].title %}
+    {% assign eyebrow_href = site.data.navigation.sections[current_section].url %}
+  {% endif %}
+{% endunless %}
 <div class="article-wrapper">
   <article>
     {% include aim42/section-hero.html
       section=page.section
       title=page.title
-      eyebrow_label=page.eyebrow_label
-      eyebrow_href=page.eyebrow_href
+      eyebrow_label=eyebrow_label
+      eyebrow_href=eyebrow_href
       lede=page.lede
       meta=page.meta %}
     <section class="post-content">

@@ -1,21 +1,15 @@
 ---
-title: Get Started
-layout: single
+title: Get started
+layout: aim42-section
 permalink: /getstarted
-header:
-  overlay_image: /images/aim42-splash.png
-sidebar:
-  nav: "getstarted"
-
-
 ---
 
-# Elevator Pitch
+## Elevator Pitch
 
 aim42 is a systematic approach to software improvement. It can help you
 save money and reduce all kinds of technical debt.
 
-Our extensive [Method Reference](/patterns/) collects over 90 established practices
+Our extensive [Method Reference](/patterns/) collects {{ site.patterns | size }} established practices
 to improving existing systems.
 
 aim42 is completely free to use.

@@ -1,0 +1,16 @@
+// Cards on the section pages (_layouts/aim42-section.html). They reuse
+// .phase-list / .phase-card from pages/_patterns.scss; the generic
+// `.site-content ul` prose rules (75ch, indent) do not apply to them.
+.site-content .section-cards {
+  max-width: none;
+  padding-left: 0;
+}
+
+.section-cards h3 {
+  font-size: $text-xl;
+  margin: 0 0 0.3rem;
+}
+
+.section-cards-section {
+  margin-top: 2.5rem;
+}
