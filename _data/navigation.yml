@@ -37,21 +37,18 @@ sections:
         url: /patterns/improve/
       - title: Cross-cutting
         url: /patterns/crosscutting/
-      - title: Glossary
-        url: /glossary/
-      - title: Introduction
-        url: /reference/introduction/
       - title: Domain model
         url: /reference/domain-model/
-      - title: Bibliography
-        url: /reference/bibliography/
       - title: Organizational scenarios
         url: /reference/organizational-scenarios/
   learn:
     title: Learn
     url: /learn
-    lede: Articles, talks, training and answers to common questions about aim42.
+    lede: An introduction to aim42, articles, talks and training, answers to common questions, the glossary and the sources.
     pages:
+      - title: Introduction
+        url: /reference/introduction/
+        blurb: What aim42 is, why software needs systematic improvement, and how its phases work together.
       - title: Publications
         url: /publications
         blurb: Articles, papers and talks about aim42, in English and German.
@@ -61,6 +58,12 @@ sections:
       - title: FAQ
         url: /faq
         blurb: Short answers about aim42, refactoring and the people behind it.
+      - title: Glossary
+        url: /glossary/
+        blurb: The terms aim42 uses, each with a short definition.
+      - title: Bibliography
+        url: /reference/bibliography/
+        blurb: Books, articles and web resources cited by the patterns.
   about:
     title: About
     url: /about
@@ -71,16 +74,7 @@ sections:
         blurb: Email, GitHub and LinkedIn.
       - title: Contribute
         url: /contribute
-        blurb: Ways to help, from reporting an issue to sending a pull request.
-      - title: Contributing to the reference
-        url: /reference/contributing/
-        blurb: How to take part in the pattern reference.
-      - title: How to add a pattern
-        url: /reference/how-to-add-a-pattern/
-        blurb: Every pattern is one Markdown file; this is how to write one.
-      - title: Team
-        url: /reference/team/
-        blurb: The people who built aim42 and what they worked on.
+        blurb: Ways to help, from reporting an issue to adding a pattern.
       - title: License
         url: /license
         blurb: aim42 is free to use under CC BY-SA 4.0.

@@ -45,7 +45,7 @@ Die Informatik-Ausbildung fokussiert auf die Neuentwicklung von Software – den
 
 Dieser Artikel ist ursprünglich in Ausgabe 02/2014 der Zeitschrift Business & Technology erschienen. Die Veröffentlichung auf innoq.com erfolgt mit freundlicher Genehmigung des S&S Media-Verlags.
 
-[Online (bei innoQ)](https://www.innoq.com/de/articles/2014/07/software-systematisch-verbessern/)
+[Online (bei INNOQ)](https://www.innoq.com/de/articles/2014/07/software-systematisch-verbessern/)
 
 
 

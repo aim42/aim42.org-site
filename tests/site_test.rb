@@ -179,8 +179,8 @@ class SiteTest < Minitest::Test
     {
       "/patterns/atam/" => ["Patterns", "true"],
       "/patterns/" => ["Patterns", "page"],
-      "/glossary/" => ["Patterns", "true"],
-      "/reference/team/" => ["About", "true"],
+      "/glossary/" => ["Learn", "true"],
+      "/reference/introduction/" => ["Learn", "true"],
       "/contact" => ["About", "true"],
       "/about" => ["About", "page"],
       "/getstarted" => ["Get started", "page"]
@@ -223,8 +223,9 @@ class SiteTest < Minitest::Test
 
   def test_pages_show_their_section_as_eyebrow
     {
-      "/reference/team/" => ["About", "/about"],
-      "/glossary/" => ["Patterns", "/patterns/"],
+      "/contact" => ["About", "/about"],
+      "/glossary/" => ["Learn", "/learn"],
+      "/reference/how-to-add-a-pattern/" => ["Contribute", "/contribute"],
       "/patterns/analyze/" => ["Phase", "/patterns/"]
     }.each do |url, expected|
       link = page(url).at_css(".section-hero__eyebrow a")
@@ -266,11 +267,50 @@ class SiteTest < Minitest::Test
     end
   end
 
+  # Pages deliberately left out of the menu, with where they are linked from.
+  UNLISTED = ["/reference/how-to-add-a-pattern/"].freeze # /contribute and the home page
+
+  def test_menu_sections_list_the_agreed_pages
+    expected = {
+      "getstarted" => ["Principles", "Using aim42", "Examples", "Whitepaper (PDF)"],
+      "patterns" => ["Analyze", "Evaluate", "Improve", "Cross-cutting", "Domain model", "Organizational scenarios"],
+      "learn" => ["Introduction", "Publications", "Training", "FAQ", "Glossary", "Bibliography"],
+      "about" => ["Contact", "Contribute", "License", "Imprint"]
+    }
+    assert_equal expected, NAV["sections"].transform_values { |s| s["pages"].map { |p| p["title"] } }
+  end
+
+  def test_about_shows_the_team_and_no_status_badges
+    doc = page("/about")
+    assert doc.at_css(".post-content h2#team"), "team section missing"
+    text = doc.at_css(".post-content").text
+    ["Alex Heusingfeld", "Oliver Tigges", "Stefan Tilkov"].each { |name| assert_includes text, name }
+    refute_match(/(Alex Heusingfeld|Oliver Tigges) \(INNOQ/i, text, "no longer with INNOQ")
+    refute_match(/Current Status/, text)
+    assert_nil doc.at_css("img[src*='shields.io']"), "status badges"
+    refute site_file("/reference/team/"), "team page merged into /about"
+  end
+
+  def test_contribute_includes_contributing_to_the_reference
+    doc = page("/contribute")
+    assert doc.at_css(".post-content a[href='/reference/how-to-add-a-pattern/']"), "link to How to add a pattern missing"
+    refute site_file("/reference/contributing/"), "contributing page merged into /contribute"
+  end
+
+  def test_innoq_is_written_in_capitals
+    PAGES.each do |url|
+      body = page(url).at_css("body")
+      body.css("script").each(&:remove)
+      refute body.text.include?("innoQ"), "#{url}: write INNOQ"
+    end
+  end
+
   def test_every_page_is_in_the_navigation
     listed = NAV["sections"].values.flat_map { |s| [s["url"]] + s["pages"].map { |p| p["url"] } }
     Dir[File.join(ROOT, "_pages", "**", "*.md")].sort.each do |file|
       next if file.include?("/_pages/patterns/") || %w[home.md search.md].include?(File.basename(file))
       url = VALIDATOR.front_matter(file)["permalink"]
+      next if UNLISTED.include?(url)
       assert_includes listed, url, "#{file.delete_prefix(ROOT)} (#{url}) is not in _data/navigation.yml"
     end
   end

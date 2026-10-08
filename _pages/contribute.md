@@ -13,8 +13,9 @@ You find our repository here:
 
 ### Some ways to contribute:
 
+* Add a pattern or improve an existing one: every pattern is one Markdown file, and [How to add a pattern](/reference/how-to-add-a-pattern/) explains how to write it.
 * Fork our [git repository](https://github.com/aim42/aim42.org-site), correct bugs, add additional practices, experience reports or patterns, and send a pull request.
-* Review our [issues on Github](https://github.com/aim42/aim42.org-site/issues), or
+* Review our [issues on Github](https://github.com/aim42/aim42.org-site/issues), pick one, resolve it and send a pull request, or
 * Create [issues](https://github.com/aim42/aim42.org-site/issues) yourself, if you detect omissions or errors, or if you want to suggest improvements.
 * [Contact]({{ '/contact' | absolute_url }}) us over any channel with your suggestions.
 

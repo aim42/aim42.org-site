@@ -2,6 +2,8 @@
 title: How to add a pattern
 layout: aim42-page
 section: reference
+eyebrow_label: Contribute
+eyebrow_href: /contribute
 permalink: /reference/how-to-add-a-pattern/
 lede: Every pattern is one Markdown file; edit it on GitHub or locally.
 ---
