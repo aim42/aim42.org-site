@@ -327,6 +327,23 @@ class SiteTest < Minitest::Test
     assert_includes head, "2.3.9"
   end
 
+  def test_search_dialog_and_button_are_on_every_page
+    PAGES.each do |url|
+      doc = page(url)
+      assert doc.at_css("dialog#search-dialog input#search-dialog-input[role='combobox'][aria-controls='search-dialog-results']"), "#{url}: search combobox missing"
+      assert doc.at_css("dialog#search-dialog #search-dialog-results[role='listbox']"), "#{url}: result listbox missing"
+      assert doc.at_css("label[for='search-dialog-input']"), "#{url}: search label missing"
+      assert doc.at_css("header.site-header a.site-search-button[href='/search/'][data-search-open]"), "#{url}: header search button missing"
+    end
+  end
+
+  def test_search_page_works_as_a_plain_form
+    doc = page("/search/")
+    assert doc.at_css("main form[action='/search/'][method='get'] input#search-page-input[name='q']"), "GET form with q missing"
+    assert_match(/Search needs JavaScript/, doc.at_css("main noscript")&.text.to_s)
+    assert doc.at_css("main noscript a[href='/patterns/']"), "no-JavaScript notice must link to the patterns index"
+  end
+
   def test_pattern_page_renders_title_intent_and_phase
     doc = page("/patterns/stakeholder-interview/")
     assert_equal "Stakeholder Interview", doc.at_css("h1.section-hero__title")&.text&.strip
