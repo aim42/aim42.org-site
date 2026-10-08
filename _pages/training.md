@@ -1,18 +1,13 @@
 ---
 title: "Training"
-layout: single
-header:
-  overlay_image: /images/splash/ph-gs-training-1200px.jpg
+layout: aim42-page
 permalink: /training
-sidebar:
-  nav: "learn"
-
 ---
 
 This page is written in German, as the IMPROVE training is currently conducted mostly in DE speaking countries...
 Please [contact](/contact) us if you're interested in English training.
 
-# IMPROVE Training
+## IMPROVE Training
 
 3-tägiger Kurs vom „dynamischen Duo“ Peter Hruschka und Gernot Starke (in Hamburg: Gernot Starke mit Dr. Carola Lilienthal).
 Basis für die iSAQB-Zertifizierung zum "Certified Professional for Software Architecture" (CPSA Advanced Level)

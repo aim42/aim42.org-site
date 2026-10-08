@@ -1,18 +1,13 @@
 ---
 title: "FAQ"
-layout: single
-header:
-  overlay_image: /images/aim42-splash.png
+layout: aim42-page
 permalink: /faq
-
-sidebar:
-  nav: "learn"
-
 ---
 
-{% include toc %}
+* Table of contents
+{:toc}
 
-# Frequently Asked Questions
+## Frequently Asked Questions
 
 Here you find answers to some of the frequently asked questions.
 
@@ -51,7 +46,7 @@ aim42 is a team effort - we are actively looking for [contributions](/contribute
 Our reference manual is written in AsciiDoc (a plain-text format, ideal for team-collaboration). A ([Gradle](https://gradle.org)
 based) build-process generates a static html site ([aim42.org/patterns](/patterns/)) from it.
 
-All the code is located in our [Github repository](https://github.com/aim42/aim42).
+All the code is located in our [GitHub repository](https://github.com/aim42/aim42.org-site).
 
 ## Does it work in reality?
 Yes, it does (seriously)!

@@ -1,12 +1,7 @@
 ---
 title: "Examples"
-layout: single
-header:
-  overlay_image: /images/aim42-splash.png
+layout: aim42-page
 permalink: /examples
-sidebar:
-  nav: "examples"
-
 ---
 
 The aim42 practices have been successfully applied by several of our contributors throughout the IT industry

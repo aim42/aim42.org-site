@@ -18,6 +18,7 @@ class SiteTest < Minitest::Test
   HOME = VALIDATOR.front_matter(File.join(ROOT, "_pages", "home.md")).freeze
   NAV = YAML.safe_load(File.read(File.join(ROOT, "_data", "navigation.yml"))).freeze
   BAR = ["Get started", "Patterns", "Learn", "About"].freeze
+  MIGRATED = %w[/principles /using /examples /publications /training /faq].freeze
   CATEGORIES = YAML.safe_load(File.read(File.join(ROOT, "_data", "categories.yml"))).freeze
   # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
   REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
@@ -225,6 +226,18 @@ class SiteTest < Minitest::Test
     }.each do |url, expected|
       link = page(url).at_css(".section-hero__eyebrow a")
       assert_equal expected, [link&.text&.strip, link&.[]("href")], "#{url}: eyebrow"
+    end
+  end
+
+  OLD_THEME_MARKUP = ".page__hero, .page__hero--overlay, .masthead, .sidebar, .page__content, .feature__wrapper, .greedy-nav, i.fa, i.fab".freeze
+
+  def test_migrated_pages_use_the_aim42_layout
+    MIGRATED.each do |url|
+      doc = page(url)
+      assert doc.at_css("header.site-header"), "#{url}: aim42 header missing"
+      assert_equal 1, doc.css("h1").size, "#{url}: exactly one h1"
+      assert doc.at_css(".section-hero__eyebrow a"), "#{url}: section eyebrow missing"
+      assert_nil doc.at_css(OLD_THEME_MARKUP), "#{url}: old theme markup"
     end
   end
 

@@ -1,12 +1,7 @@
 ---
 title: aim42 Principles
-layout: single
+layout: aim42-page
 permalink: /principles
-header:
-  overlay_image: /images/aim42-splash.png
-sidebar:
-  nav: "getstarted"
-
 ---
 
 ## Important Terms
