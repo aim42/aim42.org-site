@@ -147,3 +147,42 @@ test("no console errors when searching", async ({ page }) => {
   await expect(page.locator("#search-page-results li").first()).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+// Final review fixes.
+
+test("Enter right after retyping does not open the previous query's result", async ({ page }) => {
+  await openPopup(page, "atam");
+  await page.locator("#search-dialog-input").fill("strangler");
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/(search\/\?q=strangler|patterns\/strangler-approach\/)$/);
+});
+
+test("hyphenated words find their pattern", async ({ page }) => {
+  await openPopup(page, "change-by-split");
+  await expect(options(page).first()).toContainText("Change-by-Split Approach");
+});
+
+test("Esc closes the popup even with text in the field", async ({ page }) => {
+  await openPopup(page, "atam");
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#search-dialog")).toBeHidden();
+});
+
+test("results do not repeat while the index is still loading", async ({ page }) => {
+  await page.route("**/assets/search.json", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await route.continue();
+  });
+  await page.goto("/patterns/atam/");
+  await page.keyboard.press("/");
+  await page.keyboard.type("st");
+  await page.waitForTimeout(200);
+  await page.keyboard.type("r");
+  await page.waitForTimeout(200);
+  await page.keyboard.press("Backspace");
+  await expect(options(page).first()).toBeVisible({ timeout: 5000 });
+  await page.waitForTimeout(300);
+  const ids = await options(page).evaluateAll((els) => els.map((e) => e.id));
+  expect(new Set(ids).size).toBe(ids.length);
+  expect(ids.length).toBeLessThanOrEqual(8);
+});

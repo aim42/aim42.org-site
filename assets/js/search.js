@@ -56,9 +56,10 @@
   }
 
   // Lower-case words of letters and digits only, so Lunr's query syntax
-  // (":", "*", "~", "^", "+") never reaches the index.
+  // (":", "*", "~", "^", "+") never reaches the index. Hyphens separate
+  // words, as in Lunr's tokenizer ("change-by-split").
   function words(query) {
-    return query.toLowerCase().split(/\s+/).map(function (word) {
+    return query.toLowerCase().split(/[\s\-]+/).map(function (word) {
       return word.replace(/[^\p{L}\p{N}]/gu, "");
     }).filter(Boolean);
   }
@@ -166,6 +167,8 @@
   var opener = null;
   var selected = -1;
   var timer = null;
+  var popupSeq = 0; // only the latest render may write to the popup
+  var renderedQuery = null; // the query the listed options belong to
 
   function popupOptions() {
     return list.querySelectorAll("[role=option]");
@@ -184,6 +187,9 @@
 
   function renderPopup() {
     var query = input.value;
+    var seq = ++popupSeq;
+    timer = null;
+    renderedQuery = null;
     selected = -1;
     input.removeAttribute("aria-activedescendant");
     input.setAttribute("aria-expanded", "false");
@@ -195,7 +201,8 @@
       return;
     }
     loadEngine().then(function (loaded) {
-      if (query !== input.value) return; // a newer keystroke renders instead
+      if (seq !== popupSeq) return; // a newer keystroke renders instead
+      renderedQuery = query;
       var terms = words(query);
       var hits = find(loaded, query);
       hits.slice(0, POPUP_LIMIT).forEach(function (doc, n) {
@@ -212,7 +219,9 @@
       link.href = resultsHref(query);
       link.textContent = "Show all " + countText(hits.length);
       all.hidden = false;
-    }, unavailable(status));
+    }, function (error) {
+      if (seq === popupSeq) unavailable(status)(error);
+    });
   }
 
   function openPopup() {
@@ -240,10 +249,17 @@
 
   input.addEventListener("keydown", function (event) {
     var options = popupOptions();
+    if (event.key === "Escape") {
+      // A search field would only clear itself on the first Esc.
+      event.preventDefault();
+      dialog.close();
+      return;
+    }
     if (event.key === "Enter") {
       event.preventDefault();
       if (!input.value.trim()) return;
-      if (event.metaKey || event.ctrlKey || !options.length) {
+      var current = timer === null && renderedQuery === input.value;
+      if (event.metaKey || event.ctrlKey || !options.length || !current) {
         window.location.href = resultsHref(input.value);
         return;
       }
@@ -282,23 +298,27 @@
   var pageList = document.getElementById("search-page-results");
   var pageStatus = document.getElementById("search-page-status");
   var pageTimer = null;
+  var pageSeq = 0;
 
   function renderPage() {
     var query = pageInput.value;
+    var seq = ++pageSeq;
     pageList.replaceChildren();
     if (!longEnough(query)) {
       pageStatus.textContent = "Type at least " + MIN_CHARS + " characters.";
       return;
     }
     loadEngine().then(function (loaded) {
-      if (query !== pageInput.value) return;
+      if (seq !== pageSeq) return;
       var terms = words(query);
       var hits = find(loaded, query);
       hits.forEach(function (doc) { pageList.appendChild(resultItem(doc, terms, null)); });
       pageStatus.textContent = hits.length
         ? countText(hits.length) + " for " + quoted(query) + "."
         : "No matches for " + quoted(query) + ".";
-    }, unavailable(pageStatus));
+    }, function (error) {
+      if (seq === pageSeq) unavailable(pageStatus)(error);
+    });
   }
 
   pageInput.value = new URLSearchParams(window.location.search).get("q") || "";
