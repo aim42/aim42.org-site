@@ -22,7 +22,8 @@ class SiteTest < Minitest::Test
   CATEGORIES = YAML.safe_load(File.read(File.join(ROOT, "_data", "categories.yml"))).freeze
   # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
   REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
-  PAGES = (["/", "/patterns/"] + REFERENCE + PHASES.map { |p| "/patterns/#{p}/" } + PATTERNS.map { |p| "/patterns/#{p["slug"]}/" }).uniq.freeze
+  # Every built page; the link and image checks run over all of them.
+  PAGES = Dir[File.join(SITE_DIR, "**", "*.html")].map { |f| "/" + f.delete_prefix("#{SITE_DIR}/").sub(%r{(\A|/)index\.html\z}, "\\1") }.sort.freeze
 
   # Titles in Liquid's sort_natural order (case-insensitive).
   def sorted_titles(patterns)
@@ -76,7 +77,7 @@ class SiteTest < Minitest::Test
 
   def test_home_page_uses_the_aim42_layout
     doc = page("/")
-    assert_nil doc.at_css(".page__hero, .page__hero--overlay, .feature__wrapper, .masthead"), "Minimal Mistakes markup on /"
+    assert_nil doc.at_css(".page__hero, .page__hero--overlay, .feature__wrapper, .masthead"), "old theme markup on /"
     assert doc.at_css("header.site-header"), "aim42 header missing on /"
     assert_equal [HOME["headline"]], doc.css("h1").map { |h| h.text.strip }
     assert_equal ["How it works", "Get started", "Free and open"], doc.css("main h2").map { |h| h.text.strip }
@@ -270,6 +271,28 @@ class SiteTest < Minitest::Test
       next if file.include?("/_pages/patterns/") || %w[home.md search.md].include?(File.basename(file))
       url = VALIDATOR.front_matter(file)["permalink"]
       assert_includes listed, url, "#{file.delete_prefix(ROOT)} (#{url}) is not in _data/navigation.yml"
+    end
+  end
+
+  # Spec §5: nothing outside docs/superpowers/ mentions the old theme.
+  OLD_THEME = /minimal[-_ ]?mistakes|mmistakes|mademistakes/i
+
+  def test_old_theme_is_not_mentioned_in_the_repository
+    skip_dirs = %w[.git .jekyll-cache .sass-cache .superpowers .bundle .idea _site vendor node_modules docs/superpowers]
+    files = Dir.glob("**/*", File::FNM_DOTMATCH, base: ROOT).reject do |f|
+      skip_dirs.any? { |d| f == d || f.start_with?("#{d}/") } ||
+        f.split("/").include?("node_modules") || # tests/e2e/node_modules (search plan)
+        File.directory?(File.join(ROOT, f))
+    end
+    hits = (files - ["tests/site_test.rb"]).select { |f| File.binread(File.join(ROOT, f)).match?(OLD_THEME) }
+    assert_empty hits, "files mentioning the old theme"
+  end
+
+  def test_no_built_page_has_old_theme_markup
+    PAGES.each do |url|
+      doc = page(url)
+      assert_nil doc.at_css(OLD_THEME_MARKUP), "#{url}: old theme markup"
+      assert doc.at_css("header.site-header"), "#{url}: aim42 header missing"
     end
   end
 
