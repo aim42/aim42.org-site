@@ -51,7 +51,7 @@
   display: block;
   height: 1.35rem;
   object-fit: contain;
-  width: 5.9rem;
+  width: auto;
 }
 
 .site-brand__name {
@@ -105,11 +105,9 @@
 
 .site-actions {
   align-items: center;
-  display: grid;
+  display: flex;
   flex: 0 0 auto;
   gap: 0.45rem;
-  grid-template-columns: minmax(0, clamp(9rem, 16vw, 12rem)) 2.35rem;
-  min-width: 0;
 }
 
 .site-search {
@@ -233,31 +231,27 @@
 }
 
 .site-secondary-nav__inner {
-  display: flex;
+  display: grid;
   gap: 1.3rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0 auto;
   max-width: $site-max-width;
   padding: 0.75rem 2rem 0.85rem;
 }
 
 .site-secondary-nav__group {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 
-.site-secondary-nav__primary {
-  display: none;
-}
-
-.site-secondary-nav__label {
-  color: var(--brand-cream-74); // cream-48 measured 3.85:1 at 0.75rem — fails AA
+// The group heading is a link to the section page.
+.site-secondary-nav a.site-secondary-nav__label {
+  color: var(--brand-cream-74); // cream-48 measured 3.85:1 at 0.75rem; fails AA
   font-size: $text-xs;
   font-weight: 700;
   letter-spacing: 0.06em;
-  margin-right: 0.2rem;
-  text-transform: uppercase;
 }
 
 .site-secondary-nav a {
@@ -299,36 +293,13 @@
   }
 }
 
-@media screen and (max-width: $nav-collapse-width) {
-  .site-header__inner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.9rem;
-  }
-
-  .site-header__right {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.9rem;
-    width: 100%;
-  }
-
+@media screen and (max-width: $nav-compact-width) {
   .site-primary-nav {
-    flex-wrap: wrap;
-    gap: 0.9rem;
+    display: none;
   }
 
-  .site-actions {
-    grid-template-columns: minmax(0, 1fr) 2.35rem;
-    width: 100%;
-  }
-
-  .site-search {
-    width: 100%;
-  }
-
-  .site-secondary-nav__primary {
-    display: flex;
+  .site-secondary-nav__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -340,16 +311,11 @@
   }
 
   .site-brand {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.45rem;
     margin-right: 0;
     min-width: 0;
   }
 
   .site-secondary-nav__inner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.75rem;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

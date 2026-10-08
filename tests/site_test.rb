@@ -16,6 +16,8 @@ class SiteTest < Minitest::Test
   PHASES = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).keys.freeze
   PHASE_DATA = YAML.safe_load(File.read(File.join(ROOT, "_data", "phases.yml"))).freeze
   HOME = VALIDATOR.front_matter(File.join(ROOT, "_pages", "home.md")).freeze
+  NAV = YAML.safe_load(File.read(File.join(ROOT, "_data", "navigation.yml"))).freeze
+  BAR = ["Get started", "Patterns", "Learn", "About"].freeze
   CATEGORIES = YAML.safe_load(File.read(File.join(ROOT, "_data", "categories.yml"))).freeze
   # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
   REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
@@ -155,6 +157,49 @@ class SiteTest < Minitest::Test
     toggle = page("/glossary/").at_css("button.site-menu-toggle")
     assert_equal "false", toggle["aria-expanded"]
     assert_equal "Navigation menu", toggle["aria-label"]
+  end
+
+  def test_navigation_urls_resolve
+    NAV["sections"].each do |key, section|
+      ([section["url"]] + section["pages"].map { |p| p["url"] }).each do |url|
+        assert site_file(url), "navigation #{key}: #{url} is not built"
+      end
+    end
+  end
+
+  def test_navigation_lists_each_url_once
+    urls = NAV["sections"].values.flat_map { |s| [s["url"]] + s["pages"].map { |p| p["url"] } }
+    assert_equal urls.uniq, urls
+  end
+
+  def test_header_bar_lists_the_sections_and_marks_the_current_one
+    {
+      "/patterns/atam/" => ["Patterns", "true"],
+      "/patterns/" => ["Patterns", "page"],
+      "/glossary/" => ["Patterns", "true"],
+      "/reference/team/" => ["About", "true"]
+    }.each do |url, expected|
+      links = page(url).css("nav.site-primary-nav a")
+      assert_equal BAR, links.map { |a| a.text.strip }, "#{url}: bar"
+      assert_equal [expected], links.select { |a| a["aria-current"] }.map { |a| [a.text.strip, a["aria-current"]] }, "#{url}: current section"
+    end
+  end
+
+  def test_menu_groups_every_section_with_its_pages
+    groups = page("/glossary/").css("#site-secondary-nav .site-secondary-nav__group")
+    assert_equal NAV["bar"], groups.map { |g| g["data-section"] }
+    groups.each do |group|
+      section = NAV["sections"][group["data-section"]]
+      label = group.at_css("a.site-secondary-nav__label")
+      assert_equal [section["title"], section["url"]], [label.text.strip, label["href"]]
+      assert_equal section["pages"].map { |p| [p["title"], p["url"]] },
+                   group.css("a:not(.site-secondary-nav__label)").map { |a| [a.text.strip, a["href"]] }
+    end
+  end
+
+  def test_header_shows_the_svg_logo
+    logo = page("/glossary/").at_css(".site-brand img")
+    assert_equal ["/images/logo/AIM42_white.svg", "aim42"], [logo["src"], logo["alt"]]
   end
 
   def test_pattern_page_renders_title_intent_and_phase

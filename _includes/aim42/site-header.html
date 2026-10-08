@@ -1,18 +1,21 @@
-{% assign primary_nav = site.data.navigation.primary %}
-{% assign secondary_nav = site.data.navigation.secondary %}
+{% include aim42/current-section.html %}
+{% assign nav = site.data.navigation %}
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="aim42 home">
-      <img class="site-brand__logo" src="{{ '/images/aim42-site-logo.png' | relative_url }}" alt="aim42" />
+      <img class="site-brand__logo" src="{{ '/images/logo/AIM42_white.svg' | relative_url }}" alt="aim42" width="418" height="126" />
       <span class="site-brand__name">architecture improvement method</span>
     </a>
 
     <div class="site-header__right">
       <nav class="site-primary-nav" aria-label="Primary navigation">
-        {% for item in primary_nav %}
-          {% assign item_active = false %}
-          {% if page.url == item.url %}{% assign item_active = true %}{% endif %}
-          <a class="site-primary-nav__link{% if item_active %} is-active{% endif %}" href="{{ item.url | relative_url }}"{% if item_active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% for key in nav.bar %}
+          {% assign section = nav.sections[key] %}
+          {% if key == current_section %}
+          <a class="site-primary-nav__link is-active" href="{{ section.url | relative_url }}" aria-current="{% if current_is_section_page %}page{% else %}true{% endif %}">{{ section.title }}</a>
+          {% else %}
+          <a class="site-primary-nav__link" href="{{ section.url | relative_url }}">{{ section.title }}</a>
+          {% endif %}
         {% endfor %}
       </nav>
 
@@ -26,20 +29,17 @@
     </div>
   </div>
 
-  <nav id="site-secondary-nav" class="site-secondary-nav" aria-label="Secondary navigation">
+  <nav id="site-secondary-nav" class="site-secondary-nav" aria-label="Site menu">
     <div class="site-secondary-nav__inner">
-      <div class="site-secondary-nav__group site-secondary-nav__primary">
-        <span class="site-secondary-nav__label">Patterns</span>
-        {% for item in primary_nav %}
-          <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
+      {% for key in nav.bar %}
+        {% assign section = nav.sections[key] %}
+      <div class="site-secondary-nav__group" data-section="{{ key }}">
+        <a class="site-secondary-nav__label" href="{{ section.url | relative_url }}">{{ section.title }}</a>
+        {% for item in section.pages %}
+        <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
         {% endfor %}
       </div>
-      <div class="site-secondary-nav__group">
-        <span class="site-secondary-nav__label">More</span>
-        {% for item in secondary_nav %}
-          <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
-        {% endfor %}
-      </div>
+      {% endfor %}
     </div>
   </nav>
 </header>
