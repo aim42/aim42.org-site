@@ -18,7 +18,7 @@ class SiteTest < Minitest::Test
   HOME = VALIDATOR.front_matter(File.join(ROOT, "_pages", "home.md")).freeze
   NAV = YAML.safe_load(File.read(File.join(ROOT, "_data", "navigation.yml"))).freeze
   BAR = ["Get started", "Patterns", "Learn", "About"].freeze
-  MIGRATED = %w[/principles /using /examples /publications /training /faq].freeze
+  MIGRATED = %w[/principles /using /examples /publications /training /faq /contact /contribute /license /imprint/].freeze
   CATEGORIES = YAML.safe_load(File.read(File.join(ROOT, "_data", "categories.yml"))).freeze
   # Every page under _pages/reference/ (glossary, introduction, bibliography, …).
   REFERENCE = Dir[File.join(ROOT, "_pages", "reference", "*.md")].sort.filter_map { |f| VALIDATOR.front_matter(f)&.fetch("permalink", nil) }.freeze
@@ -179,6 +179,7 @@ class SiteTest < Minitest::Test
       "/patterns/" => ["Patterns", "page"],
       "/glossary/" => ["Patterns", "true"],
       "/reference/team/" => ["About", "true"],
+      "/contact" => ["About", "true"],
       "/about" => ["About", "page"],
       "/getstarted" => ["Get started", "page"]
     }.each do |url, expected|
@@ -238,6 +239,37 @@ class SiteTest < Minitest::Test
       assert_equal 1, doc.css("h1").size, "#{url}: exactly one h1"
       assert doc.at_css(".section-hero__eyebrow a"), "#{url}: section eyebrow missing"
       assert_nil doc.at_css(OLD_THEME_MARKUP), "#{url}: old theme markup"
+    end
+  end
+
+  def test_not_found_page_uses_the_aim42_layout
+    doc = page("/404.html")
+    assert doc.at_css("header.site-header"), "404: aim42 header missing"
+    assert_equal 1, doc.css("h1").size
+    assert_nil doc.at_css(OLD_THEME_MARKUP)
+  end
+
+  def test_contact_lists_email_github_and_linkedin
+    hrefs = page("/contact").css(".post-content a").map { |a| a["href"] }
+    assert_includes hrefs, "https://www.linkedin.com/in/gernotstarke/"
+    assert_includes hrefs, "https://github.com/aim42"
+    assert hrefs.any? { |h| h.start_with?("xmxaxixlxtxo:") }, "obfuscated email link missing"
+  end
+
+  def test_no_page_links_to_twitter_or_xing
+    Dir[File.join(SITE_DIR, "**", "*.html")].each do |file|
+      hrefs = Nokogiri::HTML(File.read(file)).css("a[href]").map { |a| a["href"] }
+      bad = hrefs.grep(%r{\Ahttps?://(www\.)?(twitter\.com|x\.com|xing\.com)/})
+      assert_empty bad, "#{file.delete_prefix(SITE_DIR)} links to #{bad.join(", ")}"
+    end
+  end
+
+  def test_every_page_is_in_the_navigation
+    listed = NAV["sections"].values.flat_map { |s| [s["url"]] + s["pages"].map { |p| p["url"] } }
+    Dir[File.join(ROOT, "_pages", "**", "*.md")].sort.each do |file|
+      next if file.include?("/_pages/patterns/") || %w[home.md search.md].include?(File.basename(file))
+      url = VALIDATOR.front_matter(file)["permalink"]
+      assert_includes listed, url, "#{file.delete_prefix(ROOT)} (#{url}) is not in _data/navigation.yml"
     end
   end
 

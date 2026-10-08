@@ -3,7 +3,7 @@ title: How to add a pattern
 layout: aim42-page
 section: reference
 permalink: /reference/how-to-add-a-pattern/
-lede: Every pattern is one Markdown file — edit it on GitHub or locally.
+lede: Every pattern is one Markdown file; edit it on GitHub or locally.
 ---
 
 Patterns live in `_patterns/<slug>.md`, one file each; the filename is the URL:

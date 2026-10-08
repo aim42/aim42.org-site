@@ -10,10 +10,7 @@ This content is open source! The source is hosted under the aim42 organization o
 To add a pattern or improve an existing one, follow [How to add a pattern](/reference/how-to-add-a-pattern/).
 
 Issues
-: Look over [our open issues](https://github.com/aim42/aim42/issues), pick one, fork the repository and resolve the issue. Send over a pull request!
-
-Twitter
-: [@arc\_improve42](https://twitter.com/arc_improve42)
+: Look over [our open issues](https://github.com/aim42/aim42.org-site/issues), pick one, fork the repository and resolve the issue. Send over a pull request!
 
 Suggestions
 : open an issue (see above) and test our reactivity…
