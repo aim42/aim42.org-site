@@ -161,6 +161,12 @@
 
   &.active {
     display: block;
+    // The menu lives in the sticky header; taller than a phone screen, it
+    // scrolls on its own (3.9rem: the header bar above it).
+    max-height: calc(100vh - 3.9rem);
+    max-height: calc(100dvh - 3.9rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 }
 
