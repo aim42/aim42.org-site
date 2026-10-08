@@ -2,6 +2,7 @@
 require "minitest/autorun"
 require "nokogiri"
 require "yaml"
+require "json"
 require "kramdown"
 require "kramdown-parser-gfm"
 require_relative "../tools/validate"
@@ -294,6 +295,36 @@ class SiteTest < Minitest::Test
       assert_nil doc.at_css(OLD_THEME_MARKUP), "#{url}: old theme markup"
       assert doc.at_css("header.site-header"), "#{url}: aim42 header missing"
     end
+  end
+
+  def test_search_documents_cover_patterns_pages_and_terms_once
+    docs = JSON.parse(File.read(File.join(SITE_DIR, "assets", "search.json")))
+    urls = docs.map { |d| d["url"] }
+    assert_equal urls.uniq, urls, "duplicate search documents"
+    PATTERNS.each { |p| assert_includes urls, "/patterns/#{p["slug"]}/" }
+    NAV["sections"].values.flat_map { |s| [s["url"]] + s["pages"].map { |p| p["url"] } }
+                   .reject { |u| u.end_with?(".pdf") }
+                   .each { |u| assert_includes urls, u }
+    YAML.safe_load(File.read(File.join(ROOT, "_data", "glossary.yml"))).each { |t| assert_includes urls, "/glossary/##{t["id"]}" }
+    docs.each do |d|
+      assert_equal %w[body context kind label title url], d.keys.sort, "#{d["url"]}: keys"
+      assert_includes %w[pattern page term], d["kind"], "#{d["url"]}: kind"
+      refute d["title"].strip.empty?, "#{d["url"]}: title"
+      refute d["label"].strip.empty?, "#{d["url"]}: label"
+      assert site_file(d["url"]), "#{d["url"]}: not built"
+    end
+  end
+
+  def test_search_document_of_a_pattern_has_phase_and_plain_intent
+    doc = JSON.parse(File.read(File.join(SITE_DIR, "assets", "search.json"))).find { |d| d["url"] == "/patterns/atam/" }
+    atam = PATTERNS.find { |p| p["slug"] == "atam" }
+    assert_equal ["pattern", "ATAM", "Analyze", plain(atam["intent"])], doc.values_at("kind", "title", "label", "context")
+    refute_match(/<[a-z]/, doc["body"], "body must be plain text")
+  end
+
+  def test_lunr_is_vendored_at_the_pinned_version
+    head = File.read(File.join(SITE_DIR, "assets", "js", "vendor", "lunr-2.3.9.min.js"), 300)
+    assert_includes head, "2.3.9"
   end
 
   def test_pattern_page_renders_title_intent_and_phase

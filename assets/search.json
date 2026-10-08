@@ -1,0 +1,34 @@
+---
+layout: null
+---
+{%- comment -%}
+  Search documents (docs/superpowers/specs/2026-10-07-phase3a-search-design.md §3):
+  every pattern, every page listed in _data/navigation.yml, every glossary
+  term. assets/js/search.js builds the Lunr index from this file.
+{%- endcomment -%}
+{%- assign sep = "" -%}
+[
+{%- for doc in site.patterns -%}
+{{ sep }}{"url":{{ doc.url | relative_url | jsonify }},"kind":"pattern","title":{{ doc.title | jsonify }},"label":{{ site.data.phases[doc.phase].title | jsonify }},"context":{{ doc.intent | markdownify | strip_html | normalize_whitespace | strip | jsonify }},"body":{{ doc.content | markdownify | strip_html | normalize_whitespace | strip | jsonify }}}
+{%- assign sep = "," -%}
+{%- endfor -%}
+{%- for key in site.data.navigation.bar -%}
+  {%- assign section = site.data.navigation.sections[key] -%}
+  {%- assign urls = section.pages | map: "url" | unshift: section.url -%}
+  {%- for url in urls -%}
+    {%- assign p = site.pages | where: "url", url | first -%}
+    {%- if p -%}
+      {%- assign context = p.lede -%}
+      {%- if url == section.url and section.lede -%}{%- assign context = section.lede -%}{%- endif -%}
+      {%- assign body = p.content | markdownify | strip_html | normalize_whitespace | strip -%}
+      {%- unless context -%}{%- assign context = body | truncatewords: 25 -%}{%- endunless -%}
+{{ sep }}{"url":{{ p.url | relative_url | jsonify }},"kind":"page","title":{{ p.title | jsonify }},"label":{{ section.title | jsonify }},"context":{{ context | markdownify | strip_html | normalize_whitespace | strip | jsonify }},"body":{{ body | jsonify }}}
+      {%- assign sep = "," -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- for entry in site.data.glossary -%}
+  {%- capture term_url -%}/glossary/#{{ entry.id }}{%- endcapture -%}
+{{ sep }}{"url":{{ term_url | relative_url | jsonify }},"kind":"term","title":{{ entry.term | jsonify }},"label":"Glossary","context":{{ entry.definition | markdownify | strip_html | normalize_whitespace | strip | jsonify }},"body":""}
+{%- endfor -%}
+]
