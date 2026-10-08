@@ -1,8 +1,10 @@
 # Local development and checks run in Docker; no local Ruby needed.
 SITE_PORT ?= 4242
 RUN = docker compose run --rm --no-deps jekyll
+PLAYWRIGHT_IMAGE ?= mcr.microsoft.com/playwright:v1.58.2-jammy
+E2E = docker run --rm --ipc=host -v "$(CURDIR):/site" -w /site/tests/e2e $(PLAYWRIGHT_IMAGE)
 
-.PHONY: help build lock dev down clean site-test validate unit check
+.PHONY: help build lock dev down clean site-test validate unit check e2e
 
 help:
 	@printf "make build      build the Jekyll image (rerun after Gemfile.lock changes)\n"
@@ -11,6 +13,7 @@ help:
 	@printf "make down       stop the dev container\n"
 	@printf "make clean      remove containers, cache volumes and _site\n"
 	@printf "make site-test  build the site and run tests/site_test.rb\n"
+	@printf "make e2e        build the site and run the browser tests (Playwright)\n"
 
 build:
 	docker compose build jekyll
@@ -39,4 +42,8 @@ validate:
 unit:
 	$(RUN) bundle exec ruby -e 'ARGV.each { |t| require File.expand_path(t) }' tests/validate_test.rb tests/contrast_test.rb tests/build_hook_test.rb tests/meta_text_test.rb
 
-check: validate unit site-test
+e2e:
+	$(RUN) bundle exec jekyll build --quiet
+	$(E2E) sh -c "npm ci --no-audit --no-fund && npx playwright test"
+
+check: validate unit site-test e2e

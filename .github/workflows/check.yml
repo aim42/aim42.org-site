@@ -29,3 +29,6 @@ jobs:
 
       - name: Site tests
         run: bundle exec ruby tests/site_test.rb
+
+      - name: Browser tests
+        run: docker run --rm --ipc=host -v "$PWD:/site" -w /site/tests/e2e mcr.microsoft.com/playwright:v1.58.2-jammy sh -c "npm ci --no-audit --no-fund && npx playwright test"
