@@ -166,14 +166,10 @@ aim42 relies on a common terminology, a small set of fundamental concepts.
 ![aim42 domain terminology](/images/patterns/aim42-concept-map.png)
 {: #figure-fundamental-concepts}
 
-| **Issue** | Any problem, error, fault, risk, suboptimal situation or their causes within the [system](/glossary/#system) or processes related to it (e.g. management, operational, development, administrative or organizational activities). |
-| **Cause** | Fundamental reason for one or several issues. |
-| **Improvement** | Solution, remedy or cure for one or several issues. |
-| **Cost (of issue)** | The cost (in any unit appropriate for business, e.g. money, effort or such) of the issue, related to a frequency or period of time. For example – cost of every occurrence of the issue or recurring cost per week. |
-| **Cost (of improvement)** | The cost (in monetary units) of the improvement, remedy, tactic or strategy. |
-| **Risk** | *Potential* problem. Improvements can change associated risks for the better or the worse, even create new risks. |
-
-See also the more detailed [Domain Model](/reference/domain-model/) (not required for the casual reader)
+An [issue](/reference/domain-model/#issue) is any problem or risk in the [system](/glossary/#system) or the processes around it, and a [cause](/reference/domain-model/#cause) is the reason behind one or several issues.
+An [improvement](/reference/domain-model/#improvement) resolves issues, at a [cost](/reference/domain-model/#cost-of-improvement), and may change [risks](/reference/domain-model/#risk) on the way.
+Issues have a [cost](/reference/domain-model/#cost-of-issue) too: the pain they cause over time.
+The [domain model](/reference/domain-model/) defines these terms in detail.
 
 ### Iterative Approach   {#iterative-approach}
 

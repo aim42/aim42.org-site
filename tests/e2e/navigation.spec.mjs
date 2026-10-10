@@ -13,3 +13,10 @@ test("on a phone every menu link can be brought into view", async ({ page }) => 
   expect(box.y).toBeGreaterThanOrEqual(0);
   expect(box.y + box.height).toBeLessThanOrEqual(667);
 });
+
+test("a box in the domain model diagram leads to its definition", async ({ page }) => {
+  await page.goto("/reference/domain-model/");
+  await page.locator("#figure-domain-model a[href='#issue']").click();
+  await expect(page).toHaveURL(/#issue$/);
+  await expect(page.locator("dt#issue")).toBeInViewport();
+});

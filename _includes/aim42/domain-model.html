@@ -1,0 +1,102 @@
+{% comment %}
+  The aim42 domain model as inline SVG (replaces images/patterns/aim42-domain-model.png).
+  Each box links to the entity's term below the diagram; the terms come from
+  _data/domain-model.yml and tests/site_test.rb checks that every link has
+  its term. Relations are drawn first so the boxes cover the line ends.
+  SVG elements use explicit closing tags so HTML parsers read the same tree
+  as browsers.
+{% endcomment %}
+<figure class="domain-model" id="figure-domain-model">
+  <div class="domain-model__scroll">
+  <svg class="domain-model__svg" viewBox="0 0 780 640" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="aim42 domain model">
+    <defs>
+      <marker id="dm-inherit" class="dm__inherit" viewBox="0 0 14 14" refX="14" refY="7" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,1 L14,7 L1,13 z"></path></marker>
+    </defs>
+
+    <g class="dm__relations" aria-hidden="true">
+      <path class="dm__line" d="M220 60 L430 30"></path>
+      <text class="dm__label" x="300" y="26" text-anchor="middle">has explicit</text>
+      <text class="dm__label" x="300" y="39" text-anchor="middle">and implicit</text>
+
+      <path class="dm__line" d="M220 95 L300 108"></path>
+      <path class="dm__line dm__line--dotted" d="M220 75 L600 66"></path>
+      <text class="dm__label" x="252" y="122" text-anchor="middle">imposes</text>
+      <text class="dm__label" x="520" y="60" text-anchor="middle">imposes</text>
+
+      <path class="dm__line" d="M630 84 L460 190"></path>
+      <text class="dm__label" x="540" y="120" text-anchor="end">restrict</text>
+
+      <path class="dm__line" d="M425 190 L485 42"></path>
+      <text class="dm__label" x="452" y="145">complies</text>
+      <text class="dm__label" x="452" y="158">with</text>
+
+      <path class="dm__line" d="M355 124 L370 190"></path>
+      <text class="dm__label" x="372" y="160">manages</text>
+
+      <path class="dm__line" d="M470 217 L540 217 M540 217 L600 134 M540 217 L600 182 M540 217 L600 230 M540 217 L600 278"></path>
+      <text class="dm__label" x="505" y="210" text-anchor="middle">consists of</text>
+
+      <path class="dm__line" d="M100 105 L75 180"></path>
+      <text class="dm__label" x="82" y="145" text-anchor="end">belong to</text>
+
+      <path class="dm__line dm__line--dotted" d="M150 105 L165 390"></path>
+      <text class="dm__label" x="170" y="330">source of</text>
+      <path class="dm__line dm__line--dotted" d="M320 124 L235 390"></path>
+      <text class="dm__label" x="300" y="175" text-anchor="end">source of</text>
+
+      <path class="dm__line" d="M140 217 L330 217"></path>
+      <text class="dm__label" x="235" y="210" text-anchor="middle">interested in</text>
+
+      <path class="dm__line" d="M80 286 L150 390"></path>
+      <text class="dm__label" x="102" y="335" text-anchor="end">knows /</text>
+      <text class="dm__label" x="102" y="348" text-anchor="end">informs about</text>
+
+      <path class="dm__line" d="M140 265 L470 390"></path>
+      <text class="dm__label" x="395" y="330">knows /</text>
+      <text class="dm__label" x="395" y="343">informs about</text>
+
+      <path class="dm__line" d="M370 245 L245 390"></path>
+      <text class="dm__label" x="345" y="300">suffers from</text>
+
+      <path class="dm__line" d="M520 390 L430 245"></path>
+      <text class="dm__label" x="490" y="318">is remedy for</text>
+
+      <path class="dm__line" d="M270 440 L450 440"></path>
+      <text class="dm__label" x="360" y="432" text-anchor="middle">resolved by ▸</text>
+      <text class="dm__label" x="360" y="456" text-anchor="middle">◂ resolves</text>
+      <text class="dm__label" x="276" y="432">1..*</text>
+      <text class="dm__label" x="444" y="432" text-anchor="end">*</text>
+
+      <path class="dm__line" d="M80 560 L80 530 L150 530 L150 496" marker-end="url(#dm-inherit)"></path>
+      <path class="dm__line" d="M295 548 L295 530 L230 530 L230 496" marker-end="url(#dm-inherit)"></path>
+      <text class="dm__label" x="160" y="526">is a</text>
+
+      <path class="dm__line" d="M30 560 L30 420 L110 420"></path>
+      <text class="dm__label" x="36" y="480">is real</text>
+      <text class="dm__label" x="36" y="493">source of</text>
+      <text class="dm__label" x="104" y="414" text-anchor="end">*</text>
+
+      <path class="dm__line" d="M530 479 L530 584 L370 584"></path>
+      <text class="dm__label" x="538" y="520">modifies</text>
+      <text class="dm__label" x="538" y="533">or creates</text>
+      <text class="dm__label" x="378" y="578">*</text>
+    </g>
+
+    {% include aim42/domain-model-box.html id="goals" name="Goals" x=430 y=10 w=120 %}
+    {% include aim42/domain-model-box.html id="organization" name="Organization" x=60 y=50 w=160 attrs="Name" %}
+    {% include aim42/domain-model-box.html id="constraints" name="Constraints" x=600 y=52 w=150 %}
+    {% include aim42/domain-model-box.html id="process" name="Process" x=300 y=92 w=110 %}
+    {% include aim42/domain-model-box.html id="stakeholder" name="Stakeholder" x=10 y=180 w=130 attrs="Name|Role|Interests|Experience" %}
+    {% include aim42/domain-model-box.html id="system" name="System" x=330 y=190 w=140 kind="system" attrs="Name" %}
+    {% include aim42/domain-model-box.html id="software" name="Software" x=600 y=118 w=150 %}
+    {% include aim42/domain-model-box.html id="configuration" name="Configuration" x=600 y=166 w=150 %}
+    {% include aim42/domain-model-box.html id="hardware" name="Hardware" x=600 y=214 w=150 %}
+    {% include aim42/domain-model-box.html id="documentation" name="Documentation" x=600 y=262 w=150 %}
+    {% include aim42/domain-model-box.html id="issue" name="Issue" x=110 y=390 w=160 kind="issue" attrs="UID|Description|Cost|Frequency" %}
+    {% include aim42/domain-model-box.html id="improvement" name="Improvement" x=450 y=390 w=160 kind="improvement" attrs="UID|Description|Cost" %}
+    {% include aim42/domain-model-box.html id="cause" name="Cause" x=20 y=560 w=120 kind="cause" %}
+    {% include aim42/domain-model-box.html id="risk" name="Risk" x=220 y=548 w=150 kind="cause" attrs="Probability|EarlyWarning" %}
+  </svg>
+  </div>
+  <figcaption>The aim42 domain model. Select an entity to read its definition.</figcaption>
+</figure>

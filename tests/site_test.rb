@@ -273,11 +273,69 @@ class SiteTest < Minitest::Test
   def test_menu_sections_list_the_agreed_pages
     expected = {
       "getstarted" => ["Principles", "Using aim42", "Examples", "Whitepaper (PDF)"],
-      "patterns" => ["Analyze", "Evaluate", "Improve", "Cross-cutting", "Domain model", "Organizational scenarios"],
+      "patterns" => ["Analyze", "Evaluate", "Improve", "Cross-cutting", "Domain model"],
       "learn" => ["Introduction", "Publications", "Training", "FAQ", "Glossary", "Bibliography"],
       "about" => ["Contact", "Contribute", "License", "Imprint"]
     }
     assert_equal expected, NAV["sections"].transform_values { |s| s["pages"].map { |p| p["title"] } }
+  end
+
+  def test_organizational_scenarios_page_is_gone
+    refute site_file("/reference/organizational-scenarios/"), "organizational scenarios page removed"
+  end
+
+  DOMAIN = YAML.safe_load(File.read(File.join(ROOT, "_data", "domain-model.yml"))).freeze if File.file?(File.join(ROOT, "_data", "domain-model.yml"))
+
+  def domain_entities
+    assert defined?(DOMAIN), "_data/domain-model.yml missing"
+    DOMAIN["groups"].flat_map { |g| g["entities"] }
+  end
+
+  def test_domain_model_diagram_links_every_entity_to_its_definition
+    doc = page("/reference/domain-model/")
+    svg = doc.at_css("#figure-domain-model svg") or flunk("domain model diagram is not an inline SVG with id figure-domain-model")
+    expected = domain_entities.reject { |e| e["diagram"] == false }.map { |e| "##{e["id"]}" }.sort
+    assert_equal expected, svg.css("a").map { |a| a["href"] }.sort, "one link per diagram entity"
+    svg.css("a").each do |a|
+      target = doc.at_css(a["href"]) or flunk("#{a["href"]} has no definition on the page")
+      assert_equal "dt", target.name, "#{a["href"]} should point at a term"
+    end
+    assert_nil doc.at_css("img[src*='aim42-domain-model']"), "old PNG diagram still shown"
+  end
+
+  def test_domain_model_defines_every_entity
+    doc = page("/reference/domain-model/")
+    domain_entities.each do |e|
+      dt = doc.at_css("dt##{e["id"]}") or flunk("no term for #{e["name"]}")
+      assert_equal e["name"], dt.text.strip
+      refute_empty dt.next_element.text.strip, "#{e["name"]} has no definition"
+    end
+    refute_match(/not occurred yet/, doc.at_css("dt#software + dd").text, "Software lists a line copied from Risk")
+  end
+
+  def test_terms_are_defined_only_in_the_domain_model
+    marker = "Fundamental reason for one or several issues"
+    PAGES.each do |url|
+      next if url == "/reference/domain-model/"
+      body = page(url).at_css("main") or next
+      refute_includes body.text, marker, "#{url} repeats the term definitions"
+    end
+    principles = page("/principles")
+    assert_nil principles.at_css(".post-content table"), "/principles keeps its term table"
+    assert principles.at_css(".post-content a[href='/reference/domain-model/']"), "/principles should link to the domain model"
+    refute File.exist?(File.join(ROOT, "images", "aim42-concept-map.png")), "duplicate concept map image"
+  end
+
+  def test_get_started_shows_the_cycle_and_current_counts
+    doc = page("/getstarted")
+    content = doc.at_css(".post-content") || doc.at_css("main")
+    assert content.at_css("nav.home-cycle"), "phase cycle diagram missing"
+    assert_nil doc.at_css("img[src*='aim42-overview']"), "old overview image still shown"
+    stubs = PATTERNS.count { |p| p["status"] == "stub" }
+    text = content.text.gsub(/\s+/, " ")
+    assert_includes text, "describes #{PATTERNS.size - stubs} proven practices"
+    assert_includes text, "names #{stubs} more"
+    refute_match(/ [-–—] /, text, "sentence dash in copy")
   end
 
   def test_about_shows_the_team_and_no_status_badges

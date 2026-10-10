@@ -39,8 +39,6 @@ sections:
         url: /patterns/crosscutting/
       - title: Domain model
         url: /reference/domain-model/
-      - title: Organizational scenarios
-        url: /reference/organizational-scenarios/
   learn:
     title: Learn
     url: /learn

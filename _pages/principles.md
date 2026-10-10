@@ -5,20 +5,9 @@ permalink: /principles
 ---
 
 ## Important Terms
-Let's clarify some fundamental terms:
-
-![aim42 Domain Model](/images/aim42-concept-map.png)
-
-| Term   | Meaning |
-|--------|---------|
-|Issue | Any problem, error, fault, risk, suboptimal situation or their causes within the system or processes related to it (e.g. management, operational, development, administrative or organizational activities). |
-|Cause | Fundamental reason for one or several issues. |
-|Improvement | Solution, remedy or cure for one or several issues.|
-|Cost (of issue) | Simply said: The degree of pain this issue causes. More formal: The cost (in any unit appropriate for business, e.g. money, effort or such) of the issue, related to a frequency or period of time. For example – cost of every occurrence of the issue or recurring cost per week.|
-|Cost (of improvement) | The cost (in monetary units) of the improvement, remedy, tactic or strategy.|
-|Risk | _Potential_ problem. Improvements can change associated risks for the better or the worse, even create new risks.
-
-The [method reference](/reference/introduction/#common-terminology) covers these terms in more detail, and provides a more elaborate [domain model](/reference/domain-model/).
+aim42 talks about [issues](/reference/domain-model/#issue), their [causes](/reference/domain-model/#cause) and [risks](/reference/domain-model/#risk),
+the [improvements](/reference/domain-model/#improvement) that resolve them, and the [cost](/reference/domain-model/#cost-of-issue) of both.
+The [domain model](/reference/domain-model/) defines these terms and shows how they relate.
 
 ## Fundamental Principles
 
