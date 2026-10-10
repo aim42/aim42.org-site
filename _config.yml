@@ -25,6 +25,7 @@ exclude:
   - /zz-resources
   - Makefile
   - docker-compose.yml
+  - netlify.toml
   - _docker
   - tools
   - tests

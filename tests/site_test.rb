@@ -420,6 +420,16 @@ class SiteTest < Minitest::Test
     refute_match(/<[a-z]/, doc["body"], "body must be plain text")
   end
 
+  # Netlify builds master; its Ruby must match Docker and CI, or Jekyll 4.3.1 breaks.
+  def test_netlify_builds_with_the_pinned_ruby
+    toml = File.read(File.join(ROOT, "netlify.toml")) rescue flunk("netlify.toml missing")
+    docker = File.read(File.join(ROOT, "_docker", "jekyll", "Dockerfile"))[/FROM ruby:(\d+\.\d+)/, 1]
+    assert_match(/^\s*RUBY_VERSION = "#{Regexp.escape(docker)}\.\d+"/, toml, "Netlify Ruby differs from Docker (#{docker})")
+    assert_match(/^\s*publish = "_site"/, toml)
+    assert_match(/^\s*command = "bundle exec jekyll build"/, toml)
+    refute File.exist?(File.join(SITE_DIR, "netlify.toml")), "netlify.toml published with the site"
+  end
+
   def test_lunr_is_vendored_at_the_pinned_version
     head = File.read(File.join(SITE_DIR, "assets", "js", "vendor", "lunr-2.3.9.min.js"), 300)
     assert_includes head, "2.3.9"
