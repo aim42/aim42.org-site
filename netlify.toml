@@ -1,0 +1,10 @@
+# Netlify build for www.aim42.org. Settings here override the Netlify UI.
+# Keep RUBY_VERSION in sync with _docker/jekyll/Dockerfile and
+# .github/workflows/check.yml (tests/site_test.rb checks the minor version).
+[build]
+  command = "bundle exec jekyll build"
+  publish = "_site"
+
+[build.environment]
+  RUBY_VERSION = "3.3.12"
+  JEKYLL_ENV = "production"

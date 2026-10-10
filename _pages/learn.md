@@ -1,13 +1,7 @@
 ---
-title: Learn more about aim42
-layout: single
+title: Learn
+layout: aim42-section
 permalink: /learn
-header:
-  overlay_image: /images/aim42-splash.png
-sidebar:
-  nav: "learn"
-
-
 ---
 
 You can learn about aim42 in various ways:

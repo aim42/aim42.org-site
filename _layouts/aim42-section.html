@@ -1,0 +1,32 @@
+---
+layout: aim42-base
+---
+{% comment %}
+  Section page (Get started, Learn, About): hero from the section's title
+  and lede in _data/navigation.yml, the page's own text, then one card per
+  page of the section.
+{% endcomment %}
+{% include aim42/current-section.html %}
+{% assign section = site.data.navigation.sections[current_section] %}
+<div class="article-wrapper">
+  <article>
+    {% include aim42/section-hero.html
+      section="reference"
+      title=section.title
+      lede=section.lede %}
+    <section class="post-content">
+      {{ content }}
+    </section>
+    <section class="section-cards-section" aria-labelledby="in-this-section">
+      <h2 id="in-this-section" class="section-heading">In this section</h2>
+      <ul class="phase-list section-cards">
+        {% for item in section.pages %}
+        <li class="phase-card">
+          <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+          <p>{{ item.blurb }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </article>
+</div>

@@ -1,0 +1,52 @@
+---
+title: Root Cause Analysis
+phase: analyze
+intent: "Explicitly differentiate between symptom and cause: identify root causes of symptoms, problems or issues."
+related: [take-what-they-mean]
+status: complete
+---
+
+> To find mistakes is not enough. It is necessary to find the cause behind the mistake and build a system that minimizes future mistakes.
+> — W. Edwards Deming
+
+Explicitly differentiate between symptom and cause:
+
+* Identify root causes of symptoms, problems or issues
+* Trace a problem to its origins
+
+## Description
+
+Some people fight problems, not their real cause: When faced with a problem our brains tend to start immediately to search for proper solutions for exactly this problem. For instance, if our application regularly crashes with Out-Of-Memory-Errors it might be a reflex to increase the memory settings. Instead we should ask if this is really the problem or only a symptom of the real problem, e.g. a programming failure in memory releasing. With an iterative process of asking "Why?" the causal chain must be traced down to the root cause.
+
+## Experiences
+
+> **Tip:** Users of a system complained about *low performance*.
+> 
+> Developers started tuning the database, tweaking the application server, optimizing inner loops and so on (you pretty well know what I mean).
+> 
+> That did not solve the issue.
+> 
+> After applying [Take What They Mean, Not What They Say](/patterns/take-what-they-mean/) we found out that users complained about low performance in data entry, as they had to switch back-and-forth between different regions on their input-screens.
+> 
+> The actual *cause* of their complaint was the improper field order in their input forms. After adapting this order by simply dragging fields/labels around the screen, users were perfectly happy with the systems.
+
+## Applicability
+
+This pattern should always be considered when faced with a problem.
+
+## Consequences
+
+You can eliminate the cause.
+
+## Also Known As
+
+* Inspect-Cause
+* [Separate Cause from Effect](/patterns/separate-cause-from-effect/)
+
+## References
+
+* [http://en.wikipedia.org/wiki/Root\_cause\_analysis](http://en.wikipedia.org/wiki/Root_cause_analysis)
+
+## Notes on related patterns
+
+* [Take What They Mean, Not What They Say](/patterns/take-what-they-mean/), maybe what they told you was not the real problem.

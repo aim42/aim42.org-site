@@ -1,0 +1,130 @@
+// Domain model diagram (_includes/aim42/domain-model.html) and the terms
+// below it on /reference/domain-model/.
+.domain-model {
+  margin: 2rem 0;
+
+  figcaption {
+    color: var(--brand-muted-strong);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+}
+
+// On phones the diagram keeps a legible size and scrolls sideways inside
+// its own box; the page itself does not scroll horizontally.
+.domain-model__scroll {
+  overflow-x: auto;
+}
+
+.domain-model__svg {
+  display: block;
+  height: auto;
+  min-width: 640px;
+  width: 100%;
+}
+
+.dm__line {
+  fill: none;
+  stroke: var(--brand-muted-strong);
+  stroke-width: 1.5;
+}
+
+.dm__line--dotted {
+  stroke-dasharray: 3 4;
+}
+
+.dm__inherit path {
+  fill: var(--brand-paper);
+  stroke: var(--brand-muted-strong);
+  stroke-width: 1.5;
+}
+
+.dm__label {
+  fill: var(--brand-muted-strong);
+  font-family: $font-family;
+  font-size: 12px;
+}
+
+.dm__entity {
+  --dm-stroke: var(--brand-muted-strong);
+  --dm-fill: #fff;
+  --dm-hover: var(--brand-primary-faint);
+
+  &--issue {
+    --dm-stroke: var(--phase-analyze);
+    --dm-fill: color-mix(in srgb, var(--phase-analyze) 16%, #fff);
+    --dm-hover: color-mix(in srgb, var(--phase-analyze) 28%, #fff);
+  }
+  &--cause {
+    --dm-stroke: var(--phase-analyze);
+    --dm-fill: color-mix(in srgb, var(--phase-analyze) 6%, #fff);
+    --dm-hover: color-mix(in srgb, var(--phase-analyze) 18%, #fff);
+  }
+  &--improvement {
+    --dm-stroke: var(--phase-improve);
+    --dm-fill: color-mix(in srgb, var(--phase-improve) 16%, #fff);
+    --dm-hover: color-mix(in srgb, var(--phase-improve) 28%, #fff);
+  }
+  &--system {
+    --dm-stroke: var(--phase-evaluate);
+    --dm-fill: color-mix(in srgb, var(--phase-evaluate) 16%, #fff);
+    --dm-hover: color-mix(in srgb, var(--phase-evaluate) 28%, #fff);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--brand-primary);
+    outline-offset: 2px;
+  }
+
+  &:hover .dm__box,
+  &:focus-visible .dm__box {
+    fill: var(--dm-hover);
+    stroke-width: 2.5;
+  }
+}
+
+.dm__box {
+  fill: var(--dm-fill);
+  stroke: var(--dm-stroke);
+  stroke-width: 1.5;
+}
+
+.dm__divider {
+  stroke: var(--dm-stroke);
+  stroke-width: 1;
+}
+
+.dm__name {
+  fill: var(--brand-ink);
+  font-family: $heading-font-family;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.dm__attr {
+  fill: var(--brand-muted-strong);
+  font-family: $font-family;
+  font-size: 13px;
+}
+
+.domain-model-terms {
+  dt {
+    border-radius: 4px;
+    margin-top: 1.25rem;
+    padding: 0.1rem 0.4rem;
+    margin-left: -0.4rem;
+    scroll-margin-top: calc(var(--site-header-height, 4rem) + 1rem);
+
+    &:target {
+      background: var(--brand-primary-soft);
+    }
+  }
+
+  dd {
+    margin-left: 0;
+
+    p {
+      margin: 0.25rem 0 0.5rem;
+    }
+  }
+}

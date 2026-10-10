@@ -1,16 +1,11 @@
 ---
 title: Using aim42
-layout: single
+layout: aim42-page
 permalink: /using
-header:
-  overlay_image: /images/aim42-splash.png
-sidebar:
-  nav: "getstarted"
-
-
 ---
 
-{% include toc %}
+* Table of contents
+{:toc}
 
 
 We want to show you how you can get started with aim42 in just a few steps:

@@ -1,0 +1,93 @@
+// Calm tag chip — used by `.tag-box.inline` rows on the /dimensions/ index
+// and inside `dimension-buttons.liquid`. Replaces the old saturated-fill
+// pills with a paper-tinted pattern that mirrors the diagram cards: a
+// section-coloured wash + matching border + section-coloured text.
+//
+// `--chip-cat` carries the section colour; the default is qualities (blue),
+// `.req` and `.approach` override it. `.dimension` and `.standard` fall
+// through to the qualities default — the dimension-buttons grid renders
+// the top-9 quality dimensions, so blue is the right cohort.
+
+a.hov {
+  --chip-cat: var(--brand-blue);
+  --chip-text: var(--brand-blue-text);
+
+  align-items: center;
+  background: var(--brand-paper);
+  background: color-mix(in oklab, var(--brand-paper) 86%, var(--chip-cat) 14%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--chip-cat) 35%);
+  border-radius: $radius-pill;
+  color: var(--chip-text);
+  display: inline-flex;
+  font-family: $font-family;
+  font-size: 0.85rem;
+  font-weight: 500;
+  gap: 0.35rem;
+  line-height: 1.2;
+  margin: 3px 2px;
+  padding: 0.22rem 0.7rem;
+  text-decoration: none;
+  transition:
+    background 120ms ease-out,
+    border-color 120ms ease-out;
+}
+
+a.hov:hover,
+a.hov:focus-visible {
+  background: color-mix(in oklab, var(--brand-paper) 75%, var(--chip-cat) 25%);
+  border-color: color-mix(in oklab, var(--brand-paper) 50%, var(--chip-cat) 50%);
+  text-decoration: none;
+}
+
+a.hov.tags.req {
+  --chip-cat: var(--reqs-background-color);
+  --chip-text: var(--req-text-color);
+}
+
+a.hov.tags.approach {
+  --chip-cat: var(--approaches-background-color);
+  --chip-text: var(--approaches-text-color);
+}
+
+// <b> marks a primary top-9 dimension on the index — keep it slightly
+// stronger than secondary tags without going full bold.
+a.hov b {
+  font-weight: 600;
+}
+
+// Trailing <span>count</span> — faint inline number that inherits the
+// section colour but recedes. Overrides the `vertical-align: super` set
+// on `.tag-box a span` in `_common.scss`.
+a.hov span {
+  font-size: 0.78rem;
+  font-weight: 400;
+  opacity: 0.7;
+  vertical-align: baseline;
+}
+
+// ─── Unrelated link helper (kept for tag / qualities pages) ───────────────
+a.reqs {
+  color: var(--brand-ink);
+
+  .icon.bullet {
+    opacity: 0.5;
+  }
+}
+
+a.reqs:hover,
+a.reqs:focus-visible {
+  color: var(--req-text-color);
+
+  .icon.bullet {
+    opacity: 1;
+  }
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.as-bullet {
+  margin-right: 10px;
+}

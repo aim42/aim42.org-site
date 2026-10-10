@@ -1,0 +1,33 @@
+---
+title: Manage Complex Client Dependencies with Facade
+phase: improve
+categories: [architecture-and-code]
+intent: Simplify the interaction of a client with a set of service components.
+related: [interface-segregation-principle]
+status: complete
+---
+
+## Description
+
+When clients use a set of components with repeating patterns these interaction patterns are implemented in a Facade component.
+
+The interface the Facade provides to the client is tailored to the client’s need. Technical details that are specific for the service component implementations are handled inside the facade.
+
+## Experiences
+
+Consider a Facade if you must use generic frameworks or systems you cannot modify e.g. legacy systems.
+
+## Applicability
+
+Apply this pattern when clients use a set of components in stereotypical fashion. Things that can be handled by a facade:
+
+* recurring control flows
+* technical details
+  * configuration of components
+  * resource lookup
+  * error handling
+
+## Consequences
+
+* Enhances Information Hiding. Clients do not need information about the components' technical detail.
+* Supports DRY principle: complex interactions are implemented in one place. No need to reimplement this in different clients.

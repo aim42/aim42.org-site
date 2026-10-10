@@ -1,15 +1,10 @@
 ---
 title: About
-layout: single
+layout: aim42-section
 permalink: /about
-header:
-  overlay_image: /images/aim42-splash.png
-sidebar:
-  nav: "about"
-
 ---
 
-# aim42
+## aim42
 
 aim42 is the systematic approach to improve software systems and architectures.
 
@@ -26,30 +21,35 @@ life maintaining, evolving, fixing or enhancing existing (_legacy_) systems.
 
 
 
-## Current Status
+## Team
 
-### aim42 Method Reference
-[![](https://img.shields.io/github/issues/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
-[![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.svg)](https://github.com/aim42/aim42/issues)
-[![](https://img.shields.io/github/stars/aim42/aim42.svg)](https://github.com/aim42/aim42/stargazers)
-[![](https://img.shields.io/github/contributors/aim42/aim42.svg)](https://github.com/aim42/aim42/graphs/contributors)
+For a current and complete overview, please see the [contributor page](https://github.com/aim42/aim42/graphs/contributors) on GitHub.
 
+* Gernot Starke (INNOQ Fellow, project founder): setup, patterns, practices, maintenance.
+* Alex Heusingfeld: hero-of-the-build, Travis-CI integration, numerous discussions. Started the idea of a distinct *user guide*…
+* Peter Hruschka (Atlantic Systems Guild): reviews + comments, especially to the intricacies of the [Domain Model](/reference/domain-model/).
+* Christine Koppelt (INNOQ): improvement-patterns
+* Michael Mahlberg (Consulting Guild): patterns and practices.
+* Burkhard Neppert (INNOQ): review, method
+* Roland Schimmack: review, practices and patterns, bugfixes
+* Oliver Tigges: patterns and practices
+* Stefan Tilkov (INNOQ): maintenance and evolution patterns.
+* Tammo van Lessen (INNOQ): improvement patterns, technical debt contribution
+* Sven Johann (INNOQ): several improvements on various patterns
+* Matthias Möser (Kassenärztliche Vereinigung Bayerns): improvement patterns, rewrite
+* (What are you waiting for? **Join us**!)
 
-### aim42 Website
-[![](https://img.shields.io/github/issues/aim42/aim42.org-site.svg)](https://github.com/aim42/aim42.org-site/issues)
-[![](https://img.shields.io/github/issues-closed-raw/aim42/aim42.org-site.svg)](https://github.com/aim42/aim42.org-site/issues)
-[![](https://img.shields.io/github/stars/aim42/aim42.org-site.svg)](https://github.com/aim42/aim42.org-site/stargazers)
-[![](https://img.shields.io/github/contributors/aim42/aim42.org-site.svg)](https://github.com/aim42/aim42.org-site/graphs/contributors)
+Comments and suggestions by Markus Harrer, Phillip Ghadir and numerous (anonymous) project teams from all around the IT world.
 
-### Found a bug?
+## Found a bug?
 
-Of course, we welcome [contributions](/contribute), both [pull requests](https://github.com/aim42/aim42/pulls)
-and [issues](https://github.com/aim42/aim42/issues)!
+Of course, we welcome [contributions](/contribute), both [pull requests](https://github.com/aim42/aim42.org-site/pulls)
+and [issues](https://github.com/aim42/aim42.org-site/issues)!
 
 
 ## About Gernot
 
-As [innoQ-Fellow](https://innoq.com) and software- and architecture practitioner
+As [INNOQ Fellow](https://innoq.com) and software- and architecture practitioner
 I support organizations of various domains in improving their software.
 
 Apart from optimizing _time-to-market_, I focus on reducing maintenance- and operational costs,

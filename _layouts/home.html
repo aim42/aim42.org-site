@@ -1,0 +1,53 @@
+---
+layout: aim42-base
+---
+{% comment %}
+  Home page. Spec: docs/superpowers/specs/2026-10-07-phase3a-homepage-design.md
+  All text comes from the front matter of _pages/home.md; the page body is
+  the "Free and open" section.
+{% endcomment %}
+{% assign total = site.patterns | size %}
+<div class="home">
+  <section class="home-hero">
+    <div class="home-hero__text">
+      <h1 class="home-hero__title">{{ page.headline | escape }}</h1>
+      <p class="home-hero__lede">{{ page.lede | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+      <p class="home-hero__actions">
+        <a class="home-button" href="#how-it-works">How it works</a>
+        <a class="home-button home-button--ghost" href="{{ '/patterns/' | relative_url }}">Browse {{ total }} patterns</a>
+      </p>
+    </div>
+    {% include aim42/cycle.html %}
+  </section>
+
+  <section class="home-section home-phases">
+    <h2 id="how-it-works">How it works</h2>
+    {% include aim42/phase-cards.html %}
+  </section>
+
+  <section class="home-section home-start">
+    <h2 id="get-started">Get started</h2>
+    <ol class="home-steps">
+      {% for step in page.get_started %}
+      <li class="home-steps__item">
+        <p class="home-steps__text">{{ step.text | escape }}</p>
+        <p class="home-steps__links">
+          {%- for slug in step.patterns -%}
+            {%- capture url %}/patterns/{{ slug }}/{% endcapture -%}
+            {%- assign pattern = site.patterns | where: "url", url | first -%}
+            <a href="{{ pattern.url | relative_url }}">{{ pattern.title | escape }}</a>{% unless forloop.last %}, {% endunless %}
+          {%- endfor -%}
+        </p>
+      </li>
+      {% endfor %}
+    </ol>
+    <p class="home-start__guide"><a href="{{ '/getstarted' | relative_url }}">Read the full getting-started guide</a></p>
+  </section>
+
+  <section class="home-section home-open">
+    <h2 id="free-and-open">Free and open</h2>
+    <div class="home-open__grid">
+      {{ content }}
+    </div>
+  </section>
+</div>

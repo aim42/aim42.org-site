@@ -1,0 +1,21 @@
+# The four aim42 phases. Keys are the allowed values of a pattern's `phase`.
+analyze:
+  title: Analyze
+  order: 1
+  url: /patterns/analyze/
+  blurb: Find issues, risks and technical debt in the system and its organization, and understand their root causes.
+evaluate:
+  title: Evaluate
+  order: 2
+  url: /patterns/evaluate/
+  blurb: Make issues and remedies comparable by estimating their value, cost and risk, then prioritize.
+improve:
+  title: Improve
+  order: 3
+  url: /patterns/improve/
+  blurb: Apply approaches and practices that eliminate issues, reduce technical debt and optimize quality.
+crosscutting:
+  title: Cross-cutting
+  order: 4
+  url: /patterns/crosscutting/
+  blurb: Practices that span all phases and keep issues and improvements visible, understood and aligned.

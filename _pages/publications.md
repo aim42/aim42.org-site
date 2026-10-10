@@ -1,25 +1,11 @@
 ---
 title: "Publications"
-layout: single
-header:
-  overlay_image: /images/aim42-splash.png
+layout: aim42-page
 permalink: /publications
-
-sidebar:
-  nav: "learn"
-
-
-tweets:
-  - title: "aim42"
-    excerpt: '<a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/arc_improve42">Tweets by @arc_improve42</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>'
-  - title: ""
-    excerpt: ''
-  - title: "Gernot Starke"
-    excerpt: '<a class="twitter-timeline" data-width="300" data-height="1000" href="https://twitter.com/gernotstarke">Tweets by @gernotstarke</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>'
-
 ---
 
-{% include toc %}
+* Table of contents
+{:toc}
 
 ## Papers and Articles
 
@@ -59,7 +45,7 @@ Die Informatik-Ausbildung fokussiert auf die Neuentwicklung von Software – den
 
 Dieser Artikel ist ursprünglich in Ausgabe 02/2014 der Zeitschrift Business & Technology erschienen. Die Veröffentlichung auf innoq.com erfolgt mit freundlicher Genehmigung des S&S Media-Verlags.
 
-[Online (bei innoQ)](https://www.innoq.com/de/articles/2014/07/software-systematisch-verbessern/)
+[Online (bei INNOQ)](https://www.innoq.com/de/articles/2014/07/software-systematisch-verbessern/)
 
 
 
@@ -113,7 +99,3 @@ Die Evolution, Weiterentwicklung oder Verbesserung von Softwaresystemen systemat
 Der iSAQB hat einen neuen Lehrplan zu diesem Thema veröffentlicht. Dessen Name, IMPROVE, ist Programm: Sie können ab sofort lernen, wie Verbesserung, Evolution oder Weiterentwicklung systematisch funktioniert, mit balancierten betriebswirtschaftlichen, fachlichen und technischen Zielen.
 
 [Oktober 2015, it-and-more](https://it-and-more.blogspot.de/2015/03/it-systeme-systematisch-verbessern.html), von Gernot Starke.
-
-## Tweets
-
-{% include feature_row id="tweets" %}

@@ -1,0 +1,31 @@
+{% assign me = include.page.url | split: "/" | last %}
+{% assign none = "" | split: "" %}
+{% assign forward = include.page.related | default: none %}
+{% assign reverse = none %}
+{% for other in site.patterns %}
+  {% assign other_slug = other.url | split: "/" | last %}
+  {% if other_slug != me and other.related contains me %}
+    {% unless forward contains other_slug %}
+      {% assign reverse = reverse | push: other_slug %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+{% assign all = forward | concat: reverse %}
+{% if all.size > 0 %}
+<section class="pattern-related-section">
+  <h2 class="section-heading">Related patterns</h2>
+  <ul class="pattern-related">
+    {% for slug in all %}
+      {% for other in site.patterns %}
+        {% assign other_slug = other.url | split: "/" | last %}
+        {% if other_slug == slug %}
+          <li>
+            <a href="{{ other.url | relative_url }}">{{ other.title | escape }}</a>{% if other.status == "stub" %} <span class="tag tag--stub">stub</span>{% endif %}
+            <p class="pattern-list__intent">{{ other.intent | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

@@ -1,9 +1,7 @@
 ---
-layout: single
+layout: aim42-page
 title: Imprint & Privacy
 permalink: /imprint/
-order: 90
-share: false
 ---
 
 The following text has to be included in sites provided from Germany by German citicens,
@@ -29,7 +27,7 @@ The content of aim42 is licensed under a Creative Commons Sharealike Licence (4.
 #### Kontakt
 
 Telefon: +49 177 728 2570<br>
-e-Mail: <a href="xmxaxixlxtxo:xgxs@xgxexrxnxoxtxsxtxaxrxkxex.xdxex" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i>Email (Adresse wird nach Klick sichtbar)</a>
+e-Mail: <a href="xmxaxixlxtxo:xgxs@xgxexrxnxoxtxsxtxaxrxkxex.xdxex" onmouseover="this.href=this.href.replace(/x/g,'');">Email (Adresse wird nach Klick sichtbar)</a>
 <br>
 Website: [gernotstarke.de](https://gernotstarke.de)
 

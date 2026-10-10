@@ -1,0 +1,6 @@
+<dl class="glossary">
+  {% for entry in site.data.glossary %}
+    <dt id="{{ entry.id }}">{{ entry.term | escape }}</dt>
+    <dd>{{ entry.definition | markdownify }}</dd>
+  {% endfor %}
+</dl>

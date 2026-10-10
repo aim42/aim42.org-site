@@ -1,0 +1,81 @@
+---
+title: Change-by-Split Approach
+phase: improve
+categories: [approaches]
+intent: Maintain and evolve a few smaller systems, instead of one big monolith. Reduce time-to-market, work in smaller teams that individually become more focussed.
+status: complete
+---
+
+## Prerequisites
+
+The system has several distinct (usually nearly disjunct) user groups. For each of these groups, slightly different business rules, processes or other requirements hold.
+
+## Description
+
+1.  Identify different user groups, at best disjunct. An example: For an online E-commerce system, such groups might be private and corporate customers.
+
+    ![Change-by-split, initial situation](/images/patterns/improve-approaches/cbs-1-initial.png)
+    {: #figure-split-initial}
+
+2.  As a preparation, copy the whole system, with all sources and everything required to develop, build, test and run the system. This might include databases or other middleware. Every part should be completely independent of the others.
+
+    ![Change-by-split, system copied for every user type/category](/images/patterns/improve-approaches/cbs-2-copied.png)
+    {: #figure-split-copied}
+
+3.  Identify commonalities among these different user groups, crosscutting concerns that every user group needs in a common way. In our E-commerce example, those might be pdf-generation, user/role management or the like. Factor out those commons into a separate module/subsystem, which is used by (likely all) other split systems.
+
+    Make part of the whole development team responsible for the commons.
+
+    ![Change-by-split, factored out commons](/images/patterns/improve-approaches/cbs-3-factored-commons.png)
+    {: #figure-split-commons}
+
+4.  Now you can optimize and/or refactor the commons subsystem. As its code is now centralized, that task might become somewhat simpler than within the original legacy system. At the same time, remove all commons-code from the split systems - reducing them in size.
+
+    Split the rest of the whole development team according the split systems. Make one developer group responsible for one split system.
+
+    ![Change-by-split, reduced splits, optimized commons](/images/patterns/improve-approaches/cbs-4-reduced-commons.png)
+    {: #figure-split-reduced-commons}
+
+5.  Now for the core of this approach: Aggressively reduce every split system to its core: remove all code not required for the split-specific user group, remove all code that can also be handled by the Commons subsystem. This step might be performed parallel to optimizing the commons.
+
+    ![Change-by-split, all split systems reduced/optimized](/images/patterns/improve-approaches/cbs-5-final.png)
+    {: #figure-split-final}
+
+    This final step might need extensive preparation, e.g. by creating user-category specific unit-/integration-/acceptance tests. Reducing unneeded code can be quite difficult, if the original code has (extremely) high cyclomatic complexity or is very difficult to understand for other reasons (configurability, strange technologies, using strange/outdated/proprietary frameworks etc.).
+
+Steps 4 and 5 might be interchanged or done in parallel.
+
+## Experiences
+
+* An niche-market software supplier could reduce their 2+Million LoC *moloch* to five *split* systems, each having approx 300kLoC plus one commons-system.
+
+  Time-to-market for feature requests was reduced from 12 weeks before the splits to 1 week afterwards. Team size of 50+ was reduced to 8+ people. A retrospective approx 9 month after the split showed significant higher customer satisfaction and (!) a significant increase in developer happiness (probably reducing know-how drain). The split-approach was regarded as a success by business, management and technical stakeholders.
+
+## Risks
+
+* Creating several copies of a large system plus infrastructure can be expensive and resource-intensive.
+* Identifying really disjunct user groups might be impossible for several business domains, rendering this approach useless.
+* The required team-split might pose organizational challenges, as a currently productive (albeit large) team has to be disrupted.
+* It might be difficult to define appropriate interfaces for the factored-out *commons*. If these commons are overly scattered throughout the legacy code, this extraction might be impossible, making the resulting split systems more complicated than they should be.
+* If business code is overly tangled, having very high cyclomatic complexity, it can be arbitrarily difficult to remove those parts that are not required for a single user type/category. Analyzing such code segments should be performed my members of several split-teams.
+* Associated processes (like requirements, test, documentation and operations) of the split systems might become more difficult to manage in the first phases of a split. Due to the reduced sizes of split systems, it might be likely such processes will become simpler over time.
+
+## Applicability
+
+Whenever a legacy system servers more than one homogeneous user group, this split approach might be appropriate.
+
+The business processes for the various user groups need to be sufficiently different from one another - otherwise splits would merely create duplicate functionality.
+
+## Consequences
+
+* Instead of having to manage one single (but large) system, you will have to manage (develop, change, operate) several (smaller) systems. This might be especially relevant for operations effort.
+* Instead of having to manage one single development team, you will have to manage several.
+* All "things" you are dealing with (code, data-structures, data, processes) will become smaller, reducing complexity of these "things".
+* "Time-to-market" of your split systems will be lower (as development will be faster) - maybe coordination and management effort might increase.
+
+## Proposed practices
+
+* Find a relatively small user-group and *pilot* (try-out) this approach.
+* Involve the affected user groups as early as possible to facilitate possible required changes on their side.
+* Try to identify potential *neuralgic sections* within the code, that do not belong into the factored-out commons and will likely affect several of the split systems. Try to minimize the effort required to analyze and untangle such sections by gathering people from various split-teams.
+* Don’t try everything at once: Spread out step 5 (optimize splits) over several, possibly many, development iterations or releases. Let the split teams become comfortable with their reduced split systems.

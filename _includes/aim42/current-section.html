@@ -1,0 +1,21 @@
+{% comment %}
+  current-section — sets `current_section` (a key of
+  site.data.navigation.sections, or "") and `current_is_section_page` for
+  the page being rendered. A page belongs to the section whose url or
+  pages[].url equals page.url; pattern pages belong to `patterns`.
+{% endcomment %}
+{% assign current_section = "" %}
+{% assign current_is_section_page = false %}
+{% if page.collection == "patterns" %}
+  {% assign current_section = "patterns" %}
+{% else %}
+  {% for entry in site.data.navigation.sections %}
+    {% if entry[1].url == page.url %}
+      {% assign current_section = entry[0] %}
+      {% assign current_is_section_page = true %}
+    {% endif %}
+    {% for item in entry[1].pages %}
+      {% if item.url == page.url %}{% assign current_section = entry[0] %}{% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}

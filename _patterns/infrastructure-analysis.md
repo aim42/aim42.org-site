@@ -1,0 +1,27 @@
+---
+title: Infrastructure Analysis
+phase: analyze
+intent: Analyze the technical infrastructure of the [system](/glossary/#system), e.g. with respect to time and resource consumption or creation. Part of [Runtime Analysis](/patterns/runtime-analysis/).
+related: [improve-logging, instrument-system, quantitative-analysis]
+status: complete
+---
+
+## Description
+
+Infrastructure analysis is associated to the more general [Runtime Analysis](/patterns/runtime-analysis/), with focus on technical infrastructure for operation, test and development of the [system](/glossary/#system).
+
+Inspect and analyse the technical infrastructure, for example the following aspects:
+
+* production hardware: does characteristics, type and size of the hardware suit the system and the business problem? Hardware might consist of several subsystems, like processing, various levels of storage (processor cache, RAM, flash, disk, tape or others), graphical and network interfaces and arbitrary specialized hardware
+* development and test hardware
+* software infrastructure, like operating system, required database, middleware, frameworks and libraries
+
+It helps to measure runtime behavior against expected or required values, for example processing time and memory consumption. [Instrument System](/patterns/instrument-system/) can support this type of analysis.
+
+Specialized stakeholders (like datacenter administrators, operating-system or database experts, hardware designers) can often pinpoint critical aspects of existing infrastructures from their experience.
+
+Apply [View-Based Understanding](/patterns/view-based-understanding/), especially an infrastructure overview (e.g. deployment diagram) to get an overview of existing hardware plus the associated software. Start with an hardware context and refine. Ensure you have at least all hardware-types (node-types) plus their relations (networks, buses) visible. Double-check this overview with the appropriate stakeholders.
+
+## Experience
+
+The combination of hardware and software can be arbitrary complex. Even small configuration settings of operating systems (like block or packet sizes) can conflict with hardware capabilities, effectively ruining overall system performance.

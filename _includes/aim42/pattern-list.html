@@ -1,0 +1,25 @@
+{% assign items = site.patterns | sort_natural: "title" %}
+{% if include.phase %}
+  {% assign items = items | where: "phase", include.phase %}
+{% endif %}
+{% if include.category == "none" %}
+  {% assign items = items | where_exp: "p", "p.categories.size == 0" %}
+{% elsif include.category %}
+  {% assign items = items | where_exp: "p", "p.categories contains include.category" %}
+{% endif %}
+{% if items.size > 0 %}
+<ul class="pattern-list">
+  {% for pattern in items %}
+    <li class="pattern-list__item">
+      <p class="pattern-list__title">
+        <a href="{{ pattern.url | relative_url }}">{{ pattern.title | escape }}</a>
+        {% if pattern.status == "stub" %}<span class="tag tag--stub">stub</span>{% endif %}
+        {% unless include.phase %}<span class="tag">{{ site.data.phases[pattern.phase].title }}</span>{% endunless %}
+      </p>
+      <p class="pattern-list__intent">{{ pattern.intent | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>{{ include.empty | default: "No patterns in this phase yet." }}</p>
+{% endif %}

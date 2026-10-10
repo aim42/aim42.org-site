@@ -1,54 +1,81 @@
-# main links
-main:
-  - title: "Get Started"
+# Header bar, hamburger menu, section pages and page eyebrows.
+# Spec: docs/superpowers/specs/2026-10-07-phase3a-navigation-pages-design.md
+# A page belongs to the section that lists its URL (_includes/aim42/current-section.html).
+bar:
+  - getstarted
+  - patterns
+  - learn
+  - about
+
+sections:
+  getstarted:
+    title: Get started
     url: /getstarted
-    description: "Getting started"
-  - title: "Learn"
-    url: /learn
-  - title: "Method Reference"
-    url: "https://aim42.github.io"
-  - title: "About"
-    url: /about
-
-# add search here!
-
-
-
-getstarted:
-  - title: "Get Started"
-    url: /getstarted
-    children:
-      - title: "Principles"
+    lede: How to apply aim42 to your own system, from the first principles to worked examples.
+    pages:
+      - title: Principles
         url: /principles
-      - title: "Using aim42"
+        blurb: The terms aim42 uses and the few rules it is built on.
+      - title: Using aim42
         url: /using
-      - title: "Whitepaper"
+        blurb: A first improvement in a few steps, from brainstorming to root cause analysis.
+      - title: Examples
+        url: /examples
+        blurb: Systems from different industries where contributors applied aim42.
+      - title: Whitepaper (PDF)
         url: /assets/downloads/AIM42-Whitepaper-v2.0.pdf
-      - title: "Method Reference"
-        url: https://aim42.github.io
-
-
-learn:
-  - title: "Learn more"
+        blurb: A short summary of aim42 to read offline or pass on.
+  patterns:
+    title: Patterns
+    url: /patterns/
+    pages:
+      - title: Analyze
+        url: /patterns/analyze/
+      - title: Evaluate
+        url: /patterns/evaluate/
+      - title: Improve
+        url: /patterns/improve/
+      - title: Cross-cutting
+        url: /patterns/crosscutting/
+      - title: Domain model
+        url: /reference/domain-model/
+  learn:
+    title: Learn
     url: /learn
-    children:
-      - title: "Publications"
+    lede: An introduction to aim42, articles, talks and training, answers to common questions, the glossary and the sources.
+    pages:
+      - title: Introduction
+        url: /reference/introduction/
+        blurb: What aim42 is, why software needs systematic improvement, and how its phases work together.
+      - title: Publications
         url: /publications
-      - title: "Training"
+        blurb: Articles, papers and talks about aim42, in English and German.
+      - title: Training
         url: /training
-      - title: "FAQ"
+        blurb: The IMPROVE training towards the iSAQB CPSA-Advanced certificate, held in German.
+      - title: FAQ
         url: /faq
-
-
-about:
-  - title: "About aim42"
+        blurb: Short answers about aim42, refactoring and the people behind it.
+      - title: Glossary
+        url: /glossary/
+        blurb: The terms aim42 uses, each with a short definition.
+      - title: Bibliography
+        url: /reference/bibliography/
+        blurb: Books, articles and web resources cited by the patterns.
+  about:
+    title: About
     url: /about
-    children:
-      - title: "Contact"
+    lede: Who is behind aim42, how to reach us and how to take part.
+    pages:
+      - title: Contact
         url: /contact
-      - title: "Contributors"
-        url: "https://github.com/orgs/aim42/people"
-      - title: "License"
-        url: "/license"
-
-
+        blurb: Email, GitHub and LinkedIn.
+      - title: Contribute
+        url: /contribute
+        blurb: Ways to help, from reporting an issue to adding a pattern.
+      - title: License
+        url: /license
+        blurb: aim42 is free to use under CC BY-SA 4.0.
+      - title: Imprint
+        url: /imprint/
+        blurb: Imprint and privacy statement.

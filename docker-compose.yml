@@ -1,7 +1,13 @@
 services:
   jekyll:
-    image: bretfisher/jekyll-serve
+    build:
+      context: .
+      dockerfile: _docker/jekyll/Dockerfile
     volumes:
       - .:/site
+      - jekyll_cache:/site/.jekyll-cache
     ports:
-      - '4000:4000'
+      - "4242:4242"
+
+volumes:
+  jekyll_cache:

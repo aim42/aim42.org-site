@@ -1,0 +1,21 @@
+{% comment %}
+  search-dialog — the search popup (spec: 2026-10-07-phase3a-search-design.md §2.1).
+  assets/js/search.js opens it and fills the result list. The form posts to
+  the results page, so Enter without JavaScript still searches.
+{% endcomment %}
+<dialog id="search-dialog" class="search-dialog" aria-label="Search aim42"
+        data-lunr="{{ '/assets/js/vendor/lunr-2.3.9.min.js' | relative_url }}"
+        data-index="{{ '/assets/search.json' | relative_url }}"
+        data-results="{{ '/search/' | relative_url }}">
+  <form class="search-dialog__form" action="{{ '/search/' | relative_url }}" method="get" role="search">
+    <label class="visually-hidden" for="search-dialog-input">Search patterns and pages</label>
+    <input id="search-dialog-input" class="search-dialog__input" type="search" name="q"
+           placeholder="Search patterns and pages" autocomplete="off" spellcheck="false"
+           role="combobox" aria-expanded="false" aria-controls="search-dialog-results" aria-autocomplete="list" />
+    <kbd class="search-dialog__hint" aria-hidden="true">esc</kbd>
+  </form>
+  <ul id="search-dialog-results" class="search-results" role="listbox" aria-label="Search results"></ul>
+  <p class="search-dialog__status" aria-live="polite"></p>
+  <p class="search-dialog__none" hidden>Browse the <a href="{{ '/patterns/' | relative_url }}">patterns index</a>.</p>
+  <p class="search-dialog__all" hidden><a href="{{ '/search/' | relative_url }}">Show all results</a></p>
+</dialog>

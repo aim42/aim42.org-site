@@ -1,0 +1,19 @@
+{% comment %}
+  One entity box in the domain model diagram (domain-model.html): a link to
+  the entity's term on the page. Parameters: id, name, x, y, w, kind
+  (issue, cause, improvement, system or plain) and attrs, "|"-separated.
+{% endcomment %}
+{%- assign attrs = include.attrs | default: "" | split: "|" -%}
+{%- assign h = 32 -%}
+{%- if attrs.size > 0 %}{% assign h = attrs.size | times: 17 | plus: 38 %}{% endif -%}
+{%- assign cx = include.w | divided_by: 2 | plus: include.x -%}
+<a class="dm__entity dm__entity--{{ include.kind | default: 'plain' }}" href="#{{ include.id }}" aria-label="{{ include.name }}">
+      <rect class="dm__box" x="{{ include.x }}" y="{{ include.y }}" width="{{ include.w }}" height="{{ h }}" rx="4"></rect>
+      <text class="dm__name" x="{{ cx }}" y="{{ include.y | plus: 21 }}" text-anchor="middle">{{ include.name }}</text>
+      {%- if attrs.size > 0 %}
+      <line class="dm__divider" x1="{{ include.x }}" y1="{{ include.y | plus: 32 }}" x2="{{ include.x | plus: include.w }}" y2="{{ include.y | plus: 32 }}"></line>
+      {%- for attr in attrs %}
+      <text class="dm__attr" x="{{ include.x | plus: 10 }}" y="{{ forloop.index0 | times: 17 | plus: 49 | plus: include.y }}">{{ attr }}</text>
+      {%- endfor %}
+      {%- endif %}
+    </a>

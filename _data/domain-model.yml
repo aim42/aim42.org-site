@@ -1,0 +1,104 @@
+# The aim42 domain model, rendered on /reference/domain-model/.
+# Each entity becomes a term with the anchor `id`; the diagram
+# (_includes/aim42/domain-model.html) links its boxes to these anchors.
+# `diagram: false` marks terms that have no box of their own.
+# Definitions, attributes and relations are inline Markdown.
+groups:
+  - id: core-concepts
+    title: Core concepts
+    intro: The terms aim42 uses throughout its practices and patterns.
+    entities:
+      - id: issue
+        name: Issue
+        definition: Any problem, error, fault, risk, suboptimal situation or their causes within the [System](#system), its [Processes](#process) or the [Organization](#organization) related to it, for example management, operational, development, administrative or organizational activities.
+        attributes:
+          - "Frequency: how often the issue occurs."
+          - "Cost: see [cost of an issue](#cost-of-issue)."
+        relations:
+          - is resolved by one or several [Improvements](#improvement).
+      - id: cause
+        name: Cause
+        definition: Root cause of an [Issue](#issue), in contrast to a symptom; the fundamental reason for one or several issues.
+        relations:
+          - is a kind of [Issue](#issue).
+          - is the real source of one or several [Issues](#issue).
+      - id: risk
+        name: Risk
+        definition: A *potential* problem, an [Issue](#issue) that has not occurred yet. Improvements can change associated risks for the better or the worse, and even create new risks.
+        attributes:
+          - "Probability: how likely the risk turns into a problem."
+          - "EarlyWarning: indicator that the risk is occurring and turning into a problem."
+        relations:
+          - is a kind of [Issue](#issue).
+      - id: improvement
+        name: Improvement
+        definition: Any remedy, opportunity, tactic or strategy to improve the [System](#system) by resolving one or several [Issues](#issue).
+        attributes:
+          - "Cost: see [cost of an improvement](#cost-of-improvement)."
+        relations:
+          - resolves one or several [Issues](#issue), partially or completely.
+          - is a remedy for the [System](#system).
+          - modifies or creates [Risks](#risk).
+      - id: cost-of-issue
+        name: Cost of an issue
+        diagram: false
+        definition: "Simply said: the degree of pain an [issue](#issue) causes. More formally: the cost of the issue in any unit appropriate for business, such as money or effort, related to a frequency or period of time. For example, the cost of every occurrence of the issue, or the recurring cost per week."
+      - id: cost-of-improvement
+        name: Cost of an improvement
+        diagram: false
+        definition: The cost of the [improvement](#improvement), remedy, tactic or strategy, in monetary units.
+
+  - id: system-and-context
+    title: The system and its context
+    intro: What is being improved, and the people, processes and rules around it.
+    entities:
+      - id: system
+        name: System
+        definition: The system under improvement.
+        relations:
+          - consists of [Software](#software), [Configuration](#configuration), [Hardware](#hardware) and [Documentation](#documentation).
+          - suffers from [Issues](#issue).
+          - complies with one or several [Goals](#goals).
+          - is managed and affected by [Processes](#process).
+      - id: software
+        name: Software
+        definition: All source code that makes up the [System](#system) under improvement, hopefully stored in version control.
+      - id: configuration
+        name: Configuration
+        definition: Settings and parameters that adapt the [Software](#software) to its environment.
+      - id: hardware
+        name: Hardware
+        definition: Structure and kind of hardware required to develop, test and operate the [System](#system).
+      - id: documentation
+        name: Documentation
+        definition: Any (hopefully written) information about the [System](#system), its goals, requirements, architecture, implementation, operation or management.
+      - id: organization
+        name: Organization
+        definition: The organization or entity responsible for or owning the [System](#system).
+        attributes:
+          - "Name"
+        relations:
+          - has explicit and implicit [Goals](#goals).
+          - imposes [Processes](#process) and [Constraints](#constraints).
+          - is a source of [Issues](#issue).
+      - id: stakeholder
+        name: Stakeholder
+        definition: People or roles interested or participating in the [System](#system) or any of its associated [Processes](#process).
+        attributes:
+          - "Name, Role, Interests, Experience"
+        relations:
+          - belong to the [Organization](#organization) responsible for or owning the System.
+          - know about and inform about [Issues](#issue) and [Improvements](#improvement); stakeholders often know about existing problems and opportunities for improvement.
+      - id: process
+        name: Process
+        definition: Processes, conventions or activities for developing, maintaining, operating or managing the [System](#system).
+        relations:
+          - is a source of [Issues](#issue).
+      - id: goals
+        name: Goals
+        definition: What the [Organization](#organization) or [Stakeholders](#stakeholder) expect from the [System](#system); why the System exists at all.
+      - id: constraints
+        name: Constraints
+        definition: Technical or organizational constraints restraining management, design, implementation or operation of the [System](#system).
+        relations:
+          - restrict the System, associated [Processes](#process) or the [Organization](#organization).
