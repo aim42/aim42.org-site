@@ -8,9 +8,9 @@
   {% assign description = page.intent | default: page.lede | default: site.description %}
   <meta name="description" content="{{ description | meta_description }}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="32x32">
+  <link rel="icon" href="{{ '/images/logo/aim42-mark.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
   <meta name="theme-color" content="#2b3a4a">
   <link rel="preload" href="{{ '/assets/fonts/atkinson/AtkinsonHyperlegibleNext-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/libre-caslon/LibreCaslonText-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
