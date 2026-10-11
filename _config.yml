@@ -23,6 +23,7 @@ exclude:
   - README.md
   - tmp
   - /zz-resources
+  - /original-graphics
   - Makefile
   - docker-compose.yml
   - netlify.toml
