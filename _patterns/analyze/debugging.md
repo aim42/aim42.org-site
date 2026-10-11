@@ -16,7 +16,7 @@ Approach the search for bugs, errors in the following order:
 
 1.  Get a clear and precise **description** of the error, the detailed wording of all error messages, log messages, stacktraces or similar information.
 2.  Know the **context** of the error: the exact version of the system, the operating system, involved middleware, hardware settings and so on. Have knowledge of the input data which leads to the error.
-3.  **Minimize external disturbance** while searching for errors, you need to concentrate and observe details. Shut off chat and twitter clients, notifications and your phone. Send away your boss to an important management mission and lean back to reflect the error. Perhaps a colleague can support you.
+3.  **Minimize external disturbance** while searching for errors, you need to concentrate and observe details. Shut off chat and social media clients, notifications and your phone. Send away your boss to an important management mission and lean back to reflect the error. Perhaps a colleague can support you.
 4.  **Reproduce the error** in the live system. Don’t rely on the assumption you can reproduce it - make sure you can reliably *really* reproduce it.
 5.  **Obtain the exact version** of all required source code and all involved data.
 6.  **Reproduce the error in development environment**: This ensures your development environment is consistent to the live system.
