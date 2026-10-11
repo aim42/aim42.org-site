@@ -62,15 +62,54 @@ Glossary terms link to `/glossary/#term`, e.g. `[system](/glossary/#system)`.
 
 ## Site Structure
 
-![](zz-resources/site-navigation.png)
+The header bar has four sections plus search; each section page lists its pages.
+`_data/navigation.yml` is the source of truth (a test checks that every URL in it
+appears below). URLs are flat: `/principles`, not `/getstarted/principles`.
 
+```text
+/                                Home                    _pages/home.md
+├── /getstarted                  Get started             _pages/getstarted.md
+│   ├── /principles              Principles              _pages/principles.md
+│   ├── /using                   Using aim42             _pages/using.md
+│   ├── /examples                Examples                _pages/examples.md
+│   └── /assets/downloads/AIM42-Whitepaper-v2.0.pdf      Whitepaper (PDF)
+├── /patterns/                   Patterns                _pages/patterns/index.md
+│   ├── /patterns/analyze/       Analyze                 _pages/patterns/analyze.md
+│   ├── /patterns/evaluate/      Evaluate                _pages/patterns/evaluate.md
+│   ├── /patterns/improve/       Improve                 _pages/patterns/improve.md
+│   ├── /patterns/crosscutting/  Cross-cutting           _pages/patterns/crosscutting.md
+│   ├── /patterns/<slug>/        one page per pattern    _patterns/<phase>/<slug>.md
+│   └── /reference/domain-model/ Domain model            _pages/reference/domain-model.md
+├── /learn                       Learn                   _pages/learn.md
+│   ├── /reference/introduction/ Introduction            _pages/reference/introduction.md
+│   ├── /publications            Publications            _pages/publications.md
+│   ├── /training                Training                _pages/training.md
+│   ├── /faq                     FAQ                     _pages/faq.md
+│   ├── /glossary/               Glossary                _pages/reference/glossary.md
+│   └── /reference/bibliography/ Bibliography            _pages/reference/bibliography.md
+├── /about                       About                   _pages/about.md
+│   ├── /contact                 Contact                 _pages/contact.md
+│   ├── /contribute              Contribute              _pages/contribute.md
+│   ├── /license                 License                 _pages/license.md
+│   └── /imprint/                Imprint & Privacy       _pages/imprint.md
+└── /search/                     Search (header button)  _pages/search.md
+
+Footer:            Contact · GitHub (github.com/aim42) · Imprint + Privacy
+Not in navigation: /reference/how-to-add-a-pattern/ (linked from home and Contribute),
+                   /404.html (404.html)
+```
+
+Shared page parts live in `_includes/aim42/` (header, footer, cycle, search dialog),
+layouts in `_layouts/`, data in `_data/`, images in `images/` (pattern diagrams in
+`images/patterns/`, their OmniGraffle sources in `original-graphics/`, which is not
+published).
 
 ## Credits
 
 #### Icons + Images:
 
-* Free images can be found at [Unsplash](https://unsplash.com/)
-* I generated the various favicon files with [RealFavIconGenerator](http://realfavicongenerator.net/).
+* The favicon and logo mark (`images/logo/aim42-mark.svg`) show the aim42 cycle
+  from the home page: analyze, evaluate, improve around the cross-cutting hub.
 
 
 ---

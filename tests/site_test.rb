@@ -204,8 +204,10 @@ class SiteTest < Minitest::Test
   end
 
   def test_header_shows_the_svg_logo
-    logo = page("/glossary/").at_css(".site-brand img")
+    logo = page("/glossary/").at_css(".site-brand__logo")
     assert_equal ["/images/logo/AIM42_white.svg", "aim42"], [logo["src"], logo["alt"]]
+    mark = page("/glossary/").at_css(".site-brand__mark")
+    assert_equal ["/images/logo/aim42-mark.svg", ""], [mark["src"], mark["alt"]]
   end
 
   def test_section_pages_show_a_card_per_page
@@ -259,10 +261,10 @@ class SiteTest < Minitest::Test
     assert hrefs.any? { |h| h.start_with?("xmxaxixlxtxo:") }, "obfuscated email link missing"
   end
 
-  def test_no_page_links_to_twitter_or_xing
+  def test_no_page_links_to_dropped_social_networks
     Dir[File.join(SITE_DIR, "**", "*.html")].each do |file|
       hrefs = Nokogiri::HTML(File.read(file)).css("a[href]").map { |a| a["href"] }
-      bad = hrefs.grep(%r{\Ahttps?://(www\.)?(twitter\.com|x\.com|xing\.com)/})
+      bad = hrefs.grep(%r{\Ahttps?://(www\.)?(twitter\.com|x\.com|xing\.com|dev\.to|instagram\.com)/})
       assert_empty bad, "#{file.delete_prefix(SITE_DIR)} links to #{bad.join(", ")}"
     end
   end
