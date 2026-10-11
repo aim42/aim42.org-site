@@ -461,7 +461,7 @@ class SiteTest < Minitest::Test
     assert doc.at_css(".post-content h2"), "body headings missing"
     refute doc.at_css(".stub-notice"), "complete pattern must not show the stub notice"
     edit = doc.at_css("a.pattern-edit__link")
-    assert_equal "https://github.com/aim42/aim42.org-site/edit/master/_patterns/stakeholder-interview.md", edit["href"]
+    assert_equal "https://github.com/aim42/aim42.org-site/edit/master/_patterns/analyze/stakeholder-interview.md", edit["href"]
   end
 
   def test_related_patterns_render_in_both_directions
@@ -476,7 +476,7 @@ class SiteTest < Minitest::Test
     notice = doc.at_css(".stub-notice")
     assert notice, "stub notice missing"
     assert_includes notice.text, "stub"
-    assert notice.at_css("a[href*='/edit/master/_patterns/assertions.md']"), "edit link missing from stub notice"
+    assert notice.at_css("a[href*='/edit/master/_patterns/improve/assertions.md']"), "edit link missing from stub notice"
     assert doc.at_css(".section-hero__chips .tag--stub"), "stub chip missing"
   end
 

@@ -81,6 +81,11 @@ module Aim42
         if fm.key?("phase") && !phases.include?(fm["phase"])
           errors << "#{name}: unknown phase '#{fm["phase"]}' (allowed: #{phases.join(", ")})"
         end
+        # Patterns are filed by phase: _patterns/<phase>/<slug>.md.
+        folder = File.dirname(name)
+        if folder != "." && fm.key?("phase") && folder != fm["phase"]
+          errors << "#{name}: folder '#{folder}' does not match phase '#{fm["phase"]}'"
+        end
         if fm.key?("status") && !STATUSES.include?(fm["status"])
           errors << "#{name}: unknown status '#{fm["status"]}' (allowed: #{STATUSES.join(", ")})"
         end

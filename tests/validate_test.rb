@@ -133,17 +133,23 @@ class ValidatorTest < Minitest::Test
   end
 
   def test_related_may_name_a_pattern_in_a_subdirectory
-    FileUtils.mkdir_p(File.join(@root, "_patterns", "analyze-more"))
-    File.write(File.join(@root, "_patterns", "analyze-more", "b.md"), "---\ntitle: B\nphase: analyze\nintent: x\nstatus: complete\n---\n")
+    FileUtils.mkdir_p(File.join(@root, "_patterns", "analyze"))
+    File.write(File.join(@root, "_patterns", "analyze", "b.md"), "---\ntitle: B\nphase: analyze\nintent: x\nstatus: complete\n---\n")
     pattern("a", VALID + "related: [b]\n")
     assert_empty errors
   end
 
   def test_duplicate_slugs_across_extensions_and_directories
-    FileUtils.mkdir_p(File.join(@root, "_patterns", "sub"))
+    FileUtils.mkdir_p(File.join(@root, "_patterns", "analyze"))
     pattern("a", VALID)
-    File.write(File.join(@root, "_patterns", "sub", "a.md"), "---\ntitle: Other\nphase: analyze\nintent: x\nstatus: complete\n---\n")
-    assert_includes errors, "duplicate slug 'a' in a.md, sub/a.md"
+    File.write(File.join(@root, "_patterns", "analyze", "a.md"), "---\ntitle: Other\nphase: analyze\nintent: x\nstatus: complete\n---\n")
+    assert_includes errors, "duplicate slug 'a' in a.md, analyze/a.md"
+  end
+
+  def test_folder_must_match_phase
+    FileUtils.mkdir_p(File.join(@root, "_patterns", "improve"))
+    File.write(File.join(@root, "_patterns", "improve", "c.md"), "---\ntitle: C\nphase: analyze\nintent: x\nstatus: complete\n---\n")
+    assert_equal ["improve/c.md: folder 'improve' does not match phase 'analyze'"], errors
   end
 
   # The README's front-matter example must be copy-pasteable.

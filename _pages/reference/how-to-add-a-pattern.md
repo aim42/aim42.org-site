@@ -8,8 +8,9 @@ permalink: /reference/how-to-add-a-pattern/
 lede: Every pattern is one Markdown file; edit it on GitHub or locally.
 ---
 
-Patterns live in `_patterns/<slug>.md`, one file each; the filename is the URL:
-`_patterns/stakeholder-interview.md` → `/patterns/stakeholder-interview/`.
+Patterns live in `_patterns/<phase>/<slug>.md`, one file each, in the folder of
+their `phase`; the filename is the URL:
+`_patterns/analyze/stakeholder-interview.md` → `/patterns/stakeholder-interview/`.
 
     ---
     title: Introduce Layering
@@ -44,7 +45,7 @@ Quote front-matter values that contain `: ` (colon followed by a space), as in
 the `intent` above; otherwise YAML reads them as a nested mapping.
 
 **Editing on GitHub.** Open the pattern page's "Edit this pattern on GitHub" link
-(or create a new file at <https://github.com/aim42/aim42.org-site/new/master/_patterns/>),
+(or create a new file in the phase folder, e.g. <https://github.com/aim42/aim42.org-site/new/master/_patterns/analyze/>),
 commit to a branch and open a pull request. CI validates the front matter.
 
 Glossary terms link to `/glossary/#term`, e.g. `[system](/glossary/#system)`.
