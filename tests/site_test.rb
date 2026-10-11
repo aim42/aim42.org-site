@@ -355,6 +355,15 @@ class SiteTest < Minitest::Test
     refute site_file("/reference/contributing/"), "contributing page merged into /contribute"
   end
 
+  # The default branch is main since 2026-10-11.
+  def test_no_page_links_to_the_old_master_branch
+    PAGES.each do |url|
+      page(url).css("a[href*='aim42.org-site/']").each do |a|
+        refute_match(%r{aim42\.org-site/(edit|new|blob|tree)/master/}, a["href"], "#{url}: link to master")
+      end
+    end
+  end
+
   def test_innoq_is_written_in_capitals
     PAGES.each do |url|
       body = page(url).at_css("body")
@@ -420,7 +429,7 @@ class SiteTest < Minitest::Test
     refute_match(/<[a-z]/, doc["body"], "body must be plain text")
   end
 
-  # Netlify builds master; its Ruby must match Docker and CI, or Jekyll 4.3.1 breaks.
+  # Netlify builds main; its Ruby must match Docker and CI, or Jekyll 4.3.1 breaks.
   def test_netlify_builds_with_the_pinned_ruby
     toml = File.read(File.join(ROOT, "netlify.toml")) rescue flunk("netlify.toml missing")
     docker = File.read(File.join(ROOT, "_docker", "jekyll", "Dockerfile"))[/FROM ruby:(\d+\.\d+)/, 1]
@@ -461,7 +470,7 @@ class SiteTest < Minitest::Test
     assert doc.at_css(".post-content h2"), "body headings missing"
     refute doc.at_css(".stub-notice"), "complete pattern must not show the stub notice"
     edit = doc.at_css("a.pattern-edit__link")
-    assert_equal "https://github.com/aim42/aim42.org-site/edit/master/_patterns/stakeholder-interview.md", edit["href"]
+    assert_equal "https://github.com/aim42/aim42.org-site/edit/main/_patterns/analyze/stakeholder-interview.md", edit["href"]
   end
 
   def test_related_patterns_render_in_both_directions
@@ -476,7 +485,7 @@ class SiteTest < Minitest::Test
     notice = doc.at_css(".stub-notice")
     assert notice, "stub notice missing"
     assert_includes notice.text, "stub"
-    assert notice.at_css("a[href*='/edit/master/_patterns/assertions.md']"), "edit link missing from stub notice"
+    assert notice.at_css("a[href*='/edit/main/_patterns/improve/assertions.md']"), "edit link missing from stub notice"
     assert doc.at_css(".section-hero__chips .tag--stub"), "stub chip missing"
   end
 

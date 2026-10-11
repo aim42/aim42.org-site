@@ -14,7 +14,7 @@ Markdown file on GitHub. One repository, one build.
   hosted on Netlify. Links out to the reference in six places.
 - `aim42/aim42` (local clone: `method-reference`): the reference as one AsciiDoc
   book, ~5000 lines, ~65 pattern files, 117 anchors, ~540 `<<xref>>`s. Built with
-  Gradle/Asciidoctor and published by Travis to `aim42.github.io`.
+  Gradle/Asciidoctor and published by CI to `aim42.github.io`.
 - `aim42.github.io`: generated HTML only (all commits are build artifacts). Last
   publish 2020-12-03; six real source changes since then were never published.
 

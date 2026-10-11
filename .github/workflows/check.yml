@@ -2,7 +2,7 @@ name: Check site
 
 on:
   push:
-    branches: [master, merge-method-reference]
+    branches: [main]
   pull_request:
 
 jobs:
