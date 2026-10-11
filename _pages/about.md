@@ -26,7 +26,7 @@ life maintaining, evolving, fixing or enhancing existing (_legacy_) systems.
 For a current and complete overview, please see the [contributor page](https://github.com/aim42/aim42/graphs/contributors) on GitHub.
 
 * Gernot Starke (INNOQ Fellow, project founder): setup, patterns, practices, maintenance.
-* Alex Heusingfeld: hero-of-the-build, Travis-CI integration, numerous discussions. Started the idea of a distinct *user guide*…
+* Alex Heusingfeld: hero-of-the-build, CI integration, numerous discussions. Started the idea of a distinct *user guide*…
 * Peter Hruschka (Atlantic Systems Guild): reviews + comments, especially to the intricacies of the [Domain Model](/reference/domain-model/).
 * Christine Koppelt (INNOQ): improvement-patterns
 * Michael Mahlberg (Consulting Guild): patterns and practices.
