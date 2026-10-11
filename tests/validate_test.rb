@@ -161,6 +161,19 @@ class ValidatorTest < Minitest::Test
     Aim42::Validator::REQUIRED.each { |key| assert_kind_of String, fm[key], "README example: '#{key}'" }
   end
 
+  # The README's site-structure tree must not drift from the navigation.
+  def test_readme_site_structure_matches_navigation
+    root = File.expand_path("..", __dir__)
+    tree = File.read(File.join(root, "README.md"))[/^## Site Structure\n(.*?)^## /m, 1]
+    assert tree, "Site Structure section not found in README.md"
+    nav = YAML.safe_load(File.read(File.join(root, "_data", "navigation.yml")))
+    urls = nav["sections"].values.flat_map { |s| [s["url"]] + (s["pages"] || []).map { |p| p["url"] } }
+    urls.each { |url| assert_match(/(?<=\s)#{Regexp.escape(url)}(?=\s)/, tree, "README site structure lacks #{url}") }
+    tree.scan(%r{_pages/[\w/-]+\.md}).uniq.each do |file|
+      assert File.file?(File.join(root, file)), "README site structure names missing #{file}"
+    end
+  end
+
   CATEGORIES = "approaches:\n  title: Improvement approaches\narchitecture-and-code:\n  title: Architecture and code structure\n"
 
   def test_known_categories_pass
